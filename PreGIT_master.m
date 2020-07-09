@@ -1,7 +1,6 @@
 %% Importing packages
 for n=1:1
-  addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
-  %addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.2.8';
+
   addpath 'C:/Users/Sam/My Documents/MATLAB/Colormaps/Colormaps (5)/Colormaps'; %Adds matplotlib colormaps
   addpath 'C:/Users/Sam/My Documents/MATLAB/subtightplot/subtightplot';
   addpath 'C:/Users/Sam/My Documents/MATLAB/altmany-export_fig-3175417'; 
