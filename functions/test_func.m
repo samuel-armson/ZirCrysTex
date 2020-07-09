@@ -1,5 +1,5 @@
-function test_func
-	if a = 1
+function test_func(a)
+	if a == 1
 		disp("a is one")
 	else
 		disp("a does not equal one")
