@@ -27,7 +27,7 @@ function ebsd_out = dataset_rotation(ebsd_in,rotation_angles,method,varargin)
 		if strcmp(p.Results.keep,'none') == 1
 			ebsd_out = rotate(ebsd_in,rotation_description);
 		else
-			ebsd_out = rotate(ebsd_in,rotation_description,keep);
+			ebsd_out = rotate(ebsd_in,rotation_description,p.Results.keep);
 		end
 	end
 
@@ -41,9 +41,9 @@ function ebsd_out = dataset_rotation(ebsd_in,rotation_angles,method,varargin)
 			ebsd_out = rotate(ebsd_out,rotation_description_2);
 			ebsd_out = rotate(ebsd_out,rotation_description_3);
 		else
-			ebsd_out = rotate(ebsd_out,rotation_description_1,keep);
-			ebsd_out = rotate(ebsd_out,rotation_description_2,keep);
-			ebsd_out = rotate(ebsd_out,rotation_description_3,keep);
+			ebsd_out = rotate(ebsd_out,rotation_description_1,p.Results.keep);
+			ebsd_out = rotate(ebsd_out,rotation_description_2,p.Results.keep);
+			ebsd_out = rotate(ebsd_out,rotation_description_3,p.Results.keep);
 		end
 	end
 end
