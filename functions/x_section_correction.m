@@ -17,20 +17,23 @@ function ebsd_out = x_section_correction(ebsd_in,aquisition_method,varargin)
 								when operated at a magnification of 43k, has patterns rotated by 18 degrees in φ1.
 	%}
 	
+	p = inputParser;
+	addRequired(p,'ebsd_in');
+	addRequired(p,'aquisition_method');
+	addOptional(p,'scan_rotation',0);
+	addOptional(p,'SPED_inherent_rotation',18);
+	parse(p,ebsd_in,rotation_angles,method,varargin{:})
+
 	ebsd_out = ebsd_in;
 	
 	% Apply inherent SPED correction if necessary
 	if strcmp(aquisition_method,'SPED') == 1
-		if exist('SPED_inherent_rotation','var') == 0
-			ebsd_out = dataset_rotation(ebsd_out,[18,0,0],'Euler','keep','keepXY');
-        else
-			ebsd_out = dataset_rotation(ebsd_out,[SPED_inherent_rotation,0,0],'Euler','keep','keepXY');
-		end
+		ebsd_out = dataset_rotation(ebsd_out,[p.Results.SPED_inherent_rotation,0,0],'Euler','keep','keepXY');
 	end
 
 	% Apply scan rotation if necessary
-	if exist('scan_rotation','var') == 1
-		ebsd_out = dataset_rotation(ebsd_out,[0,0,scan_rotation],'axis');
+	if p.Results.scan_rotation > 0
+		ebsd_out = dataset_rotation(ebsd_out,[0,0,p.Results.scan_rotation],'axis');
 	end
 
 	% Apply cross section correction
