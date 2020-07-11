@@ -19,15 +19,15 @@ function ebsd_out = dataset_rotation(ebsd_in,rotation_angles,method,varargin)
 	addRequired(p,'ebsd_in');
 	addRequired(p,'rotation_angles');
 	addRequired(p,'method');
-	addOptional(p,'keep',0);
+	addOptional(p,'keep','none');
 	parse(p,ebsd_in,rotation_angles,method,varargin{:})
 
 	if strcmp(method,'Euler') == 1
 		rotation_description = rotation('Euler',rotation_angles(1)*degree,rotation_angles(2)*degree,rotation_angles(3)*degree);
-		if exist('keep','var') == 1
-            ebsd_out = rotate(ebsd_in,rotation_description,keep);
-		else
+		if strcmp(keep,'none') == 1
 			ebsd_out = rotate(ebsd_in,rotation_description);
+		else
+			ebsd_out = rotate(ebsd_in,rotation_description,keep);
 		end
 	end
 
@@ -36,7 +36,7 @@ function ebsd_out = dataset_rotation(ebsd_in,rotation_angles,method,varargin)
 		rotation_description_1 = rotation('axis',xvector,'angle',rotation_angles(1)*degree);
 		rotation_description_2 = rotation('axis',yvector,'angle',rotation_angles(2)*degree);
 		rotation_description_3 = rotation('axis',zvector,'angle',rotation_angles(3)*degree);
-		if exist('keep','var') == 0
+		if strcmp(keep,'none') == 1
 			ebsd_out = rotate(ebsd_out,rotation_description_1);
 			ebsd_out = rotate(ebsd_out,rotation_description_2);
 			ebsd_out = rotate(ebsd_out,rotation_description_3);
