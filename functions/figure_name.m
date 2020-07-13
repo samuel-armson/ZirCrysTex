@@ -19,7 +19,7 @@ function f_n = figure_name(sample_ID,varargin)
 	p = inputParser;
 	addRequired(p,'sample_ID');
 	addOptional(p,'file_path','none');
-	addOptional(p,'reference_texture_component',0);
+	addOptional(p,'reference_texture_component',[0,0,0]);
 	addOptional(p,'suffix','none');
 	addOptional(p,'extension','none');
 	parse(p,sample_ID,varargin{:});
@@ -30,8 +30,8 @@ function f_n = figure_name(sample_ID,varargin)
 		sample_ID_char = strcat(p.Results.file_path,' ',sample_ID_char);
 	end
 
-	if p.Results.reference_texture_component ~= 0
-		sample_ID_char = strcat(sample_ID_char,' ')
+	if p.Results.reference_texture_component ~= [0,0,0]
+		sample_ID_char = strcat(sample_ID_char,{' '})
 		index_size = size(p.Results.reference_texture_component);
 		iteration = 1;
 		for iteration = 1:index_size(2)
@@ -40,7 +40,7 @@ function f_n = figure_name(sample_ID,varargin)
 	end
 
 	if strcmp(p.Results.suffix,'none') == 0
-		sample_ID_char = strcat(sample_ID_char,' ',char(p.Results.suffix));
+		sample_ID_char = strcat(sample_ID_char,{' '},char(p.Results.suffix));
 	end
 
 	if strcmp(p.Results.extension,'none') == 0
