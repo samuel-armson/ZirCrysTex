@@ -22,7 +22,7 @@ function ebsd_out = x_section_correction(ebsd_in,aquisition_method,varargin)
 	addRequired(p,'aquisition_method');
 	addOptional(p,'scan_rotation',0);
 	addOptional(p,'SPED_inherent_rotation',18);
-	parse(p,ebsd_in,rotation_angles,method,varargin{:})
+	parse(p,ebsd_in,aquisition_method,varargin{:})
 
 	ebsd_out = ebsd_in;
 	

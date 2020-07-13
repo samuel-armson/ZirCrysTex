@@ -40,6 +40,6 @@ setMTEXpref('zAxisDirection','outOfPlane');
 %load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
-ebsd = x_section_correction(ebsd,'SPED','scan_rotation',85)
+ebsd = x_section_correction(ebsd,'SPED','scan_rotation',92)
 
 plot(ebsd)
