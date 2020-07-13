@@ -12,10 +12,10 @@ save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "MIBL EX HIGH DR 0.8 EE FUZZY MASK TESTING FILTERS";
-% Path to files. eg: 'J:\Nature Paper Figures\'
-pname = 'J:\MIBL SAMPLES\EX HIGH DR';
+% Path to files. eg: 'J:/Nature Paper Figures/'
+pname = 'J:/MIBL SAMPLES/EX HIGH DR/';
 % Full area file name, eg: [pname 'SPED_Substrate_MARIA.ctf']
-fname_full = [pname '\EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
+fname_full = [pname 'EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
@@ -37,9 +37,11 @@ CS = {...
 setMTEXpref('xAxisDirection','east');
 setMTEXpref('zAxisDirection','outOfPlane');
 
-%load EBSD data
+% load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
+% Perform cross-section correction
 ebsd = x_section_correction(ebsd,'SPED','scan_rotation',92)
+
 
 plot(ebsd)

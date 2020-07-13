@@ -20,7 +20,7 @@ function ebsd_out = dataset_rotation(ebsd_in,rotation_angles,method,varargin)
 	addRequired(p,'rotation_angles');
 	addRequired(p,'method');
 	addOptional(p,'keep','none');
-	parse(p,ebsd_in,rotation_angles,method,varargin{:})
+	parse(p,ebsd_in,rotation_angles,method,varargin{:});
 
 	if strcmp(method,'Euler') == 1
 		rotation_description = rotation('Euler',rotation_angles(1)*degree,rotation_angles(2)*degree,rotation_angles(3)*degree);
