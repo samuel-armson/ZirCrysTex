@@ -24,7 +24,7 @@ function f_n = figure_name(sample_ID,varargin)
 	addOptional(p,'extension','none');
 	parse(p,sample_ID,varargin{:});
 
-	sample_ID_char = char(Sample_ID);
+	sample_ID_char = char(p.Results.sample_ID);
 
 	if strcmp(p.Results.file_path,'none') == 0
 		sample_ID_char = strcat(p.Results.file_path,' ',sample_ID_char);
