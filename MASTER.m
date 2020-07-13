@@ -39,11 +39,14 @@ setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+cs = ebsd(phase_of_interest).CS
 
 % Perform cross-section correction
 ebsd = x_section_correction(ebsd,'SPED','scan_rotation',92)
 
 disp(figure_name(Sample_ID,'file_path',pname,'reference_texture_component',reference_texture_component,...
     'suffix','IPF','extension','png'))
+
+fibre_comp = define_fibre(reference_texture_component,cs)
 
 plot(ebsd)

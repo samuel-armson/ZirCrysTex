@@ -16,10 +16,10 @@ function d_f = define_fibre(texture_component,cs,varargin)
 	addRequired(p,'texture_component');
 	addRequired(p,'cs');
 	addOptional(p,'relative_axis','none');
-	parse(p,sample_ID,varargin{:});
+	parse(p,texture_component,cs,varargin{:});
 
 	if strcmp(p.Results.relative_axis, 'none') == 1
-		d_f = fibre(define_miller(p.Resutls.texture_component,p.Resutls.cs),zvector);
+		d_f = fibre(define_miller(p.Results.texture_component,p.Results.cs),zvector);
 	else
-		d_f = fibre(define_miller(p.Resutls.texture_component,p.Resutls.cs),p.Results.relative_axis);
+		d_f = fibre(define_miller(p.Results.texture_component,p.Results.cs),p.Results.relative_axis);
 end
