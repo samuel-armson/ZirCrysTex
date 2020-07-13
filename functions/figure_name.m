@@ -31,11 +31,11 @@ function f_n = figure_name(sample_ID,varargin)
 	end
 
 	if isa(p.Results.reference_texture_component,'double') == 1
-		sample_ID_char = strcat(sample_ID_char,{' '})
+		sample_ID_char = strcat(sample_ID_char,{' '});
 		index_size = size(p.Results.reference_texture_component);
 		iteration = 1;
 		for iteration = 1:index_size(2)
-			sample_ID_char = strcat(Sample_ID_char, num2str(p.Results.reference_texture_component(iteration)));
+			sample_ID_char = strcat(sample_ID_char, num2str(p.Results.reference_texture_component(iteration)));
 		end
 	end
 
