@@ -14,7 +14,7 @@ save_figures = 'no';
 Sample_ID = "MIBL EX HIGH DR 0.8 EE FUZZY MASK TESTING FILTERS";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'J:/MIBL SAMPLES/EX HIGH DR/';
-% Full area file name, eg: [pname 'SPED_Substrate_MARIA.ctf']
+% File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 fname_full = [pname 'EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
@@ -39,6 +39,7 @@ setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+% globally define crystal symmetry of phase of interest
 cs = ebsd(phase_of_interest).CS
 
 % Perform cross-section correction

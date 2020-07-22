@@ -17,6 +17,7 @@ function ebsd_out = x_section_correction(ebsd_in,aquisition_method,varargin)
 								when operated at a magnification of 43k, has patterns rotated by 18 degrees in φ1.
 	%}
 	
+
 	p = inputParser;
 	addRequired(p,'ebsd_in');
 	addRequired(p,'aquisition_method');
