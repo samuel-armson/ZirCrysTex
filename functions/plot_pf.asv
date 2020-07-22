@@ -43,7 +43,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	parse(p,data_in,desired_pfs,varargin{:});
 
 	if isa(data_in,'EBSD') == 1
-		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
+		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'scatter') == 1
 		disp('It works')
         end
 

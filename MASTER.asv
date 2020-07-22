@@ -50,6 +50,6 @@ disp(figure_name(Sample_ID,'file_path',pname,'reference_texture_component',refer
 
 fibre_comp = define_fibre(reference_texture_component,cs)
 
-plot_pf(ebsd,[1,0,-3,"plane"])
+plot_pf(ebsd,[1,0,-3,"plane"]
 
 plot(ebsd)
