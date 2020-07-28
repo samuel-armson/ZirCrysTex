@@ -4,6 +4,12 @@
 addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
 addpath 'functions';
 addpath 'third_party_packages';
+% Define global variables
+global phase_of_interest
+global cs
+global reference_texture_component
+global Sample_ID
+global pname
 %addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.2.8';
 startup_mtex
 
@@ -18,7 +24,7 @@ pname = 'J:/MIBL SAMPLES/EX HIGH DR/';
 fname_full = [pname 'EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
-global phase_of_interest
+
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
 

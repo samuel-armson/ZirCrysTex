@@ -1,4 +1,4 @@
-function pf = plot_pf(data_in,phase,desired_pfs,varargin)
+function pf = plot_pf(data_in,desired_pfs,varargin)
 	%{
 	Plots desired pole figures from either raw EBSD data or pre-calculated ODF data and plots. This function plots multiple pole
 	figures (potentially of different types ie. direction vs. planar) on one plot and gives you the option to save them. This 
@@ -32,17 +32,22 @@ function pf = plot_pf(data_in,phase,desired_pfs,varargin)
 % PROBABLY NEED ANOTHER OPTIONAL ARGUMENT FOR PROJECTION TYPE (equal area and what not)
 % CERTAIN COLOURINGS MAY BE AN ISSUE. PROBABLY JUST USE BLACK AND WHITE IF UNDEFINED AND FIBRE DEVIATION IF FIBRE IS PROVIDED
 
+	global cs
+	global reference_texture_component
+	global phase_of_interest
+
 	p = inputParser;
 	addRequired(p,'data_in');
-	addRequired(p,'phase');
 	addRequired(p,'desired_pfs');
+	addOptional(p,'phase',phase_of_interest);
+	addOptional(p,'crys_sym',cs)
+	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'plot_type','none');
-	addOptional(p,'')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
-	parse(p,data_in,phase,desired_pfs,varargin{:});
+	parse(p,data_in,desired_pfs,varargin{:});
 
 	pf_figure = figure('Name','Loading...')
 	figure(pf_figure)
