@@ -59,8 +59,8 @@ disp(figure_name(Sample_ID,'file_path',pname,'reference_texture_component',refer
 fibre_comp = define_fibre(reference_texture_component,cs)
 
 %plot_pf(ebsd,[1,0,-3,"plane"])
-desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
-desired_pole_figures = [[1,0,-3];[1,0,-4];[1,0,-5];[1,0,-6]];
+desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"direction"];[1,0,-6,"plane"]];
+%desired_pole_figures = [[1,0,-3];[1,0,-4];[1,0,-5];[1,0,-6]];
 millers_for_pf = multi_miller(desired_pole_figures)
 single_miller = define_miller([1,0,-3],'plot_type','plane')
 
