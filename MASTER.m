@@ -58,3 +58,5 @@ figure()
  
 %plotPDF(ebsd(phase_of_interest).orientations,angle(ebsd(phase_of_interest).orientations,fibre_comp)./degree,Miller(1,-0,-3,cs),'MarkerFaceColor','none')
 plotPDF(ebsd(phase_of_interest).orientations,Miller(1,-0,-3,cs),'MarkerFaceColor','none','MarkerEdgeColor','black')
+
+test_func
