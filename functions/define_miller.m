@@ -31,9 +31,9 @@ function d_m = define_miller(texture_component,varargin)
 		end
 	elseif strcmp(p.Results.plot_type,'direction') == 1
 		if index_size(2) == 3
-			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),crys_sym,'uvw');
+			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),p.Results.crys_sym,'uvw');
 		elseif index_size(2) == 3
-			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),crys_sym,'UVTW');
+			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),p.Results.crys_sym,'UVTW');
 		else
 			disp('Texture component must have either 3 or 4 indices')
 		end
