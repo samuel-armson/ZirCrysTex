@@ -26,25 +26,27 @@ function mul_mil = multi_miller(desired_pfs,varargin)
 	input_shape = size(desired_pfs);
 	pf_quant = input_shape(1);
 	argument_quant = input_shape(2);
-    
-    mul_mil = [];
+
 	if argument_quant == 3
+		mul_mil = [];
 		for iteration = 1:pf_quant
-			mil = define_miller(desired_pfs(iteration,:),'plot_type',p.Results.glob_plot_type);
+			mil = define_miller(desired_pfs(iteration,:),'glob_plot_type',p.Results.glob_plot_type);
 			mul_mil = [mul_mil,mil];
 		end
 
 	elseif argument_quant == 4 && isa(desired_pfs(1,4),'double') == 1
+		mul_mil = [];
 		for iteration = 1:pf_quant
 			mil = define_miller(desired_pfs(iteration,:),'plot_type',p.Results.glob_plot_type);
 			mul_mil = [mul_mil,mil];
 		end
 	
-    else
+	else
+		mul_mil = [];
 		for iteration = 1:pf_quant
 			ind_plot_type = desired_pfs(iteration,end);
-			mil = define_miller(desired_pfs(iteration,1:(argument_quant-1)),'plot_type',ind_plot_type)
-			mul_mil = [mul_mil,mil];
+			mil = define_miller(desired_pfs(iteration,1:(argument_quant-1)),'plot_type',ind_plot_type);
+			mul_mil = [mul_mil,mil]
 		end
 	end
 end

@@ -59,10 +59,15 @@ disp(figure_name(Sample_ID,'file_path',pname,'reference_texture_component',refer
 fibre_comp = define_fibre(reference_texture_component,cs)
 
 %plot_pf(ebsd,[1,0,-3,"plane"])
+desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+desired_pole_figures = [[1,0,-3];[1,0,-4];[1,0,-5];[1,0,-6]];
+millers_for_pf = multi_miller(desired_pole_figures)
+single_miller = define_miller([1,0,-3],'plot_type','plane')
+
 
 figure()
  
 %plotPDF(ebsd(phase_of_interest).orientations,angle(ebsd(phase_of_interest).orientations,fibre_comp)./degree,Miller(1,-0,-3,cs),'MarkerFaceColor','none')
-plotPDF(ebsd(phase_of_interest).orientations,Miller(1,-0,-3,cs),'MarkerFaceColor','none','MarkerEdgeColor','black')
+plotPDF(ebsd(phase_of_interest).orientations,millers_for_pf,'MarkerFaceColor','none','MarkerEdgeColor','black')
 
 test_func

@@ -19,13 +19,13 @@ function d_m = define_miller(texture_component,varargin)
 	addOptional(p,'plot_type','plane');
 	parse(p,texture_component,varargin{:});
 
-	index_size = size(texture_component)
+	index_size = size(texture_component);
 
 	if strcmp(p.Results.plot_type,'plane') == 1
 		if index_size(2) == 3
-			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),crys_sym);
+			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),p.Results.crys_sym);
 		elseif index_size(2) == 3
-			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),crys_sym);
+			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),p.Results.scrys_sym);
 		else
 			disp('Texture component must have either 3 or 4 indices')
 		end
