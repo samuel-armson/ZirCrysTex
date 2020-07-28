@@ -1,4 +1,4 @@
-function pf = plot_pf(data_in,desired_pfs,varargin)
+function pf = plot_pf(data_in,phase,desired_pfs,varargin)
 	%{
 	Plots desired pole figures from either raw EBSD data or pre-calculated ODF data and plots. This function plots multiple pole
 	figures (potentially of different types ie. direction vs. planar) on one plot and gives you the option to save them. This 
@@ -34,17 +34,26 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	p = inputParser;
 	addRequired(p,'data_in');
+	addRequired(p,'phase');
 	addRequired(p,'desired_pfs');
 	addOptional(p,'plot_type','none');
+	addOptional(p,'')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
-	parse(p,data_in,desired_pfs,varargin{:});
+	parse(p,data_in,phase,desired_pfs,varargin{:});
+
+	pf_figure = figure('Name','Loading...')
+	figure(pf_figure)
+
+	miller_indices = define_miller(desired_pfs)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
-		disp('It works')
+			plotPDF(data_in(phase).orientations,)
+		
+		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
 
 	elseif isa(data_in,'ODF') == 1

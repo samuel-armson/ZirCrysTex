@@ -20,6 +20,8 @@ fname_full = [pname 'EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
+global phase_of_interest
+
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
 reference_texture_component = [1,0,-3];
 
@@ -52,4 +54,7 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 
 plot_pf(ebsd,[1,0,-3,"plane"])
 
-plot(ebsd)
+figure()
+ 
+%plotPDF(ebsd(phase_of_interest).orientations,angle(ebsd(phase_of_interest).orientations,fibre_comp)./degree,Miller(1,-0,-3,cs),'MarkerFaceColor','none')
+plotPDF(ebsd(phase_of_interest).orientations,Miller(1,-0,-3,cs),'MarkerFaceColor','none','MarkerEdgeColor','black')
