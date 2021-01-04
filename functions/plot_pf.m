@@ -57,7 +57,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	pf_figure = figure('Name','Loading...')
 	figure(pf_figure)
 
-	miller_indices = define_miller(desired_pfs)
+	miller_indices = multi_miller(desired_pfs)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
