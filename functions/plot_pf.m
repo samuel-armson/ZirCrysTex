@@ -66,6 +66,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 			else
 				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black')
+ALSO DO THIS IF NO REF TEXTURE IS GIVEN
+			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
 
