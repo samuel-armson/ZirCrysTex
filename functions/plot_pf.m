@@ -63,7 +63,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	if strcmp(p.Results.colouring,'fibre') == 1
 		colour_system = angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree
 	else
-		colour_system = "'MarkerFaceColor','none','MarkerEdgeColor','black'"
+		colour_system = 'MarkerFaceColor','none','MarkerEdgeColor','black'
 
 
 	if isa(data_in,'EBSD') == 1
