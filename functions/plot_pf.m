@@ -61,7 +61,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
-			plotPDF(data_in(phase).orientations,angle(data_in(phase).orientations,ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',marker_size,'grid_res',grid_spacing*degree,'projection',proj)
+			plotPDF(data_in(phase).orientations,angle(data_in(phase).orientations,ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',marker_size,'all','grid','grid_res',grid_spacing*degree,'projection',proj)
 		
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
