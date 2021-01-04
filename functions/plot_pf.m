@@ -51,6 +51,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	addOptional(p,'proj','earea');
 	addOptional(p,'marker_size',0.5);
 	addOptional(p,'grid_spacing',5);
+	addOptional(p,'colouring','fibre');
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
@@ -59,9 +60,15 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	miller_indices = multi_miller(p.Results.desired_pfs)
 
+	if strcmp(p.Results.colouring,'fibre') == 1
+		colour_system = angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree
+	else
+		colour_system = "'MarkerFaceColor','none','MarkerEdgeColor','black'"
+
+
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1
-			plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
+			plotPDF(data_in(p.Results.phase_name).orientations,colour_system,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 		
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
