@@ -25,7 +25,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				name using the figure_name function directly before starting to plot figures. The char string produced by this
 				function can then be used as the sample_ID argument.
 	extension = 'tif','png','jpg','pdf' etc. Default is pdf.
-	resolution = integer value. Default is 1000. (dpi) 
+	resolution = integer value. Default is 1000. (dpi)
+	proj = 'earea' / 'eangle' / 'edist'. Different types of pole figure projection. equal area is default.
 
 	%}
 
@@ -42,11 +43,15 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	addOptional(p,'phase',phase_of_interest);
 	addOptional(p,'crys_sym',cs)
 	addOptional(p,'ref_text_comp',reference_texture_component)
-	addOptional(p,'plot_type','none');
+	addOptional(p,'plot_type','scatter');
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
+	addOptional(p,'proj','earea');
+	addOptional(p,'marker_size',0.5);
+	addOptional(p,'grid_spacing',5);
+
 	parse(p,data_in,desired_pfs,varargin{:});
 
 	pf_figure = figure('Name','Loading...')
@@ -56,7 +61,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
-			plotPDF(data_in(phase).orientations,)
+			plotPDF(data_in(phase).orientations,angle(data_in(phase).orientations,ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',marker_size,'grid_res',grid_spacing*degree,'projection',proj)
 		
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
@@ -70,3 +75,44 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
