@@ -57,11 +57,11 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	pf_figure = figure('Name','Loading...')
 	figure(pf_figure)
 
-	miller_indices = multi_miller(desired_pfs)
+	miller_indices = multi_miller(p.Results.desired_pfs)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'none') == 1
-			plotPDF(data_in(phase_name).orientations,angle(data_in(phase_name).orientations,ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',marker_size,'all','grid','grid_res',grid_spacing*degree,'projection',proj)
+			plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 		
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
