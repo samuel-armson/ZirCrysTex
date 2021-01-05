@@ -62,12 +62,15 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	pf_figure = figure('Name','Loading...')
 	figure(pf_figure)
 
-	miller_indices = multi_miller(p.Results.desired_pfs)
+	%miller_indices = multi_miller(p.Results.desired_pfs)
+	axes_quant = length(p.Results.desired_pfs)
 
 	if isa(data_in,'EBSD') == 1
 		if strcmp(p.Results.plot_type,'scatter') == 1
 			if strcmp(p.Results.colouring,'fibre') == 1
-				plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
+				for i=1:axes_quant
+					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,p.Results.desired_pfs(i),'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
+				end
 			else
 				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black')
 			end
