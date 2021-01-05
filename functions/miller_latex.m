@@ -14,8 +14,8 @@ function m_l = miller_latex(indices)
 						'direction'					Displays with <> - directions with symmetrical equivalents (assumes family)
 	%}
 
-	index_size = size(indices)-1
-	tex_vals = strings(1, index_size(2))
+	index_size = size(indices)
+	tex_vals = strings(1, index_size(2)-1)
 	parentheses_type = indices(length(indices))
 
 	if strcmp(parentheses_type,'plane_individual') == 1
@@ -42,7 +42,7 @@ function m_l = miller_latex(indices)
 
 	m_l = prefix
 
-	for iteration = 1:index_size(2)
+	for iteration = 1:index_size(2)-1
 		if indices(iteration) < 0
 			tex_val = "\bar{" + num2str(abs(indices(iteration))) + "}";
 			m_l = strcat(m_l, tex_val);
