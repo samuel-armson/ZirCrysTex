@@ -16,7 +16,7 @@ function m_l = miller_latex(indices)
 
 	index_size = size(indices)-1
 	tex_vals = strings(1, index_size(2))
-	parentheses_type = indices(length(end))
+	parentheses_type = indices(length(indices))
 
 	if strcmp(parentheses_type,'plane_individual') == 1
 		prefix = "$$\left(";
