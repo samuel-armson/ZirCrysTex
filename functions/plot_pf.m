@@ -37,6 +37,10 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	global reference_texture_component
 	global phase_of_interest
 
+	if isempty(reference_texture_component) == 1
+		reference_texture_component = [0,0,1];
+	end
+
 	p = inputParser;
 	addRequired(p,'data_in');
 	addRequired(p,'desired_pfs');
@@ -66,7 +70,6 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 			else
 				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black')
-ALSO DO THIS IF NO REF TEXTURE IS GIVEN
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
