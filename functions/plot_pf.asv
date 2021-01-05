@@ -25,26 +25,58 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				name using the figure_name function directly before starting to plot figures. The char string produced by this
 				function can then be used as the sample_ID argument.
 	extension = 'tif','png','jpg','pdf' etc. Default is pdf.
-	resolution = integer value. Default is 1000. (dpi) 
+	resolution = integer value. Default is 1000. (dpi)
+	proj = 'earea' / 'eangle' / 'edist'. Different types of pole figure projection. equal area is default.
 
 	%}
 
 % PROBABLY NEED ANOTHER OPTIONAL ARGUMENT FOR PROJECTION TYPE (equal area and what not)
 % CERTAIN COLOURINGS MAY BE AN ISSUE. PROBABLY JUST USE BLACK AND WHITE IF UNDEFINED AND FIBRE DEVIATION IF FIBRE IS PROVIDED
 
+	global cs
+	global reference_texture_component
+	global phase_of_interest
+
+	if isempty(reference_texture_component) == 1
+		reference_texture_component = [0,0,1];
+	end
+
 	p = inputParser;
 	addRequired(p,'data_in');
 	addRequired(p,'desired_pfs');
-	addOptional(p,'plot_type','none');
+	addOptional(p,'phase_name',phase_of_interest);
+	addOptional(p,'crys_sym',cs)
+	addOptional(p,'ref_text_comp',reference_texture_component)
+	addOptional(p,'plot_type','scatter');
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
+	addOptional(p,'proj','earea');
+	addOptional(p,'marker_size',0.5);
+	addOptional(p,'grid_spacing',5);
+	addOptional(p,'colouring','fibre');
+
 	parse(p,data_in,desired_pfs,varargin{:});
 
+	pf_figure = figure('Name','Loading...')
+	figure(pf_figure)
+
+	%miller_indices = multi_miller(p.Results.desired_pfs)
+	axes_quant = length(p.Results.desired_pfs)
+
 	if isa(data_in,'EBSD') == 1
-		if strcmp(p.Results.plot_type,'scatter') == 1 || strcmp(p.Results.plot_type,'scatter') == 1
-		disp('It works')
+		if strcmp(p.Results.plot_type,'scatter') == 1
+			if strcmp(p.Results.colouring,'fibre') == 1
+				for i=1:axes_quant
+                    disp(p.Results.desired_pfs(i)
+					miller_val = multi_miller(p.Results.desired_pfs(i))
+					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
+				end
+			else
+				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black')
+			end
+		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
 
 	elseif isa(data_in,'ODF') == 1
@@ -56,3 +88,44 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
