@@ -69,7 +69,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		if strcmp(p.Results.plot_type,'scatter') == 1
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
-					miller_val = define_miller(p.Results.desired_pfs(i))
+					miller_val = multi_miller(p.Results.desired_pfs(i))
 					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 				end
 			else
