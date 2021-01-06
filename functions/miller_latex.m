@@ -25,8 +25,8 @@ function m_l = miller_latex(indices)
 		prefix = "$$\left\{";
 		suffix = "\right\}$$";
 	elseif strcmp(parentheses_type,'plane') == 1
-		prefix = "$$\left\{";
-		suffix = "\right\}$$";
+		prefix = "$$\mathbf{\left\{";
+		suffix = "\right\}}$$";
 	elseif strcmp(parentheses_type,'direction_individual') == 1
 		prefix = "$$\left[";
 		suffix = "\right]$$";
