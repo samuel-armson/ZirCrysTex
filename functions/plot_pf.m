@@ -70,34 +70,33 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	newMtexFigure(pf_figure)
 
 	axes_quant = size(p.Results.desired_pfs); %Number of pole figures to plot
-	disp(axes_quant)
-	disp(axes_quant(2))
+	axes_quant = axes_quant(1);
 
 	%Determine layout of figure for consistant pole figure sizes. 
-	figure_width = 18 %Width of figure in cm. A4 paper is 21cm wide, so 18cm is good.
-	pf_height = 5.5 % Height to allow for PF in figure window. This height works well with 18cm width.
-	pf_width = 4.5 % Width to allow for PF in figure window.
+	figure_width = 18; %Width of figure in cm. A4 paper is 21cm wide, so 18cm is good.
+	pf_height = 5.5; % Height to allow for PF in figure window. This height works well with 18cm width.
+	pf_width = 4.5; % Width to allow for PF in figure window.
 
 	if axes_quant <= 4
-		n_rows = 1
-		n_cols = axes_quant
+		n_rows = 1;
+		n_cols = axes_quant;
 	elseif rem(axes_quant,4)==0
-		n_rows = ceil(axes_quant/4)
-		n_cols = 4
+		n_rows = ceil(axes_quant/4);
+		n_cols = 4;
 	elseif rem(axes_quant,3)==0
-		n_rows = ceil(axes_quant/3)
-		n_cols = 3
+		n_rows = ceil(axes_quant/3);
+		n_cols = 3;
 	else
-		n_cells_4 = ceil(axes_quant/4)*4
-		n_cells_3 = ceil(axes_quant/3)*3
-		unoccupied_4 = n_cells_4-axes_quant
-		unoccupied_3 = n_cells_3-axes_quant
+		n_cells_4 = ceil(axes_quant/4)*4;
+		n_cells_3 = ceil(axes_quant/3)*3;
+		unoccupied_4 = n_cells_4-axes_quant;
+		unoccupied_3 = n_cells_3-axes_quant;
 		if unoccupied_4 > unoccupied_3
-			n_cols = 3
-			n_rows =ceil(axes_quant/3)
+			n_cols = 3;
+			n_rows =ceil(axes_quant/3);
 		else
-			n_cols = 4
-			n_rows =ceil(axes_quant/4)
+			n_cols = 4;
+			n_rows =ceil(axes_quant/4);
 		end
 
 	end
