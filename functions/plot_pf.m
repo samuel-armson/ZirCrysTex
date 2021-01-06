@@ -69,7 +69,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	pf_figure = figure('Name','Pole figures loading...');
 	newMtexFigure(pf_figure)
 
-	axes_quant = length(p.Results.desired_pfs); %Number of pole figures to plot
+	axes_quant = size(p.Results.desired_pfs)(2); %Number of pole figures to plot
 
 	%Determine layout of figure for consistant pole figure sizes. 
 	figure_width = 18 %Width of figure in cm. A4 paper is 21cm wide, so 18cm is good.
