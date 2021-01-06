@@ -84,7 +84,12 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				end
 				titleString =  "$$\left\{"
   				for increment = 1:length(p.Results.ref_text_comp)
-    				titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)))
+  					if str2num(indices(iteration)) < 0
+						tex_val = "\bar{" + num2str(abs(str2num(p.Results.ref_text_comp(increment)))) + "}";
+						titleString = strcat(titleString, tex_val);
+					else
+						titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
+					end
     			end
 				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 				cb = mtexColorbar;
