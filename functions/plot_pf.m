@@ -113,7 +113,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	end
 
 	set(gcf,'units','centimeters')
-	set(gcf,'position',[10 10 28 17])
+	set(gcf,'position',[10 10 18 7])
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
