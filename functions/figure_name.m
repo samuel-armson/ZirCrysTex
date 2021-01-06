@@ -48,5 +48,6 @@ function f_n = figure_name(sample_ID,varargin)
 
 	f_n = sample_ID_char;
 	disp(sample_ID_char)
+	disp(class(sample_ID_char))
 	
 end
