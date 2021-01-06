@@ -73,7 +73,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
 					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
 					axes_title = miller_latex(p.Results.desired_pfs(i,:))
-					mtexTitle(i)
+					title(axes_title)
 					if i<axes_quant; nextAxis; end
 				end
 			else
