@@ -108,7 +108,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					if i<axes_quant; nextAxis; end
 				end
     			set(gcf,'units','centimeters')
-    			set(gcf,'position',[10 10 18 4])
+    			set(gcf,'position',[10 10 18 5])
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
@@ -122,8 +122,6 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
 
-	set(gcf,'units','centimeters')
-	set(gcf,'position',[10 10 18 7])
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
