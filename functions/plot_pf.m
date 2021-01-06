@@ -80,6 +80,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
 				end
+				mtexColorbar
 			else
 				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
 			end
