@@ -43,7 +43,7 @@ function m_l = miller_latex(indices)
 	m_l = prefix
 
 	for iteration = 1:index_size(2)-1
-		if str2double(indices(iteration)) < 0
+		if str2num(indices(iteration)) < 0
 			tex_val = "\bar{" + num2str(abs(indices(iteration))) + "}";
 			m_l = strcat(m_l, tex_val);
 		else
