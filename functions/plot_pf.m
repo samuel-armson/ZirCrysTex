@@ -68,7 +68,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	%pf_figure = figure('Name','Loading...')
 	%figure(pf_figure)
 	pf_figure = newMtexFigure('Name','Pole Figures');
-	figure(pf_figure)
+	newMtexFigure(pf_figure)
 
 	%miller_indices = multi_miller(p.Results.desired_pfs)
 	axes_quant = length(p.Results.desired_pfs);
