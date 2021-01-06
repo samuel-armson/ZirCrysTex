@@ -66,16 +66,21 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	disp('Plotting pole figures...')
 	disp('')
 
-	%pf_figure = figure('Name','Loading...')
-	%figure(pf_figure)
 	pf_figure = figure('Name','Pole figures loading...');
 	newMtexFigure(pf_figure)
 
-	%miller_indices = multi_miller(p.Results.desired_pfs)
-	axes_quant = length(p.Results.desired_pfs);
+	axes_quant = length(p.Results.desired_pfs); %Number of pole figures to plot
+
+	%Determine layout of figure for consistant pole figure sizes. 
+	figure_width = 18 %Width of figure in cm. A4 paper is 21cm wide, so 18cm is good.
+	pf_height = 5.5 % Height to allow for PF in figure window. This height works well with 18cm width.
+
+	n_rows = ceil(axes_quant/4)
 
 	if isa(data_in,'EBSD') == 1
+		%PLOT SCATTER PF
 		if strcmp(p.Results.plot_type,'scatter') == 1
+			%COLOUR EACH POINT ACCORDING TO DEVIATION FROM REFERENCE TEXTURE
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
@@ -99,11 +104,13 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
     			set(gcf,'units','centimeters')
-    			set(gcf,'position',[10 10 18 7])
+    			figure_height = (n_rows*5.5)+1.5
+    			set(gcf,'position',[10 10 18 figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
-    			set(pf_figure,'Name',figure_id);
+    			set(pf_figure,'Name',string(figure_id));
 
 			else
+				%COLOUR EACH POINT BLACK
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
 					plotPDF(data_in(p.Results.phase_name).orientations,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
@@ -112,7 +119,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					if i<axes_quant; nextAxis; end
 				end
     			set(gcf,'units','centimeters')
-    			set(gcf,'position',[10 10 18 5.5])
+    			figure_height = (n_rows*5.5)
+    			set(gcf,'position',[10 10 18 figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
     			set(pf_figure,'Name',string(figure_id));
 			end
