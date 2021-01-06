@@ -84,7 +84,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				end
 				titleString =  "$$\left\{"
   				for increment = 1:length(p.Results.ref_text_comp)
-  					if str2num(indices(iteration)) < 0
+  					if str2num(indices(increment)) < 0
 						tex_val = "\bar{" + num2str(abs(str2num(p.Results.ref_text_comp(increment)))) + "}";
 						titleString = strcat(titleString, tex_val);
 					else
