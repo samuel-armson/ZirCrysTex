@@ -60,7 +60,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	parse(p,data_in,desired_pfs,varargin{:});
 
 	titleString =  "$$\left\{"
-  	for increment = 1:index_size(2)
+  	for increment = 1:length(p.Results.ref_text_comp)
     	titleString = strcat(titleString,p.Results.ref_text_comp(increment))
     end
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
