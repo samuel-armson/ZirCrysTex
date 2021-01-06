@@ -59,11 +59,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
-	titleString =  "$$\left\{"
-  	for increment = 1:length(p.Results.ref_text_comp)
-    	titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)))
-    end
-	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+	
 
 	disp('')
 	disp('Plotting pole figures...')
@@ -86,7 +82,11 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
 				end
-				titleString = ''
+				titleString =  "$$\left\{"
+  				for increment = 1:length(p.Results.ref_text_comp)
+    				titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)))
+    			end
+				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 				cb = mtexColorbar;
 				y_label = ylabel(cb, titleString)
     			cb.Label.Interpreter = 'latex';
