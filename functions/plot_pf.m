@@ -114,7 +114,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			set(gcf,'units','centimeters')
     			set(gcf,'position',[10 10 18 5.5])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
-    			set(pf_figure,'Name',string(figure_id)));
+    			set(pf_figure,'Name',string(figure_id));
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
