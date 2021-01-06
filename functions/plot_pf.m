@@ -74,8 +74,33 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	%Determine layout of figure for consistant pole figure sizes. 
 	figure_width = 18 %Width of figure in cm. A4 paper is 21cm wide, so 18cm is good.
 	pf_height = 5.5 % Height to allow for PF in figure window. This height works well with 18cm width.
+	pf_width = 4.5 % Width to allow for PF in figure window.
 
-	n_rows = ceil(axes_quant/4)
+	if axes_quant <= 4
+		n_rows = 1
+		n_cols = axes_quant
+	elseif rem(axes_quant,4)==0
+		n_rows = ceil(axes_quant/4)
+		n_cols = 4
+	elseif rem(axes_quant,3)==0
+		n_rows = ceil(axes_quant/3)
+		n_cols = 3
+	else
+		n_cells_4 = ceil(axes_quant/4)*4
+		n_cells_3 = ceil(axes_quant/3)*3
+		unoccupied_4 = n_cells_4-axes_quant
+		unoccupied_3 = n_cells_3-axes_quant
+		if unoccupied_4 > unoccupied_3
+			n_cols = 3
+			n_rows =ceil(axes_quant/3)
+		else
+			n_cols = 4
+			n_rows =ceil(axes_quant/4)
+		end
+
+	end
+
+	
 
 	if isa(data_in,'EBSD') == 1
 		%PLOT SCATTER PF
@@ -104,8 +129,9 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
     			set(gcf,'units','centimeters')
-    			figure_height = (n_rows*5.5)+1.5
-    			set(gcf,'position',[10 10 18 figure_height])
+    			figure_height = (n_rows*pf_height)+1.5
+    			figure_width = (n_cols*pf_width)
+    			set(gcf,'position',[10 10 figure_width figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
     			set(pf_figure,'Name',string(figure_id));
 
@@ -119,8 +145,9 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					if i<axes_quant; nextAxis; end
 				end
     			set(gcf,'units','centimeters')
-    			figure_height = (n_rows*5.5)
-    			set(gcf,'position',[10 10 18 figure_height])
+    			figure_height = (n_rows*pf_height)
+    			figure_width = (n_cols*pf_width)
+    			set(gcf,'position',[10 10 figure_width figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
     			set(pf_figure,'Name',string(figure_id));
 			end
