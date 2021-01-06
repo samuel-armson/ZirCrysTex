@@ -36,6 +36,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	global cs
 	global reference_texture_component
 	global phase_of_interest
+	global Sample_ID
 
 	if isempty(reference_texture_component) == 1
 		reference_texture_component = [0,0,1];
@@ -67,7 +68,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	%pf_figure = figure('Name','Loading...')
 	%figure(pf_figure)
-	pf_figure = newMtexFigure('Name','Pole Figures');
+	pf_figure = newMtexFigure('Name','Pole figures loading...');
 	newMtexFigure(pf_figure)
 
 	%miller_indices = multi_miller(p.Results.desired_pfs)
@@ -99,6 +100,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
     			set(gcf,'units','centimeters')
     			set(gcf,'position',[10 10 18 7])
+    			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
+    			set(pf_figure,'Name',figure_id);
 
 			else
 				for i=1:axes_quant
@@ -110,6 +113,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				end
     			set(gcf,'units','centimeters')
     			set(gcf,'position',[10 10 18 5.5])
+    			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
+    			set(pf_figure,'Name',figure_id);
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
