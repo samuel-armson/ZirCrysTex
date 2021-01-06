@@ -112,8 +112,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
 
-	set(gcf,'paperunits','centimeters')
-	set(gcf,'position',[0 0 18 10])
+	set(gcf,'units','centimeters')
+	set(gcf,'position',[0.1 0.1 18 10])
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
