@@ -44,7 +44,7 @@ function m_l = miller_latex(indices)
 
 	for iteration = 1:index_size(2)-1
 		if str2num(indices(iteration)) < 0
-			tex_val = "\bar{" + num2str(abs(indices(iteration))) + "}";
+			tex_val = "\bar{" + num2str(abs(str2num(indices(iteration)))) + "}";
 			m_l = strcat(m_l, tex_val);
 		else
 			m_l = strcat(m_l,num2str(indices(iteration)));
