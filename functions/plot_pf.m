@@ -92,8 +92,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					end
     			end
 				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-				cb = mtexColorbar;
-				y_label = ylabel(cb, titleString,'FontSize',8)
+				cb = mtexColorbar('location','southoutside');
+				x_label = xlabel(cb, titleString,'FontSize',8)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
 
