@@ -77,7 +77,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
-					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree./2,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
@@ -113,7 +113,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	end
 
 	set(gcf,'units','centimeters')
-	set(gcf,'position',[0.1 0.1 18 10])
+	set(gcf,'position',[0.1 0.1 18 8])
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
