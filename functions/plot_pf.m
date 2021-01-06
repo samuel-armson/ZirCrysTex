@@ -108,7 +108,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					if i<axes_quant; nextAxis; end
 				end
     			set(gcf,'units','centimeters')
-    			set(gcf,'position',[10 10 18 5])
+    			set(gcf,'position',[10 10 18 4])
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
