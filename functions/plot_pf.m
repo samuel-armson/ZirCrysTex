@@ -59,6 +59,10 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
+	disp('')
+	disp('Plotting pole figures...')
+	disp('')
+
 	%pf_figure = figure('Name','Loading...')
 	%figure(pf_figure)
 	pf_figure = newMtexFigure;
@@ -71,13 +75,13 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
-					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
-					axes_title = miller_latex(p.Results.desired_pfs(i,:))
-					title(axes_title)
+					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					axes_title = miller_latex(p.Results.desired_pfs(i,:));
+					title(axes_title);
 					if i<axes_quant; nextAxis; end
 				end
 			else
-				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black')
+				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
@@ -90,6 +94,9 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	else
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
+	disp('')
+	disp('Pole figures plotted')
+	disp('')
 end
 
 

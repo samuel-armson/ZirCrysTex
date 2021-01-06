@@ -14,33 +14,33 @@ function m_l = miller_latex(indices)
 						'direction'					Displays with <> - directions with symmetrical equivalents (assumes family)
 	%}
 
-	index_size = size(indices)
-	tex_vals = strings(1, index_size(2)-1)
-	parentheses_type = indices(length(indices))
+	index_size = size(indices);
+	tex_vals = strings(1, index_size(2)-1);
+	parentheses_type = indices(length(indices));
 
 	if strcmp(parentheses_type,'plane_individual') == 1
-		prefix = "$$\left(";
-		suffix = "\right)$$";
+		prefix = "$$\mathbf{\left(";
+		suffix = "\right)}$$";
 	elseif strcmp(parentheses_type,'plane_family') == 1
-		prefix = "$$\left\{";
-		suffix = "\right\}$$";
+		prefix = "$$\mathbf{\left\{";
+		suffix = "\right\}}$$";
 	elseif strcmp(parentheses_type,'plane') == 1
 		prefix = "$$\mathbf{\left\{";
 		suffix = "\right\}}$$";
 	elseif strcmp(parentheses_type,'direction_individual') == 1
-		prefix = "$$\left[";
-		suffix = "\right]$$";
+		prefix = "$$\mathbf{\left[";
+		suffix = "\right]}$$";
 	elseif strcmp(parentheses_type,'direction_family') == 1
-		prefix = "$$\left<";
-		suffix = "\right>$$";
+		prefix = "$$\mathbf{\left<";
+		suffix = "\right>}$$";
 	elseif strcmp(parentheses_type,'direction') == 1
-		prefix = "$$\left<";
-		suffix = "\right>$$";
+		prefix = "$$\mathbf{\left<";
+		suffix = "\right>}$$";
 	else
 		disp("'parentheses_type' must be: 'plane_individual', 'plane_family', 'plane', 'direction_individual', 'direction_family' or 'direction'.")
 	end
 
-	m_l = prefix
+	m_l = prefix;
 
 	for iteration = 1:index_size(2)-1
 		if str2num(indices(iteration)) < 0
@@ -51,7 +51,7 @@ function m_l = miller_latex(indices)
 		end
 	end
 
-	m_l = strcat(m_l,suffix)
+	m_l = strcat(m_l,suffix);
 
 end
 
