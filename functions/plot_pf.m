@@ -54,7 +54,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	addOptional(p,'resolution','none');
 	addOptional(p,'proj','earea');
 	addOptional(p,'marker_size',0.5);
-	addOptional(p,'grid_spacing',5);
+	addOptional(p,'grid_spacing',90);
 	addOptional(p,'colouring','fibre');
 
 	parse(p,data_in,desired_pfs,varargin{:});
@@ -96,9 +96,19 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				x_label = xlabel(cb, titleString,'FontSize',8)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
+    			set(gcf,'units','centimeters')
+    			set(gcf,'position',[10 10 18 7])
 
 			else
-				plotPDF(data_in(p.Results.phase_name).orientations,miller_indices,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
+				for i=1:axes_quant
+					miller_val = multi_miller(p.Results.desired_pfs(i,:));
+					plotPDF(data_in(p.Results.phase_name).orientations,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
+					axes_title = miller_latex(p.Results.desired_pfs(i,:));
+					title(axes_title,'FontSize',8);
+					if i<axes_quant; nextAxis; end
+				end
+    			set(gcf,'units','centimeters')
+    			set(gcf,'position',[10 10 18 5])
 			end
 		elseif strcmp(p.Results.plot_type,'ODF') == 1
         end
