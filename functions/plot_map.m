@@ -89,6 +89,9 @@ function pm = plot_map(data_in,map_type,varargin)
   			cb_new = mtexColorbar
   			cb_new.Label.Interpreter = 'latex';
   			set(cb_new,'TickLabelInterpreter', 'latex')
+  			axesHandles = findall(map_figure,'type','axes');
+  			axes_props = get(axesHandles,'position')
+  			aspect_ratio = axes_props(3)/axes_props(4)
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
