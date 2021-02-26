@@ -38,7 +38,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
-	addOptional(p,'IPF_key','ipfHSVKey(cs.Laue)');
+	addOptional(p,'IPF_key', ipfHSVKey(cs.Laue));
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
 	parse(p,data_in,map_type,varargin{:});	
