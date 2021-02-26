@@ -54,7 +54,8 @@ function pm = plot_map(data_in,map_type,varargin)
 	figure_width = p.Results.figure_width;
 	map_type = p.Results.map_type;
 	
-	if map_type == 'IPF'
+
+	if strcmp(map_type,'IPF') == 1
 		ipf_key_fig = figure('Name','IPF Key');
 		newMtexFigure(ipf_key_fig)
 		ipfKey = p.Results.IPF_key
@@ -68,7 +69,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		end
 	end
 
-	if map_type == 'Euler'
+	if strcmp(map_type,'Euler') == 1
 		oM = BungeColorKey(cs);
 		mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
 	end
