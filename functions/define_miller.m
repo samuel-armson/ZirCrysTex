@@ -25,7 +25,7 @@ function d_m = define_miller(texture_component,varargin)
 		if index_size(2) == 3
 			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),p.Results.crys_sym);
 		elseif index_size(2) == 4
-			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),p.Results.scrys_sym);
+			d_m = Miller(texture_component(1),texture_component(2),texture_component(3),texture_component(4),p.Results.crys_sym);
 		else
 			disp('Texture component must have either 3 or 4 indices')
 		end
