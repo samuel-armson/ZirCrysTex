@@ -83,9 +83,8 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
-			colormap(gca,Parula);
+			colormap(gca,parula);
 			Scale_bar_limits = [0 90]
-			caxis(Scale_bar_limits)
 			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
   			cb_new.Label.Interpreter = 'latex';
