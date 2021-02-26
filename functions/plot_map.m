@@ -57,7 +57,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	if map_type == 'IPF'
 		ipf_key_fig = figure('Name','IPF Key');
 		newMtexFigure(ipf_key_fig)
-		IPF_key = p.results.IPF_key
+		IPF_key = p.Results.IPF_key
 		plot(ipfKey)
   		if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
     		hold on 
