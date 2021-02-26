@@ -4,7 +4,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	REQUIRED ARGUMENTS
 	data_in = EBSD or GRAINS data type provided by mTeX.
-	map_type = Either: 'IPF','Euler','Deviation', 'Phase'
+	map_type = Either: 'IPF','Euler','Deviation', 'Phase', 'BC'
 
 	OPTIONAL ARGUMENTS
 	IPF_key = 
@@ -66,6 +66,11 @@ function pm = plot_map(data_in,map_type,varargin)
       		'all','labeled','BackgroundColor','white');
    		hold off
   		end
+	end
+
+	if map_type == 'Euler'
+		oM = BungeColorKey(cs);
+		mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
 	end
 
 	map_figure = figure('Name','Map loading...');
