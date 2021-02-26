@@ -58,7 +58,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		ipf_key_fig = figure('Name','IPF Key');
 		newMtexFigure(ipf_key_fig)
 		ipfKey = p.Results.IPF_key
-		mapcolor = ipfKey.orientation2color(ebsd_full(phase_of_interest).orientations);
+		mapcolor = ipfKey.orientation2color(ebsd(phase_of_interest).orientations);
 		plot(ipfKey)
   		if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
     		hold on 
