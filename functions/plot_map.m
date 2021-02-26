@@ -54,7 +54,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	figure_width = p.Results.figure_width;
 	map_type = p.Results.map_type;
 	
-	if map_type == 'IPF':
+	if map_type == 'IPF'
 		ipf_key_fig = figure('Name','IPF Key');
 		newMtexFigure(ipf_key_fig)
 		IPF_key = p.results.IPF_key
