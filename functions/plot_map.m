@@ -75,10 +75,10 @@ function pm = plot_map(data_in,map_type,varargin)
 		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
-  		set(gca,'linewidth',3);  
-  		hgt = findall(gca,'type','hgtransform')
-  		set(hgt,'visible','off')
-  		hg = scaleBar(data_in, 'um')
+  		set(gca,'linewidth',3);
+  		%Uncomment lines below to remove scale bar 
+  		%hgt = findall(gca,'type','hgtransform')
+  		%set(hgt,'visible','off')
 		
 	elseif isa(data_in, 'GRAINS') ==1
 		disp("grains")
