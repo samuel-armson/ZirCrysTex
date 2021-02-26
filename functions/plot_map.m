@@ -58,13 +58,13 @@ function pm = plot_map(data_in,map_type,varargin)
 		ipf_key_fig = figure('Name','IPF Key');
 		newMtexFigure(ipf_key_fig)
 		ipfKey = p.Results.IPF_key
+		mapcolor = ipfKey.orientation2color(ebsd_full(phase_of_interest).orientations);
 		plot(ipfKey)
   		if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
     		hold on 
     		annotate([Miller(1,0,0,cs),Miller(1,1,0,cs),Miller(0,0,1,cs),Miller(0,1,0,cs),Miller(-1,0,0,cs),Miller(-1,1,0,cs),Miller(1,0,-6,cs)],...
       		'all','labeled','BackgroundColor','white');
    		hold off
-   		ipfcolor = ipfKey.orientation2color(ebsd_full(phase_of_interest).orientations);
   		end
 	end
 
@@ -72,7 +72,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	newMtexFigure(map_figure)
 
 	if isa(data_in,'EBSD') == 1
-		plot(data_in(p.Results.phase_name),ipfcolor,'add2all');
+		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
   		set(gca,'linewidth',3);  
