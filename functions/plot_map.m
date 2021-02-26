@@ -78,6 +78,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		set(gca,'linewidth',3);  
   		hgt = findall(gca,'type','hgtransform')
   		set(hgt,'visible','off')
+  		hg = scaleBar(data_in, 'um')
 		
 	elseif isa(data_in, 'GRAINS') ==1
 		disp("grains")
