@@ -17,15 +17,15 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "MIBL EX HIGH DR 0.8 EE FUZZY MASK TESTING FILTERS";
+Sample_ID = "MIBL EX HIGH DR PFIB EBSD";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'J:/MIBL SAMPLES/EX HIGH DR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/MIBL EX HIGH DR PFIB/MIBL EX HIGH';
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-fname_full = [pname 'EX HIGH DR 2 EE_0.8 FUZZY MASK.ctf'];
+fname_full = [pname 'MIBL EX HIGH.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 
-phase_of_interest = 'Monoclinic ZrO$$_2$$';
+phase_of_interest = 'HCP Zr';
 
 
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
