@@ -56,8 +56,8 @@ desired_pole_figures = [[0,0,0,2,"plane"];[1,-1,0,0,"plane"];[1,1,-2,0,"directio
 plot_pf(ebsd,desired_pole_figures,'colouring','black')
 
 grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
-grains2 = create_grains(ebsd,'misorientation',5,'smallest_grain',3,'smoothing',3,'fill_gaps','yes')
-grains3 = create_grains(ebsd,'misorientation',5,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
+grains2 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',5,'fill_gaps','yes')
+grains3 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',10,'fill_gaps','yes')
 
 plot_map(ebsd,'IPF','plot_key','off')
 plot_map(grains1,'IPF','plot_key','off')
