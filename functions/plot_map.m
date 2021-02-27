@@ -80,6 +80,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	newMtexFigure(map_figure)
 
 	if isa(data_in,'EBSD') == 1
+		disp('ebsd')
 
 		if strcmp(map_type,'Deviation') == 1
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
