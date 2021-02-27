@@ -54,33 +54,29 @@ function pm = plot_map(data_in,map_type,varargin)
 	figure_width = p.Results.figure_width;
 	map_type = p.Results.map_type;
 	
-
-	if strcmp(map_type,'IPF') == 1
-		ipf_key_fig = figure('Name','IPF Key');
-		newMtexFigure(ipf_key_fig)
-		ipfKey = p.Results.IPF_key
-		mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).orientations);
-		plot(ipfKey)
-  		if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
-    		hold on 
-    		annotate([Miller(1,0,0,cs),Miller(1,1,0,cs),Miller(0,0,1,cs),Miller(0,1,0,cs),Miller(-1,0,0,cs),Miller(-1,1,0,cs),Miller(1,0,-6,cs)],...
-      		'all','labeled','BackgroundColor','white');
-   		hold off
-  		end
-	end
-
-	if strcmp(map_type,'Euler') == 1
-		oM = BungeColorKey(cs);
-		mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
-	end
-
-
-
-	map_figure = figure('Name','Map loading...');
-	newMtexFigure(map_figure)
-
 	if isa(data_in,'EBSD') == 1
-		disp('ebsd')
+
+		if strcmp(map_type,'IPF') == 1
+			ipf_key_fig = figure('Name','IPF Key');
+			newMtexFigure(ipf_key_fig)
+			ipfKey = p.Results.IPF_key
+			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).orientations);
+			plot(ipfKey)
+  			if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
+    			hold on 
+    			annotate([Miller(1,0,0,cs),Miller(1,1,0,cs),Miller(0,0,1,cs),Miller(0,1,0,cs),Miller(-1,0,0,cs),Miller(-1,1,0,cs),Miller(1,0,-6,cs)],...
+      			'all','labeled','BackgroundColor','white');
+   				hold off
+  			end
+		end
+
+		if strcmp(map_type,'Euler') == 1
+			oM = BungeColorKey(cs);
+			mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
+		end
+
+		map_figure = figure('Name','Map loading...');
+		newMtexFigure(map_figure)
 
 		if strcmp(map_type,'Deviation') == 1
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
