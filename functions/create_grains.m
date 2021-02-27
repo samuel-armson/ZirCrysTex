@@ -13,10 +13,6 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 
 	%}
 
-	if isempty(reference_texture_component) == 1
-		reference_texture_component = [0,0,1];
-	end
-
 	p = inputParser;
 	addRequired(p,'data_in');
 	addOptional(p,'phase_name','indexed');
