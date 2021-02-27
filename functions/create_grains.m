@@ -50,6 +50,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 
 
   	gr = grains_clean
+  	disp(class(gr))
   	disp('')
 	disp('Grains calculated.')
 	disp('')
