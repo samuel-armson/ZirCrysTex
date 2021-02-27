@@ -55,10 +55,14 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,-1,0,0,"plane"];[1,1,-2,0,"direction"]];
 plot_pf(ebsd,desired_pole_figures,'colouring','black')
 
-grains = create_grains(ebsd)
+grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',3)
+grains2 = create_grains(ebsd,'misorientation',5,'smallest_grain',3,'smoothing',3)
+grains2 = create_grains(ebsd,'misorientation',5,'smallest_grain',5,'smoothing',5)
 
 plot_map(ebsd,'IPF','plot_key','off')
-plot_map(grains,'IPF','plot_key','off')
+plot_map(grains1,'IPF','plot_key','off')
+plot_map(grains2,'IPF','plot_key','off')
+plot_map(grains3,'IPF','plot_key','off')
 
 
 %% Sign off
