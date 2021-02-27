@@ -57,7 +57,8 @@ plot_pf(ebsd,desired_pole_figures,'colouring','black')
 
 grains = create_grains(ebsd)
 
-plot_map(grains,'IPF')
+plot_map(ebsd,'IPF','plot_key','off')
+plot_map(grains,'IPF','plot_key','off')
 
 
 %% Sign off
