@@ -41,7 +41,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
   	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
   	grains_clean = smooth(grains_clean,Grain_smooth_param)
 	%}
-	if strcmp(fill_grains,'no') == 1
+	if strcmp(p.Results.fill_gaps,'no') == 1
 		[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell');
 	else
 		[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param);
