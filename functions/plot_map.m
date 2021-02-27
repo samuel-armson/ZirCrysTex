@@ -100,7 +100,49 @@ function pm = plot_map(data_in,map_type,varargin)
   		%set(hgt,'visible','off')
 		
 	elseif isa(data_in, 'grain2d') ==1
-		disp("grains")
+
+		if strcmp(map_type,'IPF') == 1
+			ipf_key_fig = figure('Name','IPF Key');
+			newMtexFigure(ipf_key_fig)
+			ipfKey = p.Results.IPF_key
+			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).meanOrientation);
+			plot(ipfKey)
+  			if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
+    			hold on 
+    			annotate([Miller(1,0,0,cs),Miller(1,1,0,cs),Miller(0,0,1,cs),Miller(0,1,0,cs),Miller(-1,0,0,cs),Miller(-1,1,0,cs),Miller(1,0,-6,cs)],...
+      			'all','labeled','BackgroundColor','white');
+   				hold off
+  			end
+		end
+
+		if strcmp(map_type,'Euler') == 1
+			oM = BungeColorKey(cs);
+			mapcolor = oM.orientation2color(data_in(phase_of_interest).meanOrientation);
+		end
+
+		map_figure = figure('Name','Map loading...');
+		newMtexFigure(map_figure)
+
+		if strcmp(map_type,'Deviation') == 1
+			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).meanOrientation,p.Results.ref_text_comp)./degree)
+			colormap(gca,parula);
+			Scale_bar_limits = [0 90]
+			caxis(Scale_bar_limits);
+  			cb_new = mtexColorbar
+  			cb_new.Label.Interpreter = 'latex';
+  			set(cb_new,'TickLabelInterpreter', 'latex')
+  			axesHandles = findall(map_figure,'type','axes');
+  			axes_props = get(axesHandles,'position')
+  			aspect_ratio = axes_props(3)/axes_props(4)
+		else
+			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
+  		end
+  		set(gca,'Color','black');
+  		set(gcf, 'InvertHardcopy', 'off');
+  		set(gca,'linewidth',3);
+  		%Uncomment lines below to remove scale bar 
+  		%hgt = findall(gca,'type','hgtransform')
+  		%set(hgt,'visible','off')
 
 	else
 		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
