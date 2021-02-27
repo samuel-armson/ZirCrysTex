@@ -26,17 +26,32 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	disp('Calculating grains...')
 	disp('')
 
-	phase_name = p.Results.phase_name
+	ebsd_full = data_in
+	phase_of_interest = p.Results.phase_name
 	Grain_mis_param = p.Results.misorientation ./ degree
 	Small_grain_param = p.Results.smallest_grain
 	Grain_smooth_param = p.Results.smoothing
 
+	%{
   	[grains_dirty,data_in(phase_name).grainId] = calcGrains(data_in(phase_name),'angle',Grain_mis_param,'unitCell')
   	data_in(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	data_in= fill(data_in(phase_name),grains_dirty);
   	[grains_clean,data_in(phase_name).grainId] = calcGrains(data_in(phase_name),'angle',Grain_mis_param,'unitCell');
   	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
   	grains_clean = smooth(grains_clean,Grain_smooth_param)
+	%}
+
+
+	[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell')
+  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
+  	ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
+  	[grains_clean,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell');
+  	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
+  	grains_clean = smooth(grains_clean,Grain_smooth_param)
+
+
+
+
   	gr = grains_clean
  
 
