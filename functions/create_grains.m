@@ -26,7 +26,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	disp('Calculating grains...')
 	disp('')
 
-	ebsd_full = data_in
+	ebsd_full = p.Results.data_in
 	phase_of_interest = p.Results.phase_name
 	Grain_mis_param = p.Results.misorientation ./ degree
 	Small_grain_param = p.Results.smallest_grain
