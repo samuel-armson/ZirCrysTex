@@ -61,7 +61,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		if strcmp(map_type,'IPF') == 1
 			ipfKey = p.Results.IPF_key
 			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).orientations);
-			if strcmp(plot_key,'on') == 1
+			if strcmp(p.Results.plot_key,'on') == 1
 				ipf_key_fig = figure('Name','IPF Key');
 				newMtexFigure(ipf_key_fig)
 				plot(ipfKey)
@@ -108,7 +108,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		if strcmp(map_type,'IPF') == 1
 			ipfKey = p.Results.IPF_key
 			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).meanOrientation);
-			if strcmp(plot_key,'on') == 1
+			if strcmp(p.Results.plot_key,'on') == 1
 				ipf_key_fig = figure('Name','IPF Key');
 				newMtexFigure(ipf_key_fig)
 				plot(ipfKey)
