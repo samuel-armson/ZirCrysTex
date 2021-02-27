@@ -41,6 +41,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
   	grains_clean = smooth(grains_clean,Grain_smooth_param)
 	%}
 
+	disp(class(ebsd_full))
 
 	[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell')
   	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
