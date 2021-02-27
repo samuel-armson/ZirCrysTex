@@ -95,9 +95,6 @@ function pm = plot_map(data_in,map_type,varargin)
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
-
-
-
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
   		set(gca,'linewidth',3);
@@ -105,7 +102,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
 		
-	elseif isa(data_in, 'GRAINS') ==1
+	elseif isa(data_in, 'grain2d') ==1
 		disp("grains")
 
 	else

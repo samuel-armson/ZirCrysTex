@@ -55,12 +55,21 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,-1,0,0,"plane"];[1,1,-2,0,"direction"]];
 plot_pf(ebsd,desired_pole_figures,'colouring','black')
 
-plot_map(ebsd,'IPF')
-
 grains = create_grains(ebsd)
 
+plot_map(ebsd,'IPF')
 
 
+%% Sign off
+for n=1:1
+    load gong
+    sound(y,Fs)
+    disp('FIN')
+ 
+    figure;
+    set(gca,'visible','off')
+    text(0.3,0.4,'fin.', 'FontSize',100);
+end
 
 
 
