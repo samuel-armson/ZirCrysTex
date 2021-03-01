@@ -160,11 +160,11 @@ function pm = plot_map(data_in,map_type,varargin)
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
   			unitcell_overlay_ori_data = data_in(phase_of_interest)
-  			if strcmp(p.Results.view_unit_cell, 'CS') == 1
-  				unitcell_overlay_ori_data = dataset_rotation(unitcell_overlay_ori_data,[270,0,0],'axis','keep','keepXY');;
-  			end
   			crystal_diagram = crystalShape.hex(cs)
     		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.5 * sqrt(unitcell_overlay_ori_data.area);
+    		if strcmp(p.Results.view_unit_cell, 'CS') == 1
+  				crystal_diagram_grains = dataset_rotation(crystal_diagram_grains,[270,0,0],'axis','keep','keepXY');;
+  			end
     		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
  			hold off
 
