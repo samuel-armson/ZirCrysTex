@@ -10,6 +10,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	IPF_key = 
 	plot_key = 'off' or 'on'. On is defualt.
 	ref_texture_comp = Eg. [0,0,0,2] or [0,0,1]. 
+	view_unit_cell = 'CS' for cross-section corrected data, 'PV' or 'yes' for plan-view data. Default is 'no'.
 	save_fig = 'yes' or 'no'. Default value is no. This is useful for saving time and storage space when testing scripts before
 				commiting to saving them.
 	sample_ID = 'Example sample ID', for example. Required when you want to save the figure. It is useful to set a global sample
@@ -158,9 +159,14 @@ function pm = plot_map(data_in,map_type,varargin)
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
+  			unitcell_overlay_ori_data = data_in(phase_of_interest)
+  			if strcmp(p.Results.view_unit_cell, 'CS') == 1
+  				cross_section_correction = rotation('axis',xvector,'angle',-90*degree);
+  				unitcell_overlay_ori_data = rotate(unitcell_overlay_ori_data,cross_section_correction,'keepXY');
+  			end
   			crystal_diagram = crystalShape.hex(cs)
-    		crystal_diagram_grains = data_in(p.Results.phase_name).meanOrientation * crystal_diagram * 0.5 * sqrt(data_in(p.Results.phase_name).area);
-    		plot(data_in(p.Results.phase_name).centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
+    		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.5 * sqrt(unitcell_overlay_ori_data.area);
+    		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
  			hold off
 
 

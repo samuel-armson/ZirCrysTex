@@ -59,7 +59,7 @@ grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',3,'smoothing',
 
 plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
-plot_map(grains1,'IPF','plot_key','off','view_unit_cell','yes')
+plot_map(grains1,'IPF','plot_key','off','view_unit_cell','CS')
 
 
 %% Sign off
