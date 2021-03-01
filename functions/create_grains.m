@@ -16,7 +16,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	p = inputParser;
 	addRequired(p,'data_in');
 	addOptional(p,'misorientation', 10)
-	addOptional(p,'smallest_grain', 1)
+	addOptional(p,'smallest_grain', 3)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
 	addOptional(p,'phase_name','indexed')

@@ -79,6 +79,8 @@ function pm = plot_map(data_in,map_type,varargin)
 			mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
 		end
 
+
+
 		map_figure = figure('Name','Map loading...');
 		newMtexFigure(map_figure)
 
@@ -93,6 +95,9 @@ function pm = plot_map(data_in,map_type,varargin)
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
   			aspect_ratio = axes_props(3)/axes_props(4)
+  		elseif strcmp(map_type,'BC') == 1
+  			plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc)
+  			colormap(gca,gray);
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
