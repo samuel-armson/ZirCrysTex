@@ -161,7 +161,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			hold on
   			unitcell_overlay_ori_data = data_in(phase_of_interest)
   			crystal_diagram = crystalShape.hex(cs)
-    		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.5 * sqrt(unitcell_overlay_ori_data.area);
+    		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
