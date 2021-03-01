@@ -148,7 +148,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			set(gcf,'units','centimeters')
     			figure_height = (n_rows*pf_height)
     			figure_width = (n_cols*pf_width)
-    			set(gcf,'position',[10 10 figure_width figure_height],'units','centimeters')
+    			set(gcf,'position',[10 10 figure_width figure_height],'units','inches')
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
     			set(pf_figure,'Name',string(figure_id));
 			end
