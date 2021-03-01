@@ -40,6 +40,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
+	addOptional(p,'view_unit_cell','no')
 	addOptional(p,'IPF_key', ipfHSVKey(cs.Laue));
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
@@ -154,6 +155,14 @@ function pm = plot_map(data_in,map_type,varargin)
   		%Uncomment lines below to remove scale bar 
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
+
+  		if strcmp(p.Results.view_unit_cell, 'no') == 0
+  			hold on
+  			crystal_diagram = crystalShape.hex(cs)
+    		crystal_diagram_grains = data_in(p.Results.phase_name).meanOrientation * crystal_diagram * 0.35 * sqrt(data_in(p.Results.phase_name).area);
+    		plot(data_in(p.Results.phase_name).centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
+ 			hold off
+
 
 	else
 		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
