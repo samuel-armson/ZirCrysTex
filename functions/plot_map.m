@@ -159,7 +159,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
   			crystal_diagram = crystalShape.hex(cs)
-    		crystal_diagram_grains = data_in(p.Results.phase_name).meanOrientation * crystal_diagram * 0.35 * sqrt(data_in(p.Results.phase_name).area);
+    		crystal_diagram_grains = data_in(p.Results.phase_name).meanOrientation * crystal_diagram * 0.5 * sqrt(data_in(p.Results.phase_name).area);
     		plot(data_in(p.Results.phase_name).centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
  			hold off
 
