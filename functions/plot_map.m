@@ -173,8 +173,8 @@ function pm = plot_map(data_in,map_type,varargin)
  	set(gcf,'units','centimeters')
     desired_width = 15.5
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
-	current_width = pos(3);
-	current_height = pos(4);
+	current_width = pos(3)
+	current_height = pos(4)
 	desired_height = desired_width * (current_height./current_width)
     set(gcf,'position',[10 10 desired_width desired_height])
 
