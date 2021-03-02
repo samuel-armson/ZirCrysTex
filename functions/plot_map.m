@@ -169,6 +169,7 @@ function pm = plot_map(data_in,map_type,varargin)
     		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
  			hold off
 
+ 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
 
 	else
 		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
