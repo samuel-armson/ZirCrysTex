@@ -65,7 +65,7 @@ function gah = grain_area_hist(data_in,varargin)
    
   for b = 1 : numberOfBars
       % Plot one single bar as a separate bar series.
-      counts(b)=0
+      counts(b)=0;
       upper_bound(b) = b*largest_grain/bin_quant;
       lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
       mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
@@ -98,7 +98,7 @@ function gah = grain_area_hist(data_in,varargin)
   		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
   	elseif strcmp(p.Results.units,'um') == 1
   		scaling = 10;
-  		xlabel(['Grain area (\textmu m$^2$)'],'Interpreter','latex');
+  		xlabel(['Grain area (μm$^2$)'],'Interpreter','latex');
   	end
   	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   	set(gca,'xticklabel',newlabels);
