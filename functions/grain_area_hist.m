@@ -23,7 +23,6 @@ function gah = grain_area_hist(data_in,varargin)
 	p = inputParser;
 	addRequired(p,'data_in');
 
-	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'bin_size',0.0001);
 	addOptional(p,'max_size',0.01);
 	addOptional(p,'max_percentage',50);
@@ -107,7 +106,7 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('')
   
 
-
+end
 
 
 

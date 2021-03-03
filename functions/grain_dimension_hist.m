@@ -18,13 +18,11 @@ function gdh = grain_dimension_hist(data_in,varargin)
 
 	%}
 
-	global phase_of_interest
 	global Sample_ID
 
 	p = inputParser;
 	addRequired(p,'data_in');
 
-	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'bin_size',0.01);
 	addOptional(p,'max_size',0.6);
 	addOptional(p,'max_percentage',50);
