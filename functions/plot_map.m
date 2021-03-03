@@ -149,16 +149,16 @@ function pm = plot_map(data_in,map_type,varargin)
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
   			aspect_ratio = axes_props(3)/axes_props(4)
-  			hold on
-			plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
-    		plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
-    		hold off
+  			%hold on
+			%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
+    		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
+    		%hold off
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
-			hold on
-			plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
-    		plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
-    		hold off
+			%hold on
+			%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
+    		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
+    		%hold off
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
