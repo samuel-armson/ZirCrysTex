@@ -48,8 +48,8 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('')
 
 
-	grain_areas = grains_clean.area;
-  	aspect_ratios = grains_clean.aspectRatio;
+	grain_areas = data_in.area;
+  	aspect_ratios = data_in.aspectRatio;
   	largest_grain = max(grain_areas);
   	total_area = sum(grain_areas,'double');
   	bin_size = p.Results.bin_size;
