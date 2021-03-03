@@ -84,7 +84,7 @@ function gah = grain_area_hist(data_in,varargin)
   	hold off;
   	set(grain_size_hist,'Name','1D Grain Area Histogram');
    
-  	xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
+  	
   	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
   	set(gca, 'YTickMode', 'Auto');
   	set(gca, 'XTickMode', 'Auto');
@@ -95,11 +95,13 @@ function gah = grain_area_hist(data_in,varargin)
   	xticks = get(gca,'xtick');
   	if strcmp(p.Results.units,'nm') == 1 
   		scaling = 1000000;
+  		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
   	elseif strcmp(p.Results.units,'um') == 1
   		scaling = 1;
+  		xlabel(['Grain area ($\mu$m$^2$)'],'Interpreter','latex');
   	end
   	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-  	set(gca,'xticklabel',newlabels);
+  	set(gca,'xticklabel',newlabels,'Interpreter','latex');
   	set(gca,'XMinorTick','on','YMinorTick','on');
   	set(gca,'TickDir','out');
   	set(findall(gcf,'-property','FontSize'),'FontSize',8)
