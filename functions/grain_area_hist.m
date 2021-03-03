@@ -97,14 +97,15 @@ function gah = grain_area_hist(data_in,varargin)
   		scaling = 1000000;
   		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
   	elseif strcmp(p.Results.units,'um') == 1
-  		scaling = 1;
+  		scaling = 10;
   		xlabel(['Grain area ($\mu$m$^2$)'],'Interpreter','latex');
   	end
   	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-  	set(gca,'xticklabel',newlabels,'Interpreter','latex');
+  	set(gca,'xticklabel',newlabels);
   	set(gca,'XMinorTick','on','YMinorTick','on');
   	set(gca,'TickDir','out');
   	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+  	set(groot,'defaultAxesTickLabelInterpreter','latex');
 
   	disp('')
 	disp('1D grain area histogram plotted.')
