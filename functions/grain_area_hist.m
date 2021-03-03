@@ -34,6 +34,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addOptional(p,'bin_size',0.0001);
 	addOptional(p,'max_size',0.01);
 	addOptional(p,'max_percentage',50);
+	addOptional(p,'units','nm')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -78,26 +79,30 @@ function gah = grain_area_hist(data_in,varargin)
       handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
       % Apply the color to this bar series.
       hold on;
-  end
+  	end
+  	 
+  	hold off;
+  	set(grain_size_hist,'Name','1D Grain Area Histogram');
    
-  hold off;
-  set(grain_size_hist,'Name','1D Grain Area Histogram');
-   
-  xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
-  ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
-  set(gca, 'YTickMode', 'Auto');
-  set(gca, 'XTickMode', 'Auto');
-  xlim([0 max_size]);
-  ylim([0 max_percentage]);
-  set(gcf, 'color','white');
-  set(gcf, 'InvertHardcopy', 'off');
-  xticks = get(gca,'xtick');
-  scaling  = 1000000;
-  newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-  set(gca,'xticklabel',newlabels);
-  set(gca,'XMinorTick','on','YMinorTick','on');
-  set(gca,'TickDir','out');
-  set(findall(gcf,'-property','FontSize'),'FontSize',8)
+  	xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
+  	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
+  	set(gca, 'YTickMode', 'Auto');
+  	set(gca, 'XTickMode', 'Auto');
+  	xlim([0 max_size]);
+  	ylim([0 max_percentage]);
+  	set(gcf, 'color','white');
+  	set(gcf, 'InvertHardcopy', 'off');
+  	xticks = get(gca,'xtick');
+  	if strcmp(p.Results.units,'nm') == 1 
+  		scaling = 1000000;
+  	elseif strcmp(p.Results.units,'um') == 1
+  		scaling = 1;
+  	end
+  	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+  	set(gca,'xticklabel',newlabels);
+  	set(gca,'XMinorTick','on','YMinorTick','on');
+  	set(gca,'TickDir','out');
+  	set(findall(gcf,'-property','FontSize'),'FontSize',8)
 
   	disp('')
 	disp('1D grain area histogram plotted.')

@@ -61,7 +61,7 @@ plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
 plot_map(grains1,'Deviation','view_unit_cell','CS')
 
-grain_area_hist(grains1,'bin_size',1,'max_size',50)
+grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','um')
 
 
 %% Sign off
