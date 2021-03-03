@@ -98,7 +98,7 @@ function gah = grain_area_hist(data_in,varargin)
   		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
   	elseif strcmp(p.Results.units,'um') == 1
   		scaling = 10;
-  		xlabel(['Grain area ($\mu$m$^2$)'],'Interpreter','latex');
+  		xlabel(['Grain area (\textmu m$^2$)'],'Interpreter','latex');
   	end
   	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   	set(gca,'xticklabel',newlabels);
