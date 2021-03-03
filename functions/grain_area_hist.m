@@ -106,6 +106,8 @@ function gah = grain_area_hist(data_in,varargin)
   	set(gca,'TickDir','out');
   	set(findall(gcf,'-property','FontSize'),'FontSize',8)
   	set(groot,'defaultAxesTickLabelInterpreter','latex');
+  	set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
 
   	disp('')
 	disp('1D grain area histogram plotted.')
