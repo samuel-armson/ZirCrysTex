@@ -18,14 +18,7 @@ function gah = grain_area_hist(data_in,varargin)
 
 	%}
 
-	global cs
-	global reference_texture_component
-	global phase_of_interest
 	global Sample_ID
-
-	if isempty(reference_texture_component) == 1
-		reference_texture_component = [0,0,1];
-	end
 	
 	p = inputParser;
 	addRequired(p,'data_in');
