@@ -42,10 +42,10 @@ function gdh = grain_dimension_hist(data_in,varargin)
 
 
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
-  	ax_bin_size = p.Results.bin_size
-  	max_axis_val = p.Results.max_size
-  	maj_ax = maj_ax*2
-  	min_ax = min_ax*2
+  	ax_bin_size = p.Results.bin_size;
+  	max_axis_val = p.Results.max_size;
+  	maj_ax = maj_ax*2;
+  	min_ax = min_ax*2;
   
   	for ax_val = 1 : length(maj_ax)
       	ellipse_areas(ax_val) = (maj_ax(ax_val)/2)*(min_ax(ax_val)/2)*pi;
@@ -53,51 +53,49 @@ function gdh = grain_dimension_hist(data_in,varargin)
   
   	max_axis_vals = [max(maj_ax),max(min_ax)]
   	%max_axis_val = max(max_axis_vals)
-  	maj_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2))'
-  	min_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2))
-  	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/sum(ellipse_areas)
-  	axis_bins = {maj_axis_bins min_axis_bins}
+  	maj_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
+  	min_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
+  	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/sum(ellipse_areas);
+  	axis_bins = {maj_axis_bins min_axis_bins};
  
   	hist_2d = hist3([maj_ax, min_ax],'Ctrs',axis_bins');
   
   	Fig_2d_hist_as_res= figure('Name','Loading...');
   	figure(Fig_2d_hist_as_res);
  
-  	hist_2d_normalised = (hist_2d.*relative_area)*100
+  	hist_2d_normalised = (hist_2d.*relative_area)*100;
   
-  	pcolor(hist_2d_normalised)
-  	cb_new = mtexColorbar('TickLength',0)
+  	pcolor(hist_2d_normalised);
+  	cb_new = mtexColorbar('TickLength',0);
   	cb_new.Label.Interpreter = 'latex';
   	set(cb_new,'TickLabelInterpreter', 'latex');
   	colorTitleHandle = get(cb_new,'Label');
   	set(colorTitleHandle ,'String','$\%$ of phase area', 'fontsize', 12);
  
-  	set(gcf,'Color','white')
+  	set(gcf,'Color','white');
   	set(gcf, 'InvertHardcopy', 'off');
   	%set(gca,'linewidth',1);
  
-  	colormap(parula)
-  	xticks = get(gca,'xtick')
+  	colormap(parula);
+  	xticks = get(gca,'xtick');
 
-  	disp('Pre unit')
   	if strcmp(p.Results.units,'nm') == 1
-  		disp('nm')
-  		scaling_factor = 1000
+  		scaling_factor = 1000;
   	elseif strcmp(p.Results.units,'um') == 1
-  		disp('um')
-  		scaling_factor = 1
+  		scaling_factor = 1;
  	end
 
-  	scaling  = scaling_factor*ax_bin_size
-  	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0)
-  	yticks = get(gca,'ytick')
-  	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0)
-  	set(gca,'xticklabel',newxlabels)
-  	set(gca,'yticklabel',newylabels)
-  	set(gca,'XMinorTick','on','YMinorTick','on')
+  	scaling  = scaling_factor*ax_bin_size;
+  	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+  	yticks = get(gca,'ytick');
+  	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
+  	set(gca,'xticklabel',newxlabels);
+  	set(gca,'yticklabel',newylabels);
+  	set(gca,'XMinorTick','on','YMinorTick','on');
   	set(gca,'TickDir','out');
-  	xlabel('Minor axis length (nm)')
-  	ylabel('Major axis length (nm)')
+  	xlabel('Minor axis length (nm)');
+  	ylabel('Major axis length (nm)');
+  	set(findall(gcf,'-property','FontSize'),'FontSize',8);
 
 
 
