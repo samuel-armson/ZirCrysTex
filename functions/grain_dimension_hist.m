@@ -79,9 +79,12 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	colormap(parula)
   	xticks = get(gca,'xtick')
 
+  	disp('Pre unit')
   	if strcmp(p.Results.units,'nm') == 1
+  		disp('nm')
   		scaling_factor = 1000
   	elseif strcmp(p.Results.units,'um') == 1
+  		disp('um')
   		scaling_factor = 1
  	end
 
