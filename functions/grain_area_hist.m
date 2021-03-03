@@ -84,7 +84,7 @@ function gah = grain_area_hist(data_in,varargin)
   set(grain_size_hist,'Name','1D Grain Area Histogram');
    
   xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
-  ylabel(['$\%$ Total area of phase']);
+  ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
   set(gca, 'YTickMode', 'Auto');
   set(gca, 'XTickMode', 'Auto');
   xlim([0 max_size]);
@@ -97,6 +97,11 @@ function gah = grain_area_hist(data_in,varargin)
   set(gca,'xticklabel',newlabels);
   set(gca,'XMinorTick','on','YMinorTick','on');
   set(gca,'TickDir','out');
+  set(findall(gcf,'-property','FontSize'),'FontSize',8)
+
+  	disp('')
+	disp('1D grain area histogram plotted.')
+	disp('')
   
 
 
