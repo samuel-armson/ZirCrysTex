@@ -187,11 +187,9 @@ function pm = plot_map(data_in,map_type,varargin)
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   			end
-    		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5)
+    		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5,'micronBar','off')
  			hold off
 
- 	hold on
- 	hold off
 
  	set(findall(gcf,'-property','FontSize'),'FontSize',8)
  	set(gcf,'units','centimeters')
