@@ -139,7 +139,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		newMtexFigure(map_figure)
 
 		if strcmp(map_type,'Deviation') == 1
-			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).meanOrientation,p.Results.ref_text_comp)./degree)
+			[~,mP] = plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).meanOrientation,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula);
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
@@ -165,7 +165,7 @@ function pm = plot_map(data_in,map_type,varargin)
     		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
     		%hold off
 		else
-			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
+			[~,mP] = plot(data_in(p.Results.phase_name),mapcolor,'add2all');
 			%hold on
 			%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
     		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
@@ -179,6 +179,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		%set(hgt,'visible','off')
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
+  			mP.micronBar.visible = 'off'
   			hold on
   			unitcell_overlay_ori_data = data_in(phase_of_interest)
   			crystal_diagram = crystalShape.hex(cs)
@@ -187,8 +188,8 @@ function pm = plot_map(data_in,map_type,varargin)
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   			end
-    		mP = plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
- 			mP.micronBar.visible = 'off'
+			plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
+ 			mP.micronBar.visible = 'on'
  			hold off
  		end
 
