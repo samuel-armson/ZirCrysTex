@@ -196,8 +196,8 @@ function pm = plot_map(data_in,map_type,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	desired_height = desired_width * (current_width./current_height)
-    set(gcf,'position',[10 10 desired_width desired_height])
+	desired_height = desired_width * (current_height./current_width) *0.75
+    set(gcf,'position',[5 5 desired_width desired_height])
 
 	else
 		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
