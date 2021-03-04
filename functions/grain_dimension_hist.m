@@ -76,7 +76,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	set(gcf, 'InvertHardcopy', 'off');
   	%set(gca,'linewidth',1);
  
-  	colormap(white_viridis('white_percentage',10));
+  	colormap(white_viridis('white_percentage',2));
   	xticks = get(gca,'xtick');
 
   	if strcmp(p.Results.units,'nm') == 1
