@@ -155,7 +155,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				end
     		end
   			titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-  			x_label = xlabel(cb, titleString,'FontSize',8)
+  			x_label = xlabel(cb_new, titleString,'FontSize',8)
   			set(cb_new,'TickLabelInterpreter', 'latex')
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
