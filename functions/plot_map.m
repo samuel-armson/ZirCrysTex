@@ -187,16 +187,15 @@ function pm = plot_map(data_in,map_type,varargin)
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   			end
-    		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5,'micronBar','off')
-    		hgt = findall(gca,'type','hgtransform')
-  			set(hgt,'visible','off')
-  			set(hgt,'visible','on')
+    		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5,'micronBar','on')
  			hold off
  		end
 
+	else
+		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
+	end
 
-
- 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+	set(findall(gcf,'-property','FontSize'),'FontSize',8)
  	set(gcf,'units','centimeters')
     desired_width = 15.5
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
@@ -204,10 +203,6 @@ function pm = plot_map(data_in,map_type,varargin)
 	current_height = pos(4)
 	desired_height = desired_width * (current_height./current_width) * 0.6
     set(gcf,'position',[5 5 desired_width desired_height])
-
-	else
-		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
-	end
 
 end
 
