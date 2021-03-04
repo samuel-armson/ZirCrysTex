@@ -196,7 +196,7 @@ function pm = plot_map(data_in,map_type,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	desired_height = desired_width * (current_height./current_width) *0.75
+	desired_height = desired_width * (current_height./current_width) * 0.6
     set(gcf,'position',[5 5 desired_width desired_height])
 
 	else
