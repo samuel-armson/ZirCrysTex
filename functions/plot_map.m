@@ -145,6 +145,17 @@ function pm = plot_map(data_in,map_type,varargin)
 			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar('location','southoutside')
   			cb_new.Label.Interpreter = 'latex';
+  			titleString =  "$$\left\{"
+  			for increment = 1:length(p.Results.ref_text_comp)
+  				if p.Results.ref_text_comp(increment) < 0
+					tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";
+					titleString = strcat(titleString, tex_val);
+				else
+					titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
+				end
+    		end
+  			titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+  			x_label = xlabel(cb, titleString,'FontSize',8)
   			set(cb_new,'TickLabelInterpreter', 'latex')
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
