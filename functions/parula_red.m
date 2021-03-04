@@ -9,7 +9,7 @@ function parula_red = parula_red(varargin)
 
 	p = inputParser;
 	addOptional(p,'parula_limit',70);
-	addOptional(p,'increment',90);
+	addOptional(p,'increment',5;
 	parse(p,varargin{:});
 
 	parula_limit = p.Results.parula_limit
