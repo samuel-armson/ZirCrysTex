@@ -188,6 +188,9 @@ function pm = plot_map(data_in,map_type,varargin)
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   			end
     		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5,'micronBar','off')
+    		hgt = findall(gca,'type','hgtransform')
+  			set(hgt,'visible','off')
+  			set(hgt,'visible','on')
  			hold off
  		end
 
