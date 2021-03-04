@@ -9,6 +9,7 @@ function white_viridis = white_viridis(varargin)
 
 	p = inputParser;
 	addOptional(p,'white_percentage',10);
+	parse(p,varargin{:});
 	
     white_to_purp = p.Results.white_percentage
     viridis_part = viridis(100-white_to_purp)
@@ -19,7 +20,6 @@ function white_viridis = white_viridis(varargin)
     white_viridis(1:white_to_purp,3) = linspace(1,0.3294,white_to_purp) 
 
 
-end
 
 
 
