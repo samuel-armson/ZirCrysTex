@@ -28,6 +28,8 @@ function parula_red = parula_red(varargin)
     	parula_red = [parula_red;new_maroon];
     end
 
+end
+
 
 
 
