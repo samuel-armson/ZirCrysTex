@@ -25,7 +25,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
 
 	addOptional(p,'bin_size',0.01);
 	addOptional(p,'max_size',0.6);
-	addOptional(p,'max_percentage',50);
+	addOptional(p,'max_percentage',20);
 	addOptional(p,'units','nm')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
@@ -77,6 +77,8 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	%set(gca,'linewidth',1);
  
   	colormap(white_viridis('white_percentage',2));
+  	cbarlimits = [0 p.Results.max_percentage]
+  	caxis(cbarlimits);
   	xticks = get(gca,'xtick');
 
   	if strcmp(p.Results.units,'nm') == 1
