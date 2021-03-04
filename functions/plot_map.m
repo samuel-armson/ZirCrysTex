@@ -190,6 +190,9 @@ function pm = plot_map(data_in,map_type,varargin)
     		plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[88 88 88]/255,'linewidth',1.5,'micronBar','off')
  			hold off
 
+ 	hold on 
+ 	plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc,'FaceAlpha',0)
+ 	hold off 
 
  	set(findall(gcf,'-property','FontSize'),'FontSize',8)
  	set(gcf,'units','centimeters')
