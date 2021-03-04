@@ -88,7 +88,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
-			colormap(gca,parula);
+			colormap(gca,parula_red());
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
@@ -179,7 +179,6 @@ function pm = plot_map(data_in,map_type,varargin)
   		%set(hgt,'visible','off')
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
-  			map_figure.micronBar.visible = 'off'
   			hold on
   			unitcell_overlay_ori_data = data_in(phase_of_interest)
   			crystal_diagram = crystalShape.hex(cs)
@@ -189,7 +188,6 @@ function pm = plot_map(data_in,map_type,varargin)
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   			end
 			plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
- 			map_figure.micronBar.visible = 'on'
  			hold off
  		end
 
