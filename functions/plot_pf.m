@@ -159,7 +159,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
         end
 
 	elseif isa(data_in,'ODF') == 1
-		plotPDF(odf,h,'grid','grid_res',grid_line_spacing*degree,'minmax','projection',projection_type)
+		plotPDF(data_in,miller_val,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj)
   		mtexColorMap(white_viridis('white_percentage',2))
   
   		CLim(gcm,'equal'); % set equal color range to all plots
