@@ -53,12 +53,12 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 
 grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',3,'smoothing',3,'fill_gaps','yes')
 %odf = make_ODF(ebsd)
-odf = calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
+odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
 desired_pole_figures = [[0,0,0,2,"plane"];[1,-1,0,0,"plane"];[1,-1,0,1,"plane"];[1,1,-2,0,"direction"]];
 
 plot_pf(ebsd,desired_pole_figures)
-plot_pf(odf,desired_pole_figures)
+plot_pf(odf_data,desired_pole_figures)
 
 plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
