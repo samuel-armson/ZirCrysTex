@@ -173,7 +173,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     	cb.Label.Interpreter = 'latex';
     	set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
   		set(gcf,'units','centimeters')
-    	figure_height = (n_rows*pf_height)
+    	figure_height = (n_rows*pf_height)+1.5
     	figure_width = (n_cols*pf_width)
     	set(gcf,'position',[5 5 figure_width figure_height])
     	figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
