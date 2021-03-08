@@ -166,7 +166,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			title(axes_title,'FontSize',8);
 			if i<axes_quant; nextAxis; end
 		end
-  		mtexColorMap(white_viridis('white_percentage',2))
+  		mtexColorMap(white_viridis('white_percentage',10))
   
   		CLim(gcm,'equal'); % set equal color range to all plots
    
@@ -174,9 +174,15 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
   		CLim(gcm,'equal');
   		cb.Label.Interpreter = 'latex';
   		set(cb,'TickLabelInterpreter', 'latex');
-  		set(Fig_ODF_PF_full_map,'Name','EBSD ODF contoured pole figure from full map')
   		[cm,cmd] = getColormaps
   		disp(cm)
+
+  		set(gcf,'units','centimeters')
+    	figure_height = (n_rows*pf_height)
+    	figure_width = (n_cols*pf_width)
+    	set(gcf,'position',[5 5 figure_width figure_height])
+    	figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
+    	set(pf_figure,'Name',string(figure_id));
 
 
 
