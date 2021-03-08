@@ -47,4 +47,4 @@ function mODF = make_ODF(data_in,varargin)
 	disp('Calculating ODF')
 	disp('')
 
-	mODF = calcODF(data_in(p.Results.phase_of_interest),'halfwidth',p.Results.half_width*degree)
+	mODF = calcODF(data_in(p.Results.phase_name),'halfwidth',p.Results.half_width*degree)
