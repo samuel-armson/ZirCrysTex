@@ -37,6 +37,7 @@ function mODF = make_ODF(data_in,varargin)
 	global phase_of_interest
 	global Sample_ID
 
+	p = inputParser;
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'half_width',3);
 
