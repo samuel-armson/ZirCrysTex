@@ -125,6 +125,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					end
     			end
 				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+				colormap(parula_red('increment',5));
 				cb = mtexColorbar('location','southoutside');
 				x_label = xlabel(cb, titleString,'FontSize',8)
     			cb.Label.Interpreter = 'latex';
