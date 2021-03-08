@@ -60,7 +60,10 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
-	
+	pfAnnotations = @(varargin) text(-[vector3d.X,vector3d.Y],{'RD','ND'},...
+  	'BackgroundColor','w','tag','axesLabels',varargin{:});
+
+	setMTEXpref('pfAnnotations',pfAnnotations);
 
 	disp('')
 	disp('Plotting pole figures...')
