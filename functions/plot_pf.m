@@ -159,7 +159,20 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
         end
 
 	elseif isa(data_in,'ODF') == 1
-		disp('ODF')
+		plotPDF(odf,h,'grid','grid_res',grid_line_spacing*degree,'minmax','projection',projection_type)
+  		mtexColorMap(white_viridis('white_percentage',2))
+  
+  		CLim(gcm,'equal'); % set equal color range to all plots
+   
+  		cb = mtexColorbar('title','MRD values')
+  		CLim(gcm,'equal');
+  		cb.Label.Interpreter = 'latex';
+  		set(cb,'TickLabelInterpreter', 'latex');
+  		set(Fig_ODF_PF_full_map,'Name','EBSD ODF contoured pole figure from full map')
+  		[cm,cmd] = getColormaps
+  		disp(cm)
+
+
 
 	elseif isa(data_in,'GRAINS') == 1 %need to check data type here.
 		disp("grains")
