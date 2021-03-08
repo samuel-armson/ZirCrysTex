@@ -47,4 +47,12 @@ function mODF = make_ODF(data_in,varargin)
 	disp('Calculating ODF')
 	disp('')
 
-	mODF = calcODF(data_in(p.Results.phase_name),'halfwidth',p.Results.half_width*degree)
+	if isa(data_in,'EBSD') == 1
+
+		mODF = calcODF(data_in(p.Results.phase_name).orientations,'halfwidth',p.Results.half_width*degree)
+	
+	elseif isa(data_in,'grain2D') == 1
+
+		mODF = calcODF(data_in(p.Results.phase_name).meanOrientation,'halfwidth',p.Results.half_width*degree)
+
+	end
