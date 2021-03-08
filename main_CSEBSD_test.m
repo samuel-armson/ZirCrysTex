@@ -52,7 +52,8 @@ ebsd = x_section_correction(ebsd,'EBSD')
 fibre_comp = define_fibre(reference_texture_component,cs)
 
 grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',3,'smoothing',3,'fill_gaps','yes')
-odf = make_ODF(ebsd)
+%odf = make_ODF(ebsd)
+odf = calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
 desired_pole_figures = [[0,0,0,2,"plane"];[1,-1,0,0,"plane"];[1,-1,0,1,"plane"];[1,1,-2,0,"direction"]];
 
