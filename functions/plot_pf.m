@@ -166,17 +166,12 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			title(axes_title,'FontSize',8);
 			if i<axes_quant; nextAxis; end
 		end
-  		mtexColorMap(white_viridis('white_percentage',10))
-  
-  		CLim(gcm,'equal'); % set equal color range to all plots
-   
-  		cb = mtexColorbar('title','MRD values')
-  		CLim(gcm,'equal');
-  		cb.Label.Interpreter = 'latex';
-  		set(cb,'TickLabelInterpreter', 'latex');
-  		[cm,cmd] = getColormaps
-  		disp(cm)
-
+		CLim(gcm,'equal'); % set equal color range to all plots
+  		colormap(white_viridis('white_percentage',10))
+  		cb = mtexColorbar('location','southoutside');
+		x_label = xlabel(cb, 'MRD Values','FontSize',8)
+    	cb.Label.Interpreter = 'latex';
+    	set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
   		set(gcf,'units','centimeters')
     	figure_height = (n_rows*pf_height)
     	figure_width = (n_cols*pf_width)
