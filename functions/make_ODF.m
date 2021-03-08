@@ -43,13 +43,15 @@ function mODF = make_ODF(data_in,varargin)
 
 	parse(p,data_in,varargin{:});	
 
+	raw_data = data_in(p.Results.phase_name)
+
 	disp('')
 	disp('Calculating ODF')
 	disp('')
 
 	if isa(data_in,'EBSD') == 1
 
-		mODF = calcODF(data_in(p.Results.phase_name).orientations,'halfwidth',p.Results.half_width*degree)
+		mODF = calcODF(raw_data.orientations,'halfwidth',p.Results.half_width*degree)
 	
 	elseif isa(data_in,'grain2D') == 1
 
