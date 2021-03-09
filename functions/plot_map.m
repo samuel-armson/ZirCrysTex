@@ -142,13 +142,14 @@ function pm = plot_map(data_in,map_type,varargin)
   			colormap(gca,gray);
 		elseif strcmp(map_type,'phase')
 			plot(data_in('indexed'));
+			phase_raw = 1 
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
-  		set(gca,'linewidth',3);
+  		set(gca,'linewidth',1);
   		%Uncomment lines below to remove scale bar 
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
@@ -221,7 +222,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
-  		set(gca,'linewidth',3);
+  		set(gca,'linewidth',1);
   		%Uncomment lines below to remove scale bar 
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
@@ -249,7 +250,12 @@ function pm = plot_map(data_in,map_type,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	desired_height = desired_width * (current_height./current_width) * 0.6
+	if isempty(phase_raw) == 1
+		desired_height = desired_width * (current_height./current_width) * 0.6
+	else
+		desired_height = desired_width * (current_height./current_width)
+	end
+	
     set(gcf,'position',[5 5 desired_width desired_height])
 
 end
