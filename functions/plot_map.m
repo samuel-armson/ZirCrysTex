@@ -253,7 +253,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	if phase_raw == 0
 		desired_height = desired_width * (current_height./current_width) * 0.6
 	else
-		desired_height = desired_width * (current_height./current_width)
+		desired_height = desired_width * (current_height./current_width) * 1.2
 	end
 	
     set(gcf,'position',[5 5 desired_width desired_height])
