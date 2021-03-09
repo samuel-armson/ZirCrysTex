@@ -47,7 +47,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	parse(p,data_in,map_type,varargin{:});	
 
-
+	phase_raw = 0
 
 
 
@@ -142,7 +142,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			colormap(gca,gray);
 		elseif strcmp(map_type,'phase')
 			plot(data_in('indexed'));
-			phase_raw = 1 
+			phase_raw = 1
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
@@ -250,7 +250,7 @@ function pm = plot_map(data_in,map_type,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	if isempty(phase_raw) == 1
+	if phase_raw == 0
 		desired_height = desired_width * (current_height./current_width) * 0.6
 	else
 		desired_height = desired_width * (current_height./current_width)
