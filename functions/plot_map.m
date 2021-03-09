@@ -82,19 +82,17 @@ function pm = plot_map(data_in,map_type,varargin)
 		end
 
 
-
-
-
-		elseif strcmp(map_type,'Deviation') == 1
+		if strcmp(map_type,'Deviation') == 1
 			if strcmp(p.Results.plot_key,'on') == 1
-				Angle_increment_hist = 1
+				Angle_increment_hist = 1;
+				Angle_increment_cmap = 1;
   				Fig_Basal_angle_hist = figure('Name','Loading...');
   				figure(Fig_Basal_angle_hist);
   				Discrete_color_quant_hist = 90/Angle_increment_hist;
   				integerValue = Discrete_color_quant_hist;
   				numberOfBars = integerValue;
-  				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
-  				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1)
+  				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
+  				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1);
   				barColorMap = usable_colormap;
   				fibre_mis_angles = angle(ebsd_full(phase_of_interest).orientations,f)./degree;
    
