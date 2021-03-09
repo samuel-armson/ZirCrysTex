@@ -142,9 +142,9 @@ function pm = plot_map(data_in,map_type,varargin)
   			colormap(gca,gray);
 		elseif strcmp(map_type,'phase')
 			plot(data_in('indexed'));
-			hold on
-    		plot(data_in('notIndexed'),'FaceColor','black')
-    		hold off
+			%hold on
+    		%plot(data_in('notIndexed'),'FaceColor','black')
+    		%hold off
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
@@ -209,9 +209,9 @@ function pm = plot_map(data_in,map_type,varargin)
     		%hold off
     	elseif strcmp(map_type,'phase')
 			plot(data_in('indexed'));
-			hold on
-    		plot(data_in('notIndexed'),'FaceColor','black')
-    		hold off
+			%hold on
+    		%plot(data_in('notIndexed'),'FaceColor','black')
+    		%hold off
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
 			%hold on
