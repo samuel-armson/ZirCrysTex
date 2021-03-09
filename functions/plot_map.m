@@ -47,7 +47,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	parse(p,data_in,map_type,varargin{:});	
 
-	phase_raw = 0
+	aspect_ratio_correction = 0.6
 
 
 
@@ -142,7 +142,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			colormap(gca,gray);
 		elseif strcmp(map_type,'phase')
 			plot(data_in('indexed'));
-			phase_raw = 1
+			aspect_ratio_correction = 1.2
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
@@ -155,6 +155,8 @@ function pm = plot_map(data_in,map_type,varargin)
   		%set(hgt,'visible','off')
 
 	elseif isa(data_in, 'grain2d') ==1
+
+		aspect_ratio_correction = 0.3
 
 		gB = data_in(p.Results.phase_name).boundary
 
@@ -250,12 +252,7 @@ function pm = plot_map(data_in,map_type,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	if phase_raw == 0
-		desired_height = desired_width * (current_height./current_width) * 0.6
-	else
-		desired_height = desired_width * (current_height./current_width) * 1.2
-	end
-	
+	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
     set(gcf,'position',[5 5 desired_width desired_height])
 
 end
