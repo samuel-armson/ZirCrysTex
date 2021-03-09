@@ -207,6 +207,11 @@ function pm = plot_map(data_in,map_type,varargin)
 			%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
     		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
     		%hold off
+    	elseif strcmp(map_type,'phase')
+			plot(data_in('indexed'));
+			hold on
+    		plot(data_in('notIndexed'),'FaceColor','black')
+    		hold off
 		else
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
 			%hold on
@@ -220,12 +225,6 @@ function pm = plot_map(data_in,map_type,varargin)
   		%Uncomment lines below to remove scale bar 
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
-
-  		if strcmp(map_type,'phase')
-			plot(data_in('indexed'));
-			hold on
-    		plot(data_in('notIndexed'),'FaceColor','black')
-    		hold off
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
