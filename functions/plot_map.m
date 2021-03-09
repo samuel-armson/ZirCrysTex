@@ -83,10 +83,50 @@ function pm = plot_map(data_in,map_type,varargin)
 
 
 
-		map_figure = figure('Name','Map loading...');
-		newMtexFigure(map_figure)
 
-		if strcmp(map_type,'Deviation') == 1
+
+		elseif strcmp(map_type,'Deviation') == 1
+			if strcmp(p.Results.plot_key,'on') == 1
+				Angle_increment_hist = 1
+  				Fig_Basal_angle_hist = figure('Name','Loading...');
+  				figure(Fig_Basal_angle_hist);
+  				Discrete_color_quant_hist = 90/Angle_increment_hist;
+  				integerValue = Discrete_color_quant_hist;
+  				numberOfBars = integerValue;
+  				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
+  				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1)
+  				barColorMap = usable_colormap;
+  				fibre_mis_angles = angle(ebsd_full(phase_of_interest).orientations,f)./degree;
+   
+  				for b = 1 : numberOfBars
+      				% Plot one single bar as a separate bar series.
+      				upper_bound(b) = b*max_angle_degs/Discrete_color_quant_hist;
+      				lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
+      				mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
+      				counts(b) = sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b));
+      				handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
+      				% Apply the color to this bar series.
+      				if b > angle_histogram_highlight
+          				set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:),'FaceAlpha', 0.3);
+      				else
+          				set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:));
+      				end
+      				hold on;
+  				end
+   
+  				hold off;
+  				set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
+   
+  				xlabel(titleString,'Interpreter','latex');
+  				ylabel(['Frequency']);
+  				set(gca, 'YTickMode', 'Auto');
+  				set(gca, 'XTickMode', 'Auto');
+  				set(gcf, 'color','white');
+  				set(gcf, 'InvertHardcopy', 'off');
+			end
+			
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',5));
 			Scale_bar_limits = [0 90]
@@ -98,10 +138,15 @@ function pm = plot_map(data_in,map_type,varargin)
   			axes_props = get(axesHandles,'position')
   			aspect_ratio = axes_props(3)/axes_props(4)
   		elseif strcmp(map_type,'BC') == 1
+  			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
   			plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc)
   			colormap(gca,gray);
-		else
-			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
+		elseif strcmp(map_type,'phase')
+			plot(data_in('indexed'));
+			hold on
+    		plot(data_in('notIndexed'),'FaceColor','black')
+    		hold off
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
@@ -177,6 +222,12 @@ function pm = plot_map(data_in,map_type,varargin)
   		%Uncomment lines below to remove scale bar 
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
+
+  		if strcmp(map_type,'phase')
+			plot(data_in('indexed'));
+			hold on
+    		plot(data_in('notIndexed'),'FaceColor','black')
+    		hold off
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
