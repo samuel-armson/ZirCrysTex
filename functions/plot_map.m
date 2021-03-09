@@ -156,7 +156,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	elseif isa(data_in, 'grain2d') ==1
 
-		aspect_ratio_correction = 0.3
+		
 
 		gB = data_in(p.Results.phase_name).boundary
 
@@ -185,6 +185,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		newMtexFigure(map_figure)
 
 		if strcmp(map_type,'Deviation') == 1
+			aspect_ratio_correction = 0.6
 			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).meanOrientation,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',1));
 			Scale_bar_limits = [0 90]
@@ -211,11 +212,13 @@ function pm = plot_map(data_in,map_type,varargin)
     		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
     		%hold off
     	elseif strcmp(map_type,'phase')
+    		aspect_ratio_correction = 0.3
 			plot(data_in('indexed'));
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
 		else
+			aspect_ratio_correction = 0.3
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
 			%hold on
 			%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
