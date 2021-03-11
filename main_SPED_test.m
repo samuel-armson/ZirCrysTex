@@ -54,7 +54,7 @@ ebsd = x_section_correction(ebsd,'EBSD')
 
 fibre_comp = define_fibre(reference_texture_component,cs)
 
-grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',3,'smoothing',3,'fill_gaps','yes')
+grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
 odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
