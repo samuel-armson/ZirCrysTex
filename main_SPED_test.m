@@ -58,7 +58,7 @@ grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',
 %odf = make_ODF(ebsd)
 odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
-desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
 
 plot_pf(ebsd,desired_pole_figures)
 plot_pf(odf_data,desired_pole_figures)
