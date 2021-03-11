@@ -21,7 +21,7 @@ Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NVa3/';
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed.ctf'];
+fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 
@@ -65,7 +65,7 @@ plot_pf(odf_data,desired_pole_figures)
 
 plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
-plot_map(grains1,'Deviation','view_unit_cell','CS')
+%plot_map(grains1,'Deviation','view_unit_cell','CS')
 plot_map(grains1,'Deviation')
 plot_map(ebsd,'phase')
 plot_map(grains1,'phase')
