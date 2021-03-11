@@ -25,7 +25,7 @@ fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300_amb_res.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 
-phase_of_interest = 'HCP Zr';
+phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
 
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
