@@ -63,15 +63,15 @@ desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,
 %plot_pf(ebsd,desired_pole_figures)
 %plot_pf(odf_data,desired_pole_figures)
 
-plot_map(ebsd,'BC')
-plot_map(ebsd,'IPF','plot_key','off')
+%plot_map(ebsd,'BC')
+%plot_map(ebsd,'IPF','plot_key','off')
 %plot_map(grains1,'Deviation','view_unit_cell','CS')
 plot_map(grains1,'Deviation')
-plot_map(ebsd,'phase')
-plot_map(grains1,'phase')
+%plot_map(ebsd,'phase')
+%plot_map(grains1,'phase')
 
-grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-grain_dimension_hist(grains1,'bin_size',1,'max_size',25,'units','nm')
+%grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
+%grain_dimension_hist(grains1,'bin_size',1,'max_size',25,'units','nm')
 
 
 %% Sign off
