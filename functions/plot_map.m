@@ -62,12 +62,12 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'IPF') == 1
 			ipfKey = p.Results.IPF_key
-			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).orientations);
+			mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).orientations);
 			if strcmp(p.Results.plot_key,'on') == 1
 				ipf_key_fig = figure('Name','IPF Key');
 				newMtexFigure(ipf_key_fig)
 				plot(ipfKey)
-  				if strcmp(phase_of_interest,'Monoclinic ZrO$$_2$$')
+  				if strcmp(p.Results.phase_name,'Monoclinic ZrO$$_2$$')
     				hold on 
     				annotate([Miller(1,0,0,cs),Miller(1,1,0,cs),Miller(0,0,1,cs),Miller(0,1,0,cs),Miller(-1,0,0,cs),Miller(-1,1,0,cs),Miller(1,0,-6,cs)],...
       				'all','labeled','BackgroundColor','white');
@@ -78,7 +78,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Euler') == 1
 			oM = BungeColorKey(cs);
-			mapcolor = oM.orientation2color(data_in(phase_of_interest).orientations);
+			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).orientations);
 		end
 
 
@@ -94,7 +94,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
   				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1);
   				barColorMap = usable_colormap;
-  				fibre_mis_angles = angle(ebsd_full(phase_of_interest).orientations,f)./degree;
+  				fibre_mis_angles = angle(ebsd_full(p.Results.phase_name).orientations,f)./degree;
    
   				for b = 1 : numberOfBars
       				% Plot one single bar as a separate bar series.
@@ -125,7 +125,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).orientations,p.Results.ref_text_comp)./degree)
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',5));
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
@@ -162,7 +162,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'IPF') == 1
 			ipfKey = p.Results.IPF_key
-			mapcolor = ipfKey.orientation2color(data_in(phase_of_interest).meanOrientation);
+			mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 			if strcmp(p.Results.plot_key,'on') == 1
 				ipf_key_fig = figure('Name','IPF Key');
 				newMtexFigure(ipf_key_fig)
@@ -178,7 +178,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Euler') == 1
 			oM = BungeColorKey(cs);
-			mapcolor = oM.orientation2color(data_in(phase_of_interest).meanOrientation);
+			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 		end
 
 		map_figure = figure('Name','Map loading...');
@@ -186,7 +186,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			aspect_ratio_correction = 0.6
-			plot(data_in(p.Results.phase_name),angle(data_in(phase_of_interest).meanOrientation,p.Results.ref_text_comp)./degree)
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',1));
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
@@ -234,7 +234,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
-  			unitcell_overlay_ori_data = data_in(phase_of_interest)
+  			unitcell_overlay_ori_data = data_in(p.Results.phase_name)
   			crystal_diagram = crystalShape.hex(cs)
     		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
