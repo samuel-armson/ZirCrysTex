@@ -29,7 +29,7 @@ phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
 
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
-reference_texture_component = [1,0,-6];
+reference_texture_component = [0,1,0];
 
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
