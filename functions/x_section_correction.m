@@ -34,7 +34,7 @@ function ebsd_out = x_section_correction(ebsd_in,aquisition_method,varargin)
 
 	% Apply scan rotation if necessary
 	if p.Results.scan_rotation > 0
-		ebsd_out = dataset_rotation(ebsd_out,[0,0,p.Results.scan_rotation],'axis');
+		ebsd_out = dataset_rotation(ebsd_out,[0,0,p.Results.scan_rotation*degree],'axis');
 	end
 
 	% Apply cross section correction
