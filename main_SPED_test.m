@@ -43,7 +43,7 @@ CS = {...
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
-setMTEXpref('zAxisDirection','intoPlane');
+setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
