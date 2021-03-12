@@ -52,26 +52,26 @@ ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFr
 cs = ebsd(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd = x_section_correction(ebsd,'SPED','scan_rotation',270)
+ebsd = x_section_correction(ebsd,'SPED','scan_rotation',90)
 %ebsd = dataset_rotation(ebsd,[0,0,90],'axis');
 
 %fibre_comp = define_fibre(reference_texture_component,cs)
 
-%grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
+grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
-%odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
+odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
-%desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
 
-%plot_pf(ebsd,desired_pole_figures)
-%plot_pf(odf_data,desired_pole_figures)
+plot_pf(ebsd,desired_pole_figures)
+plot_pf(odf_data,desired_pole_figures)
 
 %plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
-%plot_map(grains1,'Deviation')
+plot_map(grains1,'Deviation')
 plot_map(ebsd,'Deviation','plot_key','off')
-%plot_map(ebsd,'phase')
-%plot_map(grains1,'phase')
+plot_map(ebsd,'phase')
+plot_map(grains1,'phase')
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
 %grain_dimension_hist(grains1,'bin_size',1,'max_size',25,'units','nm')
