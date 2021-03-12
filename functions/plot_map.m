@@ -125,7 +125,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)/degree)
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp))
 			colormap(gca,parula_red('increment',5));
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
@@ -146,6 +146,9 @@ function pm = plot_map(data_in,map_type,varargin)
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
+
+    	else
+    		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
