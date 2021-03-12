@@ -50,7 +50,8 @@ ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFr
 cs = ebsd(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd = x_section_correction(ebsd,'EBSD','scan_rotation',90)
+%ebsd = x_section_correction(ebsd,'SPED','scan_rotation',90)
+ebsd = dataset_rotation(ebsd_out,[0,0,90],'axis');
 
 fibre_comp = define_fibre(reference_texture_component,cs)
 
