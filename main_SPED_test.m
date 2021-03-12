@@ -66,7 +66,7 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 %plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
 %plot_map(grains1,'Deviation','view_unit_cell','CS')
-plot_map(ebsd,'Deviation')
+plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd,'phase')
 %plot_map(grains1,'phase')
 
