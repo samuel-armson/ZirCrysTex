@@ -125,10 +125,10 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./(degree*2))
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',1));
-			Scale_bar_limits = [0 90]
-			caxis(Scale_bar_limits);
+			%Scale_bar_limits = [0 90]
+			%caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
   			cb_new.Label.Interpreter = 'latex';
   			set(cb_new,'TickLabelInterpreter', 'latex')
@@ -191,8 +191,8 @@ function pm = plot_map(data_in,map_type,varargin)
 			aspect_ratio_correction = 0.6
 			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp)./degree)
 			colormap(gca,parula_red('increment',1));
-			%Scale_bar_limits = [0 90]
-			%caxis(Scale_bar_limits);
+			Scale_bar_limits = [0 90]
+			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar('location','southoutside')
   			cb_new.Label.Interpreter = 'latex';
   			titleString =  "$$\left\{"
