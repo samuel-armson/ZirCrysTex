@@ -21,7 +21,7 @@ Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NVa3/';
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300_amb_res.ctf'];
+fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 
@@ -50,8 +50,8 @@ ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFr
 cs = ebsd(phase_of_interest).CS
 
 % Perform cross-section correction
-%ebsd = x_section_correction(ebsd,'SPED','scan_rotation',90)
-ebsd = dataset_rotation(ebsd,[0,0,90],'axis');
+ebsd = x_section_correction(ebsd,'SPED','scan_rotation',90)
+%ebsd = dataset_rotation(ebsd,[0,0,90],'axis');
 
 fibre_comp = define_fibre(reference_texture_component,cs)
 
