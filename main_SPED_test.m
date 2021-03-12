@@ -19,7 +19,7 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/San Armson shared folder/Experimental/SPED/2NVa3/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NVa3/';
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300_amb_res.ctf'];
 
@@ -56,7 +56,7 @@ ebsd = x_section_correction(ebsd,'SPED','scan_rotation',270)
 
 %fibre_comp = define_fibre(reference_texture_component,cs)
 
-grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
+%grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
@@ -67,7 +67,7 @@ grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',
 
 %plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
-plot_map(grains1,'Deviation')
+%plot_map(grains1,'Deviation')
 plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd,'phase')
 %plot_map(grains1,'phase')
