@@ -56,7 +56,7 @@ ebsd = x_section_correction(ebsd,'SPED','scan_rotation',-90)
 
 fibre_comp = define_fibre(reference_texture_component,cs)
 
-%grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',0,'smoothing',1,'fill_gaps','no')
+grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
@@ -67,7 +67,7 @@ fibre_comp = define_fibre(reference_texture_component,cs)
 
 %plot_map(ebsd,'BC')
 plot_map(ebsd,'IPF','plot_key','off')
-%plot_map(grains1,'Deviation','view_unit_cell','CS')
+plot_map(grains1,'Deviation')
 plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd,'phase')
 %plot_map(grains1,'phase')
