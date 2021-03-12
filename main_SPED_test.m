@@ -43,7 +43,7 @@ CS = {...
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
-setMTEXpref('zAxisDirection','outOfPlane');
+setMTEXpref('zAxisDirection','intoPlane');
 
 % load EBSD data
 ebsd = loadEBSD(fname_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
@@ -54,7 +54,7 @@ cs = ebsd(phase_of_interest).CS
 ebsd = x_section_correction(ebsd,'SPED','scan_rotation',270)
 %ebsd = dataset_rotation(ebsd,[0,0,90],'axis');
 
-fibre_comp = define_fibre(reference_texture_component,cs)
+%fibre_comp = define_fibre(reference_texture_component,cs)
 
 grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
