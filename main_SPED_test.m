@@ -68,7 +68,7 @@ grains1 = create_grains(ebsd,'misorientation',10,'smallest_grain',1,'smoothing',
 
 %plot_map(ebsd,'BC')
 %plot_map(ebsd,'IPF','plot_key','off')
-%plot_map(grains1,'Deviation')
+plot_map(grains1,'Deviation')
 plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd,'phase')
 %plot_map(grains1,'phase')
