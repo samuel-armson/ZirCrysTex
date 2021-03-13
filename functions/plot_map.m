@@ -94,7 +94,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
   				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1);
   				barColorMap = usable_colormap;
-  				fibre_mis_angles = angle(ebsd_full(p.Results.phase_name).orientations,f)./degree;
+  				fibre_mis_angles = angle(ebsd_full(p.Results.phase_name).orientations,f,'antipodal')./degree;
    
   				for b = 1 : numberOfBars
       				% Plot one single bar as a separate bar series.
@@ -125,7 +125,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree)
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp,'antipodal')./degree)
 			colormap(gca,parula_red('increment',1));
 			%Scale_bar_limits = [0 90]
 			%caxis(Scale_bar_limits);
@@ -189,7 +189,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			aspect_ratio_correction = 0.6
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp)./degree)
+			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree)
 			colormap(gca,parula_red('increment',1));
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
