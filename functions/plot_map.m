@@ -125,7 +125,13 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp,'antipodal')./degree)
+			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree
+			for fa = 1 : length(fibre_angles)
+				if fibre_angles(fa) > 90
+					fibre_angles(fa) = 180 - fibre_angles(fa)
+				end
+			end
+			plot(data_in(p.Results.phase_name),fibre_angles)
 			colormap(gca,parula_red('increment',1));
 			%Scale_bar_limits = [0 90]
 			%caxis(Scale_bar_limits);
@@ -189,7 +195,13 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			aspect_ratio_correction = 0.6
-			plot(data_in(p.Results.phase_name),angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree)
+			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree
+			for fa = 1 : length(fibre_angles)
+				if fibre_angles(fa) > 90
+					fibre_angles(fa) = 180 - fibre_angles(fa)
+				end
+			end
+			plot(data_in(p.Results.phase_name),fibre_angles)
 			colormap(gca,parula_red('increment',1));
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
