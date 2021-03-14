@@ -74,7 +74,7 @@ plot_map(grains1,'Deviation')
 %plot_map(grains1,'phase')
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-grain_dimension_hist(grains1,'bin_size',0.001,'max_size',0.05,'units','nm')
+grain_dimension_hist(grains1,'bin_size',0.001,'max_size',0.04,'units','nm','max_percentage',10)
 
 
 %% Sign off
