@@ -74,7 +74,7 @@ plot_map(ebsd,'Deviation','plot_key','off')
 plot_map(grains1,'phase')
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-%grain_dimension_hist(grains1,'bin_size',1,'max_size',25,'units','nm')
+grain_dimension_hist(grains1,'bin_size',1,'max_size',25,'units','nm')
 
 
 %% Sign off
