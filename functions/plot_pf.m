@@ -110,7 +110,14 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
-					plotPDF(data_in(p.Results.phase_name).orientations,angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp,'antipodal')./degree,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree;
+					for fa = 1 : length(fibre_angles)
+						if fibre_angles(fa) > 90
+							fibre_angles(fa) = 180 - fibre_angles(fa);
+						end
+						fa = fa + 1 
+					end
+					plotPDF(data_in(p.Results.phase_name).orientations,fibre_angles,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end

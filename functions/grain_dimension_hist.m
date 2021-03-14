@@ -82,7 +82,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	xticks = get(gca,'xtick');
 
   	if strcmp(p.Results.units,'nm') == 1
-  		scaling_factor = 1000;
+  		scaling_factor = 1000000;
   	elseif strcmp(p.Results.units,'um') == 1
   		scaling_factor = 1;
  	end
