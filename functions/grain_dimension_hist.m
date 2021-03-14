@@ -82,7 +82,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	xticks = get(gca,'xtick');
 
   	if strcmp(p.Results.units,'nm') == 1
-  		scaling_factor = 1000000;
+  		scaling_factor = 1000;
   	elseif strcmp(p.Results.units,'um') == 1
   		scaling_factor = 1;
  	end
@@ -98,6 +98,10 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	xlabel('Minor axis length (nm)');
   	ylabel('Major axis length (nm)');
   	set(findall(gcf,'-property','FontSize'),'FontSize',8);
+  	set(groot,'defaultAxesTickLabelInterpreter','latex');
+  	set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+end
 
 
 

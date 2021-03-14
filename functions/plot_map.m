@@ -274,6 +274,9 @@ function pm = plot_map(data_in,map_type,varargin)
 	current_height = pos(4)
 	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
     set(gcf,'position',[5 5 desired_width desired_height])
+    set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
 end
 
