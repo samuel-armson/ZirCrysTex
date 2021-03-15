@@ -19,9 +19,9 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NVa3/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/MIBL EX HIGH DR 3/';
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-fname_full = [pname '2NVa3_r1.2_ee_0.4_reindexed_index_300_amb_res.ctf'];
+fname_full = [pname 'MIBL EX HIGH DR 3 R_1.6_EE_0.4_amb_res_ir_350_crystal.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 
