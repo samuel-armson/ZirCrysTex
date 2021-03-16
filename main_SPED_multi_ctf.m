@@ -67,7 +67,7 @@ ebsd_3 = x_section_correction(ebsd_3,'SPED','scan_rotation',90)
 
 grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
 grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','yes','phase_name','HCP Zr')
+grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','HCP Zr')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
