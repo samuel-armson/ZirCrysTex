@@ -76,7 +76,7 @@ function pm = combine_figures(fig_1,fig_2,varargin)
 	  end
 	end
 	% Copy over the colormap too
-	colormap(new_ax, oldColorMap);
+	%colormap(new_ax, oldColorMap);
 
 	
 	
