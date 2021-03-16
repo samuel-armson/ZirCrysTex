@@ -67,7 +67,7 @@ ebsd_3 = x_section_correction(ebsd_3,'SPED','scan_rotation',90)
 
 grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
 grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','HCP Zr')
+grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
@@ -87,7 +87,7 @@ f3 = plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP 
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-%grain_dimension_hist(grains1,'bin_size',0.001,'max_size',0.03,'units','nm','max_percentage',6)
+grain_dimension_hist(grains_3,'bin_size',0.001,'max_size',0.03,'units','nm','max_percentage',6)
 
 
 %% Sign off
