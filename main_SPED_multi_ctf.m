@@ -66,8 +66,8 @@ ebsd_3 = x_section_correction(ebsd_3,'SPED','scan_rotation',90)
 %fibre_comp = define_fibre(reference_texture_component,cs)
 
 grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
-grains_2 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
-grains_3 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
+grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
+grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
