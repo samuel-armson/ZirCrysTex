@@ -252,7 +252,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
   			unitcell_overlay_ori_data = data_in(p.Results.phase_name)
-  			crystal_diagram = crystalShape.hex(cs)
+  			crystal_diagram = crystalShape.hex(p.Results.crys_sym)
     		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
