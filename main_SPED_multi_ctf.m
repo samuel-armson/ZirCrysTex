@@ -87,7 +87,7 @@ f3 = plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP 
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-grain_dimension_hist(grains_2,'bin_size',0.001,'max_size',0.03,'units','nm','max_percentage',6)
+grain_dimension_hist(grains_2,'bin_size',0.001,'max_size',0.05,'units','nm','max_percentage',5)
 
 
 %% Sign off
