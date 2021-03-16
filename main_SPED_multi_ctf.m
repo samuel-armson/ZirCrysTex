@@ -81,9 +81,9 @@ grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',2,'smoothin
 %plot_map(grains_1,'Deviation')
 %plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd_1,'phase')
-plot_map(grains_1,'phase')
-plot_map(grains_2,'phase')
-plot_map(grains_3,'phase')
+f1 = plot_map(grains_1,'phase')
+f2 = plot_map(grains_2,'phase')
+f3 = plot_map(grains_3,'phase')
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
 %grain_dimension_hist(grains1,'bin_size',0.001,'max_size',0.03,'units','nm','max_percentage',6)
