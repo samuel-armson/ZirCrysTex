@@ -42,7 +42,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	integerValue = Discrete_color_quant_hist;
 	numberOfBars = integerValue;
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
-	usable_colormap = repelem(parula_red('increment',colormap_bins),cmap_extention_param,1)
+	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1)
 	barColorMap = usable_colormap;
 	
 	if isa(data_in, 'EBSD') == 1
