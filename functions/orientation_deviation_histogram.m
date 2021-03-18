@@ -87,12 +87,24 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	hold off;
 	set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
 
-	xlabel(titleString,'Interpreter','latex');
+	titleString =  "$$\left\{"
+	for increment = 1:length(p.Results.ref_text_comp)
+		if p.Results.ref_text_comp(increment) < 0
+			tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";
+			titleString = strcat(titleString, tex_val);
+		else
+			titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
+		end
+	end
+	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+
+	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Frequency']);
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
+	set(findall(gcf,'-property','FontSize'),'FontSize',8)
 
 
 
