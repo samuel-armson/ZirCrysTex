@@ -65,7 +65,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	for b = 1 : numberOfBars
 		% Plot one single bar as a separate bar series.
-		upper_bound(b) = b*max_angle_degs/Discrete_color_quant_hist;
+		upper_bound(b) = b*90/Discrete_color_quant_hist;
 		lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
 		mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
 		counts(b) = sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b));
