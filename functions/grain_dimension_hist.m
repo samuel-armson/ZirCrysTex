@@ -68,6 +68,9 @@ function gdh = grain_dimension_hist(data_in,varargin)
   
   	Fig_2d_hist_as_res= figure('Name','Loading...');
   	figure(Fig_2d_hist_as_res);
+
+  	xlim([0 max_axis_val/scaling_factor])
+  	ylim([0 max_axis_val/scaling_factor])
  
   	hist_2d_normalised = (hist_2d.*relative_area)*100;
   
@@ -93,8 +96,6 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   	yticks = get(gca,'ytick');
   	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
-  	xlim([0 max_axis_val/scaling_factor])
-  	ylim([0 max_axis_val/scaling_factor])
   	set(gca,'xticklabel',newxlabels);
   	set(gca,'yticklabel',newylabels);
   	set(gca,'XMinorTick','on','YMinorTick','on');
