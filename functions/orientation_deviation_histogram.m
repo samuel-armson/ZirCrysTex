@@ -38,6 +38,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	Angle_increment_hist = p.Results.bin_size;
 	Angle_increment_cmap = p.Results.colormap_bins;
 	angle_histogram_highlight = p.Results.highlight_lower_limit;
+	max_angle_degs = 90
 
 	Fig_Basal_angle_hist = figure('Name','Loading...');
 	figure(Fig_Basal_angle_hist);
@@ -65,7 +66,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	for b = 1 : numberOfBars
 		% Plot one single bar as a separate bar series.
-		upper_bound(b) = b*90/Discrete_color_quant_hist;
+		upper_bound(b) = b*max_angle_degs/Discrete_color_quant_hist;
 		lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
 		mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
 		counts(b) = sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b));
