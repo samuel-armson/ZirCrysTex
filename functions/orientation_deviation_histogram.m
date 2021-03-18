@@ -56,7 +56,9 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		disp('Input Data must be EBSD or grain2d data type!')
 	end
 
-	for fa = 1 : length(fibre_mis_angles)
+	total_pixel_no = length(fibre_mis_angles)
+
+	for fa = 1 : total_pixel_no
 		if fibre_mis_angles(fa) > 90
 			fibre_mis_angles(fa) = 180 - fibre_mis_angles(fa);
 		end
@@ -64,12 +66,13 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	end
 
 
+
 	for b = 1 : numberOfBars
 		% Plot one single bar as a separate bar series.
 		upper_bound(b) = b*max_angle_degs/Discrete_color_quant_hist;
 		lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
 		mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
-		counts(b) = sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b));
+		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100;
 		handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 		% Apply the color to this bar series.
 		if b > angle_histogram_highlight
@@ -100,7 +103,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	xlim([0 90])
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
-	ylabel(['Frequency']);
+	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
 	set(gcf, 'color','white');
