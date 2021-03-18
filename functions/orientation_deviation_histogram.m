@@ -43,8 +43,8 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	figure(Fig_Basal_angle_hist);
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
 	numberOfBars = round(Discrete_color_quant_hist);
-	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
-	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1)
+	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
+	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1);
 	barColorMap = usable_colormap;
 	
 	if isa(data_in, 'EBSD') == 1
@@ -53,6 +53,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		fibre_mis_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp)./degree;
 	else
 		disp('Input Data must be EBSD or grain2d data type!')
+	end
 
 	for fa = 1 : length(fibre_angles)
 		if fibre_mis_angles(fa) > 90
