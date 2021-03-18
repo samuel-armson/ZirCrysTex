@@ -55,7 +55,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		disp('Input Data must be EBSD or grain2d data type!')
 	end
 
-	for fa = 1 : length(fibre_angles)
+	for fa = 1 : length(fibre_mis_angles)
 		if fibre_mis_angles(fa) > 90
 			fibre_mis_angles(fa) = 180 - fibre_mis_angles(fa);
 		end
