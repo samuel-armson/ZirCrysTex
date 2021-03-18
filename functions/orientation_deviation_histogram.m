@@ -32,15 +32,17 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	parse(p,data_in,varargin{:});	
 
-	Angle_increment_hist = p.Results.bin_size
-	Angle_increment_cmap = p.Results.colormap_bins
-	angle_histogram_highlight = p.Results.highlight_lower_limit
+
+	disp('Plotting orientation histogram...')
+
+	Angle_increment_hist = p.Results.bin_size;
+	Angle_increment_cmap = p.Results.colormap_bins;
+	angle_histogram_highlight = p.Results.highlight_lower_limit;
 
 	Fig_Basal_angle_hist = figure('Name','Loading...');
 	figure(Fig_Basal_angle_hist);
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
-	integerValue = Discrete_color_quant_hist;
-	numberOfBars = integerValue;
+	numberOfBars = int(Discrete_color_quant_hist);
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
 	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1)
 	barColorMap = usable_colormap;

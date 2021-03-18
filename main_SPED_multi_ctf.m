@@ -51,23 +51,23 @@ setMTEXpref('xAxisDirection','east');
 setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
-ebsd_1 = loadEBSD(fname_1,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+%ebsd_1 = loadEBSD(fname_1,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_2 = loadEBSD(fname_2,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_3 = loadEBSD(fname_3,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+%ebsd_3 = loadEBSD(fname_3,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 % globally define crystal symmetry of phase of interest
-cs = ebsd_1(phase_of_interest).CS
+cs = ebsd_2(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_1 = x_section_correction(ebsd_1,'SPED','scan_rotation',90)
+%ebsd_1 = x_section_correction(ebsd_1,'SPED','scan_rotation',90)
 ebsd_2 = x_section_correction(ebsd_2,'SPED','scan_rotation',90)
-ebsd_3 = x_section_correction(ebsd_3,'SPED','scan_rotation',90)
+%ebsd_3 = x_section_correction(ebsd_3,'SPED','scan_rotation',90)
 %ebsd = dataset_rotation(ebsd,[0,0,90],'axis');
 
 %fibre_comp = define_fibre(reference_texture_component,cs)
 
-grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
-grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
+%grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
+%grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+%grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 %odf = make_ODF(ebsd)
 %odf_data= calcODF(ebsd(phase_of_interest).orientations,'halfwidth', 3*degree)
 
@@ -81,13 +81,13 @@ grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',5,'smoothin
 %plot_map(grains_1,'Deviation')
 %plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd_1,'phase')
-plot_map(grains_1,'phase')
-plot_map(grains_2,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+%plot_map(grains_1,'phase')
+%plot_map(grains_2,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-grain_dimension_hist(grains_2,'bin_size',0.0025,'max_size',0.1,'units','nm','max_percentage',5)
+%grain_dimension_hist(grains_2,'bin_size',0.0025,'max_size',0.1,'units','nm','max_percentage',5)
 
 orientation_deviation_histogram(ebsd_2,'phase_name','Monoclinic ZrO$$_2$$')
 
