@@ -46,7 +46,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   		scaling_factor = 1;
  	end
 
-	[omega,maj_ax,min_ax] = data_in.fitEllipse;
+	[omega,maj_ax,min_ax] = data_in.fitEllipse*scaling_factor;
   	ax_bin_size = scaling_factor*p.Results.bin_size;
   	max_axis_val = scaling_factor*p.Results.max_size;
   	maj_ax = maj_ax*2;
