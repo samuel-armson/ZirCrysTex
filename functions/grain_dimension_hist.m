@@ -88,7 +88,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
 
 
 
-  	scaling  = scaling_factor*ax_bin_size;
+  	scaling  = ax_bin_size;
   	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   	yticks = get(gca,'ytick');
   	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
