@@ -130,7 +130,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				if fibre_angles(fa) > 90
 					fibre_angles(fa) = 180 - fibre_angles(fa);
 				end
-				fa = fa+1
+				fa = fa+1;
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			colormap(gca,parula_red('increment',1));
@@ -201,7 +201,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				if fibre_angles(fa) > 90
 					fibre_angles(fa) = 180 - fibre_angles(fa);
 				end
-				fa = fa + 1 
+				fa = fa + 1;
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			colormap(gca,parula_red('increment',1));
