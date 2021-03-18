@@ -98,6 +98,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	end
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 
+	xlim([0 90])
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Frequency']);
 	set(gca, 'YTickMode', 'Auto');
