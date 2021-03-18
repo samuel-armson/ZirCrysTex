@@ -42,7 +42,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	Fig_Basal_angle_hist = figure('Name','Loading...');
 	figure(Fig_Basal_angle_hist);
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
-	numberOfBars = int(Discrete_color_quant_hist);
+	numberOfBars = round(Discrete_color_quant_hist);
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist
 	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1)
 	barColorMap = usable_colormap;
