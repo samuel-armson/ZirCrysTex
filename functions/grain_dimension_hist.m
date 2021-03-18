@@ -40,10 +40,15 @@ function gdh = grain_dimension_hist(data_in,varargin)
 	disp('Plotting 2D grain dimension histogram...')
 	disp('')
 
+  	if strcmp(p.Results.units,'nm') == 1
+  		scaling_factor = 1000;
+  	elseif strcmp(p.Results.units,'um') == 1
+  		scaling_factor = 1;
+ 	end
 
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
-  	ax_bin_size = p.Results.bin_size;
-  	max_axis_val = p.Results.max_size;
+  	ax_bin_size = scaling_factor*p.Results.bin_size;
+  	max_axis_val = scaling_factor*p.Results.max_size;
   	maj_ax = maj_ax*2;
   	min_ax = min_ax*2;
   
@@ -81,11 +86,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	caxis(cbarlimits);
   	xticks = get(gca,'xtick');
 
-  	if strcmp(p.Results.units,'nm') == 1
-  		scaling_factor = 1000;
-  	elseif strcmp(p.Results.units,'um') == 1
-  		scaling_factor = 1;
- 	end
+
 
   	scaling  = scaling_factor*ax_bin_size;
   	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
