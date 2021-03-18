@@ -81,9 +81,9 @@ grains_3 = create_grains(ebsd_3,'misorientation',10,'smallest_grain',5,'smoothin
 %plot_map(grains_1,'Deviation')
 %plot_map(ebsd,'Deviation','plot_key','off')
 %plot_map(ebsd_1,'phase')
-f1 = plot_map(grains_1,'phase')
-f2 = plot_map(grains_2,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-f3 = plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+plot_map(grains_1,'phase')
+plot_map(grains_2,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(grains_3,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
