@@ -72,10 +72,14 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		% Apply the color to this bar series.
 		if b > angle_histogram_highlight
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:),'FaceAlpha', 0.3);
+			disp('greater than')
+			disp(b)
 		else
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:));
+			disp(b)
 		end
 		hold on;
+		b=b+1
 	end
 
 	hold off;
