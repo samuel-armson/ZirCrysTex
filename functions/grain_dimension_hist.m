@@ -47,8 +47,8 @@ function gdh = grain_dimension_hist(data_in,varargin)
  	end
 
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
-  	ax_bin_size = scaling_factor*p.Results.bin_size;
-  	max_axis_val = scaling_factor*p.Results.max_size;
+  	ax_bin_size = p.Results.bin_size;
+  	max_axis_val = p.Results.max_size;
   	maj_ax = maj_ax.*2.*scaling_factor;
   	min_ax = min_ax.*2.*scaling_factor;
 
@@ -92,7 +92,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
 
 
 
-  	scaling  = ax_bin_size/scaling_factor;
+  	scaling  = ax_bin_size;
   	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   	yticks = get(gca,'ytick');
   	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
