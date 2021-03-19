@@ -49,8 +49,8 @@ function gdh = grain_dimension_hist(data_in,varargin)
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
   	ax_bin_size = p.Results.bin_size;
   	max_axis_val = p.Results.max_size;
-  	maj_ax = maj_ax.*2.*scaling_factor;
-  	min_ax = min_ax.*2.*scaling_factor;
+  	maj_ax = maj_ax*2*scaling_factor;
+  	min_ax = min_ax*2*scaling_factor;
 
   
   	for ax_val = 1 : length(maj_ax)
@@ -69,8 +69,8 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	Fig_2d_hist_as_res= figure('Name','Loading...');
   	figure(Fig_2d_hist_as_res);
 
-  	xlim([0 max_axis_val/scaling_factor])
-  	ylim([0 max_axis_val/scaling_factor])
+  	%xlim([0 max_axis_val/scaling_factor])
+  	%ylim([0 max_axis_val/scaling_factor])
  
   	hist_2d_normalised = (hist_2d.*relative_area)*100;
   
@@ -79,7 +79,7 @@ function gdh = grain_dimension_hist(data_in,varargin)
   	cb_new.Label.Interpreter = 'latex';
   	set(cb_new,'TickLabelInterpreter', 'latex');
   	colorTitleHandle = get(cb_new,'Label');
-  	set(colorTitleHandle ,'String','$\%$ of phase area', 'fontsize', 12);
+  	set(colorTitleHandle ,'String','$\%$ of phase area', 'fontsize', 8);
  
   	set(gcf,'Color','white');
   	set(gcf, 'InvertHardcopy', 'off');
