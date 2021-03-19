@@ -59,8 +59,8 @@ function gdh = grain_dimension_hist(data_in,varargin)
   
   	max_axis_vals = [max(maj_ax),max(min_ax)]
   	%max_axis_val = max(max_axis_vals)
-  	maj_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
-  	min_axis_bins = ((ax_bin_size-ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
+  	maj_axis_bins = ((ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
+  	min_axis_bins = ((ax_bin_size/2):ax_bin_size:(max_axis_val-ax_bin_size/2));
   	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/sum(ellipse_areas);
   	axis_bins = {maj_axis_bins min_axis_bins};
  
