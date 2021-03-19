@@ -87,7 +87,7 @@ grains_2 = create_grains(ebsd_2,'misorientation',10,'smallest_grain',2,'smoothin
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
-grain_dimension_hist(grains_2,'bin_size',1,'max_size',10,'units','nm','max_percentage',5)
+grain_dimension_hist(grains_2,'bin_size',5,'max_size',200,'units','nm','max_percentage',5)
 
 orientation_deviation_histogram(ebsd_2,'phase_name','Monoclinic ZrO$$_2$$')
 
