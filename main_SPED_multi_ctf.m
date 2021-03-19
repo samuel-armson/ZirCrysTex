@@ -87,6 +87,7 @@ plot_map(grains_2,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp
 %combine_figures(f2,f3)
 
 %grain_area_hist(grains1,'bin_size',1,'max_size',50,'units','nm')
+grain_dimension_hist_ellipse(grains_2,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 grain_dimension_hist(grains_2,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 
 orientation_deviation_histogram(ebsd_2,'phase_name','Monoclinic ZrO$$_2$$')
