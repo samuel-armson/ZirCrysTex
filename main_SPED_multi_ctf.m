@@ -71,7 +71,7 @@ ebsd_j_1TDa1_full = loadEBSD(j_1TDa1_full,CS_j_1TDa1,'interface','ctf','convertS
 ebsd_j_1TDa1_mono = loadEBSD(j_1TDa1_mono,CS_j_1TDa1,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_j_1TDa1_met = loadEBSD(j_1TDa1_met,CS_j_1TDa1,'interface','ctf','convertSpatial2EulerReferenceFrame');
 % globally define crystal symmetry of phase of interest
-cs = ebsd_MIBL_3_full(phase_of_interest).CS_MIBL_3
+cs = ebsd_MIBL_3_full(phase_of_interest).CS
 
 % Perform cross-section correction
 ebsd_MIBL_3_full = x_section_correction(ebsd_MIBL_3_full,'SPED','scan_rotation',90)
