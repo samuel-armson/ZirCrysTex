@@ -22,8 +22,6 @@ function cs_out = cs_loader(data_in,varargin)
 
 	cs_out = {'notIndexed'};
 
-	data_in = {'mono','suboxide','tet','metal','hydride','hematite','pt'}
-
 	for phase = 1 : length(data_in)
 		
 		if ismember(data_in(phase),{'mono','monoclinic','Monoclinic','Mono','MONO','MONOCLINIC','Monoclinic ZrO$$_2$$'}) == 1 
