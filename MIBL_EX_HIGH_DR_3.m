@@ -19,7 +19,7 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/MIBL EX HIGH DR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/MIBL EX HIGH DR 3/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 data_full = [pname 'MIBL EX HIGH DR 3 R_1.6_EE_0.4_more_phases_index400_or_1.ctf'];
