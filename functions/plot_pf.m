@@ -185,6 +185,17 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     	set(gcf,'position',[5 5 figure_width figure_height])
     	figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF no colour')
     	set(pf_figure,'Name',string(figure_id));
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	disp('ODF SHOULD PLOT')
+    	
 
 
 
