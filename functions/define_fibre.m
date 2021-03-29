@@ -1,4 +1,4 @@
-function d_f = define_fibre(texture_component,crys_sym,varargin)
+function d_f = define_fibre(texture_component,varargin)
 	%{
 	Returns fibre component which can be used by mTeX. Mainly to reduce the number of inputs required - only needs a texture
 	component in 1-D cell array format (eg [1,0,-3], [0,0,0,2], etc) and crystal symmetry of phase. By defualt, 
