@@ -114,15 +114,15 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
 	plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
 	
-	f = define_fibre(p.Results.ref_text_comp,'crys_sym','Monoclinic ZrO$$_$$2')
-	fibre_angles = angle(mono_in('Monoclinic ZrO$$_$$2').meanOrientation,f,'antipodal')./degree;
+	f = define_fibre(p.Results.ref_text_comp,'crys_sym','Monoclinic ZrO$$_2$$')
+	fibre_angles = angle(mono_in('Monoclinic ZrO$$_2$$').meanOrientation,f,'antipodal')./degree;
 	for fa = 1 : length(fibre_angles)
 		if fibre_angles(fa) > 90
 			fibre_angles(fa) = 180 - fibre_angles(fa);
 		end
 		fa = fa + 1 
 	end
-	plot(mono_in('Monoclinic ZrO$$_$$2'),fibre_angles)
+	plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
 	colormap(gca,purple_red(90));
 	Scale_bar_limits = [0 90]
 
