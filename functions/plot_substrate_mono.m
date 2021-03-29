@@ -108,7 +108,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 
 	
 	hold on
-	unitcell_overlay_ori_data = data_in(p.Results.phase_name)
+	unitcell_overlay_ori_data = substrate_in('HCP Zr')
 	crystal_diagram = crystalShape.hex(cs)
 	crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
 	cross_section_correction = rotation('axis',xvector,'angle',270*degree);
