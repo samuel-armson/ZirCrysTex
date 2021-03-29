@@ -47,7 +47,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	addOptional(p,'IPF_key', ipfHSVKey(cs.Laue));
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
-	parse(p,data_in,map_type,varargin{:});	
+	parse(p,substrate_in,mono_in,varargin{:});	
 
 	aspect_ratio_correction = 0.6
 
