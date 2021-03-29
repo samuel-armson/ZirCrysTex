@@ -1,7 +1,7 @@
 % Master File for running Zirconia_mTeX 
 
 % Select mTeX installation to use and start mTeX
-addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
+%addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
 addpath 'functions';
 addpath 'third_party_packages';
 % Define global variables
@@ -10,7 +10,7 @@ global cs
 global reference_texture_component
 global Sample_ID
 global pname
-%addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.2.8';
+addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.6.1';
 startup_mtex
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
@@ -54,9 +54,9 @@ ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
-grains_full = create_grains(ebsd_full,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
-grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_met = create_grains(ebsd_met,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
+%grains_full = create_grains(ebsd_full,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
+%grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+%grains_met = create_grains(ebsd_met,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
 
 odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))

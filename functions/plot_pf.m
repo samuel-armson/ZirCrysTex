@@ -110,7 +110,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:));
-					fibre_angles = angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp,'antipodal')./degree;
+					f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+					fibre_angles = angle(data_in(p.Results.phase_name).orientations,f,'antipodal')./degree;
 					for fa = 1 : length(fibre_angles)
 						if fibre_angles(fa) > 90
 							fibre_angles(fa) = 180 - fibre_angles(fa);
