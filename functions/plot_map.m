@@ -148,6 +148,8 @@ function pm = plot_map(data_in,map_type,varargin)
   			plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc)
   			colormap(gca,gray);
 		elseif strcmp(map_type,'phase')
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
 			plot(data_in('indexed'));
 			aspect_ratio_correction = 1.2
 			%hold on
