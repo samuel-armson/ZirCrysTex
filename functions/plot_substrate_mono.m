@@ -63,16 +63,18 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	map_figure = figure('Name','Map loading...');
 	newMtexFigure(map_figure)
 
+	f = define_fibre([0,0,0,2],'crys_sym',substrate_in('HCP Zr').CS)
+
 	aspect_ratio_correction = 0.6
-	fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree;
+	fibre_angles = angle(substrate_in('HCP Zr').meanOrientation,f,'antipodal')./degree;
 	for fa = 1 : length(fibre_angles)
 		if fibre_angles(fa) > 90
 			fibre_angles(fa) = 180 - fibre_angles(fa);
 		end
 		fa = fa + 1 
 	end
-	plot(data_in(p.Results.phase_name),fibre_angles)
-	colormap(gca,parula_red('increment',1));
+	plot(substrate_in(p.Results.phase_name),fibre_angles)
+	colormap(gca,purple_red(90));
 	Scale_bar_limits = [0 90]
 	caxis(Scale_bar_limits);
 		cb_new = mtexColorbar('location','southoutside')
@@ -104,18 +106,30 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	%hgt = findall(gca,'type','hgtransform')
 	%set(hgt,'visible','off')
 
-	if strcmp(p.Results.view_unit_cell, 'no') == 0
-		hold on
-		unitcell_overlay_ori_data = data_in(p.Results.phase_name)
-		crystal_diagram = crystalShape.hex(cs)
+	
+	hold on
+	unitcell_overlay_ori_data = data_in(p.Results.phase_name)
+	crystal_diagram = crystalShape.hex(cs)
 	crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
-	if strcmp(p.Results.view_unit_cell, 'CS') == 1
-		cross_section_correction = rotation('axis',xvector,'angle',270*degree);
-			crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
-		end
+	cross_section_correction = rotation('axis',xvector,'angle',270*degree);
+	crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
 	plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
-		hold off
+	
+	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+	fibre_angles = angle(mono_in('Monoclinic ZrO$$_$$2').meanOrientation,f,'antipodal')./degree;
+	for fa = 1 : length(fibre_angles)
+		if fibre_angles(fa) > 90
+			fibre_angles(fa) = 180 - fibre_angles(fa);
+		end
+		fa = fa + 1 
 	end
+	plot(mono_in('Monoclinic ZrO$$_$$2'),fibre_angles)
+	colormap(gca,purple_red(90));
+	Scale_bar_limits = [0 90]
+
+
+	hold off
+
 
 
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
