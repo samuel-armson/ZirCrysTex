@@ -30,20 +30,20 @@ function mul_mil = multi_miller(desired_pfs,varargin)
     mul_mil = [];
 	if argument_quant == 3
 		for iteration = 1:pf_quant
-			mil = define_miller(desired_pfs(iteration,:),'plot_type',p.Results.glob_plot_type);
+			mil = define_miller(desired_pfs(iteration,:),'crys_sym',p.Results.crys_sym,'plot_type',p.Results.glob_plot_type);
 			mul_mil = [mul_mil,mil];
 		end
 
 	elseif argument_quant == 4 && isa(desired_pfs(1,4),'double') == 1
 		for iteration = 1:pf_quant
-			mil = define_miller(desired_pfs(iteration,:),'plot_type',p.Results.glob_plot_type);
+			mil = define_miller(desired_pfs(iteration,:),'crys_sym',p.Results.crys_sym,'plot_type',p.Results.glob_plot_type);
 			mul_mil = [mul_mil,mil];
 		end
 	
     else
 		for iteration = 1:pf_quant
 			ind_plot_type = desired_pfs(iteration,end);
-			mil = define_miller(str2double(desired_pfs(iteration,1:(argument_quant-1))),'plot_type',ind_plot_type);
+			mil = define_miller(str2double(desired_pfs(iteration,1:(argument_quant-1))),'crys_sym',p.Results.crys_sym,'plot_type',ind_plot_type);
 			mul_mil = [mul_mil,mil];
 		end
 	end
