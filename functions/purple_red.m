@@ -257,11 +257,11 @@ cm = [[0.403922,0.000000,0.121569],
        [0.968627,0.956863,0.976471]];
 
 if nargin < 1
-       cm_data = cm;
+    cm_data = cm;
 else
-       hsv=rgb2hsv(cm);
-       cm_data=interp1(linspace(0,1,size(cm,1)),hsv,linspace(0,1,m));
-       cm_data=hsv2rgb(cm_data);
+    hsv=rgb2hsv(cm);
+    cm_data=interp1(linspace(0,1,size(cm,1)),hsv,linspace(0,1,m));
+    cm_data=hsv2rgb(cm_data);
 
 end
 end
