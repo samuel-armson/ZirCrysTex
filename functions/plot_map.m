@@ -134,8 +134,11 @@ function pm = plot_map(data_in,map_type,varargin)
 				fa = fa+1;
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
-			colormap(gca,parula_red('increment',1));
-			colormap(gca,purple_red(90));
+			if strcmp(p.Results.phase_name,'HCP Zr')
+				colormap(gca,purple_red(90));
+			else
+				colormap(gca,parula_red('increment',1));
+			end
 			%Scale_bar_limits = [0 90]
 			%caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
@@ -209,8 +212,11 @@ function pm = plot_map(data_in,map_type,varargin)
 				fa = fa + 1;
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
-			colormap(gca,parula_red('increment',1));
-			colormap(gca,purple_red(90));
+			if strcmp(p.Results.phase_name,'HCP Zr')
+				colormap(gca,purple_red(90));
+			else
+				colormap(gca,parula_red('increment',1));
+			end
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar('location','southoutside')
