@@ -94,6 +94,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
   				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1);
   				barColorMap = usable_colormap;
+  				f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
   				fibre_mis_angles = angle(ebsd_full(p.Results.phase_name).orientations,f,'antipodal')./degree;
    
   				for b = 1 : numberOfBars
@@ -198,7 +199,8 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			aspect_ratio_correction = 0.6
-			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp,'antipodal')./degree;
+			f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,f,'antipodal')./degree;
 			for fa = 1 : length(fibre_angles)
 				if fibre_angles(fa) > 90
 					fibre_angles(fa) = 180 - fibre_angles(fa);

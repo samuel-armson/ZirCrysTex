@@ -47,11 +47,12 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
 	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1);
 	barColorMap = usable_colormap;
+	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
 	
 	if isa(data_in, 'EBSD') == 1
-		fibre_mis_angles = angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp)./degree;
+		fibre_mis_angles = angle(data_in(p.Results.phase_name).orientations,f)./degree;
 	elseif isa(data_in,'grain2d') == 1
-		fibre_mis_angles = angle(data_in(p.Results.phase_name).meanOrientation,p.Results.ref_text_comp)./degree;
+		fibre_mis_angles = angle(data_in(p.Results.phase_name).meanOrientation,f)./degree;
 	else
 		disp('Input Data must be EBSD or grain2d data type!')
 	end
