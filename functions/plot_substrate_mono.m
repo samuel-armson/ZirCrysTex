@@ -58,7 +58,6 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	disp('')
 
 	figure_width = p.Results.figure_width;
-	map_type = p.Results.map_type;
 	
 	map_figure = figure('Name','Map loading...');
 	newMtexFigure(map_figure)
