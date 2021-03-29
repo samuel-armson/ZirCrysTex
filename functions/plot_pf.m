@@ -109,7 +109,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			%COLOUR EACH POINT ACCORDING TO DEVIATION FROM REFERENCE TEXTURE
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
-					miller_val = multi_miller(p.Results.desired_pfs(i,:));
+					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
 					f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
 					fibre_angles = angle(data_in(p.Results.phase_name).orientations,f,'antipodal')./degree;
 					for fa = 1 : length(fibre_angles)
