@@ -62,18 +62,22 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	map_figure = figure('Name','Map loading...');
 	newMtexFigure(map_figure)
 
-	f = define_fibre([0,0,0,2],'crys_sym',substrate_in('HCP Zr').CS)
+	set(gca,'Color','black');
+	set(gcf, 'InvertHardcopy', 'off');
+	set(gca,'linewidth',1);
+
+	m_f = define_fibre([0,0,0,2],'crys_sym',substrate_in('HCP Zr').CS)
 
 	aspect_ratio_correction = 0.6
-	fibre_angles = angle(substrate_in('HCP Zr').meanOrientation,f,'antipodal')./degree;
+	m_fibre_angles = angle(substrate_in('HCP Zr').meanOrientation,m_f,'antipodal')./degree;
 	for fa = 1 : length(fibre_angles)
 		if fibre_angles(fa) > 90
 			fibre_angles(fa) = 180 - fibre_angles(fa);
 		end
 		fa = fa + 1 
 	end
-	plot(substrate_in(p.Results.phase_name),fibre_angles)
-	colormap(gca,purple_red(90));
+	ax1 = plot(substrate_in(p.Results.phase_name),m_fibre_angles)
+	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
 	caxis(Scale_bar_limits);
 		cb_new = mtexColorbar('location','southoutside')
@@ -88,7 +92,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		end
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-	x_label = xlabel(cb_new, titleString,'FontSize',8)
+	x_label = xlabel(cb_new, titleString,'FontSize',8,'TickLabelInterpreter', 'latex')
 	set(cb_new,'TickLabelInterpreter', 'latex')
 	axesHandles = findall(map_figure,'type','axes');
 	axes_props = get(axesHandles,'position')
@@ -98,9 +102,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
 	%hold off
 
-	set(gca,'Color','black');
-	set(gcf, 'InvertHardcopy', 'off');
-	set(gca,'linewidth',1);
+	
 	%Uncomment lines below to remove scale bar 
 	%hgt = findall(gca,'type','hgtransform')
 	%set(hgt,'visible','off')
@@ -122,19 +124,18 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		end
 		fa = fa + 1 
 	end
-	plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
-	colormap(gca,purple_red(90));
+	ax2 = plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
+	colormap(ax2,purple_red(90));
 	Scale_bar_limits = [0 90]
 
-
-	hold off
-
-
+	linkaxes([ax1,ax2])
 
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
     set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
+	hold off
 
 	pm = map_figure
 
