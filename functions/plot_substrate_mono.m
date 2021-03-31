@@ -77,7 +77,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		fa = fa + 1 
 	end
 	ax1 = axes
-	plot(ax1,substrate_in('HCP Zr'),m_fibre_angles)
+	plot(substrate_in('HCP Zr'),m_fibre_angles)
 	hold on
 	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
@@ -117,7 +117,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
 	cross_section_correction = rotation('axis',xvector,'angle',270*degree);
 	crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
-	plot(ax1,unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
+	plot(unitcell_overlay_ori_data.centroid + crystal_diagram_grains,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
 	
 	f = define_fibre(p.Results.ref_text_comp,'crys_sym',mono_in('Monoclinic ZrO$$_2$$').CS)
 	fibre_angles = angle(mono_in('Monoclinic ZrO$$_2$$').meanOrientation,f,'antipodal')./degree;
@@ -128,7 +128,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		fa = fa + 1 
 	end
 	ax2 = axes;
-	plot(ax2,mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
+	plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
 	colormap(ax2,parula_red('increment',1));
 	Scale_bar_limits = [0 90]
 	cb_new_2 = mtexColorbar(ax2,'location','southoutside')
