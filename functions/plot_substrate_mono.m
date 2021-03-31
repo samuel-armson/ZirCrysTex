@@ -77,6 +77,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		fa = fa + 1 
 	end
 	plot(substrate_in(p.Results.phase_name),m_fibre_angles)
+	hold on
 	ax1 = map_figure.CurrentAxes;
 	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
@@ -95,9 +96,10 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 	x_label = xlabel(cb_new_1,titleString,'FontSize',8)
 	set(cb_new_1,'TickLabelInterpreter', 'latex')
-	axesHandles = findall(map_figure,'type','axes');
-	axes_props = get(axesHandles,'position')
-	aspect_ratio = axes_props(3)/axes_props(4)
+	
+	%axesHandles = findall(map_figure,'type','axes');
+	%axes_props = get(axesHandles,'position')
+	%aspect_ratio = axes_props(3)/axes_props(4)
 	%hold on
 	%plot(gB,'linecolor','black','linewidth',3,'micronBar','off');
 	%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
@@ -109,7 +111,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	%set(hgt,'visible','off')
 
 	
-	hold on
+	
 	unitcell_overlay_ori_data = substrate_in('HCP Zr')
 	crystal_diagram = crystalShape.hex(substrate_in('HCP Zr').CS)
 	crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
