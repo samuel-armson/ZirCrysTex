@@ -93,7 +93,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	end
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-	x_label = xlabel(cb_new_1,titleString,'FontSize',8)
+	%x_label = xlabel(cb_new_1,titleString,'FontSize',8)
 	set(cb_new_1,'TickLabelInterpreter', 'latex')
 	axesHandles = findall(map_figure,'type','axes');
 	axes_props = get(axesHandles,'position')
