@@ -76,7 +76,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		end
 		fa = fa + 1 
 	end
-	ax1 = plot(substrate_in(p.Results.phase_name),m_fibre_angles)
+	plot(substrate_in(p.Results.phase_name),m_fibre_angles)
+	ax1 = map_figure.CurrentAxes;
 	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
 	caxis(Scale_bar_limits);
@@ -124,7 +125,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		end
 		fa = fa + 1 
 	end
-	ax2 = plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
+	plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
+	ax2 = map_figure.CurrentAxes;
 	colormap(ax2,purple_red(90));
 	Scale_bar_limits = [0 90]
 

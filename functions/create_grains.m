@@ -41,7 +41,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	disp('Removing small grains...')
   	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	
-  	if strcmp(phase_of_interest,'HCP Zr') == 1
+  	if strcmp(phase_of_interest,'Not really') == 1
   		disp('Filling non-indexed points...')
   		ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
   		disp('Cleaning grains...')
