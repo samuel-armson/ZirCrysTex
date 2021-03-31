@@ -135,6 +135,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	cb_new_2.Label.Interpreter = 'latex';
 
 	linkaxes([ax1,ax2])
+	set([ax1,ax2],'Position',[.17 .11 .685 .815]);
 
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
     set(groot,'defaulttextinterpreter','latex');
