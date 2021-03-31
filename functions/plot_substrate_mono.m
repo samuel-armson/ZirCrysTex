@@ -76,7 +76,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		end
 		fa = fa + 1 
 	end
-	plot(substrate_in(p.Results.phase_name),m_fibre_angles)
+	plot(substrate_in('HCP Zr'),m_fibre_angles)
 	hold on
 	ax1 = map_figure.CurrentAxes;
 	colormap(ax1,purple_red(90));
@@ -94,7 +94,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	end
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-	x_label = xlabel(cb_new1,titleString,'FontSize',8)
+	%x_label = xlabel(cb_new1,titleString,'FontSize',8)
 	set(cb_new1,'TickLabelInterpreter', 'latex')
 	
 	%axesHandles = findall(map_figure,'type','axes');
