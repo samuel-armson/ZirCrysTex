@@ -82,8 +82,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
 	caxis(Scale_bar_limits);
-	cb_new_1 = mtexColorbar(ax1,'location','southoutside')
-	cb_new_1.Label.Interpreter = 'latex';
+	cb_new1 = mtexColorbar(ax1,'location','southoutside')
+	cb_new1.Label.Interpreter = 'latex';
 	titleString =  "$$\left\{"
 	for increment = 1:length(p.Results.ref_text_comp)
 		if p.Results.ref_text_comp(increment) < 0
@@ -94,8 +94,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	end
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-	x_label = xlabel(cb_new_1,titleString,'FontSize',8)
-	set(cb_new_1,'TickLabelInterpreter', 'latex')
+	x_label = xlabel(cb_new1,titleString,'FontSize',8)
+	set(cb_new1,'TickLabelInterpreter', 'latex')
 	
 	%axesHandles = findall(map_figure,'type','axes');
 	%axes_props = get(axesHandles,'position')
