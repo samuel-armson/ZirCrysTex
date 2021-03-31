@@ -81,8 +81,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	colormap(ax1,purple_red(90));
 	Scale_bar_limits = [0 90]
 	caxis(Scale_bar_limits);
-	cb_new = mtexColorbar('location','southoutside')
-	cb_new.Label.Interpreter = 'latex';
+	cb_new_1 = mtexColorbar(ax1,'location','southoutside')
+	cb_new_1.Label.Interpreter = 'latex';
 	titleString =  "$$\left\{"
 	for increment = 1:length(p.Results.ref_text_comp)
 		if p.Results.ref_text_comp(increment) < 0
@@ -94,7 +94,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 	x_label = xlabel(cb_new, titleString,'FontSize',8)
-	set(cb_new,'TickLabelInterpreter', 'latex')
+	set(cb_new_1,'TickLabelInterpreter', 'latex')
 	axesHandles = findall(map_figure,'type','axes');
 	axes_props = get(axesHandles,'position')
 	aspect_ratio = axes_props(3)/axes_props(4)
@@ -129,6 +129,8 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	ax2 = map_figure.CurrentAxes;
 	colormap(ax2,purple_red(90));
 	Scale_bar_limits = [0 90]
+	cb_new_2 = mtexColorbar(ax2,'location','southoutside')
+	cb_new_2.Label.Interpreter = 'latex';
 
 	linkaxes([ax1,ax2])
 
