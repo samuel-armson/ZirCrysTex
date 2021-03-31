@@ -93,7 +93,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	end
 		
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
-	x_label = xlabel(cb_new_1, titleString,'FontSize',8)
+	x_label = xlabel(cb_new_1,titleString,'FontSize',8)
 	set(cb_new_1,'TickLabelInterpreter', 'latex')
 	axesHandles = findall(map_figure,'type','axes');
 	axes_props = get(axesHandles,'position')
@@ -127,7 +127,7 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 	end
 	plot(mono_in('Monoclinic ZrO$$_2$$'),fibre_angles)
 	ax2 = map_figure.CurrentAxes;
-	colormap(ax2,purple_red(90));
+	colormap(ax2,parula_red('increment',1);
 	Scale_bar_limits = [0 90]
 	cb_new_2 = mtexColorbar(ax2,'location','southoutside')
 	cb_new_2.Label.Interpreter = 'latex';
