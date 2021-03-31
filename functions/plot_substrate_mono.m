@@ -70,9 +70,9 @@ function pm = plot_substrate_mono(substrate_in,mono_in,varargin)
 
 	aspect_ratio_correction = 0.6
 	m_fibre_angles = angle(substrate_in('HCP Zr').meanOrientation,m_f,'antipodal')./degree;
-	for fa = 1 : length(fibre_angles)
-		if fibre_angles(fa) > 90
-			fibre_angles(fa) = 180 - fibre_angles(fa);
+	for fa = 1 : length(m_fibre_angles)
+		if m_fibre_angles(fa) > 90
+			m_fibre_angles(fa) = 180 - m_fibre_angles(fa);
 		end
 		fa = fa + 1 
 	end
