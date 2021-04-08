@@ -47,6 +47,9 @@ ebsd_met = loadEBSD(data_met,CS_met,'interface','ctf','convertSpatial2EulerRefer
 
 % globally define crystal symmetry of phase of interest
 cs = ebsd_full(phase_of_interest).CS
+cs_tet = ebsd_full('Tetragonal ZrO$$_2$$').CS
+cs_met = ebsd_full('HCP Zr').CS
+
 
 mono_odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
 mono_odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
@@ -61,8 +64,8 @@ met_odf_data= calcODF(ebsd_met('HCP Zr').orientations,'halfwidth', 3*degree)
 met_desired_pole_figures = [[0,0,0,2,"direction"]];
 
 plot_pf(mono_odf_data,mono_desired_pole_figures)
-plot_pf(tet_odf_data,tet_desired_pole_figures)
-plot_pf(met_odf_data,met_desired_pole_figures)
+plot_pf(tet_odf_data,tet_desired_pole_figures,'crys_sym',cs_tet)
+plot_pf(met_odf_data,met_desired_pole_figures,'crys_sym',cs_met)
 
 
 %% Sign off
