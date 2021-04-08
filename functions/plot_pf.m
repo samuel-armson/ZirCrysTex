@@ -150,7 +150,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			else
 				%COLOUR EACH POINT BLACK
 				for i=1:axes_quant
-					miller_val = multi_miller(p.Results.desired_pfs(i,:));
+					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
 					plotPDF(data_in(p.Results.phase_name).orientations,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
@@ -168,7 +168,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	elseif isa(data_in,'ODF') == 1
 		for i=1:axes_quant
-			miller_val = multi_miller(p.Results.desired_pfs(i,:));
+			miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
 			plotPDF(data_in,miller_val,'grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 			axes_title = miller_latex(p.Results.desired_pfs(i,:));
 			title(axes_title,'FontSize',8);
