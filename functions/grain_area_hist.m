@@ -106,13 +106,12 @@ function gah = grain_area_hist(data_in,varargin)
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
 	if strcmp(p.Results.units,'nm') == 1 
-		scaling = 1000000;
 		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
 	elseif strcmp(p.Results.units,'um') == 1
-		scaling = 10;
 		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
-	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+	%newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+  newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
 	set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
