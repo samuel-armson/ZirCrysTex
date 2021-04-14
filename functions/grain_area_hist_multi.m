@@ -91,7 +91,7 @@ function gah = grain_area_hist(data_in,varargin)
     end
     
     if strcmp(p.Results.plot_type,'bar') == 0
-      plot(x_vals,y_vals,'label',b)
+      plot(x_vals,y_vals,'DisplayName',b)
     end
   end	 
 
