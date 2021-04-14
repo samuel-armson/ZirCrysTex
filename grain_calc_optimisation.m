@@ -55,9 +55,9 @@ grains_mono_1 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'
 grains_mono_2 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',10,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 grainsets = {grains_mono_1,grains_mono_2}
 
-monoset = grainsets(1)
-disp(monoset(2))
-disp(monoset(2).area)
+monoset = grainsets{1,1}
+disp(monoset)
+disp(monoset.area)
 
 %plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
