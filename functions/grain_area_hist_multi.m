@@ -52,7 +52,7 @@ function gah = grain_area_hist(data_in,varargin)
 
   for grainset = 1:length(data_in)
 
-    subdata = data_in{grainset,1}
+    subdata = data_in{1,grainset}
   	grain_areas = subdata.area*scaling_factor;
     aspect_ratios = subdata.aspectRatio;
     largest_grain = max(grain_areas);
