@@ -54,7 +54,7 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
-grain_area_hist(grains_mono,'bin_size',100,'units','nm','max_percentage',20,'plot_type','bar')
+grain_area_hist(grains_mono,'bin_size',100,'units','nm','max_percentage',20,'plot_type','line')
 
 
 %% Sign off
