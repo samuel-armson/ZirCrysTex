@@ -109,8 +109,19 @@ function gah = grain_area_hist(data_in,varargin)
 	elseif strcmp(p.Results.units,'um') == 1
 		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
+
 	newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
 	set(gca,'xticklabel',newlabels);
+
+  a2 = axes('XAxisLocation', 'Top')
+  sqrtlabels = arrayfun(@(x) sprintf('%.0f', sqrt(x)), xticks, 'un', 0);
+  % Hide second plot.
+  set(a2, 'color', 'none')
+  set(a2, 'XTick', [])
+  % Set scala for second Y.
+  set(a2, 'xticklabel',sqrtlabels)
+  xlabel(['Grain area$$^{0.5}$$ (nm)'],'Interpreter','latex');
+
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
