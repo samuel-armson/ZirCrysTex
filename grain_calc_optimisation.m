@@ -69,7 +69,8 @@ plot_map(grains_mono_3,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text
 plot_map(grains_mono_5,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
-grain_area_hist_multi(grainsets,'bin_size',100,'units','nm','max_percentage',20,'plot_type','line')
+%%
+grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',20,'plot_type','line')
 
 
 %% Sign off
