@@ -91,7 +91,8 @@ function gah = grain_area_hist(data_in,varargin)
     end
     
     if strcmp(p.Results.plot_type,'bar') == 0
-      plot(x_vals,y_vals,'DisplayName',num2str(grainset))
+      plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',2)
+      plot1.Color(4) = 0.5;
     end
   end	 
 
@@ -126,7 +127,7 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('1D grain area histogram plotted.')
 	disp('')
   
-
+%gah = plot1
 end
 
 
