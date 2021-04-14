@@ -89,9 +89,9 @@ function gah = grain_area_hist(data_in,varargin)
   end
   
   if strcmp(p.Results.plot_type,'bar') == 0
-    ax1 = grain_size_hist.add_subplot(111)
+    ax1 = axes(subplot(111))
     plot(ax_1,x_vals,y_vals)
-    ax2 = grain_size_hist.add_subplot(111)
+    ax2 = axes(subplot(111))
     plot(ax_2,x_vals,y_vals)
     ax2.XAxisLocation = 'top';
     ax2.Color = 'none';
