@@ -39,14 +39,15 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 		[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param);
 	end
 	disp('Removing small grains...')
+  	
   	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	
-  	if strcmp(phase_of_interest,'Not really') == 1
+  	if strcmp(p.Results.fill_gaps,'no') == 0
   		disp('Filling non-indexed points...')
   		ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
   		disp('Cleaning grains...')
   		[grains_clean,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell');
-  		ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
+  		%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
   	else
   		grains_clean = grains_dirty
   	end
