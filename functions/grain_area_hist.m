@@ -74,6 +74,7 @@ function gah = grain_area_hist(data_in,varargin)
     if strcmp(p.Results.plot_type, 'bar') == 1
       handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
     else
+      disp(b)
       x_vals(end+1) = mid_point(b)
       y_vals(end+1) = (counts(b)/total_area)*100
     end
