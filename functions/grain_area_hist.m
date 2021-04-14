@@ -52,8 +52,8 @@ function gah = grain_area_hist(data_in,varargin)
   aspect_ratios = data_in.aspectRatio;
   largest_grain = max(grain_areas);
   total_area = sum(grain_areas,'double');
-  bin_size = p.Results.bin_size*scaling_factor;
-  max_size = p.Results.max_size*scaling_factor;
+  bin_size = p.Results.bin_size;
+  max_size = p.Results.max_size;
   max_percentage = p.Results.max_percentage;
 
   grain_size_hist = figure('Name','Loading...');
@@ -89,7 +89,7 @@ function gah = grain_area_hist(data_in,varargin)
     hold on;
   end
   
-  if strcmp(p.Results.plot_type, 'bar') == 0
+  if strcmp(p.Results.plot_type,'bar') == 0
     plot(x_vals,y_vals)
   end	 
 
