@@ -41,6 +41,8 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('Plotting 1D grain area histogram...')
 	disp('')
 
+  grain_size_hist = figure('Name','Loading...');
+  figure(grain_size_hist);
 
   if strcmp(p.Results.units,'nm') == 1
     scaling_factor = 1000000;
@@ -57,9 +59,6 @@ function gah = grain_area_hist(data_in,varargin)
     bin_size = p.Results.bin_size;
     max_size = p.Results.max_size;
     max_percentage = p.Results.max_percentage;
-
-    grain_size_hist = figure('Name','Loading...');
-    figure(grain_size_hist);
 
     bin_quant = largest_grain/bin_size;
     numberOfBars = bin_quant
