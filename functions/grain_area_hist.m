@@ -109,9 +109,9 @@ function gah = grain_area_hist(data_in,varargin)
 	elseif strcmp(p.Results.units,'um') == 1
 		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
-	%newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
   %newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
-	%set(gca,'xticklabel',newlabels);
+	set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
