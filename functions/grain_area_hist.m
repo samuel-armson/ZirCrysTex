@@ -89,14 +89,21 @@ function gah = grain_area_hist(data_in,varargin)
   end
   
   if strcmp(p.Results.plot_type,'bar') == 0
-    [hAx,hLine1,hLine2] = plotyy(x_vals,y_vals,x_vals,y_vals)
+    ax1 = axes(tiledlayout(1,1))
+    plot(ax_1,x_vals,y_vals)
+    ax2 = axes(tiledlayout(1,1))
+    plot(ax_2,x_vals,y_vals)
+    ax2.XAxisLocation = 'top';
+    ax2.Color = 'none';
+    ax1.Box = 'off';
+    ax2.Box = 'off';
   end	 
 
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
   
 	
-	ylabel(hAx(1),['$\%$ Total area of phase'],'Interpreter','latex');
+	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
 	%xlim([0 max_size]);
@@ -105,15 +112,13 @@ function gah = grain_area_hist(data_in,varargin)
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
 	if strcmp(p.Results.units,'nm') == 1 
-		xlabel(hAx(1)['Grain area (nm$^2$)'],'Interpreter','latex');
+		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
 	elseif strcmp(p.Results.units,'um') == 1
-		xlabel(hAx(1)['Grain area (um$^2$)'],'Interpreter','latex');
+		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
 
 	newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
-  sqrtlabels = arrayfun(@(x) sprintf('%.0f', sqrt(x)), xticks, 'un', 0);
-	set(hAx(1),'xticklabel',newlabels);
-  set(hAx(2),'xticklabel',sqrtlabels);
+	set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
