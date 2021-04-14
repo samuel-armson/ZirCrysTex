@@ -48,48 +48,51 @@ function gah = grain_area_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
-	grain_areas = data_in.area*scaling_factor;
-  aspect_ratios = data_in.aspectRatio;
-  largest_grain = max(grain_areas);
-  total_area = sum(grain_areas,'double');
-  bin_size = p.Results.bin_size;
-  max_size = p.Results.max_size;
-  max_percentage = p.Results.max_percentage;
+  for grainset = 1:length(data_in)
 
-  grain_size_hist = figure('Name','Loading...');
-  figure(grain_size_hist);
+  	grain_areas = data_in(grainset).area*scaling_factor;
+    aspect_ratios = data_in(grainset).aspectRatio;
+    largest_grain = max(grain_areas);
+    total_area = sum(grain_areas,'double');
+    bin_size = p.Results.bin_size;
+    max_size = p.Results.max_size;
+    max_percentage = p.Results.max_percentage;
 
-  bin_quant = largest_grain/bin_size;
-  numberOfBars = bin_quant
-  
-  x_vals = []
-  y_vals = []
+    grain_size_hist = figure('Name','Loading...');
+    figure(grain_size_hist);
 
-  for b = 1 : numberOfBars
-    % Plot one single bar as a separate bar series.
-    counts(b)=0;
-    upper_bound(b) = b*largest_grain/bin_quant;
-    lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
-    mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
-    for grain_id = 1 : length(grain_areas)
-      if grain_areas(grain_id)>lower_bound(b) & grain_areas(grain_id)<upper_bound(b)
-        counts(b) = counts(b) + grain_areas(grain_id);
+    bin_quant = largest_grain/bin_size;
+    numberOfBars = bin_quant
+    
+    x_vals = []
+    y_vals = []
+
+    for b = 1 : numberOfBars
+      % Plot one single bar as a separate bar series.
+      counts(b)=0;
+      upper_bound(b) = b*largest_grain/bin_quant;
+      lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
+      mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
+      for grain_id = 1 : length(grain_areas)
+        if grain_areas(grain_id)>lower_bound(b) & grain_areas(grain_id)<upper_bound(b)
+          counts(b) = counts(b) + grain_areas(grain_id);
+        end
       end
-    end
-    %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
-    if strcmp(p.Results.plot_type, 'bar') == 1
-      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
-    else
-      x_vals(end+1) = mid_point(b)
-      y_vals(end+1) = (counts(b)/total_area)*100
-    end
+      %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
+      if strcmp(p.Results.plot_type, 'bar') == 1
+        handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
+      else
+        x_vals(end+1) = mid_point(b)
+        y_vals(end+1) = (counts(b)/total_area)*100
+      end
 
 
-    hold on;
-  end
-  
-  if strcmp(p.Results.plot_type,'bar') == 0
-    plot(x_vals,y_vals)
+      hold on;
+    end
+    
+    if strcmp(p.Results.plot_type,'bar') == 0
+      plot(x_vals,y_vals)
+    end
   end	 
 
 	hold off;
