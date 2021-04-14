@@ -100,8 +100,8 @@ function gah = grain_area_hist(data_in,varargin)
 	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
-	xlim([0 max_size]);
-	ylim([0 max_percentage]);
+	%xlim([0 max_size]);
+	%ylim([0 max_percentage]);
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
@@ -111,8 +111,8 @@ function gah = grain_area_hist(data_in,varargin)
 		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
 	%newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-  newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
-	set(gca,'xticklabel',newlabels);
+  %newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
+	%set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
