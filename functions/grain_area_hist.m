@@ -27,6 +27,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addOptional(p,'max_size',0.01);
 	addOptional(p,'max_percentage',50);
 	addOptional(p,'units','nm')
+  addOptional(p,'plot_type','bar')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -55,6 +56,8 @@ function gah = grain_area_hist(data_in,varargin)
   bin_quant = largest_grain/bin_size;
   numberOfBars = bin_quant;
   
+  x_vals = {}
+  y_vals = {}
 
   for b = 1 : numberOfBars
     % Plot one single bar as a separate bar series.
@@ -66,17 +69,26 @@ function gah = grain_area_hist(data_in,varargin)
       if grain_areas(grain_id)>lower_bound(b) & grain_areas(grain_id)<upper_bound(b)
         counts(b) = counts(b) + grain_areas(grain_id);
       end
-
     end
     %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
-    handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
-    % Apply the color to this bar series.
+    if strcmp(p.Results.plot_type, 'bar') == 1
+      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
+    else
+      x_vals(end+1) = mid_point(b)
+      y_vals(end+1) = (counts(b)/total_area)*100
+    end
+
+
     hold on;
   end
-  	 
+  
+  if strcmp(p.Results.plot_type, 'bar') == 0
+    plot(x_vals,y_vals)
+  end	 
+
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
- 
+  
 	
 	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
