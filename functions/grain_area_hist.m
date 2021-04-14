@@ -62,8 +62,8 @@ function gah = grain_area_hist(data_in,varargin)
   bin_quant = largest_grain/bin_size;
   numberOfBars = bin_quant
   
-  x_vals = {}
-  y_vals = {}
+  x_vals = []
+  y_vals = []
 
   for b = 1 : numberOfBars
     % Plot one single bar as a separate bar series.
