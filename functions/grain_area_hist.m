@@ -42,66 +42,67 @@ function gah = grain_area_hist(data_in,varargin)
 
 
 	grain_areas = data_in.area;
-  	aspect_ratios = data_in.aspectRatio;
-  	largest_grain = max(grain_areas);
-  	total_area = sum(grain_areas,'double');
-  	bin_size = p.Results.bin_size;
-  	max_size = p.Results.max_size;
-  	max_percentage = p.Results.max_percentage;
+  aspect_ratios = data_in.aspectRatio;
+  largest_grain = max(grain_areas);
+  total_area = sum(grain_areas,'double');
+  bin_size = p.Results.bin_size;
+  max_size = p.Results.max_size;
+  max_percentage = p.Results.max_percentage;
 
-  	grain_size_hist = figure('Name','Loading...');
-  	figure(grain_size_hist);
+  grain_size_hist = figure('Name','Loading...');
+  figure(grain_size_hist);
 
-  	bin_quant = largest_grain/bin_size;
-  	numberOfBars = bin_quant;
-   
+  bin_quant = largest_grain/bin_size;
+  numberOfBars = bin_quant;
+  
+
   for b = 1 : numberOfBars
-      % Plot one single bar as a separate bar series.
-      counts(b)=0;
-      upper_bound(b) = b*largest_grain/bin_quant;
-      lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
-      mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
-      for grain_id = 1 : length(grain_areas)
-        if grain_areas(grain_id)>lower_bound(b) & grain_areas(grain_id)<upper_bound(b)
-          counts(b) = counts(b) + grain_areas(grain_id);
-        end
- 
+    % Plot one single bar as a separate bar series.
+    counts(b)=0;
+    upper_bound(b) = b*largest_grain/bin_quant;
+    lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
+    mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
+    for grain_id = 1 : length(grain_areas)
+      if grain_areas(grain_id)>lower_bound(b) & grain_areas(grain_id)<upper_bound(b)
+        counts(b) = counts(b) + grain_areas(grain_id);
       end
-      %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
-      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
-      % Apply the color to this bar series.
-      hold on;
-  	end
+
+    end
+    %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
+    handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
+    % Apply the color to this bar series.
+    hold on;
+  end
   	 
-  	hold off;
-  	set(grain_size_hist,'Name','1D Grain Area Histogram');
-   
-  	
-  	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
-  	set(gca, 'YTickMode', 'Auto');
-  	set(gca, 'XTickMode', 'Auto');
-  	xlim([0 max_size]);
-  	ylim([0 max_percentage]);
-  	set(gcf, 'color','white');
-  	set(gcf, 'InvertHardcopy', 'off');
-  	xticks = get(gca,'xtick');
-  	if strcmp(p.Results.units,'nm') == 1 
-  		scaling = 1000000;
-  		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
-  	elseif strcmp(p.Results.units,'um') == 1
-  		scaling = 10;
-  		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
-  	end
-  	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-  	set(gca,'xticklabel',newlabels);
-  	set(gca,'XMinorTick','on','YMinorTick','on');
-  	set(gca,'TickDir','out');
-  	set(findall(gcf,'-property','FontSize'),'FontSize',8)
-  	set(groot,'defaultAxesTickLabelInterpreter','latex');
-  	set(groot,'defaulttextinterpreter','latex');
+	hold off;
+	set(grain_size_hist,'Name','1D Grain Area Histogram');
+ 
+	
+	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
+	set(gca, 'YTickMode', 'Auto');
+	set(gca, 'XTickMode', 'Auto');
+	xlim([0 max_size]);
+	ylim([0 max_percentage]);
+	set(gcf, 'color','white');
+	set(gcf, 'InvertHardcopy', 'off');
+	xticks = get(gca,'xtick');
+	if strcmp(p.Results.units,'nm') == 1 
+		scaling = 1000000;
+		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
+	elseif strcmp(p.Results.units,'um') == 1
+		scaling = 10;
+		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
+	end
+	newlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+	set(gca,'xticklabel',newlabels);
+	set(gca,'XMinorTick','on','YMinorTick','on');
+	set(gca,'TickDir','out');
+	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+	set(groot,'defaultAxesTickLabelInterpreter','latex');
+	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 
-  	disp('')
+  disp('')
 	disp('1D grain area histogram plotted.')
 	disp('')
   
