@@ -60,7 +60,7 @@ function gah = grain_area_hist(data_in,varargin)
   figure(grain_size_hist);
 
   bin_quant = largest_grain/bin_size;
-  numberOfBars = bin_quant;
+  numberOfBars = bin_quant
   
   x_vals = {}
   y_vals = {}
