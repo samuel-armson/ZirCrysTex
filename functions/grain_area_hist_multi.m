@@ -91,13 +91,13 @@ function gah = grain_area_hist(data_in,varargin)
     end
     
     if strcmp(p.Results.plot_type,'bar') == 0
-      plot(x_vals,y_vals)
+      plot(x_vals,y_vals,'label',b)
     end
   end	 
 
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
-  
+  legend
 	
 	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
