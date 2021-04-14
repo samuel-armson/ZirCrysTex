@@ -50,15 +50,24 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
 %%
 %Calculate and plot grains and grain size histograms
-grains_mono_1 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_2 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',50,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_3 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',100,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
-grainsets = {grains_mono_1,grains_mono_2,grains_mono_3}
+grains_mono_1 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_2 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_3 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',3,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_4 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',4,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_5 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',5,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_6 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',6,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_7 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',7,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_8 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',8,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_9 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',9,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_10 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',10,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+grainsets = {grains_mono_1,grains_mono_2,grains_mono_3,grains_mono_4,grains_mono_5,grains_mono_6,grains_mono_7,grains_mono_8,grains_mono_9,grains_mono_10}
 
 
 
 plot_map(grains_mono_1,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_mono_3,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(grains_mono_5,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(grains_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 grain_area_hist_multi(grainsets,'bin_size',100,'units','nm','max_percentage',20,'plot_type','line')
 
