@@ -67,7 +67,6 @@ function gah = grain_area_hist(data_in,varargin)
 
   for b = 1 : numberOfBars
     % Plot one single bar as a separate bar series.
-    disp(b)
     counts(b)=0;
     upper_bound(b) = b*largest_grain/bin_quant;
     lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
