@@ -29,6 +29,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addOptional(p,'units','nm')
   addOptional(p,'legend_labels','none')
   addOptional(p,'plot_type','bar')
+  addOptional(p,'freq','normalised')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -79,18 +80,23 @@ function gah = grain_area_hist(data_in,varargin)
           counts(b) = counts(b) + grain_areas(grain_id);
         end
       end
+      if strcmp(p.Results.freq,'raw') == 1
+        y_value = counts(b)
+      else
+        y_value = (counts(b)/total_area)*100
+      end
       %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
       if strcmp(p.Results.plot_type, 'bar') == 1
-        handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
+        handleToThisBarSeries(b) = bar(mid_point(b), y_value, 'BarWidth', largest_grain/bin_quant);
       elseif strcmp(p.Results.plot_type, 'hist_line') == 1
         x_vals(end+1) = lower_bound(b)
-        y_vals(end+1) = (counts(b)/total_area)*100
+        y_vals(end+1) = y_value
         x_vals(end+1) = upper_bound(b)
-        y_vals(end+1) = (counts(b)/total_area)*100
+        y_vals(end+1) = y_value
 
       else
         x_vals(end+1) = mid_point(b)
-        y_vals(end+1) = (counts(b)/total_area)*100
+        y_vals(end+1) = y_value
       end
 
 
