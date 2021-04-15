@@ -132,7 +132,7 @@ function gah = grain_area_hist(data_in,varargin)
         end
         err_factor = bin_size/2
         err = err_factor*ones(size(x_vals))
-        errorbar(x_vals,y_vals,err,'horizontal')
+        errorbar(x_vals,y_vals,err,'horizontal','.')
     end	 
 
 	hold off;
