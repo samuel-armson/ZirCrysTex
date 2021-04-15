@@ -109,6 +109,7 @@ function gah = grain_area_hist(data_in,varargin)
           plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5)
         else
           plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
+        end
     end	 
 
 	hold off;
