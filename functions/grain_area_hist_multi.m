@@ -130,7 +130,8 @@ function gah = grain_area_hist(data_in,varargin)
         else
           scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
         end
-        err = bin_size/2
+        err_factor = bin_size/2
+        err = err_factor*ones(size(x_vals))
         errorbar(x_vals,y_vals,err,'horizontal')
     end	 
 
