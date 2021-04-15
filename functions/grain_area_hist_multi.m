@@ -82,13 +82,13 @@ function gah = grain_area_hist(data_in,varargin)
       %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
       if strcmp(p.Results.plot_type, 'bar') == 1
         handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
-      elseif strcmp(p.Results.plot_type, 'line') == 1
+      elseif strcmp(p.Results.plot_type, 'hist_line') == 1
         x_vals(end+1) = lower_bound(b)
         y_vals(end+1) = (counts(b)/total_area)*100
         x_vals(end+1) = upper_bound(b)
         y_vals(end+1) = (counts(b)/total_area)*100
 
-      elseif strcmp(p.Results.plot_type, 'scatter') == 1
+      else
         x_vals(end+1) = mid_point(b)
         y_vals(end+1) = (counts(b)/total_area)*100
       end
