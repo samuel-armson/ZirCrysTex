@@ -57,7 +57,7 @@ grainsets = {}
 for sgi = 1:length(small_grain_list)
 	grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',small_grain_list(sgi),'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets(end+1) = grains_mono
-
+end
 %{
 grains_mono_1 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 grains_mono_2 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',3,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
@@ -79,7 +79,7 @@ plot_map(grainsets{1,4},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_tex
 plot_map(grainsets{1,8},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %%
-grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',20,'plot_type','line')
+grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',20,'plot_type','line')
 
 
 %% Sign off
