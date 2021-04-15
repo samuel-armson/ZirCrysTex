@@ -52,8 +52,16 @@ function gah = grain_area_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
-  for grainset = 1:length(data_in)
+  cmap = parula(100);
+  % Find the middle row, which corresponds to an image value of 0.5
+  row_number = round(size(cmap, 1) / 2)
+  % Print the color there out to the command window:
+  cmap(middleRow, :)
 
+  for grainset = 1:length(data_in)
+    
+    row_number = round(size(cmap, 1)*grainset / length(data_in))
+    
     subdata = data_in{1,grainset}
   	grain_areas = subdata.area*scaling_factor;
     aspect_ratios = subdata.aspectRatio;
@@ -105,16 +113,16 @@ function gah = grain_area_hist(data_in,varargin)
     
     if strcmp(p.Results.plot_type,'hist_line') == 1
       if strcmp(p.Results.legend_labels,'none') == 1
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5)
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
       else
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
         plot1.Color(4) = 0.5;
       end
       elseif strcmp(p.Results.plot_type,'line') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
-          plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5)
+          plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
         else
-          plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
+          plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
           plot1.Color(4) = 0.5;
         end
     end	 
