@@ -126,10 +126,12 @@ function gah = grain_area_hist(data_in,varargin)
         end
       elseif strcmp(p.Results.plot_type,'scatter') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
-          scatter(x_vals,y_vals,'DisplayName',num2str(grainset),'MarkerEdgeColor',cmap(row_number, :),'Marker','pentagram')
+          scatter(x_vals,y_vals,'DisplayName',num2str(grainset),'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
         else
-          scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'MarkerEdgeColor',cmap(row_number, :),'Marker','pentagram')
+          scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
         end
+        err = bin_size/2
+        errorbar(x_vals,y_vals,err,'horizontal')
     end	 
 
 	hold off;
