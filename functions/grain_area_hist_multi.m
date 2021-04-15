@@ -122,8 +122,12 @@ function gah = grain_area_hist(data_in,varargin)
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
   legend
+  if strcmp(p.Results.freq,'raw') == 1
+    ylabel(['Number of grains'],'Interpreter','latex');
+  else
+    ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
+  end
 	
-	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
 	%xlim([0 max_size]);
