@@ -97,7 +97,7 @@ function gah = grain_area_hist(data_in,varargin)
       if strcmp(p.Results.legend_labels,'none') == 1
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',2)
       else
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',2)
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
       plot1.Color(4) = 0.5;
     end
   end	 
