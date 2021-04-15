@@ -82,10 +82,14 @@ function gah = grain_area_hist(data_in,varargin)
       %counts(b) = sum(grain_areas>lower_bound(b) & grain_areas<upper_bound(b),'double')/total_area;
       if strcmp(p.Results.plot_type, 'bar') == 1
         handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
-      else
+      elseif strcmp(p.Results.plot_type, 'line') == 1
         x_vals(end+1) = lower_bound(b)
         y_vals(end+1) = (counts(b)/total_area)*100
         x_vals(end+1) = upper_bound(b)
+        y_vals(end+1) = (counts(b)/total_area)*100
+
+      elseif strcmp(p.Results.plot_type, 'scatter') == 1
+        x_vals(end+1) = mid_point(b)
         y_vals(end+1) = (counts(b)/total_area)*100
       end
 
@@ -95,7 +99,7 @@ function gah = grain_area_hist(data_in,varargin)
     
     if strcmp(p.Results.plot_type,'bar') == 0
       if strcmp(p.Results.legend_labels,'none') == 1
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',2)
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5)
       else
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
       plot1.Color(4) = 0.5;
