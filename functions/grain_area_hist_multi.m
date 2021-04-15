@@ -126,9 +126,9 @@ function gah = grain_area_hist(data_in,varargin)
         end
       elseif strcmp(p.Results.plot_type,'scatter') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
-          scatter(x_vals,y_vals,'_','DisplayName',num2str(grainset),'Color',cmap(row_number, :))
+          scatter(x_vals,y_vals,'DisplayName',num2str(grainset),'Color',cmap(row_number, :),'_')
         else
-          scatter(x_vals,y_vals,'_','DisplayName',num2str(p.Results.legend_labels(grainset)),'Color',cmap(row_number, :))
+          scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'Color',cmap(row_number, :),'_')
         end
     end	 
 
