@@ -27,6 +27,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addOptional(p,'max_size',500);
 	addOptional(p,'max_percentage',50);
 	addOptional(p,'units','nm')
+  addOptional(p,'legend_labels','none')
   addOptional(p,'plot_type','bar')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
@@ -93,7 +94,10 @@ function gah = grain_area_hist(data_in,varargin)
     end
     
     if strcmp(p.Results.plot_type,'bar') == 0
-      plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',2)
+      if strcmp(p.Results.legend_labels,'none') == 1
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',2)
+      else
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',2)
       plot1.Color(4) = 0.5;
     end
   end	 
