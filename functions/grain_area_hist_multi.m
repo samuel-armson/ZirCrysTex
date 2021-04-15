@@ -97,14 +97,20 @@ function gah = grain_area_hist(data_in,varargin)
       hold on;
     end
     
-    if strcmp(p.Results.plot_type,'bar') == 0
+    if strcmp(p.Results.plot_type,'line') == 1
       if strcmp(p.Results.legend_labels,'none') == 1
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5)
       else
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5)
-      plot1.Color(4) = 0.5;
-    end
-  end	 
+        plot1.Color(4) = 0.5;
+      end
+      elseif strcmp(p.Results.plot_type,'scatter') == 1
+        if strcmp(p.Results.legend_labels,'none') == 1
+          scatter(x_vals,y_vals,'DisplayName',num2str(grainset))
+        else
+          scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)))
+        end
+    end	 
 
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
