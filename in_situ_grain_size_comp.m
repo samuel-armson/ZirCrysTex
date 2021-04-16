@@ -99,8 +99,9 @@ end
 
 %%
 %Plot Combined 1D histograms
-grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',38,'max_size',1000000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 %%
+grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',85,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
