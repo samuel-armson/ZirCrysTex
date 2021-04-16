@@ -1,5 +1,13 @@
 % Master File for running Zirconia_mTeX 
 
+%{
+Found that best grain calc params are:
+misorientation = 15 (degrees)
+smallest_grain = 3 (pixels)
+smoothing = 3 (unknown)
+%}
+
+
 % Select mTeX installation to use and start mTeX
 addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
 addpath 'C:/Users/Sam/Documents/GitHub/Zirconia_mTeX'
