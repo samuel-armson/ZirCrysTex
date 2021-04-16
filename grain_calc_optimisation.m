@@ -50,12 +50,12 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
 %%
 %Calculate and plot grains and grain size histograms
-param_list = [1,3,5,10]
+param_list = [5,10,15,20]
 
 
 grainsets = {}
 for sgi = 1:length(param_list)
-	grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',3,'smoothing',param_list(sgi),'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+	grains_mono = create_grains(ebsd_mono,'misorientation',param_list(sgi),'smallest_grain',3,'smoothing',3,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets{end+1} = grains_mono
 end
 %{
