@@ -146,6 +146,7 @@ function gah = grain_area_hist(data_in,varargin)
 	
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
+  set(gca,'linewidth',1)
 	xlim([0 max_size]);
 	ylim([0 max_percentage]);
 	set(gcf, 'color','white');
