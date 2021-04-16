@@ -79,8 +79,8 @@ plot_map(grainsets{1,3},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_tex
 plot_map(grainsets{1,4},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %%
-grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',25,'max_size',26000,'plot_type','hist_line','legend_labels',small_grain_list,'freq','normalised')
-grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',10,'max_size',5000,'plot_type','hist_line','legend_labels',small_grain_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',25,'max_size',26000,'plot_type','hist_line','legend_labels',param_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',10,'max_size',5000,'plot_type','hist_line','legend_labels',param_list,'freq','normalised')
 
 
 %% Sign off
