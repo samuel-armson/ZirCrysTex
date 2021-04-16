@@ -114,21 +114,21 @@ function gah = grain_area_hist(data_in,varargin)
       if strcmp(p.Results.legend_labels,'none') == 1
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
       else
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(:,grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
+        plot1 = plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',0.5,'Color',cmap(row_number, :))
         plot1.Color(4) = 0.8;
       end
       elseif strcmp(p.Results.plot_type,'line') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
           plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
         else
-          plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(:,grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
+          plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',0.5,'Color',cmap(row_number, :))
           plot1.Color(4) = 0.8;
         end
       elseif strcmp(p.Results.plot_type,'scatter') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
           scatter(x_vals,y_vals,'DisplayName',num2str(grainset),'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
         else
-          scatter(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(:,grainset)),'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
+          scatter(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'MarkerEdgeColor',cmap(row_number, :),'Marker','.')
         end
         err_factor = bin_size/2
         err = err_factor*ones(size(x_vals))
