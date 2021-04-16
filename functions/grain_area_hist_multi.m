@@ -24,7 +24,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addRequired(p,'data_in');
 
 	addOptional(p,'bin_size',1);
-	addOptional(p,'max_size',500);
+	addOptional(p,'max_size',5000);
 	addOptional(p,'max_percentage',50);
 	addOptional(p,'units','nm')
   addOptional(p,'legend_labels','none')
@@ -146,8 +146,8 @@ function gah = grain_area_hist(data_in,varargin)
 	
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
-	%xlim([0 max_size]);
-	%ylim([0 max_percentage]);
+	xlim([0 max_size]);
+	ylim([0 max_percentage]);
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
