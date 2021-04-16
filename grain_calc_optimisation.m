@@ -54,7 +54,7 @@ param_list = [1,3,5,10]
 
 
 grainsets = {}
-for sgi = 1:length(small_grain_list)
+for sgi = 1:length(param_list)
 	grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',3,'smoothing',param_list(sgi),'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets{end+1} = grains_mono
 end
