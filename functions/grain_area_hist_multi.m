@@ -115,14 +115,14 @@ function gah = grain_area_hist(data_in,varargin)
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
       else
         plot1 = plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
-        plot1.Color(4) = 0.5;
+        plot1.Color(4) = 0.8;
       end
       elseif strcmp(p.Results.plot_type,'line') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
           plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
         else
           plot(x_vals,y_vals,'DisplayName',num2str(p.Results.legend_labels(grainset)),'LineWidth',0.5,'Color',cmap(row_number, :))
-          plot1.Color(4) = 0.5;
+          plot1.Color(4) = 0.8;
         end
       elseif strcmp(p.Results.plot_type,'scatter') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
