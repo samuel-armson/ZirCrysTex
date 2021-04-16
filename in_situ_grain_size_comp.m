@@ -80,7 +80,7 @@ ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
 cs = ebsd_1TDa1(phase_of_interest).CS
 %%
 %Calculate grains
-name_list = ['Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2']
+name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
 param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
 
 grainsets = {}
@@ -99,8 +99,11 @@ end
 
 %%
 %Plot Combined 1D histograms
-grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',30,'max_size',50000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
-grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',10,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
+%%
+grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
+grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 
 
 %% Sign off
