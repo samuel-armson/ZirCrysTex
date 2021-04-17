@@ -85,7 +85,7 @@ param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3
 
 grainsets = {}
 for sgi = 1:length(param_list)
-	grains_mono = create_grains(param_list{1,sgi},'misorientation',15,'smallest_grain',3,'smoothing',3,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+	grains_mono = create_grains(param_list{1,sgi},'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets{end+1} = grains_mono
 end
 
@@ -99,14 +99,14 @@ end
 
 %%
 %Plot Combined 1D histograms
-%{
+
 grain_area_hist_multi(grainsets,'bin_size',5000,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',85,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',50,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
-%}
+
 
 %% Sign off
 for n=1:1
