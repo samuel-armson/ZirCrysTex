@@ -73,7 +73,7 @@ ebsd_38NVa1 = x_section_correction(ebsd_38NVa1,'SPED','scan_rotation',270)
 ebsd_1TDa1 = x_section_correction(ebsd_1TDa1,'SPED','scan_rotation',90)
 ebsd_2NVa3 = x_section_correction(ebsd_2NVa3,'SPED','scan_rotation',90)
 ebsd_LOWDR = x_section_correction(ebsd_LOWDR,'SPED','scan_rotation',90)
-ebsd_1TDa1 = x_section_correction(ebsd_MEDDR,'SPED','scan_rotation',90)
+ebsd_MEDDR = x_section_correction(ebsd_MEDDR,'SPED','scan_rotation',90)
 ebsd_EXHI3 = x_section_correction(ebsd_EXHI3,'SPED','scan_rotation',90)
 ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
 
@@ -94,18 +94,19 @@ end
 
 for sgi = 1:length(param_list)
 	plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-	grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',20)
+	grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',12)
 end
 
 %%
 %Plot Combined 1D histograms
+%{
 grain_area_hist_multi(grainsets,'bin_size',5000,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',85,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',50,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
 grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised')
-
+%}
 
 %% Sign off
 for n=1:1
