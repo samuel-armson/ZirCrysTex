@@ -163,7 +163,7 @@ function gah = grain_area_hist(data_in,varargin)
   set(gca,'linewidth',1)
   set(gca ,'Layer', 'Top')
 	xlim([0 max_size]);
-	ylim([-line_width max_percentage]);
+	ylim([(-line_width)*2 max_percentage]);
 	set(gcf, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
