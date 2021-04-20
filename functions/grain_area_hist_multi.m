@@ -53,6 +53,9 @@ function gah = grain_area_hist(data_in,varargin)
   end
 
   cmap = parula(100);
+
+  cmap = [[78,21,96]/255,[52,96,139]/255,[36,167,127]/255,[216,76,62]/255,[243,121,24]/255,[251,177,20]/255,[241,235,108]/255]
+
   % Find the middle row, which corresponds to an image value of 0.5
   row_number = round(size(cmap, 1) / 2)
   % Print the color there out to the command window:

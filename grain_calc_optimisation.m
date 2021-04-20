@@ -63,23 +63,9 @@ param_list = [5,10,15,20]
 
 grainsets = {}
 for sgi = 1:length(param_list)
-	grains_mono = create_grains(ebsd_mono,'misorientation',param_list(sgi),'smallest_grain',3,'smoothing',3,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+	grains_mono = create_grains(ebsd_mono,'misorientation',param_list(sgi),'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets{end+1} = grains_mono
 end
-%{
-grains_mono_1 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_2 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',3,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_3 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',5,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_4 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',10,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_5 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',15,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_6 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',20,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_7 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',25,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_8 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',50,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_9 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',75,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_10 = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',100,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grainsets = {grains_mono_1,grains_mono_2,grains_mono_3,grains_mono_4,grains_mono_5,grains_mono_6,grains_mono_7,grains_mono_8,grains_mono_9,grains_mono_10}
-%}
-
 
 plot_map(grainsets{1,1},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grainsets{1,2},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
