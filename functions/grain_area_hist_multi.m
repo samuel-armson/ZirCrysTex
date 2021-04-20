@@ -44,6 +44,9 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('Plotting 1D grain area histogram...')
 	disp('')
 
+  line_width = 1
+  background_colour = [189,189,190]./255
+
   grain_size_hist = figure('Name','Loading...');
   figure(grain_size_hist);
 
@@ -60,7 +63,7 @@ function gah = grain_area_hist(data_in,varargin)
   end
 
 
-  % Find the middle row, which corresponds to an image value of 0.5
+  % Find the middle row, which corresponds to an image value of line_width
   row_number = round(size(cmap, 1) / 2)
   % Print the color there out to the command window:
 
@@ -123,16 +126,16 @@ function gah = grain_area_hist(data_in,varargin)
     
     if strcmp(p.Results.plot_type,'hist_line') == 1
       if strcmp(p.Results.legend_labels,'none') == 1
-        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
+        plot1 = plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',line_width,'Color',cmap(row_number, :))
       else
-        plot1 = plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',0.5,'Color',cmap(row_number, :))
+        plot1 = plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',line_width,'Color',cmap(row_number, :))
         plot1.Color(4) = 0.8;
       end
       elseif strcmp(p.Results.plot_type,'line') == 1
         if strcmp(p.Results.legend_labels,'none') == 1
-          plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',0.5,'Color',cmap(row_number, :))
+          plot(x_vals,y_vals,'DisplayName',num2str(grainset),'LineWidth',line_width,'Color',cmap(row_number, :))
         else
-          plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',0.5,'Color',cmap(row_number, :))
+          plot(x_vals,y_vals,'DisplayName',p.Results.legend_labels{grainset},'LineWidth',line_width,'Color',cmap(row_number, :))
           plot1.Color(4) = 0.8;
         end
       elseif strcmp(p.Results.plot_type,'scatter') == 1
@@ -160,8 +163,8 @@ function gah = grain_area_hist(data_in,varargin)
   set(gca,'linewidth',1)
   set(gca ,'Layer', 'Top')
 	xlim([0 max_size]);
-	ylim([-0.5 max_percentage]);
-	set(gcf, 'color','white');
+	ylim([-line_width max_percentage]);
+	set(gcf, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
 	if strcmp(p.Results.units,'nm') == 1 
