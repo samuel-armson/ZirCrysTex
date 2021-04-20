@@ -164,7 +164,8 @@ function gah = grain_area_hist(data_in,varargin)
   set(gca ,'Layer', 'Top')
 	xlim([0 max_size]);
 	ylim([(-line_width)*2 max_percentage]);
-	set(gcf, 'color',background_colour);
+	set(gcf, 'color','white');
+  set(gca, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
 	xticks = get(gca,'xtick');
 	if strcmp(p.Results.units,'nm') == 1 
