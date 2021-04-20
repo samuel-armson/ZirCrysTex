@@ -45,7 +45,7 @@ function gah = grain_area_hist(data_in,varargin)
 	disp('')
 
   line_width = 1
-  background_colour = [189,189,190]./255
+  background_colour = [200,200,200]./255
 
   grain_size_hist = figure('Name','Loading...');
   figure(grain_size_hist);
@@ -163,7 +163,7 @@ function gah = grain_area_hist(data_in,varargin)
   set(gca,'linewidth',1)
   set(gca ,'Layer', 'Top')
 	xlim([0 max_size]);
-	ylim([(-line_width)*2 max_percentage]);
+	ylim([(-p.Results.max_percentage)/100 max_percentage]);
 	set(gcf, 'color','white');
   set(gca, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
