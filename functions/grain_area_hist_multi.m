@@ -28,6 +28,7 @@ function gah = grain_area_hist(data_in,varargin)
 	addOptional(p,'max_percentage',50);
 	addOptional(p,'units','nm')
   addOptional(p,'legend_labels','none')
+  addOptional(p,'alt_cmap','no')
   addOptional(p,'plot_type','bar')
   addOptional(p,'freq','normalised')
 	addOptional(p,'save_fig','none');
@@ -52,10 +53,12 @@ function gah = grain_area_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
-  cmap = parula(100);
+  if strcmp('alt_cmap','no') == 1
+    cmap = parula(100);
+  else
+    cmap = p.Results.alt_cmap
+  end
 
-  cmap = [[78,21,96],[52,96,139],[36,167,127],[216,76,62],[243,121,24],[251,177,20],[241,235,108]]
-  cmap = cmap./255
 
   % Find the middle row, which corresponds to an image value of 0.5
   row_number = round(size(cmap, 1) / 2)
@@ -63,7 +66,11 @@ function gah = grain_area_hist(data_in,varargin)
 
   for grainset = 1:length(data_in)
     
-    row_number = round(size(cmap, 1)*grainset / length(data_in))
+    if strcmp('alt_cmap','no') == 1
+      row_number = round(size(cmap, 1)*grainset / length(data_in))
+    else
+      row_number = grainset
+    end
     
     subdata = data_in{1,grainset}
   	grain_areas = subdata.area*scaling_factor;
