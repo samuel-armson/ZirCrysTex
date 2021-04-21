@@ -100,13 +100,13 @@ end
 %%
 %Plot Combined 1D histograms
 
-cmap = [[78,21,96],
-      [52,96,139],
-      [36,167,127],
-      [216,76,62],
-      [243,121,24],
-      [251,177,20],
-      [241,235,108]]
+cmap = [[67,5,83],
+      [57,138,78],
+      [61,186,114],
+      [33,114,140],
+      [114,208,85],
+      [149,230,33],
+      [253,231,37]]
 cmap = cmap./255
 
 grain_area_hist_multi(grainsets,'bin_size',5000,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
