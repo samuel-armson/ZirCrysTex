@@ -68,7 +68,7 @@ grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoo
 %plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
 %%
-plot_map(ebsd_full,'bc')
+plot_map(ebsd_full,'bc','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 plot_map(grains_full,'phase')
 plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')

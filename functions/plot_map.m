@@ -155,7 +155,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			colormap(gca,gray);
   			if strcmp(p.results.gb_overlay,'off') == 0
   				hold on
-  				plot(data_in(p.Results.phase_name).boundary,)
+  				plot(p.Results.gb_overlay(p.Results.phase_name).boundary,)
   				hold off
   			end
 		elseif strcmp(map_type,'phase')
