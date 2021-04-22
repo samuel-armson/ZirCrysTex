@@ -157,7 +157,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				hold on
   				grain_data = p.Results.gb_overlay(p.Results.phase_name)
   				boundaries = grain_data.boundary
-  				plot(boundaries)
+  				plot(boundaries,'lineColor',[190,25,25]./255)
   				hold off
   			end
 		elseif strcmp(map_type,'phase')
