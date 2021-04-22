@@ -68,7 +68,7 @@ plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
 
-plot_map(ebsd_full,'phase')
+plot_map(ebsd_full,'BC','gb_overlay','on')
 plot_map(grains_full,'phase')
 plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')

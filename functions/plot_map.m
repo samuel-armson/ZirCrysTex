@@ -35,6 +35,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addRequired(p,'map_type');
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'plot_key','on');
+	addOptional(p,'gb_overlay','off');
 	addOptional(p,'crys_sym',cs)
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
@@ -152,6 +153,11 @@ function pm = plot_map(data_in,map_type,varargin)
 			newMtexFigure(map_figure)
   			plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc)
   			colormap(gca,gray);
+  			if strcmp(p.results.gb_overlay,'off') = 0
+  				hold on
+  				plot(data_in(p.Results.phase_name).boundary,)
+  				hold off
+  			end
 		elseif strcmp(map_type,'phase')
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
