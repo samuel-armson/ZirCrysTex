@@ -153,7 +153,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			newMtexFigure(map_figure)
   			plot(data_in(p.Results.phase_name),data_in(p.Results.phase_name).bc)
   			colormap(gca,gray);
-  			if strcmp(p.results.gb_overlay,'off') == 0
+  			if strcmp(p.Results.gb_overlay,'off') == 0
   				hold on
   				grain_data = p.Results.gb_overlay(p.Results.phase_name)
   				boundaries = grain_data.boundary
