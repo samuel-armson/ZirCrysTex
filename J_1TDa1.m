@@ -68,24 +68,22 @@ grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoo
 %plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
 %%
-plot_map(ebsd_full,'BC','gb_overlay',grains_mono,'phase_name','indexed')
-plot_map(ebsd_full,'BC','phase_name','indexed')
-plot_map(grains_full,'gb_only','phase_name','indexed')
 
-plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
-plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
-plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
-plot_map(grains_full,'phase')
-plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','indexed')
+plot_map(ebsd_mono,'BC','phase_name','indexed')
+plot_map(grains_mono,'gb_only','phase_name','indexed')
+
+%plot_map(grains_full,'phase')
+%plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
 %plot_substrate_mono(grains_met,grains_mono)
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
-orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
+%grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
+%orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
 
