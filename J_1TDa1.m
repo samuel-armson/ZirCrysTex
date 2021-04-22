@@ -70,9 +70,9 @@ grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoo
 %%
 
 
-plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','indexed')
-plot_map(ebsd_mono,'BC','phase_name','indexed')
-plot_map(grains_mono,'gb_only','phase_name','indexed')
+plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
+plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 %plot_map(grains_full,'phase')
 %plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
