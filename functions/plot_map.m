@@ -254,6 +254,11 @@ function pm = plot_map(data_in,map_type,varargin)
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
+    	elseif strcmp(map_type,'gb_only')
+    		aspect_ratio_correction = 0.3
+			grain_data = data_in(p.Results.phase_name)
+  			boundaries = grain_data.boundary
+  			plot(boundaries,'lineColor',[190,25,25]./255)
 		else
 			aspect_ratio_correction = 0.3
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
