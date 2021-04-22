@@ -156,10 +156,10 @@ function pm = plot_map(data_in,map_type,varargin)
   			if strcmp(p.Results.gb_overlay,'off') == 0
   				hold on
   				grain_data = p.Results.gb_overlay(p.Results.phase_name)
-  				boundaries = grain_data.boundary
-  				boundaries_for_misorientation = boundaries(p.Results.phase_name)
+  				gB = grain_data.boundary
+  				boundaries_for_misorientation = gB(p.Results.phase_name,p.Results.phase_name)
   				%plot(boundaries,'lineColor',[190,25,25]./255)
-  				plot(boundaries_for_misorientation,boundaries_for_misorientation.misorientation.angle./degree)
+  				plot(gB,boundaries_for_misorientation.misorientation.angle./degree)
   				hold off
   			end
 		elseif strcmp(map_type,'phase')
