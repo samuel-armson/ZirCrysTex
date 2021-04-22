@@ -45,20 +45,19 @@ setMTEXpref('zAxisDirection','outOfPlane');
 % load EBSD data
 ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = loadEBSD(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_met = loadEBSD(data_met,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+%ebsd_met = loadEBSD(data_met,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
 % globally define crystal symmetry of phase of interest
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',270)
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
-ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',270)
+%ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+%ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
-
-grains_full = create_grains(ebsd_full,'misorientation',10,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
-grains_mono = create_grains(ebsd_mono,'misorientation',10,'smallest_grain',1,'smoothing',3,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_met = create_grains(ebsd_met,'misorientation',10,'smallest_grain',1,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
+%grains_full = create_grains(ebsd_full,'misorientation',10,'smallest_grain',2,'smoothing',1,'fill_gaps','no')
+grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+%grains_met = create_grains(ebsd_met,'misorientation',10,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
 
 %odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
@@ -84,6 +83,7 @@ plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
+
 
 
 
