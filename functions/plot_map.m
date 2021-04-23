@@ -159,7 +159,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				boundaries = grain_data.boundary
   				%boundaries_for_misorientation = boundaries({p.Results.phase_name,p.Results.phase_name})
   				plot(boundaries,'lineColor',[190,25,25]./255)
-  				plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
+  				%plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
   				hold off
   			end
 		elseif strcmp(map_type,'phase')
