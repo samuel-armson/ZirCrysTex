@@ -85,7 +85,7 @@ function gah = grain_area_hist(data_in,varargin)
     max_percentage = p.Results.max_percentage;
 
     bin_quant = largest_grain/bin_size;
-    numberOfBars = bin_quant
+    numberOfBars = round(bin_quant)
     
     x_vals = []
     y_vals = []
