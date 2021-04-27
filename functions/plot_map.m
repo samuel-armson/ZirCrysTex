@@ -138,7 +138,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,purple_red(90));
 			else
-				colormap(gca,plasma);
+				colormap(gca,parula);
 			end
 			%Scale_bar_limits = [0 90]
 			%caxis(Scale_bar_limits);
@@ -225,7 +225,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,purple_red(90));
 			else
-				colormap(gca,plasma);
+				colormap(gca,parula);
 			end
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
