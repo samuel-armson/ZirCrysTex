@@ -131,14 +131,14 @@ grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'
 %%
 
 N = Miller({1,0,0},{0,1,0},{0,0,1},{1,0,-3},cs)
-d = [1, 1.009, 1.031, 1.3];
+d = [1, 1.009, 1.031, 1.03];
 
 % this defines the crystal shape in MTEX
 cS = crystalShape( N ./ d)
 
 % plot the crystal shape
 figure()
-plot(cS,'colored','facealpha',0.5)
+plot(cS,'colored','facealpha',0.8)
 hold on
 arrow3d(0.5*[xvector,yvector,zvector],'labeled')
 hold off
