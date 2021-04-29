@@ -87,9 +87,9 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 			lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
 			mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
 			counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100;
-			handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 			% Apply the color to this bar series.
 			if strcmp(p.Results.plot_type, 'bar') == 1
+				handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 				if b > angle_histogram_highlight
 					set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:),'FaceAlpha', 0.3);
 					disp('greater than')
@@ -102,13 +102,13 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 				b=b+1
 	      	elseif strcmp(p.Results.plot_type, 'hist_line') == 1
 	        	x_vals(end+1) = lower_bound(b)
-	        	y_vals(end+1) = y_value
+	        	y_vals(end+1) = counts(b)
 	        	x_vals(end+1) = upper_bound(b)
-	       	 	y_vals(end+1) = y_value
+	       	 	y_vals(end+1) = counts(b)
 
 	      	else
 	        	x_vals(end+1) = mid_point(b)
-	        	y_vals(end+1) = y_value
+	        	y_vals(end+1) = counts(b)
 	      	end
 		end
 
