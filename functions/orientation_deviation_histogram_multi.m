@@ -39,6 +39,7 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 	disp('Plotting orientation histogram...')
 
 	line_width = 0.5;
+	background_colour = [200,200,200]./255;
 
 	Angle_increment_hist = p.Results.bin_size;
 	Angle_increment_cmap = p.Results.colormap_bins;
@@ -166,12 +167,16 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 	end
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 
+
+
 	xlim([0 90])
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
+	set(gca,'TickDir','out');
 	set(gcf, 'color','white');
+	set(gca, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
 
