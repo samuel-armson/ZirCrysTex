@@ -64,6 +64,12 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 	
 	for grainset = 1:length(data_in)
 
+		if strcmp('alt_cmap','no') == 1
+      		row_number = round(size(cmap, 1)*grainset / length(data_in))
+    	else
+      		row_number = grainset
+    	end
+
 		if isa(data_in{1,grainset}, 'EBSD') == 1
 			fibre_mis_angles = angle(data_in{1,grainset}(p.Results.phase_name).orientations,f)./degree;
 		elseif isa(data_in{1,grainset},'grain2d') == 1
