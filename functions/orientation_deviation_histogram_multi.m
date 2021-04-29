@@ -24,6 +24,7 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 	addOptional(p,'ref_text_comp',reference_texture_component);
 	addOptional(p,'plot_type','bar');
 	addOptional(p,'alt_cmap','none');
+	addOptional(p,'legend_labels','none');
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');

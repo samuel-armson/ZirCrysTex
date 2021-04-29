@@ -116,7 +116,7 @@ end
 %%
 %Plot Combined 1D histograms
 
-orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap)
+orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap,'legend_labels',name_list)
 
 
 %{
