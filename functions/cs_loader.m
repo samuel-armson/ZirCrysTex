@@ -26,7 +26,7 @@ function cs_out = cs_loader(data_in,varargin)
 		
 		if ismember(data_in(phase),{'mono','monoclinic','Monoclinic','Mono','MONO','MONOCLINIC','Monoclinic ZrO$$_2$$'}) == 1 
 			%cs_out{end+1} = crystalSymmetry('12/m1', [5.169 5.232 5.341], [90,99,90]*degree, 'X||a*', 'Y||b*', 'Z||c', 'mineral', 'Monoclinic ZrO$$_2$$', 'color', mono_c);
-			cs_out{end+1} = crystalSymmetry('12/m1', [5.169 5.232 5.341], [90,99,90]*degree, 'Y||b', 'Z||c*', 'mineral', 'Monoclinic ZrO$$_2$$', 'color', mono_c);
+			cs_out{end+1} = crystalSymmetry('12/m1', [5.169 5.232 5.341], [90,99,90]*degree,'X||a' ,'Y||b', 'mineral', 'Monoclinic ZrO$$_2$$', 'color', mono_c);
 
 		elseif ismember(data_in(phase),{'suboxide','Suboxide','SUBOXIDE','SubOxide','ZrO','hex suboxide','h-ZrO','Hexagonal ZrO'}) == 1 
 			cs_out{end+1} = crystalSymmetry('6/mmm', [5.312 5.312 3.197], 'X||a*', 'Y||b', 'Z||c*', 'mineral', 'Hexagonal ZrO', 'color', suboxide_c);
