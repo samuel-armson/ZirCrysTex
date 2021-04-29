@@ -83,13 +83,13 @@ cs = ebsd_1TDa1(phase_of_interest).CS
 name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
 param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
 
-%{
+
 grainsets = {}
 for sgi = 1:length(param_list)
 	grains_mono = create_grains(param_list{1,sgi},'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 	grainsets{end+1} = grains_mono
 end
-%}
+
 
 %%
 %Plot maps and 2d histograms
@@ -103,7 +103,7 @@ cmap = [[67,5,83],
       [253,231,37]]
 cmap = cmap./255
 
-%{
+
 for sgi = 1:length(param_list)
 	plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 	grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
@@ -111,7 +111,7 @@ for sgi = 1:length(param_list)
 	plot_map(param_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
 	plot_map(grainsets{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 end
-%}
+
 
 %%
 %Plot Combined 1D histograms
@@ -129,20 +129,6 @@ grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'
 %}
 
 %%
-
-N = Miller({1,0,0},{0,1,0},{0,0,1},{1,0,-3},cs)
-d = [1, 1.009, 1.031, 3];
-
-% this defines the crystal shape in MTEX
-cS = crystalShape( N ./ d)
-
-% plot the crystal shape
-figure()
-plot(cS,'colored','facealpha',0.8)
-hold on
-arrow3d(0.5*[xvector,yvector,zvector],'labeled')
-hold off
-legend
 
 
 %% Sign off
