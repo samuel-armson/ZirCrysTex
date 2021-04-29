@@ -131,7 +131,7 @@ grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'
 %%
 
 N = Miller({1,0,0},{0,1,0},{0,0,1},{1,0,-3},cs)
-d = [1, 1.009, 1.031, 1.03];
+d = [1, 1.009, 1.031, 3];
 
 % this defines the crystal shape in MTEX
 cS = crystalShape( N ./ d)
