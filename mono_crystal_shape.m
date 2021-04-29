@@ -59,6 +59,8 @@ arrow3d(0.5*[xvector,yvector,zvector],'labeled')
 hold off
 legend
 
+param_list = {ebsd_1TDa1}
+orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap,'legend_labels',name_list)
 
 %% Sign off
 for n=1:1

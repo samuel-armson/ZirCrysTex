@@ -21,7 +21,8 @@ function d_f = define_fibre(texture_component,varargin)
 	parse(p,texture_component,varargin{:});
 
 	if strcmp(p.Results.relative_axis, 'none') == 1
-		d_f = fibre(define_miller(p.Results.texture_component,p.Results.crys_sym),zvector);
+		%d_f = fibre(define_miller(p.Results.texture_component,p.Results.crys_sym),zvector);
+		d_f = fibre(define_miller(p.Results.texture_component,p.Results.crys_sym),vector3d.Z);
 	else
 		d_f = fibre(define_miller(p.Results.texture_component,p.Results.crys_sym),p.Results.relative_axis);
 end
