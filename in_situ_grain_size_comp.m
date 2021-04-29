@@ -128,6 +128,18 @@ grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,
 grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
 %}
 
+%%
+
+
+cS = crystalShape.baddeleyite(cs);
+
+figure(1)
+plot(cS,'figSize','small')
+hold on
+arrow3d(0.5*[xvector,yvector,zvector],'labeled')
+hold off
+
+
 %% Sign off
 for n=1:1
     load gong
