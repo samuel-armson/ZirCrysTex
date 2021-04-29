@@ -130,11 +130,14 @@ grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'
 
 %%
 
+N = Miller({1,0,0},{2,3,1},cs)
+d = [1, 1.44];
 
-cS = crystalShape.baddeleyite(cs);
+% this defines the crystal shape in MTEX
+cS = crystalShape( N ./ dist)
 
-figure(1)
-plot(cS,'figSize','small')
+% plot the crystal shape
+plot(cS,'colored')
 hold on
 arrow3d(0.5*[xvector,yvector,zvector],'labeled')
 hold off
