@@ -38,6 +38,8 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 
 	disp('Plotting orientation histogram...')
 
+	line_width = 0.5;
+
 	Angle_increment_hist = p.Results.bin_size;
 	Angle_increment_cmap = p.Results.colormap_bins;
 	angle_histogram_highlight = p.Results.highlight_lower_limit;
