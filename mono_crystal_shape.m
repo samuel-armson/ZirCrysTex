@@ -46,7 +46,7 @@ cs = ebsd_1TDa1(phase_of_interest).CS
 
 %%
 N = Miller({1,0,0},{0,1,0},{0,0,1},{1,0,-3},cs)
-d = [1, 1.009, 1.031, 3];
+d = [1, 1.009, 1.031, 3.85];
 
 % this defines the crystal shape in MTEX
 cS = crystalShape( N ./ d)
