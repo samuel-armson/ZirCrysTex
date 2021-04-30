@@ -25,6 +25,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	addRequired(p,'data_in');
   addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'bin_quant',50);
+  addOptional(p,'titles','No Title')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -45,7 +46,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	figure(Fig_2d_hist_as_res);
   weights = data_in(p.Results.phase_name).area .* data_in(p.Results.phase_name).aspectRatio-1);
   histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant, 'weights', weights)
-  title('Fcuekr')
+  title(p.Results.titles)
   
 
 
