@@ -86,8 +86,8 @@ ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
 cs = ebsd_38NVa1(phase_of_interest).CS
 %%
 %Calculate grains
-name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
-param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
+%name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
+%param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
 
 name_list = {'Jacobs 38NV'}
 param_list = {ebsd_38NVa1}
