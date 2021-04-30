@@ -45,9 +45,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	Fig_2d_hist_as_res= figure('Name','Loading...');
 	figure(Fig_2d_hist_as_res);
   subplot(1,1,1)
-  weights = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1).*10000000;
+  weights = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
   %histogram(omega,'nbins',p.Results.bin_quant, 'weights', w)
-  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant, 'weights', weights)
+  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
   title(p.Results.titles)
   
 
