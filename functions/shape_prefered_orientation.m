@@ -45,7 +45,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	Fig_2d_hist_as_res= figure('Name','Loading...');
 	figure(Fig_2d_hist_as_res);
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
-  histogram(omega,'BinCounts',p.Results.bin_quant, 'weights', w)
+  histogram(omega,'nbins',p.Results.bin_quant, 'weights', w)
   title(p.Results.titles)
   
 
