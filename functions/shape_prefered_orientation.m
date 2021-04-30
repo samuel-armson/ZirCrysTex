@@ -64,7 +64,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	set(groot,'defaultAxesTickLabelInterpreter','latex');
 	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
-  %{
+%}
 
 
 
