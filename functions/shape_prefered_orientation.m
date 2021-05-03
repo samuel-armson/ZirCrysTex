@@ -46,7 +46,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	figure(Fig_2d_hist_as_res);
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
   blank = ones(length(omega),1)
-  Options = {'anglenorth', 0, 'angleeast', 90}
+  Options = {'anglenorth', 0, 'angleeast', 90,'ndirections',64,'labelnorth','Map y-xis','labeleast','90','labelwest','-90','labelsouth',''}
   WindRose(omega,blank,Options)
   %histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
   title(p.Results.titles)
