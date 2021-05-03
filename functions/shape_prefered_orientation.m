@@ -45,7 +45,8 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	Fig_2d_hist_as_res= figure('Name','Loading...');
 	figure(Fig_2d_hist_as_res);
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
-  polarhistogram(omega,p.Results.bin_quant, 'weights', w)
+  blank = ones(length(omega),1)
+  windrose(omega,blank)
   %histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
   title(p.Results.titles)
   
