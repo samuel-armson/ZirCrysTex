@@ -9,6 +9,7 @@ smoothing = 3 (unknown)
 addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
 addpath 'C:/Users/Sam/Documents/GitHub/Zirconia_mTeX'
 addpath 'functions';
+addpath 'windrose_210420';
 addpath 'third_party_packages';
 % Define global variables
 global phase_of_interest
