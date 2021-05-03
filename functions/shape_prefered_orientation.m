@@ -43,7 +43,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
 
 	Fig_2d_hist_as_res= figure('Name','Loading...');
-	%figure(Fig_2d_hist_as_res);
+	figure(Fig_2d_hist_as_res);
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
   blank = ones(length(omega),1)
   Options = {'anglenorth', 0, 'angleeast', 90,'ndirections',360,'labelnorth',...
