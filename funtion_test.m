@@ -36,7 +36,8 @@ reference_texture_component = [1,0,-3];
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/';
 
-data_38NVa1= [pname '38NVa1 thinboy Fuzz mono.ctf'];
+%data_38NVa1= [pname '38NVa1 thinboy Fuzz mono.ctf'];
+data_38NVa1 = [pname '1TDa1/1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 %{
 data_1TDa1 = [pname '1TDa1/1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 data_2NVa3 = [pname '2NVa3/2NVa3_r1.2_ee_0.4_more_phases_fuzz_amb_res_no_hydride_or_SPP_mono.ctf'];
@@ -90,7 +91,7 @@ cs = ebsd_38NVa1(phase_of_interest).CS
 %name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
 %param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
 
-name_list = {'Jacobs 38NV'}
+name_list = {'Jacobs 1TDa1'}
 param_list = {ebsd_38NVa1}
 
 grainsets = {}
