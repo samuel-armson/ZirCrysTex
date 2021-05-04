@@ -52,7 +52,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   end
 
 
-  gsizebins = [0,100,400,900,6600,2500,3600,4900,6400].*1000
+  gsizebins = [0,100,400,900,6600,2500,3600].*1000
 
   Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
