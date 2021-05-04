@@ -49,10 +49,12 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   Options = {'anglenorth', 0, 'angleeast', 90,'ndirections',360,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
               'titlestring',p.Results.titles,'lablegend','Grain Size'}
-  %WindRose(omega,blank,Options)
-  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
-  %title(p.Results.titles)
   
+  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
+  title(p.Results.titles)
+  
+  WindRose(omega,blank,Options)
+  WindRose(p.Results.phase_name).longAxis,blank,Options)
 
 
 %{
