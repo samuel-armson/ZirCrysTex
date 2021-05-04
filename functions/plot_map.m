@@ -51,9 +51,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	aspect_ratio_correction = 0.6
 
-	disp('HEEEERRRREEEEEE')
-	disp(class(cs))
-	disp(class(p.Results.crys_sym))
+	cs = data_in(p.Results.phase_name).CS
 
 	disp('')
 	disp('Plotting map...')
@@ -103,7 +101,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
   				usable_colormap = repelem(consitent_cmap,cmap_extention_param,1);
   				barColorMap = usable_colormap;
-  				f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+  				f = define_fibre(p.Results.ref_text_comp,'crys_sym',cs)
   				fibre_mis_angles = angle(ebsd_full(p.Results.phase_name).orientations,f,'antipodal')./degree;
    
   				for b = 1 : numberOfBars
@@ -221,7 +219,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 		if strcmp(map_type,'Deviation') == 1
 			aspect_ratio_correction = 0.6
-			f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+			f = define_fibre(p.Results.ref_text_comp,'crys_sym',cs)
 			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,f,'antipodal')./degree;
 			for fa = 1 : length(fibre_angles)
 				if fibre_angles(fa) > 90
@@ -287,7 +285,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
   			unitcell_overlay_ori_data = data_in(p.Results.phase_name)
-  			crystal_diagram = crystalShape.hex(p.Results.crys_sym)
+  			crystal_diagram = crystalShape.hex(cs)
     		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
