@@ -52,8 +52,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   
   histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
   title(p.Results.titles)
-  
+  figure()
   WindRose(omega,blank,Options)
+  figure()
   WindRose(data_in(p.Results.phase_name).longAxis,blank,Options)
 
 
