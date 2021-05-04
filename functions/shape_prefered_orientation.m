@@ -54,7 +54,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   title(p.Results.titles)
   
   WindRose(omega,blank,Options)
-  WindRose(p.Results.phase_name).longAxis,blank,Options)
+  WindRose(p.Results.phase_name.longAxis,blank,Options)
 
 
 %{
