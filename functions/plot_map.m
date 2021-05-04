@@ -36,7 +36,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'plot_key','on');
 	addOptional(p,'gb_overlay','off');
-	addOptional(p,'crys_sym',cs)
+	addOptional(p,'crys_sym','cs')
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
@@ -46,7 +46,8 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'IPF_key','none');
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
-	parse(p,data_in,map_type,varargin{:});	
+	parse(p,data_in,map_type,varargin{:});
+
 
 	aspect_ratio_correction = 0.6
 
