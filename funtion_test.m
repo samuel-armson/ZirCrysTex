@@ -125,8 +125,8 @@ cmap = cmap./255
 
 
 for sgi = 1:length(param_list)
-  plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-  grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
+  %plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+  %grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
   %plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(param_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
