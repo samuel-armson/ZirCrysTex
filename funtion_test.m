@@ -91,8 +91,6 @@ ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
 
 cs = ebsd_1TDa1(phase_of_interest).CS
 
-disp('HEEEHEHEHEHEHEHEHEHEHE')
-disp(class(cs))
 %%
 %Calculate grains
 %name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
