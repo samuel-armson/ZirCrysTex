@@ -109,8 +109,6 @@ end
 %%
 %Plot maps and 2d histograms
 
-disp('HEEEHEHEHEHEHEHEHEHEHE')
-disp(class(cs))
 
 cmap = [[67,5,83],
       [57,138,78],
