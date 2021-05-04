@@ -51,9 +51,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
     g_sizes = g_sizes.*1000000
   end
 
-  gsizebins = [0,100,200,300,400,500,600,700,800]
+  gsizebins = [1000,2000,3000,4000,5000,6000,7000,8000]
 
-  Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',360,'labelnorth',...
+  Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
               'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins}
   
