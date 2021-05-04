@@ -48,11 +48,11 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
   if strcmp(p.Results.units,'nm') == 1
-    g_sizes = g_sizes.*1
+    g_sizes = g_sizes.*1000
   end
 
 
-  gsizebins = [1000,2000,3000,4000,5000]
+  gsizebins = [1000,2000,3000,4000,5000].*1000
 
   Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
