@@ -26,6 +26,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'bin_quant',50);
   addOptional(p,'titles','No Title')
+  addOptional(p,'units','nm')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -46,7 +47,12 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
-  Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',36,'labelnorth',...
+  if strcmp(p.Results.units,'nm') == 1
+    g_sizes = g_sizes.*1000000
+  end
+
+
+  Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',360,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
               'titlestring',p.Results.titles,'lablegend','Grain Size'}
   
