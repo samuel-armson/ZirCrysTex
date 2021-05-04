@@ -42,19 +42,15 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
 
-	Fig_2d_hist_as_res= figure('Name','Loading...');
-	figure(Fig_2d_hist_as_res);
+
   w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
-  blank = ones(length(omega),1)
+  %g_sizes = ones(length(omega),1)
+  g_sizes = data_in.grainSize
   Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',36,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
               'titlestring',p.Results.titles,'lablegend','Grain Size'}
   
-  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
-  title(p.Results.titles)
-  WindRose(omega,blank,Options)
-  
-  WindRose(omega./degree,blank,Options)
+  WindRose(omega./degree,g_sizes,Options)
 
 
 %{
