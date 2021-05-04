@@ -52,7 +52,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	disp('HEEEERRRREEEEEE')
 	disp(class(cs))
-	disp(cs{1,1})
+	disp(cs)
 
 	disp('')
 	disp('Plotting map...')
