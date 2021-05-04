@@ -54,11 +54,17 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 
   gsizebins = [0,25,50,100,400,900,1600,2500]
 
-  Options = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
+  Options_1 = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
               'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins}
   
   WindRose(omega./degree,g_sizes,Options)
+
+  Options_2 = {'anglenorth', 90, 'angleeast', 0,'ndirections',360,'labelnorth',...
+            'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
+            'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins}
+
+  WindRose(omega./degree,g_sizes,Options_2)
 
 
 %{
