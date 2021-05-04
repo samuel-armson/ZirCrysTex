@@ -50,7 +50,9 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	aspect_ratio_correction = 0.6
 
-
+	disp('HEEEERRRREEEEEE')
+	disp(class(cs))
+	disp(class(cs{1,1}))
 
 	disp('')
 	disp('Plotting map...')
