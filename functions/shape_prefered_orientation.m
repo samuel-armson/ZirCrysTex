@@ -48,7 +48,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
   if strcmp(p.Results.units,'nm') == 1
-    g_sizes = g_sizes.*1
+    g_sizes = g_sizes.*1000000
   end
 
   gsizebins = [0,100,200,300,400,500,600,700,800]
