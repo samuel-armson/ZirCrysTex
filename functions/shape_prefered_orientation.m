@@ -75,7 +75,7 @@ disp(max(g_sizes))
             'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
             'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins};
 
-  WindRose(omega./degree,g_sizes,Options_2)
+  %WindRose(omega./degree,g_sizes,Options_2)
 
 
 %{
