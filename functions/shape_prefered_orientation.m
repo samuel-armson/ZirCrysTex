@@ -65,7 +65,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
     end
   end
 
-
+  figure()
+  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
+  
 
 
   gsizebins = [0,25,50,100,400,900,1600,2500];
