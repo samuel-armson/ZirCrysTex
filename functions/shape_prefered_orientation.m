@@ -51,6 +51,15 @@ function gdh = shape_prefered_orientation(data_in,varargin)
     g_sizes = g_sizes
   end
 
+  omega_weighted = []
+
+  for omega_val = 1:length(omega)
+    omega_tisdkn = 1
+  end
+
+disp('MINIMUM GRAIN SIZE')
+disp(min(g_sizes))
+
 
   gsizebins = [0,25,50,100,400,900,1600,2500]
 
