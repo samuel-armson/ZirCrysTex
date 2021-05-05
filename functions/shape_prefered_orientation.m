@@ -59,9 +59,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   end
 
   for omega_i = 1:length(omega)
-    for gs = 1:g_sizes[omega_i]
-      omega_weighted[end+1] = omega[omega_i];
-      g_sizes_weighted[end+1] = g_sizes[omega_i];
+    for gs = 1:g_sizes(omega_i)
+      omega_weighted(end+1) = omega(omega_i);
+      g_sizes_weighted(end+1) = g_sizes(omega_i);
     end
   end
 
