@@ -44,7 +44,8 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	[omega,maj_ax,min_ax] = data_in.fitEllipse;
 
 
-  w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
+  %w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
+  w = data_in(p.Results.phase_name).area;
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
   if strcmp(p.Results.units,'nm') == 1
@@ -67,7 +68,10 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 
   figure()
   histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant)
-  
+
+  figure()
+  histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant,'weights',w)
+
 
 
   gsizebins = [0,25,50,100,400,900,1600,2500];
