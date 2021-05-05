@@ -52,15 +52,20 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   end
 
   omega_weighted = []
+  g_sizes_weighted = []
 
-  for omega_val = 1:length(omega)
-    omega_tisdkn = 1;
+  if min(g_sizes) ~= 1
+    error('Minimum grain size is not 1')
   end
 
-disp('MINIMUM GRAIN SIZE')
-disp(min(g_sizes))
-disp('MAXIMUM GRAIN SIZE')
-disp(max(g_sizes))
+  for omega_i = 1:length(omega)
+    for gs = 1:g_sizes[omega_i]
+      omega_weighted(end+1) = omega[omega_i];
+      g_sizes_weighted(end+1) = g_sizes[omega_i];
+    end
+  end
+
+
 
 
   gsizebins = [0,25,50,100,400,900,1600,2500];
@@ -75,7 +80,7 @@ disp(max(g_sizes))
             'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
             'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins};
 
-  %WindRose(omega./degree,g_sizes,Options_2)
+  WindRose(omega_weighted./degree,g_sizes_weighted,Options_1)
 
 
 %{
