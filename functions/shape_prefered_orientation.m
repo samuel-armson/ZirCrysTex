@@ -48,21 +48,21 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   w = data_in(p.Results.phase_name).area;
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
+  g_areas = data_in.area
   if strcmp(p.Results.units,'nm') == 1
     g_sizes = g_sizes
+    g_areas = data_in.area*1000000
   end
 
-  omega_weighted = []
-  g_sizes_weighted = []
-
-  if min(g_sizes) ~= 1
-    error('Minimum grain size is not 1')
-  end
+  omega_weighted = [];
+  g_sizes_weighted = [];
+  g_areas_weighted = [];
 
   for omega_i = 1:length(omega)
     for gs = 1:g_sizes(omega_i)
       omega_weighted(end+1) = omega(omega_i);
       g_sizes_weighted(end+1) = g_sizes(omega_i);
+      g_areas_weighted(end+1) = g_areas(omega_i);
     end
   end
 
@@ -88,7 +88,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
             'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
             'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins};
 
-  WindRose(omega_weighted./degree,g_sizes_weighted,Options_1)
+  WindRose(omega_weighted./degree,g_areas_weighted,Options_1)
 
 
 %{
