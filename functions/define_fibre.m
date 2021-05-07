@@ -20,9 +20,6 @@ function d_f = define_fibre(texture_component,varargin)
 	addOptional(p,'relative_axis','none');
 	parse(p,texture_component,varargin{:});
 
-	disp('HEEEERRRREEEEEE')
-	disp(class(cs))
-
 	if strcmp(p.Results.relative_axis, 'none') == 1
 		%d_f = fibre(define_miller(p.Results.texture_component,p.Results.crys_sym),zvector);
 		d_f = fibre(define_miller(p.Results.texture_component,'crys_sym',p.Results.crys_sym),vector3d.Z);

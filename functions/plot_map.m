@@ -36,6 +36,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'plot_key','on');
 	addOptional(p,'gb_overlay','off');
+	addOptional(p,'ellipse_overlay','off');
 	addOptional(p,'crys_sym','cs')
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
@@ -168,6 +169,16 @@ function pm = plot_map(data_in,map_type,varargin)
   				%plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
   				hold off
   			end
+  			if strcmp(p.Results.ellipse_overlay,'off') == 0
+  				hold on
+  				grain_data = p.Results.gb_overlay(p.Results.phase_name)
+  				[omega,a,b] = grain_data.fitEllipse;
+  				plotEllipse(grain_data.centroid,a,b,omega,'lineColor',[1114,115,195]./255,'alpha',0.5)
+  				%plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
+  				hold off
+  			end
+
+
 		elseif strcmp(map_type,'phase')
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)

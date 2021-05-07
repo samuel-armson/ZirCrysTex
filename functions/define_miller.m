@@ -20,8 +20,7 @@ function d_m = define_miller(texture_component,varargin)
 	parse(p,texture_component,varargin{:});
 
 	index_size = size(texture_component);
-	disp('HEEEERRRREEEEEE')
-	disp(class(cs))
+
 
 	if strcmp(p.Results.plot_type,'plane') == 1
 		if index_size(2) == 3
