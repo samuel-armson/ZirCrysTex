@@ -40,7 +40,8 @@ data_1TDa1 = [pname '1TDa1/1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 data_2NVa3 = [pname '2NVa3/2NVa3_r1.2_ee_0.4_more_phases_fuzz_amb_res_no_hydride_or_SPP_mono.ctf'];
 data_LOWDR = [pname 'MIBL LOW DR/Small area/MIBL LOW DR small fuzz amb res mono.ctf'];
 data_MEDDR = [pname 'MIBL MED DR Fuzz mono.ctf'];
-data_EXHI3 = [pname 'MIBL EX HIGH DR 3/MIBL EX HIGH DR 3 R_1.6_EE_0.4_more_phases_index400_or_1_mono.ctf'];
+data_HIGH = [pname 'MIBL HIGH DR/MIBL HIGH DR FUZZ NO HEX OR HEMATITE MONO.ctf']
+%data_EXHI3 = [pname 'MIBL EX HIGH DR 3/MIBL EX HIGH DR 3 R_1.6_EE_0.4_more_phases_index400_or_1_mono.ctf'];
 data_EXHI2= [pname 'MIBL Ex High DR/MIBL_EX_HIGH_DR_2_Fuzz_mono.ctf'];
 
 
@@ -54,7 +55,8 @@ CS_1TDa1 = cs_loader({'metal','mono','SPP','tet','suboxide'})
 CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
 CS_LOWDR = cs_loader({'pt','metal','mono','tet','suboxide','SPP'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
-CS_EXHI3 = cs_loader({'mono','suboxide','tet','metal','hydride','hematite','pt'})
+CS_HIGH = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
+%CS_EXHI3 = cs_loader({'mono','suboxide','tet','metal','hydride','hematite','pt'})
 CS_EXHI2 = cs_loader({'pt','metal','mono','tet','suboxide'})
   
 
@@ -65,7 +67,8 @@ ebsd_1TDa1 = loadEBSD(data_1TDa1,CS_1TDa1,'interface','ctf','convertSpatial2Eule
 ebsd_2NVa3 = loadEBSD(data_2NVa3,CS_2NVa3,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_LOWDR = loadEBSD(data_LOWDR,CS_LOWDR,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_MEDDR = loadEBSD(data_MEDDR,CS_MEDDR,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_EXHI3 = loadEBSD(data_EXHI3,CS_EXHI3,'interface','ctf','convertSpatial2EulerReferenceFrame');
+ebsd_HIGH = loadEBSD(data_HIGH,CS_HIGH,'interface','ctf','convertSpatial2EulerReferenceFrame');
+%ebsd_EXHI3 = loadEBSD(data_EXHI3,CS_EXHI3,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_EXHI2 = loadEBSD(data_EXHI2,CS_EXHI2,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
 % Perform cross-section correction
@@ -74,14 +77,15 @@ ebsd_1TDa1 = x_section_correction(ebsd_1TDa1,'SPED','scan_rotation',90)
 ebsd_2NVa3 = x_section_correction(ebsd_2NVa3,'SPED','scan_rotation',90)
 ebsd_LOWDR = x_section_correction(ebsd_LOWDR,'SPED','scan_rotation',90)
 ebsd_MEDDR = x_section_correction(ebsd_MEDDR,'SPED','scan_rotation',90)
-ebsd_EXHI3 = x_section_correction(ebsd_EXHI3,'SPED','scan_rotation',90)
+ebsd_HIGH = x_section_correction(ebsd_HIGH,'SPED','scan_rotation',90)
+%ebsd_EXHI3 = x_section_correction(ebsd_EXHI3,'SPED','scan_rotation',90)
 ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
 
 cs = ebsd_1TDa1(phase_of_interest).CS
 %%
 %Calculate grains
-name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL Ex High DR 1','MIBL Ex High DR 2'}
-param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_EXHI3,ebsd_EXHI2}
+name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL High DR','MIBL Ex High DR 1'}
+param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_HIGH,ebsd_EXHI2}
 
 
 grainsets = {}
