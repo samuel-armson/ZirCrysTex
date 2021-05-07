@@ -11,14 +11,14 @@ function cs_out = cs_loader(data_in,varargin)
 	
 	parse(p,data_in,varargin{:});	
 
-	mono_c = [27 81 45]/255;
-	suboxide_c = [239 202 8]/255;
-	tet_c = [208 37 48]/255;
-	metal_c = [75 154 170]/255;
-	hydride_c = [240 135 0]/255;
-	hematite_c = [99 38 74]/255;
-	pt_c = [100 100 100]/255;
-	SPP_c = [160 70 104]/255;
+	mono_c = [102 163 109]/255;
+	suboxide_c = [227 181 5]/255;
+	tet_c = [189 24 15]/255;
+	metal_c = [79 109 122]/255;
+	hydride_c = [244 96 54]/255;
+	hematite_c = [108 49 135]/255;
+	pt_c = [205 202 177]/255;
+	SPP_c = [205 202 177 ]/255;
 
 	cs_out = {'notIndexed'};
 
