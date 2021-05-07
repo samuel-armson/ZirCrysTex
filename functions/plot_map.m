@@ -173,7 +173,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				hold on
   				grain_data = p.Results.gb_overlay(p.Results.phase_name)
   				[omega,a,b] = grain_data.fitEllipse;
-  				plotEllipse(grain_data.centroid,a,b,omega,'lineColor',[1114,115,195]./255,'alpha',0.5)
+  				plotEllipse(grain_data.centroid,a,b,omega,'lineColor',[114,115,195]./255,'alpha',0.5)
   				%plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
   				hold off
   			end
