@@ -59,7 +59,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   omega_weighted = [];
   g_sizes_weighted = [];
   g_areas_weighted = [];
-  ar_weighted =[]
+  ar_weighted =[];
 
   for omega_i = 1:length(omega)
     for gs = 1:g_sizes(omega_i)
@@ -78,9 +78,14 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   figure()
   histogram(data_in(p.Results.phase_name).longAxis,p.Results.bin_quant,'weights',w)
 %}
+  
+  if strcmp(p.Results.colouring,'area') == 1
+    gsizebins = [0,100,400,900,1600,2500,3600,4900,6400];
+  elseif strcmp(p.Results.colouring,'aspect_ratio') == 1
+    gsizebins = [1,2,3,4,5,6,7,8,9,10];
+  end
 
-
-  gsizebins = [0,100,400,900,1600,2500,3600,4900,6400];
+  
 
   Options_1 = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
