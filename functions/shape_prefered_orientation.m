@@ -82,7 +82,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   if strcmp(p.Results.colouring,'area') == 1
     gsizebins = [0,100,400,900,1600,2500,3600,4900,6400];
   elseif strcmp(p.Results.colouring,'aspect_ratio') == 1
-    gsizebins = [1,2,3,4,5,6,7,8,9,10];
+    gsizebins = [1,2,3,4,5,6,7];
   end
 
 

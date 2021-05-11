@@ -88,8 +88,6 @@ cs = ebsd_1TDa1(phase_of_interest).CS
 name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR','MIBL High DR','MIBL Ex High DR 1'}
 param_list = {ebsd_38NVa1,ebsd_1TDa1,ebsd_2NVa3,ebsd_LOWDR,ebsd_MEDDR,ebsd_HIGH,ebsd_EXHI2}
 
-name_list = {'Jacobs 38NV'}
-param_list = {ebsd_38NVa1}
 
 grainsets = {}
 for sgi = 1:length(param_list)
@@ -100,6 +98,9 @@ end
 
 %%
 %Plot maps and 2d histograms
+
+name_list = {'Jacobs 38NV'}
+param_list = {ebsd_38NVa1}
 
 cmap = [[67,5,83],
       [57,138,78],
