@@ -48,9 +48,9 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   %w = data_in(p.Results.phase_name).area .* (data_in(p.Results.phase_name).aspectRatio-1);
   w = data_in(p.Results.phase_name).area;
   %g_sizes = ones(length(omega),1)
-  g_sizes = data_in.grainSize
-  g_areas = data_in.area
-  aspect_ratios = (maj_ax/min_ax)
+  g_sizes = data_in.grainSize;
+  g_areas = data_in.area;
+  aspect_ratios = (maj_ax./min_ax);
   if strcmp(p.Results.units,'nm') == 1
     g_sizes = g_sizes;
     g_areas = data_in.area*1000000;
