@@ -28,6 +28,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   addOptional(p,'titles','No Title')
   addOptional(p,'units','nm')
   addOptional(p,'colouring','area')
+  addOptional(p,'ar_compensation','off')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -61,13 +62,30 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   g_areas_weighted = [];
   ar_weighted =[];
 
-  for omega_i = 1:length(omega)
-    for gs = 1:g_sizes(omega_i)
-      omega_weighted(end+1) = omega(omega_i);
-      g_sizes_weighted(end+1) = g_sizes(omega_i);
-      g_areas_weighted(end+1) = g_areas(omega_i);
-      ar_weighted(end+1) = aspect_ratios(omega_i);
+  if strcmp(p.Results.ar_compensation, 'off') == 1
+    %Standard, not weighted for aspect ratio
+    for omega_i = 1:length(omega)
+      for gs = 1:g_sizes(omega_i)
+        omega_weighted(end+1) = omega(omega_i);
+        g_sizes_weighted(end+1) = g_sizes(omega_i);
+        g_areas_weighted(end+1) = g_areas(omega_i);
+        ar_weighted(end+1) = aspect_ratios(omega_i);
+      end
     end
+
+  else
+    %Weighted for aspect ratio
+    %aspect_ratio = round((aspect_ratio - 1)*10)
+    aspect_ratio = round((aspect_ratio - 1))
+    for omega_i = 1:length(omega)
+      for gs = 1:(g_sizes(omega_i)*aspect_ratio)
+        omega_weighted(end+1) = omega(omega_i);
+        g_sizes_weighted(end+1) = g_sizes(omega_i);
+        g_areas_weighted(end+1) = g_areas(omega_i);
+        ar_weighted(end+1) = aspect_ratios(omega_i);
+      end
+    end
+
   end
 
 %{
