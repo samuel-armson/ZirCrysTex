@@ -52,8 +52,8 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   g_areas = data_in.area
   aspect_ratios = (maj_ax/min_ax)
   if strcmp(p.Results.units,'nm') == 1
-    g_sizes = g_sizes
-    g_areas = data_in.area*1000000
+    g_sizes = g_sizes;
+    g_areas = data_in.area*1000000;
   end
 
   omega_weighted = [];
@@ -85,7 +85,6 @@ function gdh = shape_prefered_orientation(data_in,varargin)
     gsizebins = [1,2,3,4,5,6,7,8,9,10];
   end
 
-  
 
   Options_1 = {'anglenorth', 90, 'angleeast', 0,'ndirections',72,'labelnorth',...
               'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
