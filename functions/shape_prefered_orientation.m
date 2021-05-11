@@ -27,6 +27,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 	addOptional(p,'bin_quant',50);
   addOptional(p,'titles','No Title')
   addOptional(p,'units','nm')
+  addOptional(p,'colouring','area')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
 	addOptional(p,'extension','none');
@@ -49,6 +50,7 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   %g_sizes = ones(length(omega),1)
   g_sizes = data_in.grainSize
   g_areas = data_in.area
+  aspect_ratios = (maj_ax/min_ax)
   if strcmp(p.Results.units,'nm') == 1
     g_sizes = g_sizes
     g_areas = data_in.area*1000000
@@ -57,12 +59,14 @@ function gdh = shape_prefered_orientation(data_in,varargin)
   omega_weighted = [];
   g_sizes_weighted = [];
   g_areas_weighted = [];
+  ar_weighted =[]
 
   for omega_i = 1:length(omega)
     for gs = 1:g_sizes(omega_i)
       omega_weighted(end+1) = omega(omega_i);
       g_sizes_weighted(end+1) = g_sizes(omega_i);
       g_areas_weighted(end+1) = g_areas(omega_i);
+      ar_weighted(end+1) = aspect_ratios(omega_i);
     end
   end
 
@@ -88,7 +92,11 @@ function gdh = shape_prefered_orientation(data_in,varargin)
             'Map y-xis','labeleast','  90','labelwest','-90','labelsouth','',...
             'titlestring',p.Results.titles,'lablegend','Grain Size','vwinds',gsizebins};
 
-  WindRose(omega_weighted./degree,g_areas_weighted,Options_1)
+  if strcmp(p.Results.colouring,'area') == 1
+    WindRose(omega_weighted./degree,g_areas_weighted,Options_1)
+  elseif strcmp(p.Results.colouring,'aspect_ratio') == 1
+    WindRose(omega_weighted./degree,ar_weighted,Options_1)
+  end
 
 
 %{
