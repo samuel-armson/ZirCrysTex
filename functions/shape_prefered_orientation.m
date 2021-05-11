@@ -75,8 +75,8 @@ function gdh = shape_prefered_orientation(data_in,varargin)
 
   else
     %Weighted for aspect ratio
-    %aspect_ratio = round((aspect_ratio - 1)*10)
-    aspect_ratio = round((aspect_ratio - 1))
+    %aspect_ratios = round((aspect_ratios - 1)*10)
+    aspect_ratios = round((aspect_ratios - 1))
     for omega_i = 1:length(omega)
       for gs = 1:(g_sizes(omega_i)*aspect_ratio)
         omega_weighted(end+1) = omega(omega_i);
