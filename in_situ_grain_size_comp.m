@@ -119,7 +119,7 @@ for sgi = 1:length(param_list)
   %plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(param_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(grainsets{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
-  shape_prefered_orientation(grainsets{1,sgi},'titles',name_list{1,sgi},'colouring','area','ar_compensation','on')
+  shape_prefered_orientation(grainsets{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
 end
 
 
