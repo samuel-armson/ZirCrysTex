@@ -99,8 +99,8 @@ end
 %%
 %Plot maps and 2d histograms
 
-name_list = {'Jacobs 38NV'}
-param_list = {ebsd_38NVa1}
+%name_list = {'Jacobs 38NV'}
+%param_list = {ebsd_38NVa1}
 
 cmap = [[67,5,83],
       [57,138,78],
