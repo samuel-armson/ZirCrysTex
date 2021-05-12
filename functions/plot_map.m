@@ -289,7 +289,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		elseif strcmp(map_type,'ellipse_only')
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			grain_data = p.Results.gb_overlay(p.Results.phase_name)
+			grain_data = data_in
   			[omega,a,b] = grain_data.fitEllipse;
   			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
 		else
