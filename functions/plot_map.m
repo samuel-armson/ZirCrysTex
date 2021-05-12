@@ -51,6 +51,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 
 	aspect_ratio_correction = 0.6
+	ellipse_colour = [12,176,16]./255
 
 	cs = data_in(p.Results.phase_name).CS
 
@@ -173,7 +174,7 @@ function pm = plot_map(data_in,map_type,varargin)
   				hold on
   				grain_data = p.Results.gb_overlay(p.Results.phase_name)
   				[omega,a,b] = grain_data.fitEllipse;
-  				plotEllipse(grain_data.centroid,a,b,omega,'lineColor',[0,111,195]./255,'alpha',0.5)
+  				plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
   				%plot(boundaries,boundaries_for_misorientation.misorientation.angle./degree)
   				hold off
   			end
@@ -188,6 +189,12 @@ function pm = plot_map(data_in,map_type,varargin)
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
 
+    	elseif strcmp(map_type,'ellipse_only')
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
+			grain_data = p.Results.gb_overlay(p.Results.phase_name)
+  			[omega,a,b] = grain_data.fitEllipse;
+  			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
     	else
     		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
@@ -278,6 +285,13 @@ function pm = plot_map(data_in,map_type,varargin)
 			grain_data = data_in(p.Results.phase_name)
   			boundaries = grain_data.boundary
   			plot(boundaries,'lineColor',[190,25,25]./255)
+
+  		elseif strcmp(map_type,'ellipse_only')
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
+			grain_data = p.Results.gb_overlay(p.Results.phase_name)
+  			[omega,a,b] = grain_data.fitEllipse;
+  			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
 		else
 			aspect_ratio_correction = 0.3
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
