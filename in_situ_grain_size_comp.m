@@ -101,7 +101,7 @@ end
 
 %name_list = {'Jacobs 38NV'}
 %param_list = {ebsd_38NVa1}
-
+%{
 cmap = [[67,5,83],
       [57,138,78],
       [61,186,114],
@@ -109,14 +109,23 @@ cmap = [[67,5,83],
       [114,208,85],
       [149,230,33],
       [253,231,37]]
+%}
+cmap = [[78,21,96],
+      [52,96,139],
+      [36,167,127],
+      [216,76,62],
+      [243,121,24],
+      [251,177,20],
+      [241,235,108]]
+
 cmap = cmap./255
 
 
 for sgi = 1:length(param_list)
 	%plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 	%grain_dimension_hist_ellipse(grainsets{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
-	plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
-  plot_map(grainsets{1,sgi},'ellipse_only','phase_name','Monoclinic ZrO$$_2$$')
+	%plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
+  %plot_map(grainsets{1,sgi},'ellipse_only','phase_name','Monoclinic ZrO$$_2$$')
 
   %plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(param_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
@@ -131,11 +140,11 @@ end
 orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap,'legend_labels',name_list)
 
 grain_area_hist_multi(grainsets,'bin_size',5000,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
-grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
+%grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
 grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',85,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
-grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',50,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
-grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
-grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
+%grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',50,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
+%grain_area_hist_multi(grainsets,'bin_size',200,'units','nm','max_percentage',38,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
+%grain_area_hist_multi(grainsets,'bin_size',50,'units','nm','max_percentage',38,'max_size',5000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
 
 
 %%
