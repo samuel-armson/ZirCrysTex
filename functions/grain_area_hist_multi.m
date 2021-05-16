@@ -175,8 +175,13 @@ function gah = grain_area_hist_multi(data_in,varargin)
 	end
 
 	newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
-	set(gca,'xticklabel',newlabels);
-	set(gca,'XMinorTick','on','YMinorTick','on');
+
+
+  xt = [0 2.^(0:ceil(log2(max(grain_areas))))];
+  set(gca, 'XTick',xt, 'XScale','log')
+
+	%set(gca,'xticklabel',newlabels);
+	%set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
 	set(groot,'defaultAxesTickLabelInterpreter','latex');

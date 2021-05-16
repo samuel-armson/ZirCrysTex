@@ -38,50 +38,51 @@ pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/
 
 data_38NVa1= [pname '38NVa1 thinboy Fuzz mono.ctf'];
 
+%{
 data_1TDa1 = [pname '1TDa1/1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 data_2NVa3 = [pname '2NVa3/2NVa3_r1.2_ee_0.4_more_phases_fuzz_amb_res_no_hydride_or_SPP_mono.ctf'];
 data_LOWDR = [pname 'MIBL LOW DR/Small area/MIBL LOW DR small fuzz amb res mono.ctf'];
 data_MEDDR = [pname 'MIBL MED DR Fuzz mono.ctf'];
 data_EXHI3 = [pname 'MIBL EX HIGH DR 3/MIBL EX HIGH DR 3 R_1.6_EE_0.4_more_phases_index400_or_1_mono.ctf'];
 data_EXHI2= [pname 'MIBL Ex High DR/MIBL_EX_HIGH_DR_2_Fuzz_mono.ctf'];
-
+%}
 
 
 
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
-
+%{
 CS_1TDa1 = cs_loader({'metal','mono','SPP','tet','suboxide'})
 CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
 CS_LOWDR = cs_loader({'pt','metal','mono','tet','suboxide','SPP'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
 CS_EXHI3 = cs_loader({'mono','suboxide','tet','metal','hydride','hematite','pt'})
 CS_EXHI2 = cs_loader({'pt','metal','mono','tet','suboxide'})
-
+%}
 
 
 % load EBSD data
 ebsd_38NVa1 = loadEBSD(data_38NVa1,CS_38NVa1,'interface','ctf','convertSpatial2EulerReferenceFrame');
-
+%{
 ebsd_1TDa1 = loadEBSD(data_1TDa1,CS_1TDa1,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_2NVa3 = loadEBSD(data_2NVa3,CS_2NVa3,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_LOWDR = loadEBSD(data_LOWDR,CS_LOWDR,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_MEDDR = loadEBSD(data_MEDDR,CS_MEDDR,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_EXHI3 = loadEBSD(data_EXHI3,CS_EXHI3,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_EXHI2 = loadEBSD(data_EXHI2,CS_EXHI2,'interface','ctf','convertSpatial2EulerReferenceFrame');
-
+%}
 
 % Perform cross-section correction
 ebsd_38NVa1 = x_section_correction(ebsd_38NVa1,'SPED','scan_rotation',270)
-
+%{
 ebsd_1TDa1 = x_section_correction(ebsd_1TDa1,'SPED','scan_rotation',90)
 ebsd_2NVa3 = x_section_correction(ebsd_2NVa3,'SPED','scan_rotation',90)
 ebsd_LOWDR = x_section_correction(ebsd_LOWDR,'SPED','scan_rotation',90)
 ebsd_MEDDR = x_section_correction(ebsd_MEDDR,'SPED','scan_rotation',90)
 ebsd_EXHI3 = x_section_correction(ebsd_EXHI3,'SPED','scan_rotation',90)
 ebsd_EXHI2 = x_section_correction(ebsd_EXHI2,'SPED','scan_rotation',90)
-
+%}
 
 cs = ebsd_38NVa1(phase_of_interest).CS
 
@@ -120,7 +121,7 @@ for sgi = 1:length(param_list)
   %plot_map(param_list{1,sgi},'BC','gb_overlay',grainsets{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(param_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
-  shape_prefered_orientation(grainsets{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio')
+  %shape_prefered_orientation(grainsets{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio')
 end
 
 
@@ -132,8 +133,9 @@ end
 
 
 
-%{
+
 grain_area_hist_multi(grainsets,'bin_size',5000,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
+%{
 grain_area_hist_multi(grainsets,'bin_size',2500,'units','nm','max_percentage',100,'max_size',400000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
 grain_area_hist_multi(grainsets,'bin_size',1000,'units','nm','max_percentage',85,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
 grain_area_hist_multi(grainsets,'bin_size',400,'units','nm','max_percentage',50,'max_size',100000,'plot_type','hist_line','legend_labels',name_list,'freq','normalised','alt_cmap',cmap)
