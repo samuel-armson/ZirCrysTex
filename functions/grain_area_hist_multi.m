@@ -178,7 +178,7 @@ function gah = grain_area_hist_multi(data_in,varargin)
 
 
   xt = [100,400,900,1600,2500,3600,4900,6400,8100,10000,12100,14400,16900,19600];
-  set(gca, 'XTick',xt, 'XScale','log')
+  set(gca, 'XTick',xt)
 
 	%set(gca,'xticklabel',newlabels);
 	%set(gca,'XMinorTick','on','YMinorTick','on');
