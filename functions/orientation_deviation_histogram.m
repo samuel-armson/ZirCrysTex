@@ -17,7 +17,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	p = inputParser;
 	addRequired(p,'data_in');
 	addOptional(p,'bin_size',1);
-	addOptional(p,'colormap_bins',1);
+	addOptional(p,'colormap_bins',p.Results.bin_size);
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'titles',' ')
 	addOptional(p,'highlight_lower_limit',90)
