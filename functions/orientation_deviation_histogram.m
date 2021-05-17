@@ -19,6 +19,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	addOptional(p,'bin_size',1);
 	addOptional(p,'colormap_bins',1);
 	addOptional(p,'phase_name',phase_of_interest);
+	addOptional(p,'titles',' ')
 	addOptional(p,'highlight_lower_limit',90)
 	addOptional(p,'crys_sym',cs)
 	addOptional(p,'ref_text_comp',reference_texture_component)
@@ -103,11 +104,13 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	end
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 
+	title(p.Results.titles)
 	xlim([0 90])
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
+	set(gca,'TickDir','out');
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
