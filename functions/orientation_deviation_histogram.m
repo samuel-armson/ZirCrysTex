@@ -18,6 +18,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	addRequired(p,'data_in');
 	addOptional(p,'bin_size',1);
 	addOptional(p,'colormap_bins','none');
+	addOptional(p,'max_y','none');
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'titles',' ')
 	addOptional(p,'highlight_lower_limit',90)
@@ -111,7 +112,9 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	title(p.Results.titles)
 	xlim([0 90])
-	%ylim([0 90])
+	if isstring(p.Results.max_y) == 0
+		ylim([0 p.Results.max_y])
+	end
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
