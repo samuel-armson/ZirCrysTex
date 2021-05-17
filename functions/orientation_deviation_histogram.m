@@ -119,10 +119,12 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
+	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+	set(gcf,'position',[10 10 figure_width figure_height])
 
 
 
