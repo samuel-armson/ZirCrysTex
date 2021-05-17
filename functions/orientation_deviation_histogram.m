@@ -17,7 +17,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	p = inputParser;
 	addRequired(p,'data_in');
 	addOptional(p,'bin_size',1);
-	addOptional(p,'colormap_bins',p.Results.bin_size);
+	addOptional(p,'colormap_bins','none');
 	addOptional(p,'phase_name',phase_of_interest);
 	addOptional(p,'titles',' ')
 	addOptional(p,'highlight_lower_limit',90)
@@ -37,7 +37,12 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	disp('Plotting orientation histogram...')
 
 	Angle_increment_hist = p.Results.bin_size;
-	Angle_increment_cmap = p.Results.colormap_bins;
+	if strcmp(p.Results.colormap_bins, 'none') == 1
+		Angle_increment_cmap = Angle_increment_hist
+	else
+		Angle_increment_cmap = p.Results.colormap_bins;
+	end
+	
 	angle_histogram_highlight = p.Results.highlight_lower_limit;
 	max_angle_degs = 90
 
