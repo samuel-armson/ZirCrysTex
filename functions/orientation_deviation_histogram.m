@@ -34,6 +34,9 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	parse(p,data_in,varargin{:});	
 
+	figure_width = 10
+	figure_height = 3
+
 
 	disp('Plotting orientation histogram...')
 
