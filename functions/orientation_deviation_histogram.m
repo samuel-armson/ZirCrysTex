@@ -52,6 +52,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	Fig_Basal_angle_hist = figure('Name','Loading...');
 	figure(Fig_Basal_angle_hist);
+	set(gcf,'position',[10 10 figure_width figure_height])
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
 	numberOfBars = round(Discrete_color_quant_hist);
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
@@ -127,7 +128,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
-	set(gcf,'position',[10 10 figure_width figure_height])
+	
 
 
 
