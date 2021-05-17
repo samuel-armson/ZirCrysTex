@@ -42,7 +42,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	else
 		Angle_increment_cmap = p.Results.colormap_bins;
 	end
-	
+
 	angle_histogram_highlight = p.Results.highlight_lower_limit;
 	max_angle_degs = 90
 
@@ -111,6 +111,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	title(p.Results.titles)
 	xlim([0 90])
+	%ylim([0 90])
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
 	set(gca, 'YTickMode', 'Auto');
