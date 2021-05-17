@@ -45,7 +45,8 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
 	numberOfBars = round(Discrete_color_quant_hist);
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
-	usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1);
+	%usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1);
+	usable_colormap = repelem(plasma(Angle_increment_cmap),cmap_extention_param,1);
 	barColorMap = usable_colormap;
 	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
 	
