@@ -51,8 +51,8 @@ ebsd_mono = loadEBSD(data_mono,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',270)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 %grains_full = create_grains(ebsd_full,'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
