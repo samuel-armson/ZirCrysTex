@@ -128,7 +128,7 @@ for sgi = 1:length(param_list)
   %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
   plot_pf(odf_data,desired_pole_figures,'crys_sym',param_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
   figure()
-  plot(odf_data)
+  plot3d(odf_data)
 
 
 	plot_map(grainsets{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
