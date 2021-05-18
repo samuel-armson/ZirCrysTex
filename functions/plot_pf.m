@@ -46,6 +46,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	addRequired(p,'data_in');
 	addRequired(p,'desired_pfs');
 	addOptional(p,'phase_name',phase_of_interest);
+	addOptional(p,'titles',' ')
 	addOptional(p,'crys_sym',cs)
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'plot_type','scatter');
@@ -188,6 +189,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     	set(pf_figure,'Name',string(figure_id));
 
 
+
+    title{p.Results.titles}
 
 
 	elseif isa(data_in,'GRAINS') == 1 %need to check data type here.
