@@ -190,7 +190,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 
 
-    title{p.Results.titles}
+
 
 
 	elseif isa(data_in,'GRAINS') == 1 %need to check data type here.
