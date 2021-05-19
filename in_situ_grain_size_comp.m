@@ -110,6 +110,17 @@ ebsd_metal_HIGH = x_section_correction(ebsd_metal_HIGH,'SPED','scan_rotation',90
 %ebsd_metal_EXHI3 = x_section_correction(ebsd_metal_EXHI3,'SPED','scan_rotation',90)
 ebsd_metal_EXHI2 = x_section_correction(ebsd_metal_EXHI2,'SPED','scan_rotation',95)
 
+%Extra scan rotation correction. Will rotate Euler only - not spatially. Can rotate spatially later in external software package.
+%Rotating spatially by a multiple <90° leads to glitches in grain calculation.
+ebsd_metal_2NVa3 = dataset_rotation(ebsd_metal_2NVa3,[0,0,-5],'axis');
+ebsd_metal_LOWDR = dataset_rotation(ebsd_metal_LOWDR,[0,0,5],'axis');
+ebsd_metal_MEDDR = dataset_rotation(ebsd_metal_MEDDR,[0,0,10],'axis');
+ebsd_metal_EXHI2 = dataset_rotation(ebsd_metal_EXHI2,[0,0,5],'axis');
+ebsd_mono_2NVa3 = dataset_rotation(ebsd_mono_2NVa3,[0,0,-5],'axis');
+ebsd_mono_LOWDR = dataset_rotation(ebsd_mono_LOWDR,[0,0,5],'axis');
+ebsd_mono_MEDDR = dataset_rotation(ebsd_mono_MEDDR,[0,0,10],'axis');
+ebsd_mono_EXHI2 = dataset_rotation(ebsd_mono_EXHI2,[0,0,5],'axis');
+
 
 cs = ebsd_mono_1TDa1(phase_of_interest).CS
 %%
