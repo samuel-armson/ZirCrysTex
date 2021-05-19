@@ -105,10 +105,11 @@ ebsd_metal_38NVa1 = x_section_correction(ebsd_metal_38NVa1,'SPED','scan_rotation
 ebsd_metal_1TDa1 = x_section_correction(ebsd_metal_1TDa1,'SPED','scan_rotation',90)
 ebsd_metal_2NVa3 = x_section_correction(ebsd_metal_2NVa3,'SPED','scan_rotation',90)
 ebsd_metal_LOWDR = x_section_correction(ebsd_metal_LOWDR,'SPED','scan_rotation',90)
-ebsd_metal_MEDDR = x_section_correction(ebsd_metal_MEDDR,'SPED','scan_rotation',90)
+ebsd_metal_MEDDR = x_section_correction(ebsd_metal_MEDDR,'SPED','scan_rotation',100)
 ebsd_metal_HIGH = x_section_correction(ebsd_metal_HIGH,'SPED','scan_rotation',90)
 %ebsd_metal_EXHI3 = x_section_correction(ebsd_metal_EXHI3,'SPED','scan_rotation',90)
 ebsd_metal_EXHI2 = x_section_correction(ebsd_metal_EXHI2,'SPED','scan_rotation',90)
+
 
 cs = ebsd_mono_1TDa1(phase_of_interest).CS
 %%
@@ -164,7 +165,7 @@ for sgi = 1:length(mono_ebsd_list)
   plot_pf(odf_data,desired_pole_figures,'crys_sym',metal_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
 
 	plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-  plot_map(grainsets_metal{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1])
+  plot_map(grainsets_metal{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
 	%grain_dimension_hist_ellipse(grainsets_mono{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets_mono{1,sgi},'ellipse_only','phase_name','Monoclinic ZrO$$_2$$')
