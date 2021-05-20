@@ -94,21 +94,21 @@ ebsd_metal_EXHI2 = loadEBSD(data_metal_EXHI2,CS_EXHI2,'interface','ctf','convert
 % Perform cross-section correction
 ebsd_mono_38NVa1 = x_section_correction(ebsd_mono_38NVa1,'SPED','scan_rotation',270)
 ebsd_mono_1TDa1 = x_section_correction(ebsd_mono_1TDa1,'SPED','scan_rotation',90)
-ebsd_mono_2NVa3 = x_section_correction(ebsd_mono_2NVa3,'SPED','scan_rotation',85)
-ebsd_mono_LOWDR = x_section_correction(ebsd_mono_LOWDR,'SPED','scan_rotation',95)
-ebsd_mono_MEDDR = x_section_correction(ebsd_mono_MEDDR,'SPED','scan_rotation',100)
+ebsd_mono_2NVa3 = x_section_correction(ebsd_mono_2NVa3,'SPED','scan_rotation',90)
+ebsd_mono_LOWDR = x_section_correction(ebsd_mono_LOWDR,'SPED','scan_rotation',90)
+ebsd_mono_MEDDR = x_section_correction(ebsd_mono_MEDDR,'SPED','scan_rotation',90)
 ebsd_mono_HIGH = x_section_correction(ebsd_mono_HIGH,'SPED','scan_rotation',90)
 %ebsd_mono_EXHI3 = x_section_correction(ebsd_mono_EXHI3,'SPED','scan_rotation',90)
-ebsd_mono_EXHI2 = x_section_correction(ebsd_mono_EXHI2,'SPED','scan_rotation',95)
+ebsd_mono_EXHI2 = x_section_correction(ebsd_mono_EXHI2,'SPED','scan_rotation',90)
 
 ebsd_metal_38NVa1 = x_section_correction(ebsd_metal_38NVa1,'SPED','scan_rotation',270)
 ebsd_metal_1TDa1 = x_section_correction(ebsd_metal_1TDa1,'SPED','scan_rotation',90)
-ebsd_metal_2NVa3 = x_section_correction(ebsd_metal_2NVa3,'SPED','scan_rotation',85)
-ebsd_metal_LOWDR = x_section_correction(ebsd_metal_LOWDR,'SPED','scan_rotation',95)
-ebsd_metal_MEDDR = x_section_correction(ebsd_metal_MEDDR,'SPED','scan_rotation',100)
+ebsd_metal_2NVa3 = x_section_correction(ebsd_metal_2NVa3,'SPED','scan_rotation',90)
+ebsd_metal_LOWDR = x_section_correction(ebsd_metal_LOWDR,'SPED','scan_rotation',90)
+ebsd_metal_MEDDR = x_section_correction(ebsd_metal_MEDDR,'SPED','scan_rotation',90)
 ebsd_metal_HIGH = x_section_correction(ebsd_metal_HIGH,'SPED','scan_rotation',90)
 %ebsd_metal_EXHI3 = x_section_correction(ebsd_metal_EXHI3,'SPED','scan_rotation',90)
-ebsd_metal_EXHI2 = x_section_correction(ebsd_metal_EXHI2,'SPED','scan_rotation',95)
+ebsd_metal_EXHI2 = x_section_correction(ebsd_metal_EXHI2,'SPED','scan_rotation',90)
 
 %Extra scan rotation correction. Will rotate Euler only - not spatially. Can rotate spatially later in external software package.
 %Rotating spatially by a multiple <90° leads to glitches in grain calculation.
