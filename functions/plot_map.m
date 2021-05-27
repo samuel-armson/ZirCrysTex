@@ -144,7 +144,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
-				colormap(gca,viridis);
+				colormap(gca,algae);
 			else
 				colormap(gca,plasma);
 			end
@@ -247,7 +247,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
-				colormap(gca,viridis);
+				colormap(gca,algae);
 			else
 				colormap(gca,plasma);
 			end
