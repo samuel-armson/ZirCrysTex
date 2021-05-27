@@ -132,10 +132,10 @@ metal_ebsd_list = {ebsd_metal_38NVa1,ebsd_metal_1TDa1,ebsd_metal_2NVa3,ebsd_meta
 grainsets_mono = {}
 grainsets_metal = {}
 for sgi = 1:length(mono_ebsd_list)
-	grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-  %grains_metal = create_grains(metal_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',10,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
-	grainsets_mono{end+1} = grains_mono
-  %grainsets_metal{end+1} = grains_metal
+	%grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+  grains_metal = create_grains(metal_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',10,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
+	%grainsets_mono{end+1} = grains_mono
+  grainsets_metal{end+1} = grains_metal
 end
 
 
