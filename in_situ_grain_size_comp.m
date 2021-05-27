@@ -133,9 +133,9 @@ grainsets_mono = {}
 grainsets_metal = {}
 for sgi = 1:length(mono_ebsd_list)
 	grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-  grains_metal = create_grains(metal_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',10,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
+  %grains_metal = create_grains(metal_ebsd_list{1,sgi},'misorientation',10,'smallest_grain',10,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
 	grainsets_mono{end+1} = grains_mono
-  grainsets_metal{end+1} = grains_metal
+  %grainsets_metal{end+1} = grains_metal
 end
 
 
@@ -165,17 +165,17 @@ cmap = cmap./255
 
 
 for sgi = 1:length(mono_ebsd_list)
-  odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
-  odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-  desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
+  %odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
+  %odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
+  %desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
+  %plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
 
-  odf = make_ODF(metal_ebsd_list{1,sgi}('HCP Zr'))
-  odf_data= calcODF(metal_ebsd_list{1,sgi}('HCP Zr').orientations,'halfwidth', 3*degree)
-  desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',metal_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
+  %odf = make_ODF(metal_ebsd_list{1,sgi}('HCP Zr'))
+  %odf_data= calcODF(metal_ebsd_list{1,sgi}('HCP Zr').orientations,'halfwidth', 3*degree)
+  %desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+  %plot_pf(odf_data,desired_pole_figures,'crys_sym',metal_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
 
-	plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+	%plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
   plot_map(grainsets_metal{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
 	%grain_dimension_hist_ellipse(grainsets_mono{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
@@ -184,7 +184,7 @@ for sgi = 1:length(mono_ebsd_list)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
-  orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',5,'titles',name_list{1,sgi})
+  %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',5,'titles',name_list{1,sgi})
 end
 
 
