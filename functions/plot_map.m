@@ -145,6 +145,10 @@ function pm = plot_map(data_in,map_type,varargin)
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,algae);
+				gB = grains.boundary;
+				hold on
+				plot(gB,'LineColor','white')
+				hold off
 			else
 				colormap(gca,plasma);
 			end
@@ -248,6 +252,10 @@ function pm = plot_map(data_in,map_type,varargin)
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,algae);
+				gB = grains.boundary;
+				hold on
+				plot(gB,'LineColor','white')
+				hold off
 			else
 				colormap(gca,plasma);
 			end
