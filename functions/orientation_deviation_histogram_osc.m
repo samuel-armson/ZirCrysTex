@@ -86,9 +86,9 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		lower_bound(b) = upper_bound(b) - max_angle_degs/Discrete_color_quant_hist;
 		mid_point(b) = upper_bound(b) - (max_angle_degs/Discrete_color_quant_hist)/2;
 
-		relative_area = (2 * pi * (cosd(b-1)-cosd(b)))*(2*pi*(1-cosd(90)))
+		relative_area(b) = (2 * pi * (cosd(b-1)-cosd(b)))*(2*pi*(1-cosd(90)))
 
-		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100/relative_area;
+		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100/relative_area(b);
 
 		handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 		% Apply the color to this bar series.
