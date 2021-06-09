@@ -176,7 +176,7 @@ for sgi = 1:length(mono_ebsd_list)
   %plot_pf(odf_data,desired_pole_figures,'crys_sym',metal_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
 
 	%plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-  plot_map(grainsets_metal{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
+  %plot_map(grainsets_metal{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
 	%grain_dimension_hist_ellipse(grainsets_mono{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets_mono{1,sgi},'ellipse_only','phase_name','Monoclinic ZrO$$_2$$')
@@ -184,7 +184,7 @@ for sgi = 1:length(mono_ebsd_list)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
-  %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',5,'titles',name_list{1,sgi})
+  orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',5,'titles',name_list{1,sgi})
 end
 
 
