@@ -40,6 +40,10 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	disp('Plotting orientation histogram...');
 
+	set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
 	Angle_increment_hist = p.Results.bin_size;
 	if strcmp(p.Results.colormap_bins, 'none') == 1
 		Angle_increment_cmap = Angle_increment_hist;
@@ -132,9 +136,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8);
-	set(groot,'defaulttextinterpreter','latex');
-	set(groot,'defaultLegendInterpreter','latex');
-	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
 
 
 	

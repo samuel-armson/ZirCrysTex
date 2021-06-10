@@ -164,7 +164,7 @@ cmap = [[78,21,96],
       [251,177,20],
       [241,235,108]]
 
-cmap = cmap./255
+cmap = cmap./252
 
 
 for sgi = 1:length(mono_ebsd_list)
@@ -188,7 +188,7 @@ for sgi = 1:length(mono_ebsd_list)
 	%plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
   orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',5,'titles',name_list{1,sgi})
-  orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',1000,'titles',name_list{1,sgi})
+  orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',1200,'titles',name_list{1,sgi})
 end
 
 
