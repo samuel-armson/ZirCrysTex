@@ -98,7 +98,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		relative_area(b) = (2 * pi * (cosd(b-1)-cosd(b)));
 
 		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100;
-		counts(b) = counts(b)/(relative_area(b)*area_normalisation)
+		counts(b) = (counts(b)/(relative_area(b)*area_normalisation))*100;
 
 		handleToThisBarSeries(b) = bar(mid_point(b), counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 		% Apply the color to this bar series.
@@ -111,6 +111,8 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		hold on;
 		b=b+1;
 	end
+
+	disp(sum(counts))
 
 	hold off;
 	set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
