@@ -184,6 +184,7 @@ for sgi = 1:length(mono_ebsd_list)
 	%plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
 	%plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
+  orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',10,'titles',name_list{1,sgi})
   orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',1,'max_y',100,'titles',name_list{1,sgi})
 end
 
