@@ -112,6 +112,7 @@ ebsd_metal_EXHI2 = x_section_correction(ebsd_metal_EXHI2,'SPED','scan_rotation',
 
 %Extra scan rotation correction. Will rotate Euler only - not spatially. Can rotate spatially later in external software package.
 %Rotating spatially by a multiple <90° leads to glitches in grain calculation.
+%{
 ebsd_metal_2NVa3 = dataset_rotation(ebsd_metal_2NVa3,[0,0,-5],'axis','keep','keepXY');
 ebsd_metal_LOWDR = dataset_rotation(ebsd_metal_LOWDR,[0,0,5],'axis','keep','keepXY');
 ebsd_metal_MEDDR = dataset_rotation(ebsd_metal_MEDDR,[0,0,10],'axis','keep','keepXY');
@@ -120,6 +121,7 @@ ebsd_mono_2NVa3 = dataset_rotation(ebsd_mono_2NVa3,[0,0,-5],'axis','keep','keepX
 ebsd_mono_LOWDR = dataset_rotation(ebsd_mono_LOWDR,[0,0,5],'axis','keep','keepXY');
 ebsd_mono_MEDDR = dataset_rotation(ebsd_mono_MEDDR,[0,0,10],'axis','keep','keepXY');
 ebsd_mono_EXHI2 = dataset_rotation(ebsd_mono_EXHI2,[0,0,5],'axis','keep','keepXY');
+%}
 
 
 cs = ebsd_mono_1TDa1(phase_of_interest).CS
@@ -129,6 +131,7 @@ name_list = {'Jacobs 38NV','Jacobs 1TD','Jacobs 2NV','MIBL Low DR','MIBL Med DR'
 mono_ebsd_list = {ebsd_mono_38NVa1,ebsd_mono_1TDa1,ebsd_mono_2NVa3,ebsd_mono_LOWDR,ebsd_mono_MEDDR,ebsd_mono_HIGH,ebsd_mono_EXHI2}
 metal_ebsd_list = {ebsd_metal_38NVa1,ebsd_metal_1TDa1,ebsd_metal_2NVa3,ebsd_metal_LOWDR,ebsd_metal_MEDDR,ebsd_metal_HIGH,ebsd_metal_EXHI2}
 
+%{
 grainsets_mono = {}
 grainsets_metal = {}
 for sgi = 1:length(mono_ebsd_list)
@@ -137,7 +140,7 @@ for sgi = 1:length(mono_ebsd_list)
 	%grainsets_mono{end+1} = grains_mono
   grainsets_metal{end+1} = grains_metal
 end
-
+%}
 
 %%
 %Plot maps and 2d histograms
