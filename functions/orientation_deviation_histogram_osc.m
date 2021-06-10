@@ -83,7 +83,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	end
 
 	for b = 1 : numberOfBars
-		total_area(b) = 1/(2 * pi * (cosd(b-1)-cosd(b))) 
+		total_area(b) = 1/(2 * pi * (cosd(b-1)-cosd(b)));
 	end
 
 	area_normalisation = sum(total_area)
@@ -104,7 +104,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		% Apply the color to this bar series.
 		if b > angle_histogram_highlight
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:),'FaceAlpha', 0.3);
-			disp('greater than')
+
 		else
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:));
 		end
@@ -117,7 +117,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	hold off;
 	set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
 
-	titleString =  "$$\left\{"
+	titleString =  "$$\left\{";
 	for increment = 1:length(p.Results.ref_text_comp)
 		if p.Results.ref_text_comp(increment) < 0
 			tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";

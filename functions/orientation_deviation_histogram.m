@@ -34,32 +34,36 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	parse(p,data_in,varargin{:});	
 
-	figure_width = 10
-	figure_height = 3
+	figure_width = 10;
+	figure_height = 3;
 
 
 	disp('Plotting orientation histogram...')
 
+	set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
 	Angle_increment_hist = p.Results.bin_size;
 	if strcmp(p.Results.colormap_bins, 'none') == 1
-		Angle_increment_cmap = Angle_increment_hist
+		Angle_increment_cmap = Angle_increment_hist;
 	else
 		Angle_increment_cmap = p.Results.colormap_bins;
 	end
 
 	angle_histogram_highlight = p.Results.highlight_lower_limit;
-	max_angle_degs = 90
+	max_angle_degs = 90;
 
 	Fig_Basal_angle_hist = figure('Name','Loading...');
 	figure(Fig_Basal_angle_hist);
-	set(gcf,'Units', 'centimeters','position',[10 10 figure_width figure_height])
+	set(gcf,'Units', 'centimeters','position',[10 10 figure_width figure_height]);
 	Discrete_color_quant_hist = 90/Angle_increment_hist;
 	numberOfBars = round(Discrete_color_quant_hist);
 	cmap_extention_param = Angle_increment_cmap/Angle_increment_hist;
 	%usable_colormap = repelem(parula_red('increment',Angle_increment_cmap),cmap_extention_param,1);
 	usable_colormap = repelem(plasma(90/Angle_increment_cmap),cmap_extention_param,1);
 	barColorMap = usable_colormap;
-	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym);
 	
 	if isa(data_in, 'EBSD') == 1
 		fibre_mis_angles = angle(data_in(p.Results.phase_name).orientations,f)./degree;
@@ -90,20 +94,19 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		% Apply the color to this bar series.
 		if b > angle_histogram_highlight
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:),'FaceAlpha', 0.3);
-			disp('greater than')
-			disp(b)
 		else
 			set(handleToThisBarSeries(b), 'FaceColor', barColorMap(b,:));
-			disp(b)
 		end
 		hold on;
-		b=b+1
+		b=b+1;
 	end
+
+	disp(sum(counts))
 
 	hold off;
 	set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
 
-	titleString =  "$$\left\{"
+	titleString =  "$$\left\{";
 	for increment = 1:length(p.Results.ref_text_comp)
 		if p.Results.ref_text_comp(increment) < 0
 			tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";
@@ -112,12 +115,12 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 			titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
 		end
 	end
-	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$");
 
-	title(p.Results.titles)
-	xlim([0 90])
+	title(p.Results.titles);
+	xlim([0 90]);
 	if isstring(p.Results.max_y) == 0
-		ylim([0 p.Results.max_y])
+		ylim([0 p.Results.max_y]);
 	end
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
