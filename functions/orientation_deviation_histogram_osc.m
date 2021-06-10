@@ -95,7 +95,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		normalised_counts(b) = counts(b)/(relative_area(b));
 	end
 	original_count_total = sum(counts)
-	normalised_count_total = sum(counts)
+	normalised_count_total = sum(normalised_counts)
 
 	for b = 1 : numberOfBars
 		% Plot one single bar as a separate bar series.
@@ -113,7 +113,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		b=b+1;
 	end
 
-	disp(sum(counts))
+	disp(sum(fully_normalised_counts))
 
 	hold off;
 	set(Fig_Basal_angle_hist,'Name','EBSD Basal fibre histogram');
