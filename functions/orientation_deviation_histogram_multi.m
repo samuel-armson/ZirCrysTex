@@ -178,7 +178,10 @@ function dev_hist = orientation_deviation_histogram_multi(data_in,varargin)
 	set(gcf, 'color','white');
 	set(gca, 'color',background_colour);
 	set(gcf, 'InvertHardcopy', 'off');
-	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+	set(findall(gcf,'-property','FontSize'),'FontSize',8);
+	set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
 
 
