@@ -99,7 +99,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 
 	for b = 1 : numberOfBars
 		% Plot one single bar as a separate bar series.
-		fully_normalised_counts(b) = normalised_counts*(original_count_total/normalised_count_total)*100;
+		fully_normalised_counts(b) = normalised_counts(b)*(original_count_total/normalised_count_total)*100;
 
 		handleToThisBarSeries(b) = bar(mid_point(b), fully_normalised_counts(b), 'BarWidth', max_angle_degs/Discrete_color_quant_hist);
 		% Apply the color to this bar series.
