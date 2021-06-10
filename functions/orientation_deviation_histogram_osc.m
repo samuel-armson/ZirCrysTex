@@ -91,7 +91,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 		relative_area_x(b) = b;
 		relative_area(b) = (2 * pi * (cosd(b-1)-cosd(b)));
 
-		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no)*100;
+		counts(b) = (sum(fibre_mis_angles>lower_bound(b) & fibre_mis_angles<upper_bound(b))/total_pixel_no);
 		normalised_counts(b) = counts(b)/(relative_area(b));
 	end
 	original_count_total = sum(counts)
