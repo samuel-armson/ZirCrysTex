@@ -64,7 +64,7 @@ grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoo
 odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_mono('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
-plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
+%plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
 %%
@@ -82,7 +82,8 @@ plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP 
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
+grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',500,'units','nm','max_percentage',20)
+orientation_deviation_histogram_osc(ebsd_mono,'bin_size',3,'max_y',32,'titles',name_list{1,sgi})
 orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
