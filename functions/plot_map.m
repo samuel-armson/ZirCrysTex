@@ -330,6 +330,14 @@ function pm = plot_map(data_in,map_type,varargin)
 			hold on 
 			text(data_in(p.Results.phase_name),int2str(data_in(p.Results.phase_name).id),'textColor','red')
 			hold off
+			crystal_diagram = crystalShape.hex(cs)
+
+			scaling = 100; % scale the crystal shape to have a nice size
+			for grain_id = 1:length(data_in(p.Results.phase_name))
+				grain_figure = figure('Name',int2str(data_in(p.Results.phase_name).id);
+				newMtexFigure(grain_figure)
+				plot(grain_id.meanOrientation * crystal_diagram * scaling)
+			end
 
 		else
 			map_figure = figure('Name','Map loading...');
