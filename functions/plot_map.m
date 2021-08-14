@@ -330,6 +330,10 @@ function pm = plot_map(data_in,map_type,varargin)
 			hold on 
 			text(data_in(p.Results.phase_name),int2str(data_in(p.Results.phase_name).id),'textColor','red')
 			hold off
+
+			set(gca,'Color','black');
+  			set(gcf, 'InvertHardcopy', 'off');
+  			set(gca,'linewidth',1);
 			crystal_diagram = crystalShape.hex(cs)
 
 			scaling = 100; % scale the crystal shape to have a nice size
@@ -339,7 +343,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				disp('Grain ID above')
 				grain_figure = figure('Name',int2str(data_in(p.Results.phase_name).id));
 				newMtexFigure(grain_figure)
-				plot(grain_id.meanOrientation * crystal_diagram * scaling)
+				%plot(grain_id.meanOrientation * crystal_diagram * scaling)
 			end
 
 		else
