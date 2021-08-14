@@ -145,7 +145,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,algae);
-				isa(data_in,'grain2d') == 1
+				if isa(data_in,'grain2d') == 1
 					gB = data_in(p.Results.phase_name).boundary;
 					hold on
 					plot(gB,'LineColor','white')
@@ -211,7 +211,7 @@ function pm = plot_map(data_in,map_type,varargin)
   		%hgt = findall(gca,'type','hgtransform')
   		%set(hgt,'visible','off')
 
-	if isa(data_in, 'grain2d') == 1
+	elseif isa(data_in, 'grain2d') == 1
 
 		gB = data_in(p.Results.phase_name).boundary
 
