@@ -202,6 +202,8 @@ function pm = plot_map(data_in,map_type,varargin)
   			[omega,a,b] = grain_data.fitEllipse;
   			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
     	else
+    		map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
     		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
   		set(gca,'Color','black');
