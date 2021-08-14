@@ -338,12 +338,12 @@ function pm = plot_map(data_in,map_type,varargin)
 
 			scaling = 100; % scale the crystal shape to have a nice size
 			for grain_id = 1:length(data_in(p.Results.phase_name))
-				grain_figure = figure('Name',grain_id);
+				grain_figure = figure('Name',int2str(grain_id));
 				newMtexFigure(grain_figure)
 				grains = data_in(p.Results.phase_name)
 				grain = grains(grain_id)
 				plot(grain.meanOrientation * crystal_diagram * scaling)
-				title(grain_id)
+				title(int2str(grain_id))
 			end
 
 		else
