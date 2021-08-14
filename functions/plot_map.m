@@ -302,7 +302,38 @@ function pm = plot_map(data_in,map_type,varargin)
 			grain_data = data_in
   			[omega,a,b] = grain_data.fitEllipse;
   			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
+
+  		elseif strcmp(map_type,'numbered_orientations')
+  			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
+
+			aspect_ratio_correction = 0.6
+			f = define_fibre(p.Results.ref_text_comp,'crys_sym',cs)
+			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,f,'antipodal')./degree;
+			for fa = 1 : length(fibre_angles)
+				if fibre_angles(fa) > 90
+					fibre_angles(fa) = 180 - fibre_angles(fa);
+				end
+				fa = fa + 1;
+			end
+			plot(data_in(p.Results.phase_name),fibre_angles)
+			if strcmp(p.Results.phase_name,'HCP Zr')
+				colormap(gca,algae);
+				gB = data_in(p.Results.phase_name).boundary;
+				hold on
+				plot(gB,'LineColor','white')
+				hold off
+			else
+				colormap(gca,plasma);
+			end
+
+			hold on 
+			text(data_in(p.Results.phase_name),int2str(data_in(p.Results.phase_name).id))
+			hold off
+
 		else
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
 			aspect_ratio_correction = 0.3
 			plot(data_in(p.Results.phase_name),mapcolor,'add2all');
 			%hold on

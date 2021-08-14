@@ -87,8 +87,8 @@ plot_map(grains_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').
 plot_map(grains_1_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
-plot_map(ebsd_1,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS','gb_overlay',grains_1)
-plot_map(ebsd_2,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS','gb_overlay',grains_2)
+plot_map(ebsd_1,'numbered_orientation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS','gb_overlay',grains_1)
+plot_map(ebsd_2,'numbered_orientation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS','gb_overlay',grains_2)
 
 %combine_figures(f2,f3)
 
