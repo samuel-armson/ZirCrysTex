@@ -343,9 +343,9 @@ function pm = plot_map(data_in,map_type,varargin)
 				grains = data_in(p.Results.phase_name)
 				grain = grains(grain_id)
 				plot(grain.meanOrientation * crystal_diagram * scaling)
-				title(int2str(grain_id))
 				set(gca,'DataAspectRatio',[1 1 1])
 				set(gca,'visible','off')
+				title(int2str(grain_id))
 			end
 
 		else
