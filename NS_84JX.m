@@ -56,10 +56,11 @@ ebsd_2 = x_section_correction(ebsd_2,'EBSD','scan_rotation',0)
 
 
 
-grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
-grains_2 = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
+grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no')
+grains_2 = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no')
 
-
+grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
+grains_2_fill = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
 
 %odf = make_ODF(ebsd_1(phase_of_interest))
 %odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
@@ -71,8 +72,14 @@ grains_2 = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smoothin
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
+plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+plot_map(ebsd_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+
 plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 plot_map(grains_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+
+plot_map(grains_1_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %plot_substrate_mono(grains_met,grains_mono)
 
 %combine_figures(f2,f3)
