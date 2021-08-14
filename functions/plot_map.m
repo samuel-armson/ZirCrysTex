@@ -328,7 +328,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 
 			hold on 
-			text(data_in(p.Results.phase_name),int2str(data_in(p.Results.phase_name).id))
+			text(data_in(p.Results.phase_name),int2str(data_in(p.Results.phase_name).id),'textColor','red')
 			hold off
 
 		else
