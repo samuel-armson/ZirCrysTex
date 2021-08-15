@@ -348,7 +348,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				grain = grains(grain_id);
 				if strcmp(p.Results.view_unit_cell, 'CS') == 1
 					cross_section_correction = rotation('axis',xvector,'angle',270*degree);
-  					grain_or = rotate(grain.meanOrientation,cross_section_correction);
+  					grain_or, hmm = rotate(grain.meanOrientation,cross_section_correction);
   				else
   					grain_or = grain.meanOrientation
   				end
