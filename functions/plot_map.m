@@ -40,7 +40,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'crys_sym','cs')
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
-	addOptional(p,'sample_ID','none');\
+	addOptional(p,'sample_ID','none');
 	addOptional(p,'output_dir','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
