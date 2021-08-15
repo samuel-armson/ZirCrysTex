@@ -343,7 +343,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			grains = data_in(p.Results.phase_name);
 			if strcmp(p.Results.view_unit_cell, 'CS') == 1
 				cross_section_correction = rotation('axis',xvector,'angle',270*degree);
-  				grains = grains*cross_section_correction;
+  				grains = rotate(grains,[1 0 0],270);
   			end
 
 			for grain_id = 1:length(data_in(p.Results.phase_name))
