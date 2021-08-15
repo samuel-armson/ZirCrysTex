@@ -20,11 +20,11 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/84JX/2020_10_14/';
+pname = "D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/84JX/2020_10_14/";
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname '2020_10_14 84JX below long left Site 1 Map Data 1.ctf'];
-data_2 = [pname '2020_10_14 84JX below long left Site 2 Map Data 2.ctf'];
+data_1 = [pname "2020_10_14 84JX below long left Site 1 Map Data 1.ctf"];
+data_2 = [pname "2020_10_14 84JX below long left Site 2 Map Data 2.ctf"];
 
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
@@ -90,7 +90,7 @@ grains_2_fill = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smo
 %% Hmm
 
 %plot_map(grains_1,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-plot_map(grains_2,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',strcat(pname,'data_2/'))
+plot_map(grains_2,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',strcat(pname,"data_2/"))
 
 %combine_figures(f2,f3)
 
