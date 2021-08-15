@@ -89,8 +89,10 @@ grains_2_fill = create_grains(ebsd_2,'misorientation',15,'smallest_grain',5,'smo
 
 %% Hmm
 
+output_2 = pname+'data_2/'
+
 %plot_map(grains_1,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-plot_map(grains_2,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',pname+'data_2/')
+plot_map(grains_2,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',output_2)
 
 %combine_figures(f2,f3)
 
