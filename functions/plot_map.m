@@ -354,8 +354,8 @@ function pm = plot_map(data_in,map_type,varargin)
 				plot(grain.meanOrientation * crystal_diagram * scaling,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
 				set(gca,'DataAspectRatio',[1 1 1]);
 				set(gca,'XColor', 'none','YColor','none');
-				set(gcf, 'color', 'none');
-				set(gca 'color', 'none');
+				set(gcf,'color','none');
+				set(gca,'color','none');
 				title(int2str(grain_id));
 				
 				
