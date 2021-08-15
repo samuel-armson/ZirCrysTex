@@ -340,20 +340,19 @@ function pm = plot_map(data_in,map_type,varargin)
 			output_loc = p.Results.output_dir
 			mkdir output_loc;
 
-			scaling = 100; % scale the crystal shape to have a nice size
+			grains = data_in(p.Results.phase_name);
+			if strcmp(p.Results.view_unit_cell, 'CS') == 1
+				cross_section_correction = rotation('axis',xvector,'angle',270*degree);
+  				grains = rotate(grains,cross_section_correction);
+  			end
+
 			for grain_id = 1:length(data_in(p.Results.phase_name))
 				grain_figure = figure('Name',int2str(grain_id));
 				newMtexFigure(grain_figure)
-				grains = data_in(p.Results.phase_name);
+				
 				grain = grains(grain_id);
-				if strcmp(p.Results.view_unit_cell, 'CS') == 1
-					cross_section_correction = rotation('axis',xvector,'angle',270*degree);
-  					grain_or, hmm = rotate(grain.meanOrientation,cross_section_correction);
-  				else
-  					grain_or = grain.meanOrientation
-  				end
-
-				plot(grain_or * crystal_diagram,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
+				
+				plot(grain.meanOrientation * crystal_diagram,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
 				set(gca,'DataAspectRatio',[1 1 1]);
 				set(gca,'XColor', 'none','YColor','none');
 				set(gcf,'color','none');
