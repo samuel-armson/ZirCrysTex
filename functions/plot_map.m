@@ -363,7 +363,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				
 				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png')
 
-				%export_fig(filename, '-dpng', '-transparent', '-r600');
+				export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
 
 		else
