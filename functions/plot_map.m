@@ -342,29 +342,31 @@ function pm = plot_map(data_in,map_type,varargin)
 
 			grains = data_in(p.Results.phase_name);
     		crystal_diagram_grains = grains.meanOrientation * crystal_diagram;
+    		
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
+  				for grain_id = 1:length(crystal_diagram_grains)
+					grain_figure = figure('Name',int2str(grain_id));
+					newMtexFigure(grain_figure)
+					
+					grain = crystal_diagram_grains(grain_id);
+					
+					plot(grain,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
+					set(gca,'DataAspectRatio',[1 1 1]);
+					set(gca,'XColor', 'none','YColor','none');
+					set(gcf,'color','none');
+					set(gca,'color','none');
+					title(int2str(grain_id));
+					
+					
+					filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png')
+
+					export_fig(filename, '-dpng', '-transparent', '-r600');
+				end
   			end
 
-			for grain_id = 1:length(crystal_diagram_grains)
-				grain_figure = figure('Name',int2str(grain_id));
-				newMtexFigure(grain_figure)
-				
-				grain = crystal_diagram_grains(grain_id);
-				
-				plot(grain,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
-				set(gca,'DataAspectRatio',[1 1 1]);
-				set(gca,'XColor', 'none','YColor','none');
-				set(gcf,'color','none');
-				set(gca,'color','none');
-				title(int2str(grain_id));
-				
-				
-				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png')
-
-				export_fig(filename, '-dpng', '-transparent', '-r600');
-			end
+		
 
 		else
 			map_figure = figure('Name','Map loading...');
