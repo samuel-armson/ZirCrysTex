@@ -352,8 +352,11 @@ function pm = plot_map(data_in,map_type,varargin)
 				set(gca,'DataAspectRatio',[1 1 1]);
 				set(gca,'XColor', 'none','YColor','none');
 				title(int2str(grain_id));
-				mkdir p.Results.output_dir
-				filename = strcat(p.Results.output_dir,'UC_grain_',int2str(grain_id),'.png');
+				
+				output_loc = p.Results.output_dir
+				mkdir output_loc
+
+				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png');
 
 				export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
