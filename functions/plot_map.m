@@ -340,17 +340,20 @@ function pm = plot_map(data_in,map_type,varargin)
 			for grain_id = 1:length(data_in(p.Results.phase_name))
 				grain_figure = figure('Name',int2str(grain_id));
 				newMtexFigure(grain_figure)
-				grains = data_in(p.Results.phase_name)
-				grain = grains(grain_id)
+				grains = data_in(p.Results.phase_name);
+				grain = grains(grain_id);
 				if strcmp(p.Results.view_unit_cell, 'CS') == 1
 					cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   					grain = rotate(grain,cross_section_correction);
   				end
 
 				plot(grain.meanOrientation * crystal_diagram * scaling,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
-				set(gca,'DataAspectRatio',[1 1 1])
-				set(gca,'XColor', 'none','YColor','none')
-				title(int2str(grain_id))
+				set(gca,'DataAspectRatio',[1 1 1]);
+				set(gca,'XColor', 'none','YColor','none');
+				title(int2str(grain_id));
+				filename = strcat(sample_ID,'_UC_',int2str(grain_id),'.png');
+
+				export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
 
 		else
