@@ -40,7 +40,8 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'crys_sym','cs')
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
-	addOptional(p,'sample_ID','none');
+	addOptional(p,'sample_ID','none');\
+	addOptional(p,'output_dir','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
 	addOptional(p,'view_unit_cell','no')
@@ -351,7 +352,8 @@ function pm = plot_map(data_in,map_type,varargin)
 				set(gca,'DataAspectRatio',[1 1 1]);
 				set(gca,'XColor', 'none','YColor','none');
 				title(int2str(grain_id));
-				filename = strcat(p.Results.sample_ID,'_UC_',int2str(grain_id),'.png');
+				mkdir p.Results.output_dir
+				filename = strcat(p.Results.output_dir,'UC_grain_',int2str(grain_id),'.png');
 
 				export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
