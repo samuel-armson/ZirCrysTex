@@ -337,6 +337,9 @@ function pm = plot_map(data_in,map_type,varargin)
   			set(gca,'linewidth',1);
 			crystal_diagram = crystalShape.hex(cs)
 
+			output_loc = p.Results.output_dir
+			mkdir output_loc;
+
 			scaling = 100; % scale the crystal shape to have a nice size
 			for grain_id = 1:length(data_in(p.Results.phase_name))
 				grain_figure = figure('Name',int2str(grain_id));
@@ -353,10 +356,8 @@ function pm = plot_map(data_in,map_type,varargin)
 				set(gca,'XColor', 'none','YColor','none');
 				title(int2str(grain_id));
 				
-				output_loc = p.Results.output_dir
-				mkdir output_loc
-
-				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png');
+				
+				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png')
 
 				export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
