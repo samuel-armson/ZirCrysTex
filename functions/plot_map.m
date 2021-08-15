@@ -351,7 +351,7 @@ function pm = plot_map(data_in,map_type,varargin)
   					grain = rotate(grain,cross_section_correction);
   				end
 
-				plot(grain.meanOrientation * crystal_diagram * scaling,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
+				plot(grain.meanOrientation * crystal_diagram,'FaceColor',[200 200 200]/255,'FaceAlpha',0.8,'linewidth',1.5)
 				set(gca,'DataAspectRatio',[1 1 1]);
 				set(gca,'XColor', 'none','YColor','none');
 				set(gcf,'color','none');
@@ -361,7 +361,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				
 				filename = strcat(output_loc,'UC_grain_',int2str(grain_id),'.png')
 
-				export_fig(filename, '-dpng', '-transparent', '-r600');
+				%export_fig(filename, '-dpng', '-transparent', '-r600');
 			end
 
 		else
