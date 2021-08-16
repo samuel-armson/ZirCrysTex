@@ -54,10 +54,10 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',0)
 
 
-grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no')
+grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
-grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','yes')
+grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 
 
 %odf = make_ODF(ebsd_1(phase_of_interest))
