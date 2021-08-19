@@ -25,7 +25,7 @@ pname = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 data_1 = [pname 'Specimen 1 Site 1a Map Data 3.ctf'];
 data_2 = [pname 'Specimen 1 Site 1a Map Data 4.ctf'];
-data_1 = [pname 'Specimen 1 Site 1b Map Data 5.ctf'];
+data_3 = [pname 'Specimen 1 Site 1b Map Data 5.ctf'];
 
 
 
