@@ -48,7 +48,7 @@ function pm = plot_crys_shape(data_in,grain_ids,varargin)
 	addOptional(p,'IPF_key','none');
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
-	parse(p,data_in,map_type,varargin{:});
+	parse(p,data_in,grain_ids,varargin{:});
 
 
 	aspect_ratio_correction = 0.6
