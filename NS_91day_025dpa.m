@@ -48,7 +48,7 @@ ebsd_1 = loadEBSD(data_1,CS,'interface','ctf','convertSpatial2EulerReferenceFram
 cs = ebsd_1(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',270);
+ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',105);
 
 grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',10,'smoothing',3,'fill_gaps','no')
 
