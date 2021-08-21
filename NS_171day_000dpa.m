@@ -100,7 +100,8 @@ output_2 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 plot_map(grains_1,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
 plot_map(grains_2,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_2)
 
-
+plot_crys_shape(grains_1,[4,9,15,14,20,17,23],'phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',output_1)
+plot_crys_shape(grains_2,[1,2,4,6,9,12,10,15,16,20,19,27,28],'phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'output_dir',output_2)
 %combine_figures(f2,f3)
 
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
