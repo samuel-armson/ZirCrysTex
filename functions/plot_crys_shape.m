@@ -61,7 +61,7 @@ function pm = plot_crys_shape(data_in,grain_ids,varargin)
 	disp('')
 
 	figure_width = p.Results.figure_width;
-	map_type = p.Results.map_type;
+	
 	
 
 	if isa(data_in, 'grain2d') == 1
