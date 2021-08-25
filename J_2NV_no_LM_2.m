@@ -48,7 +48,7 @@ ebsd_1 = loadEBSD(data_1,CS,'interface','ctf','convertSpatial2EulerReferenceFram
 cs = ebsd_1(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',105);
+ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',0);
 
 grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',10,'smoothing',3,'fill_gaps','no')
 
@@ -93,8 +93,8 @@ output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
-orientation_deviation_histogram_osc(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
+%grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
+%orientation_deviation_histogram_osc(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
 
