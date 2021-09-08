@@ -63,9 +63,12 @@ grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoo
 
 odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_mono('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+odf_metal= calcODF(ebsd_met('HCP Zr').orientations,'halfwidth', 3*degree)
+desired_pole_figures = [[1,0,-3,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"]];
+desired_pole_figures_met = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
+plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 %%
 
