@@ -155,7 +155,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			else
 				colormap(gca,plasma);
 			end
-			%Scale_bar_limits = [0 90]
+			Scale_bar_limits = [0 90]
 			%caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
   			cb_new.Label.Interpreter = 'latex';
