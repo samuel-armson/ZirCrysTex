@@ -51,12 +51,12 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
+ebsd_full = x_section_correction(ebsd_full,'SPED')
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
-grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
+grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 %grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
@@ -70,12 +70,13 @@ grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'sm
 %%
 
 
-%plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
-%plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_full,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_full,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 plot_map(grains_full,'phase')
-%plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(grains_full,'IPF')
+plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
 %plot_substrate_mono(grains_met,grains_mono)
