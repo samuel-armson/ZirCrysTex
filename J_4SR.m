@@ -70,7 +70,7 @@ grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'sm
 %%
 
 
-plot_map(ebsd_full,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_full,'BC','gb_overlay',grains_full,'phase_name','Monoclinic ZrO$$_2$$')
 plot_map(ebsd_full,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
