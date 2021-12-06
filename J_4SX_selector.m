@@ -23,7 +23,7 @@ Sample_ID = "4SX";
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem FX/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_full = [pname '4SR.ctf'];
+data_full = [pname '4SX.ctf'];
 %data_mono = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 %data_met = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_metal.ctf'];
 
