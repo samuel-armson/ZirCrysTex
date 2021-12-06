@@ -156,7 +156,7 @@ function pm = plot_map(data_in,map_type,varargin)
 				colormap(gca,plasma);
 			end
 			Scale_bar_limits = [0 90]
-			%caxis(Scale_bar_limits);
+			caxis(Scale_bar_limits);
   			cb_new = mtexColorbar
   			cb_new.Label.Interpreter = 'latex';
   			set(cb_new,'TickLabelInterpreter', 'latex')
