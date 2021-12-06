@@ -157,7 +157,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
-			b_new = mtexColorbar('location','southoutside')
+			cb_new = mtexColorbar('location','southoutside')
   			cb_new.Label.Interpreter = 'latex';
   			titleString =  "$$\left\{"
   			for increment = 1:length(p.Results.ref_text_comp)
