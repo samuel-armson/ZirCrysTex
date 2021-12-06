@@ -219,6 +219,11 @@ function pm = plot_map(data_in,map_type,varargin)
 		gB = data_in(p.Results.phase_name).boundary
 
 		if strcmp(map_type,'IPF') == 1
+			if strcmp(p.Results.IPF_key,'none') == 1
+ 				ipfKey = ipfHSVKey(cs.Laue)
+ 			else
+				ipfKey = p.Results.IPF_key
+			end
 			ipfKey = p.Results.IPF_key
 			mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 			if strcmp(p.Results.plot_key,'on') == 1
