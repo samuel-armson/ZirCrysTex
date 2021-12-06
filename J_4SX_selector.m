@@ -51,7 +51,7 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = x_section_correction(ebsd_full,'EBSD','scan_rotation',180)
+ebsd_full = x_section_correction(ebsd_full,'EBSD')
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
