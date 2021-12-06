@@ -136,7 +136,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			fibre_angles = angle(data_in(p.Results.phase_name).orientations,p.Results.ref_text_comp,'antipodal')./degree;
+			fibre_angles = angle(data_in(p.Results.phase_name).orientations,f,'antipodal')./degree;
 			for fa = 1 : length(fibre_angles)
 				if fibre_angles(fa) > 90
 					fibre_angles(fa) = 180 - fibre_angles(fa);
@@ -157,8 +157,19 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			Scale_bar_limits = [0 90]
 			caxis(Scale_bar_limits);
-  			cb_new = mtexColorbar
+			b_new = mtexColorbar('location','southoutside')
   			cb_new.Label.Interpreter = 'latex';
+  			titleString =  "$$\left\{"
+  			for increment = 1:length(p.Results.ref_text_comp)
+  				if p.Results.ref_text_comp(increment) < 0
+					tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";
+					titleString = strcat(titleString, tex_val);
+				else
+					titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
+				end
+    		end
+  			titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+  			x_label = xlabel(cb_new, titleString,'FontSize',8)
   			set(cb_new,'TickLabelInterpreter', 'latex')
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
