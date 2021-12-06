@@ -18,7 +18,7 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "4SR";
+Sample_ID = "4SX";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem FX/';
 
