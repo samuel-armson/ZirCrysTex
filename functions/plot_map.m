@@ -311,6 +311,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			grain_data = data_in(p.Results.phase_name)
   			boundaries = grain_data.boundary
   			plot(boundaries,'lineColor',[190,25,25]./255)
+  			set(gca, ’Color’, ’none’)
 
   		elseif strcmp(map_type,'ellipse_only')
 			map_figure = figure('Name','Map loading...');
