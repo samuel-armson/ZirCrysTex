@@ -235,7 +235,6 @@ function pm = plot_map(data_in,map_type,varargin)
  			else
 				ipfKey = p.Results.IPF_key
 			end
-			ipfKey = p.Results.IPF_key
 			mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 			if strcmp(p.Results.plot_key,'on') == 1
 				ipf_key_fig = figure('Name','IPF Key');
