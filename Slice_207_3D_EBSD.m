@@ -55,7 +55,7 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 
 
-grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
@@ -86,8 +86,9 @@ plot_map(ebsd_1,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_t
 %plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
-plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
+plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','PV')
 
+plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 %plot_map(grains_1_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
