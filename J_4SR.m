@@ -23,7 +23,7 @@ Sample_ID = "4SR";
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem FX/SPED/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_full = [pname '2021_13_29_a_no_filter.ctf'];
+data_full = [pname '2021_13_29_a_filter_10.ctf'];
 %data_mono = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 %data_met = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_metal.ctf'];
 
@@ -74,10 +74,11 @@ plot_map(ebsd_full,'BC','gb_overlay',grains_full,'phase_name','Monoclinic ZrO$$_
 plot_map(ebsd_full,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
-%plot_map(grains_full,'Euler','phase_name','Monoclinic ZrO$$_2$$')
+plot_map(grains_full,'IPF','phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_full,'IPF','phase_name','Monoclinic ZrO$$_2$$')
 %
-plot_map(ebsd_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(ebsd_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 
 %plot_map(grains_met,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
