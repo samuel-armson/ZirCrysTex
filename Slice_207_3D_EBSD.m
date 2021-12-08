@@ -109,10 +109,11 @@ output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 kam = ebsd_1.KAM / degree;
 
 % lets plot it
-plot(ebsd,kam,'micronbar','off')
-caxis([0,15])
+plot(ebsd_1,kam,'micronbar','off')
+set(gca,'Color','black');
+caxis([0,5])
 mtexColorbar
-mtexColorMap LaboTeX
+mtexColorMap parula
 hold on
 plot(grains_1.boundary,'lineWidth',1.5)
 hold off
