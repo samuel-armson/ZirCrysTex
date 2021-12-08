@@ -44,7 +44,7 @@ setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
 ebsd_1 = loadEBSD(data_1,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-
+ebsd_1 = ebsd_1.gridify;
 
 
 % globally define crystal symmetry of phase of interest
@@ -74,10 +74,10 @@ grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing
 %plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
-plot_map(ebsd_1,'Euler','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(ebsd_1,'Euler','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 
-plot_map(ebsd_1,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(ebsd_1,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 
 %plot_map(grains_1,'gb_only','phase_name','HCP Zr')
@@ -86,9 +86,9 @@ plot_map(ebsd_1,'BC','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_t
 %plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
-plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','PV')
+%plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','PV')
 
-plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 %plot_map(grains_1_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
@@ -105,6 +105,18 @@ output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
+
+kam = ebsd_1.KAM / degree;
+
+% lets plot it
+plot(ebsd,kam,'micronbar','off')
+caxis([0,15])
+mtexColorbar
+mtexColorMap LaboTeX
+hold on
+plot(grains_1.boundary,'lineWidth',1.5)
+hold off
+
 
 
 
