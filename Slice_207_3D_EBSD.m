@@ -105,19 +105,28 @@ output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
-
+figure()
 kam = ebsd_1.KAM / degree;
-
 % lets plot it
 plot(ebsd,kam,'micronbar','off')
 caxis([0,15])
 mtexColorbar
-mtexColorMap LaboTeX
+mtexColorMap spring
 hold on
 plot(grains_1.boundary,'lineWidth',1.5)
 hold off
 
+figure()
+grod = ebsd_1.calcGROD(grains_1)
+% plot the misorientation angle of the GROD
+plot(ebsd_1,grod.angle./degree,'micronbar','off')
+mtexColorbar('title','misorientation angle to meanorientation in degree')
+mtexColorMap winter
 
+% overlay grain and subgrain boundaries
+hold on
+plot(grains.boundary,'lineWidth',1.5)
+hold off
 
 
 %% Sign off
