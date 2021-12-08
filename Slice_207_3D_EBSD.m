@@ -124,6 +124,31 @@ mtexColorbar('title','misorientation angle to meanorientation in degree')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 
+figure()
+GOS = ebsd_1.grainMean(mis2mean.angle);
+% plot it
+plot(grains_1, GOS ./ degree)
+mtexColorbar('title','GOS in degree')
+set(gca,'Color','black');
+mtexColorMap LaboTeX
+
+figure()
+% compute the maximum misorientation angles for each grain
+MGOS = ebsd_1.grainMean(mis2mean.angle,@max);
+% plot it
+plot(grains_1, MGOS ./ degree)
+mtexColorbar('title','MGOS in degree')
+set(gca,'Color','black');
+mtexColorMap LaboTeX
+
+figure()
+gam = ebsd_1.grainMean(ebsd.KAM);
+plot(grains_1,gam./degree)
+mtexColorbar('title','GAM in degree')
+set(gca,'Color','black');
+mtexColorMap LaboTeX
+
+
 % overlay grain and subgrain boundaries
 hold on
 plot(grains_1.boundary,'lineWidth',0.5)
