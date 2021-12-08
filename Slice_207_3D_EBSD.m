@@ -108,24 +108,25 @@ output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for coll
 figure()
 kam = ebsd_1.KAM / degree;
 % lets plot it
-plot(ebsd,kam,'micronbar','off')
-caxis([0,15])
+plot(ebsd_1,kam,'micronbar','off')
+set(gca,'Color','black');
+caxis([0,5])
 mtexColorbar
-mtexColorMap spring
+mtexColorMap LaboTeX
 hold on
-plot(grains_1.boundary,'lineWidth',1.5)
+plot(grains_1.boundary,'lineWidth',0.5)
 hold off
 
 figure()
-grod = ebsd_1.calcGROD(grains_1)
 % plot the misorientation angle of the GROD
-plot(ebsd_1,grod.angle./degree,'micronbar','off')
+plot(grains_1,grains_1.GOS,'micronbar','off')
 mtexColorbar('title','misorientation angle to meanorientation in degree')
-mtexColorMap winter
+set(gca,'Color','black');
+mtexColorMap LaboTeX
 
 % overlay grain and subgrain boundaries
 hold on
-plot(grains.boundary,'lineWidth',1.5)
+plot(grains_1.boundary,'lineWidth',0.5)
 hold off
 
 
