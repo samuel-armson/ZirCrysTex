@@ -64,7 +64,7 @@ ebsd_mis(grains_mis(grains_mis.grainSize <= 3)) = [];
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'threshold',5*degree);
 
 % smooth grain boundaries
-grains_mis = smooth(grains,5);
+grains_mis = smooth(grains_mis,3);
 
 
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
@@ -138,7 +138,7 @@ mtexColorMap LaboTeX
 figure()
 grod = ebsd_mis.calcGROD(grains_mis);
 % plot it
-plot(grains_mis, grod.angle ./ degree)
+plot(ebsd_mis, grod.angle./degree)
 mtexColorbar('title','GOS in degree')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
