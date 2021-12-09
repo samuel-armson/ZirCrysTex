@@ -55,7 +55,7 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 
 
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no');
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
 ebsd_mis=ebsd_1
@@ -120,7 +120,7 @@ kam = ebsd_1.KAM / degree;
 plot(ebsd_1,kam,'micronbar','off')
 set(gca,'Color','black');
 caxis([0,5])
-mtexColorbar
+mtexColorbar('title','.KAM function')
 mtexColorMap LaboTeX
 hold on
 plot(grains_1.boundary,'lineWidth',0.5)
@@ -129,7 +129,7 @@ hold off
 figure()
 % plot the misorientation angle of the GROD
 plot(grains_1,grains_1.GOS,'micronbar','off')
-mtexColorbar('title','misorientation angle to meanorientation in degree')
+mtexColorbar('title','.GOS function')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 
@@ -138,24 +138,40 @@ mtexColorMap LaboTeX
 figure()
 grod = ebsd_mis.calcGROD(grains_mis);
 % plot it
-plot(ebsd_mis, grod.angle./degree)
-mtexColorbar('title','GOS in degree')
+plot(ebsd_mis, grod.angle./degree,'micronbar','off')
+mtexColorbar('title','calcGROD function')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
+hold on
+plot(grains_mis.boundary,'lineWidth',1.5)
+hold off
+
+figure()
+gos_from_grod = grainMean(ebsd_mis,grod.angle);
+% plot it
+plot(grains_mis, gos_from_grod./degree,'micronbar','off')
+mtexColorbar('title','GOS from .calcGROD')
+set(gca,'Color','black');
+mtexColorMap LaboTeX
+hold on
+plot(grains_mis.boundary,'lineWidth',0.5)
+hold off
+
 
 figure()
 % compute the maximum misorientation angles for each grain
-MGOS = ebsd_1.grainMean(mis2mean.angle,@max);
+MGOS = grainMean(ebsd_mis,grod.angle,@max);
 % plot it
-plot(grains_1, MGOS ./ degree)
-mtexColorbar('title','MGOS in degree')
+plot(grains_mis, MGOS ./ degree)
+mtexColorbar('title','MGOS from calcGROD')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
+
 
 figure()
 gam = ebsd_1.grainMean(ebsd.KAM);
 plot(grains_1,gam./degree)
-mtexColorbar('title','GAM in degree')
+mtexColorbar('title','GAM from KAM')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 
