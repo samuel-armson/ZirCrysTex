@@ -55,7 +55,17 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 
 
-[grains_1,ebsd_1.grainId] = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no');
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no');
+
+
+ebsd_mis=ebsd_1
+[grains_mis,ebsd_1.grainId] = calcGrains(ebsd_mis(phase_of_interest))
+ebsd_mis(grains_mis(grains_mis.grainSize <= 3)) = [];
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'threshold',5*degree);
+
+% smooth grain boundaries
+grains_mis = smooth(grains,5);
+
 
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 
@@ -126,9 +136,9 @@ mtexColorMap LaboTeX
 
 
 figure()
-grod = ebsd_1.calcGROD(grains_1);
+grod = ebsd_mis.calcGROD(grains_mis);
 % plot it
-plot(grains_1, grod.angle ./ degree)
+plot(grains_mis, grod.angle ./ degree)
 mtexColorbar('title','GOS in degree')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
