@@ -53,13 +53,13 @@ cs = ebsd_1(phase_of_interest).CS
 % Perform cross-section correction
 %ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
 ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
-grains_1 = create_grains(ebsd_1,'misorientation',3,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
 ebsd_mis=ebsd_1
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest))
-ebsd_mis(grains_mis(grains_mis.grainSize <= 3)) = [];
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',3*degree);
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
+ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree);
 
 % smooth grain boundaries
 grains_mis = smooth(grains_mis,3);
@@ -122,6 +122,7 @@ mtexColorbar('title','.KAM function')
 mtexColorMap LaboTeX
 hold on
 plot(grains_1.boundary,'lineWidth',0.5)
+plot(grains_1.innerBoundary,'edgeAlpha',grains_1.innerBoundary.misorientation.angle / (3*degree))
 hold off
 
 figure()
@@ -130,6 +131,9 @@ plot(grains_1,grains_1.GOS,'micronbar','off')
 mtexColorbar('title','.GOS function')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
+hold on 
+plot(grains_mis.innerBoundary,'edgeAlpha',grains_mis.innerBoundary.misorientation.angle / (3*degree))
+hold off
 
 
 
