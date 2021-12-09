@@ -59,7 +59,7 @@ grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing
 
 
 ebsd_mis=ebsd_1
-[grains_mis,ebsd_1.grainId] = calcGrains(ebsd_mis(phase_of_interest))
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest))
 ebsd_mis(grains_mis(grains_mis.grainSize <= 3)) = [];
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'threshold',5*degree);
 
