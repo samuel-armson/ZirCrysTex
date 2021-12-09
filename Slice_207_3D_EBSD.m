@@ -124,8 +124,10 @@ mtexColorbar('title','misorientation angle to meanorientation in degree')
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 
+gos_angles = calcMis2Mean(grains_1)
+
 figure()
-GOS = ebsd_1.grainMean(Mis2Mean.angle);
+GOS = ebsd_1.grainMean(gos_angles.angle);
 % plot it
 plot(grains_1, GOS ./ degree)
 mtexColorbar('title','GOS in degree')
