@@ -148,6 +148,43 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			set(gcf,'position',[10 10 figure_width figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
     			set(pf_figure,'Name',string(figure_id));
+			
+			if strcmp(p.Results.colouring,'IPF') == 1
+				for i=1:axes_quant
+					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym)
+
+ 					ipfKey = ipfHSVKey(cs.Laue)
+					mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).orientations);
+
+					plotPDF(data_in(p.Results.phase_name).orientations,mapcolor,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					axes_title = miller_latex(p.Results.desired_pfs(i,:));
+					title(axes_title,'FontSize',8);
+					if i<axes_quant; nextAxis; end
+				end
+				titleString =  "$$\left\{"
+  				for increment = 1:length(p.Results.ref_text_comp)
+  					if p.Results.ref_text_comp(increment) < 0
+						tex_val = "\bar{" + num2str(abs(p.Results.ref_text_comp(increment))) + "}";
+						titleString = strcat(titleString, tex_val);
+					else
+						titleString = strcat(titleString,num2str(p.Results.ref_text_comp(increment)));
+					end
+    			end
+				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
+				%colormap(parula_red('increment',1));
+				colormap(plasma;)
+				cb = mtexColorbar('location','southoutside');
+				x_label = xlabel(cb, titleString,'FontSize',8)
+				Scale_bar_limits = [0 90]
+				caxis(Scale_bar_limits);
+    			cb.Label.Interpreter = 'latex';
+    			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
+    			set(gcf,'units','centimeters')
+    			figure_height = (n_rows*pf_height)+1.5
+    			figure_width = (n_cols*pf_width)
+    			set(gcf,'position',[10 10 figure_width figure_height])
+    			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
+    			set(pf_figure,'Name',string(figure_id));
 
 			else
 				%COLOUR EACH POINT BLACK
