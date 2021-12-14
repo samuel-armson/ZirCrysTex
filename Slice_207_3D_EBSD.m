@@ -59,7 +59,7 @@ grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing
 ebsd_mis=ebsd_1
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
 ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree);
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell');
 
 % smooth grain boundaries
 grains_mis = smooth(grains_mis,3);
@@ -68,17 +68,17 @@ grains_mis = smooth(grains_mis,3);
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 
 
-%odf = make_ODF(ebsd_1(phase_of_interest))
-%odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
-%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
-%plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+odf = make_ODF(ebsd_1(phase_of_interest))
+odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
+desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
-%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 %plot_map(ebsd_1,'Euler','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
@@ -105,7 +105,7 @@ grains_mis = smooth(grains_mis,3);
 output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
 
 
-%plot_map(grains_1,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
+plot_map(grains_1,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
 
 
 %combine_figures(f2,f3)
