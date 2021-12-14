@@ -46,6 +46,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'resolution','none');
 	addOptional(p,'view_unit_cell','no')
 	addOptional(p,'IPF_key','none');
+	addOptional(p,'facealpha',1);
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
 	parse(p,data_in,map_type,varargin{:});
@@ -216,7 +217,7 @@ function pm = plot_map(data_in,map_type,varargin)
     	else
     		map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-    		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
+    		plot(data_in(p.Results.phase_name),mapcolor,'add2all','facealpha',p.Results.facealpha);
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
