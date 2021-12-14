@@ -91,12 +91,12 @@ bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
 %plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue),'facealpha',0.5)
 figure()
-plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',5)
+plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
 mtexColorMap LaboTeX
 mtexColorbar('title','misorientation angle')
 
 figure()
-plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',5)
+plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
 mtexColorMap parula
 mtexColorbar('title','misorientation angle')
 
