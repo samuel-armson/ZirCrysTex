@@ -1,7 +1,7 @@
 % Master File for running Zirconia_mTeX 
 
 % Select mTeX installation to use and start mTeX
-%addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
+addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
 addpath 'C:/Users/Sam/Documents/GitHub/Zirconia_mTeX'
 addpath 'functions';
 addpath 'third_party_packages';
@@ -11,7 +11,7 @@ global cs
 global reference_texture_component
 global Sample_ID
 global pname
-addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+%addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
 startup_mtex
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
@@ -56,7 +56,7 @@ ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
-ebsd_mis=ebsd_1
+ebsd_mis=ebsd_1(phase_of_interest)
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
 ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell');
@@ -73,7 +73,7 @@ odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
-plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','fibre')
 
 
 ebsd_single = ebsd_mis(grains_mis(196))
