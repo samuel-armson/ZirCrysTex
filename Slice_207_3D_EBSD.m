@@ -95,6 +95,11 @@ plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',5)
 mtexColorMap LaboTeX
 mtexColorbar('title','misorientation angle')
 
+figure()
+plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',5)
+mtexColorMap parula
+mtexColorbar('title','misorientation angle')
+
 
 %plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
