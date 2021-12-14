@@ -87,10 +87,12 @@ grains_mis = smooth(grains_mis,3);
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
+bounds_1 = grains.boundary(phase_of_interest,phase_of_interest)
+
 plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue),'facealpha',0.5)
 
 hold on
-plot(grains_1(phase_of_interest).boundary,grains_1(phase_of_interest).boundary.misorientation.angle./degree,'linewidth',2)
+plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
 hold off
 mtexColorMap parula
 mtexColorbar('title','misorientation angle')
