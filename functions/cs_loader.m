@@ -37,7 +37,7 @@ function cs_out = cs_loader(data_in,varargin)
 			cs_out{end+1} = crystalSymmetry('4/mmm', [3.596 3.596 5.184], 'mineral', 'Tetragonal ZrO$$_2$$', 'color', tet_c);
 
 		elseif ismember(data_in(phase),{'metal','Metal','METAL','Zr','substrate','HCP Zr'}) == 1 
-			cs_out{end+1} = crystalSymmetry('6/mmm', [3.232 3.232 5.147], 'X||a*', 'Y||b', 'Z||c*', 'mineral', 'HCP Zr', 'color', metal_c);
+			cs_out{end+1} = crystalSymmetry('6/mmm', [3.232 3.232 5.147], 'X||a', 'Y||b*', 'Z||c*', 'mineral', 'HCP Zr', 'color', metal_c);
 
 		elseif ismember(data_in(phase),{'hydride','Hydride','HYDRIDE'}) == 1 
 			cs_out{end+1} = crystalSymmetry('4/mmm', [3.52 3.52 4.45], 'mineral', 'Zr Hydride', 'color', hydride_c);
