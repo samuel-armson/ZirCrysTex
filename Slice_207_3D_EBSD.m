@@ -90,7 +90,7 @@ grains_mis = smooth(grains_mis,3);
 plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue),'facealpha',0.5)
 
 hold on
-plot(grains_1,grains_1.misorientation.angle./degree,'linewidth',2)
+plot(grains_1.boundary,grains_1.boundary.misorientation.angle./degree,'linewidth',2)
 hold off
 mtexColorMap parula
 mtexColorbar('title','misorientation angle')
