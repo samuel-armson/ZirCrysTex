@@ -135,7 +135,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			end
 				titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$")
 				%colormap(parula_red('increment',1));
-				colormap(plasma;)
+				colormap(plasma);
 				cb = mtexColorbar('location','southoutside');
 				x_label = xlabel(cb, titleString,'FontSize',8)
 				Scale_bar_limits = [0 90]
