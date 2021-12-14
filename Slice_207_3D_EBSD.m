@@ -73,6 +73,7 @@ odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 
 
 ebsd_single = ebsd_mis(grains_mis(196))
@@ -86,7 +87,7 @@ plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 %plot_map(ebsd_1,'Euler','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
@@ -110,16 +111,18 @@ plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'re
 
 %% Hmm
 
-output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
+%output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
 
 
-plot_map(grains_mis,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
+%plot_map(grains_mis,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
 
 
 %combine_figures(f2,f3)
 
 %grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
+
+%{
 figure()
 kam = ebsd_1.KAM./degree;
 % lets plot it
@@ -190,7 +193,7 @@ mtexColorMap LaboTeX
 hold on
 plot(grains_1.boundary,'lineWidth',0.5)
 hold off
-
+%}
 
 %% Sign off
 for n=1:1
