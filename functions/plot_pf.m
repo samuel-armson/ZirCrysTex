@@ -143,15 +143,16 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
     			set(gcf,'units','centimeters')
-    			%{
+
     			figure_height = (n_rows*pf_height)+1.5
     			figure_width = (n_cols*pf_width)
     			set(gcf,'position',[10 10 figure_width figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
     			set(pf_figure,'Name',string(figure_id));
-				%}
+				
 
-			if strcmp(p.Results.colouring,'IPF') == 1
+
+			elseif strcmp(p.Results.colouring,'IPF') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym)
 
