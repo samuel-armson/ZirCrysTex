@@ -111,13 +111,13 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 			if strcmp(p.Results.colouring,'fibre') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
-					f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym)
+					f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym);
 					fibre_angles = angle(data_in(p.Results.phase_name).orientations,f,'antipodal')./degree;
 					for fa = 1 : length(fibre_angles)
 						if fibre_angles(fa) > 90
 							fibre_angles(fa) = 180 - fibre_angles(fa);
 						end
-						fa = fa + 1 
+						fa = fa + 1; 
 					end
 					plotPDF(data_in(p.Results.phase_name).orientations,fibre_angles,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
@@ -143,12 +143,14 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
     			cb.Label.Interpreter = 'latex';
     			set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
     			set(gcf,'units','centimeters')
+    			%{
     			figure_height = (n_rows*pf_height)+1.5
     			figure_width = (n_cols*pf_width)
     			set(gcf,'position',[10 10 figure_width figure_height])
     			figure_id = figure_name(Sample_ID,'reference_texture_component',p.Results.ref_text_comp,'suffix','scatter PF fibre colour')
     			set(pf_figure,'Name',string(figure_id));
-			
+				%}
+
 			if strcmp(p.Results.colouring,'IPF') == 1
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym)
