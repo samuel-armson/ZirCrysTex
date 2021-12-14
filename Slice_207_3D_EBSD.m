@@ -75,7 +75,7 @@ desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 
 
-ebsd_single = ebsd_1(grains_1(144))
+ebsd_single = ebsd_mis(grains_mis(144))
 odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
