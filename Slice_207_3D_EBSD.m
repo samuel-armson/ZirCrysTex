@@ -68,11 +68,18 @@ grains_mis = smooth(grains_mis,3);
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 
 
-odf = make_ODF(ebsd_1(phase_of_interest))
+
 odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+
+
+ebsd_single = ebsd_1(grains_1(144))
+odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
+desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
