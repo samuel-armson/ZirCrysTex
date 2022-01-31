@@ -56,7 +56,7 @@ ebsd_full = x_section_correction(ebsd_full,'SPED','SPED_inherent_rotation',18,'s
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
-grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
+grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 %grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
@@ -82,7 +82,7 @@ plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_full,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
+grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',550,'units','nm','max_percentage',3)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
