@@ -20,7 +20,7 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Al Zr oxide astar/Experimental/SPED/1TDa1/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Al Zr oxide astar/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 data_full = [pname '4sx large new contrast (0-0 382-699).ctf'];
@@ -51,7 +51,7 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
+ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',0)
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
@@ -82,7 +82,7 @@ plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
+grain_dimension_hist_ellipse(grains_full,'bin_size',5,'max_size',250,'units','nm','max_percentage',20)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
