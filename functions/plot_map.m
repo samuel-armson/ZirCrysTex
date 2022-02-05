@@ -52,11 +52,8 @@ function pm = plot_map(data_in,map_type,varargin)
 	parse(p,data_in,map_type,varargin{:});
 
 
-	aspect_ratio_correction = 0.6
-	ellipse_colour = [12,176,16]./255
-
-	if strcmp(map_type,'phase') == 0 
-		cs = data_in(p.Results.phase_name).CS
+	aspect_ratio_correction = 0.6;
+	ellipse_colour = [12,176,16]./255;
 
 	disp('')
 	disp('Plotting map...')
@@ -68,6 +65,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	if isa(data_in,'EBSD') == 1
 
 		if strcmp(map_type,'IPF') == 1
+			cs = data_in(p.Results.phase_name).CS
 			if strcmp(p.Results.IPF_key,'none') == 1
  				ipfKey = ipfHSVKey(cs.Laue)
  			else
@@ -89,12 +87,14 @@ function pm = plot_map(data_in,map_type,varargin)
 		end
 
 		if strcmp(map_type,'Euler') == 1
+			cs = data_in(p.Results.phase_name).CS
 			oM = BungeColorKey(cs);
 			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).orientations);
 		end
 
 
 		if strcmp(map_type,'Deviation') == 1
+			cs = data_in(p.Results.phase_name).CS
 			f = define_fibre(p.Results.ref_text_comp,'crys_sym',cs)
 			if strcmp(p.Results.plot_key,'on') == 1
 				Angle_increment_hist = 1;
@@ -229,11 +229,10 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	elseif isa(data_in, 'grain2d') == 1
 
-		disp('Promising start')
-
 		gB = data_in(p.Results.phase_name).boundary
 
 		if strcmp(map_type,'IPF') == 1
+			cs = data_in(p.Results.phase_name).CS
 			if strcmp(p.Results.IPF_key,'none') == 1
  				ipfKey = ipfHSVKey(cs.Laue)
  			else
@@ -254,6 +253,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		end
 
 		if strcmp(map_type,'Euler') == 1
+			cs = data_in(p.Results.phase_name).CS
 			oM = BungeColorKey(cs);
 			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 		end
@@ -262,6 +262,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		newMtexFigure(map_figure)
 
 		if strcmp(map_type,'Deviation') == 1
+			cs = data_in(p.Results.phase_name).CS
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
 			aspect_ratio_correction = 0.6
@@ -330,6 +331,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
 
   		elseif strcmp(map_type,'numbered_orientations')
+  			cs = data_in(p.Results.phase_name).CS
   			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
 
@@ -389,6 +391,7 @@ function pm = plot_map(data_in,map_type,varargin)
     		crystal_diagram_grains = grains.meanOrientation * crystal_diagram;
     		
     		if strcmp(p.Results.view_unit_cell, 'CS') == 1
+    			cs = data_in(p.Results.phase_name).CS
     			cross_section_correction = rotation('axis',xvector,'angle',270*degree);
   				crystal_diagram_grains = rotate(crystal_diagram_grains,cross_section_correction);
   				for grain_id = 1:length(crystal_diagram_grains)
@@ -432,6 +435,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
+  			cs = data_in(p.Results.phase_name).CS
   			unitcell_overlay_ori_data = data_in(p.Results.phase_name)
   			crystal_diagram = crystalShape.hex(cs)
     		crystal_diagram_grains = unitcell_overlay_ori_data.meanOrientation * crystal_diagram * 0.4 * sqrt(unitcell_overlay_ori_data.area);
