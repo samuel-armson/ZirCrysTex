@@ -64,7 +64,7 @@ grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smo
 odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
-plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
+%plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 
 %%

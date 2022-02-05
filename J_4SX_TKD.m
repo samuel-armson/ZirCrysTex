@@ -1,7 +1,7 @@
 % Master File for running Zirconia_mTeX 
 
 % Select mTeX installation to use and start mTeX
-addpath 'C:/Users/Rhys/My Documents/MATLAB/mtex-5.1.1';
+%addpath 'C:/Users/Sam A/Documents/MATLAB/mtex-5.1.1';
 addpath 'C:/Users/Sam/Documents/GitHub/Zirconia_mTeX'
 addpath 'functions';
 addpath 'third_party_packages';
