@@ -306,7 +306,7 @@ function pm = plot_map(data_in,map_type,varargin)
     		map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
     		aspect_ratio_correction = 0.3
-			plot(data_in('indexed'))
+			plot(data_in)
 			disp('We got here')
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
