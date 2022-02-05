@@ -55,7 +55,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	aspect_ratio_correction = 0.6
 	ellipse_colour = [12,176,16]./255
 
-	cs = data_in(p.Results.phase_name).CS
+	%cs = data_in(p.Results.phase_name).CS
 
 	disp('')
 	disp('Plotting map...')
