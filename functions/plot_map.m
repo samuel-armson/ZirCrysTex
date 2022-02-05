@@ -34,10 +34,10 @@ function pm = plot_map(data_in,map_type,varargin)
 	addRequired(p,'data_in');
 	addRequired(p,'map_type');
 	addOptional(p,'phase_name',phase_of_interest);
-	addOptional(p,'plot_key','off');
+	addOptional(p,'plot_key','off')
 	addOptional(p,'gb_overlay','off');
 	addOptional(p,'ellipse_overlay','off');
-	addOptional(p,'crys_sym',cs)
+	addOptional(p,'crys_sym',cs);
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
