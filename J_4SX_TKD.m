@@ -51,7 +51,7 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = dataset_rotation(ebsd_full,'method','axis','rotation_angles',[20,0,0],'keep','keepXY')
+ebsd_full = dataset_rotation(ebsd_full,[-20,0,0],'axis','keep','keepXY')
 ebsd_full = x_section_correction(ebsd_full,'CS_EBSD','scan_rotation',0)
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
@@ -65,7 +65,7 @@ grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smo
 odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
-plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
+%plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 
 %%
