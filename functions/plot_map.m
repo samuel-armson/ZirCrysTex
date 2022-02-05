@@ -201,8 +201,6 @@ function pm = plot_map(data_in,map_type,varargin)
 
 
 		elseif strcmp(map_type,'phase')
-			map_figure = figure('Name','Map loading...');
-			newMtexFigure(map_figure)
 			plot(data_in('indexed'))
 			aspect_ratio_correction = 1.2
 			%hold on
