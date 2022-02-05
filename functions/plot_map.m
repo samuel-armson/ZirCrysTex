@@ -229,6 +229,8 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	elseif isa(data_in, 'grain2d') == 1
 
+		disp('Promising start')
+
 		gB = data_in(p.Results.phase_name).boundary
 
 		if strcmp(map_type,'IPF') == 1
@@ -260,6 +262,8 @@ function pm = plot_map(data_in,map_type,varargin)
 		newMtexFigure(map_figure)
 
 		if strcmp(map_type,'Deviation') == 1
+			map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
 			aspect_ratio_correction = 0.6
 			f = define_fibre(p.Results.ref_text_comp,'crys_sym',cs)
 			fibre_angles = angle(data_in(p.Results.phase_name).meanOrientation,f,'antipodal')./degree;
