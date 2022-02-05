@@ -56,7 +56,7 @@ ebsd_full = x_section_correction(ebsd_full,'CS_EBSD','scan_rotation',0)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
-grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
+grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',5,'fill_gaps','no')
 %grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
