@@ -36,7 +36,7 @@ reference_texture_component = [1,0,-3];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'metal','tet','mono'})
+CS = cs_loader({'metal'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
