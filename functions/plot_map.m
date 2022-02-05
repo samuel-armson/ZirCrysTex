@@ -305,6 +305,7 @@ function pm = plot_map(data_in,map_type,varargin)
     	elseif strcmp(map_type,'phase')
     		aspect_ratio_correction = 0.3
 			plot(data_in('indexed'));
+			disp('We got here')
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
     		%hold off
