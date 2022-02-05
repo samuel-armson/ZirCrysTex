@@ -28,7 +28,7 @@ data_full = [pname 'Map Data 1 - EBSD DataMap Data 1.ctf'];
 %data_met = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_metal.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
-phase_of_interest = 'Monoclinic ZrO$$_2$$';
+phase_of_interest = 'HCP Zr';
 
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
 reference_texture_component = [1,0,-3];
@@ -51,7 +51,6 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
-ebsd_full = dataset_rotation(ebsd_full,[-20,0,0],'axis','keep','keepXY')
 ebsd_full = x_section_correction(ebsd_full,'CS_EBSD','scan_rotation',0)
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
@@ -62,11 +61,11 @@ grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smo
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
 
-odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
-odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+odf = make_ODF(ebsd_full('HCP Zr'))
+odf_data= calcODF(ebsd_full('HCP Zr').orientations,'halfwidth', 3*degree)
+desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
 %plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
-plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
+plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('HCP Zr').CS)
 
 %%
 
@@ -77,14 +76,13 @@ plot_map(ebsd_full,'BC','phase_name','indexed')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 plot_map(grains_full,'phase')
-plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
 %plot_substrate_mono(grains_met,grains_mono)
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',750,'units','nm','max_percentage',3)
+%grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',750,'units','nm','max_percentage',3)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
