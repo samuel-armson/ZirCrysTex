@@ -37,7 +37,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'plot_key','off')
 	addOptional(p,'gb_overlay','off');
 	addOptional(p,'ellipse_overlay','off');
-	addOptional(p,'crys_sym',cs);
+	addOptional(p,'crys_sym','cs');
 	addOptional(p,'ref_text_comp',reference_texture_component)
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
@@ -55,7 +55,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	aspect_ratio_correction = 0.6
 	ellipse_colour = [12,176,16]./255
 
-	%cs = data_in(p.Results.phase_name).CS
+	cs = data_in(p.Results.phase_name).CS
 
 	disp('')
 	disp('Plotting map...')
