@@ -74,7 +74,7 @@ plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
-
+plot_map(grains_full,'phase')
 plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
@@ -82,7 +82,7 @@ plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',550,'units','nm','max_percentage',3)
+grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',750,'units','nm','max_percentage',3)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
