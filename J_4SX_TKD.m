@@ -72,7 +72,8 @@ plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$
 
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
-%plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
+%plot_map(ebsd_full,'BC','phase_name','Monoclinic ZrO$$_2$$')
+plot_map(ebsd_full,'BC','phase_name','indexed')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 plot_map(grains_full,'phase')
