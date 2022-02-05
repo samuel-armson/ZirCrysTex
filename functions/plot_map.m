@@ -303,6 +303,8 @@ function pm = plot_map(data_in,map_type,varargin)
     		%plot(gB,'linecolor','white','linewidth',1,'micronBar','off');
     		%hold off
     	elseif strcmp(map_type,'phase')
+    		map_figure = figure('Name','Map loading...');
+			newMtexFigure(map_figure)
     		aspect_ratio_correction = 0.3
 			plot(data_in('indexed'));
 			disp('We got here')
