@@ -20,10 +20,10 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Al Zr oxide astar/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem effects ASTM paper 22/Talos 2/4SR/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_full = [pname '4SX_small map_interface new contrast (0-0 558-338).ctf'];
+data_full = [pname '4SX_interface_new_Edited_misindexed_removed.ctf'];
 %data_mono = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_mono.ctf'];
 %data_met = [pname '1TDa1_r1.6_ee_0.4_more_phases_Fuzz_metal.ctf'];
 
