@@ -52,6 +52,7 @@ ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferen
 cs = ebsd_full(phase_of_interest).CS
 
 % Perform cross-section correction
+ebsd_full = dataset_rotation(ebsd_full,[0,0,277],'axis','keep','keepXY')
 ebsd_full = x_section_correction(ebsd_full,'SPED','SPED_inherent_rotation',18,'scan_rotation',0)
 %ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
@@ -64,7 +65,7 @@ grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smo
 
 odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
+desired_pole_figures = [[0,0,1,"plane"];[1,1,1,"plane"];[1,0,-6,"plane"]];
 %plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 
@@ -76,14 +77,15 @@ plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 plot_map(grains_full,'phase')
-plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(grains_full,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-6])
 plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
 %plot_substrate_mono(grains_met,grains_mono)
 
 %combine_figures(f2,f3)
 
-grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',550,'units','nm','max_percentage',3)
+
+%grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',550,'units','nm','max_percentage',3)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
