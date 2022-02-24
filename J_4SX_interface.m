@@ -20,7 +20,7 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem effects ASTM paper 22/Talos 2/4SR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Chem effects ASTM paper 22/Talos 2/4SX/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 data_full = [pname '4SX_interface_new_Edited_misindexed_removed.ctf'];
@@ -64,7 +64,7 @@ grains_full = create_grains(ebsd_full,'misorientation',5,'smallest_grain',1,'smo
 odf = make_ODF(ebsd_full('Monoclinic ZrO$$_2$$'))
 odf_data= calcODF(ebsd_full('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"]];
-plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
+%plot_pf(ebsd_full,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_full('Monoclinic ZrO$$_2$$').CS)
 
 %%

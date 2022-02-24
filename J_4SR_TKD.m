@@ -16,7 +16,6 @@ startup_mtex
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
 save_figures = 'no';
-
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NVa3";
 % Path to files. eg: 'J:/Nature Paper Figures/'
