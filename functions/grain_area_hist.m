@@ -48,7 +48,7 @@ function gah = grain_area_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
-	grain_areas = data_in.area*scaling_factor;
+  grain_areas = data_in.area*scaling_factor;
   aspect_ratios = data_in.aspectRatio;
   largest_grain = max(grain_areas);
   total_area = sum(grain_areas,'double');
@@ -65,8 +65,12 @@ function gah = grain_area_hist(data_in,varargin)
   x_vals = []
   y_vals = []
 
+  disp(numberOfBars)
+
   for b = 1 : numberOfBars
     % Plot one single bar as a separate bar series.
+    disp(b)
+
     counts(b)=0;
     upper_bound(b) = b*largest_grain/bin_quant;
     lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
