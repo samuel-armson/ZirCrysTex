@@ -86,7 +86,7 @@ plot_map(grains_full,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_full('HCP
 %%
 grain_dimension_hist_ellipse(grains_full,'bin_size',10,'max_size',550,'units','nm','max_percentage',3)
 
-grain_area_hist(grains_mono,'bin_size',10,'max_size',100,'units','nm')
+grain_area_hist(grains_mono,'bin_size',100,'max_size',10000,'units','nm')
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
 
