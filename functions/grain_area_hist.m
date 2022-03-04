@@ -51,6 +51,10 @@ function gah = grain_area_hist(data_in,varargin)
   grain_areas = data_in.area*scaling_factor;
   aspect_ratios = data_in.aspectRatio;
   largest_grain = max(grain_areas);
+  mean_grain_size = mean(grain_area);
+  std_dev_grain_size = std(grain_area);
+  median_grain_size = median(grain_area);
+  mode_grain_size = mode(grain_area);
   total_area = sum(grain_areas,'double');
   bin_size = p.Results.bin_size;
   max_size = p.Results.max_size;
@@ -59,6 +63,7 @@ function gah = grain_area_hist(data_in,varargin)
   grain_size_hist = figure('Name','Loading...');
   figure(grain_size_hist);
 
+  %bin_quant = largest_grain/bin_size
   bin_quant = max_size/bin_size;
   numberOfBars = bin_quant
   
@@ -126,7 +131,15 @@ function gah = grain_area_hist(data_in,varargin)
   disp('')
 	disp('1D grain area histogram plotted.')
 	disp('')
-  
+
+  disp('Mean:')
+  disp(mean_grain_size)
+  disp('STD:')
+  disp(std_dev_grain_size)
+  disp('Median:')
+  disp(median_grain_size)
+  disp('Mode:')
+  disp(mode_grain_size)
 
 end
 
