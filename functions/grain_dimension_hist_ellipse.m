@@ -107,6 +107,35 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
   	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 
+  maj_largest_grain = max(maj_ax);
+  maj_mean_grain_size = mean(maj_ax);
+  maj_std_dev_grain_size = std(maj_ax);
+  maj_median_grain_size = median(maj_ax);
+  maj_mode_grain_size = mode(maj_ax);
+
+  min_largest_grain = max(min_ax);
+  min_mean_grain_size = mean(min_ax);
+  min_std_dev_grain_size = std(min_ax);
+  min_median_grain_size = median(min_ax);
+  min_mode_grain_size = mode(min_ax);
+
+  disp('Major Axis Mean :')
+  disp(maj_mean_grain_size)
+  disp('Major Axis STD:')
+  disp(maj_std_dev_grain_size)
+  disp('Major Axis Median:')
+  disp(maj_median_grain_size)
+  disp('Major Axis Mode:')
+  disp(maj_mode_grain_size)
+  disp('')
+  disp('Minor Axis Mean :')
+  disp(min_mean_grain_size)
+  disp('Minor Axis STD:')
+  disp(min_std_dev_grain_size)
+  disp('Minor Axis Median:')
+  disp(min_median_grain_size)
+  disp('Minor Axis Mode:')
+  disp(min_mode_grain_size)
 
 
 
