@@ -119,6 +119,8 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
   min_median_grain_size = median(min_ax);
   min_mode_grain_size = mode(min_ax);
 
+  disp('Major Axis Max :')
+  disp(maj_largest_grain)
   disp('Major Axis Mean :')
   disp(maj_mean_grain_size)
   disp('Major Axis STD:')
@@ -128,6 +130,8 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
   disp('Major Axis Mode:')
   disp(maj_mode_grain_size)
   disp('')
+  disp('Minor Axis Max :')
+  disp(min_largest_grain)
   disp('Minor Axis Mean :')
   disp(min_mean_grain_size)
   disp('Minor Axis STD:')
