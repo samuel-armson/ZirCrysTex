@@ -34,7 +34,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Small_grain_param = p.Results.smallest_grain;
 	Grain_smooth_param = p.Results.smoothing;
 
-	ebsd_full.unitCell = ebsd_full.unitCell * 0.5
+	ebsd_full.unitCell = ebsd_full.unitCell * 1.1
              
 	if strcmp(p.Results.fill_gaps,'no') == 1
 		[grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'unitCell','boundary','tight');
