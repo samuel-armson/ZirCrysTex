@@ -49,7 +49,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 
 
   	disp('Cleaning grains...')
-  	[grains_clean,ebsd_clean(phase_of_interest).grainId] = calcGrains(ebsd_clean(phase_of_interest),'angle',Grain_mis_param,'boundary','tight');
+  	[grains_clean,ebsd_clean(phase_of_interest).grainId] = calcGrains(ebsd_clean(phase_of_interest),'angle',Grain_mis_param,'unitCell','boundary','tight');
   	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
   	%grains_clean=grains_dirty
 
