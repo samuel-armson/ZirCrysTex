@@ -35,7 +35,12 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Grain_smooth_param = p.Results.smoothing;
              
 	if strcmp(p.Results.fill_gaps,'no') == 1
-		[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell','boundary','tight');
+		%[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'unitCell','boundary','tight');
+		% markovian clustering algorithm
+		p = 1.5;    % inflation power (default = 1.4)
+		maxIt = 10; % number of iterations (default = 4)
+		delta = Grain_mis_param % variance of the threshold angle
+		grains_clean = calcGrains(ebsd_full(phase_of_interest),'method','mcl',[p maxIt],'soft',[angle delta])
 	else
 		[grains_dirty,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param);
 	end
@@ -43,14 +48,14 @@ function gr = create_grains(data_in,desired_pfs,varargin)
   	
   	%ebsd_clean = ebsd_full(grains_dirty(grains_dirty.grainSize > Small_grain_param))
   	ebsd_clean = ebsd_full
-  	ebsd_clean(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
+  	%ebsd_clean(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	
 
   	%ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
 
 
   	disp('Cleaning grains...')
-  	[grains_clean,ebsd_clean(phase_of_interest).grainId] = calcGrains(ebsd_clean(phase_of_interest),'angle',Grain_mis_param,'unitCell','boundary','tight');
+  	%[grains_clean,ebsd_clean(phase_of_interest).grainId] = calcGrains(ebsd_clean(phase_of_interest),'angle',Grain_mis_param,'unitCell','boundary','tight');
   	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
   	%grains_clean=grains_dirty
 
