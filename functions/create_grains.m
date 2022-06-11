@@ -41,7 +41,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	end
 	disp('Removing small grains...')
   	
-  	grains_clean = grains_dirty(grains_dirty.grainSize <= Small_grain_param);
+  	grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param);
   	
 
   	%ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
