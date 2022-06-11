@@ -19,7 +19,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	addOptional(p,'smallest_grain', 3)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
-	addOptional(p,'fill_nonindexed','yes')
+	addOptional(p,'fill_nonindexed','no')
 	addOptional(p,'phase_name','indexed')
 
 	parse(p,data_in,varargin{:});
