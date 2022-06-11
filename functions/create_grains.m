@@ -53,7 +53,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
   	%grains_clean=grains_dirty
 
   	disp('Smooting grains...')
-	%grains_clean = smooth(grains_clean,Grain_smooth_param);
+	grains_clean = smooth(grains_clean,Grain_smooth_param);
 
 
   	gr = grains_clean
