@@ -19,6 +19,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	addOptional(p,'smallest_grain', 3)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
+	addOptional(p,'fill_nonindexed','no')
 	addOptional(p,'phase_name','indexed')
 
 	parse(p,data_in,varargin{:});
@@ -43,8 +44,11 @@ function gr = create_grains(data_in,desired_pfs,varargin)
   	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	
   	
-  	disp('Filling non-indexed points...')
-  	ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
+  	if strcmp(p.Results.fill_gaps,'no') == 0
+  		disp('Filling non-indexed points...')
+  		ebsd_full= fill(ebsd_full(phase_of_interest),grains_dirty);
+  	end
+
   	disp('Cleaning grains...')
   	[grains_clean,ebsd_full(phase_of_interest).grainId] = calcGrains(ebsd_full(phase_of_interest),'angle',Grain_mis_param,'boundary','tight','unitCell');
   	%ebsd_phase_smoothed = smooth(ebsd_full(phase_of_interest),grains_dirty,splineFilter,'fill');
