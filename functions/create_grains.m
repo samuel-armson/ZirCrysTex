@@ -41,7 +41,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	end
 	disp('Removing small grains...')
   	
-  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
+  	%ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	
 
   	if strcmp(p.Results.fill_gaps,'no') == 0
