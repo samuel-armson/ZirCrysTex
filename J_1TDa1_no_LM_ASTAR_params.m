@@ -24,9 +24,9 @@ pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 data_full = [pname '1TD_no_LM_full.ctf'];
-data_mono = [pname '1TD_no_LM_mono.ctf'];
+data_mono = [pname '1TD_no_LM_re_export_mono.ctf'];
 data_met = [pname '1TD_no_LM_metal.ctf'];
-
+data_ori = [pname '1TD_no_LM_re_export.ctf'];
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
@@ -37,6 +37,7 @@ reference_texture_component = [1,0,-3];
 % crystal symmetry
 
 CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
+CS = cs_loader({'Pt','mono','metal','tet','suboxide','SPP','hematite','hematite'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
@@ -44,15 +45,20 @@ setMTEXpref('zAxisDirection','outOfPlane');
 
 % load EBSD data
 %ebsd_full = loadEBSD(data_full,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_mono = loadEBSD(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+%%
+ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 %ebsd_met = loadEBSD(data_met,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
+
+ebsd_mono = gridify(ebsd_mono)
+
+%ebsd_mono.unitCell = ebsd_mono.unitCell * 1.005
 
 % globally define crystal symmetry of phase of interest
 cs = ebsd_mono(phase_of_interest).CS
 
 % Perform cross-section correction
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',89)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 %ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>0.01)
@@ -79,11 +85,11 @@ grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'sm
 %plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
-%%
+
 
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
-plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
+%plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
 %plot_map(grains_full,'phase')
