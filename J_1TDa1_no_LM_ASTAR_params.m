@@ -49,7 +49,7 @@ setMTEXpref('zAxisDirection','outOfPlane');
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 %ebsd_met = loadEBSD(data_met,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
-ebsd_mono = gridify(ebsd_mono)
+%ebsd_mono = gridify(ebsd_mono)
 
 %ebsd_mono.unitCell = ebsd_mono.unitCell * 1.005
 
