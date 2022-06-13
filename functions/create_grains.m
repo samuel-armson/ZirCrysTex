@@ -20,6 +20,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
 	addOptional(p,'fill_nonindexed','no')
+	addOptional(p,'assign_filter','no')
 	addOptional(p,'phase_name','indexed')
 
 	parse(p,data_in,varargin{:});
@@ -33,7 +34,13 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Grain_mis_param = p.Results.misorientation * degree;
 	Small_grain_param = p.Results.smallest_grain;
 	Grain_smooth_param = p.Results.smoothing;
+	assign_filter = p.Results.assign_filter;
 
+	if strcmp(assign_filter,'median') == 1
+		F = medianFilter;
+		F.numNeighbours = 3;
+		ebsd_full=smooth(ebsd_full,F)
+	end
 	
              
 	if strcmp(p.Results.fill_gaps,'no') == 1
