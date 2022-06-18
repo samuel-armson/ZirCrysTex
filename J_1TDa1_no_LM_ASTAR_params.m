@@ -69,14 +69,17 @@ ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
 
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
-grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','median','filter_value',1,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_fill = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_01 = create_grains(ebsd_mono_01,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_b = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',2,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_c = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',3,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_d = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',5,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_e = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',10,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_b = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','median','filter_value',2,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_c = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','median','filter_value',3,'phase_name','Monoclinic ZrO$$_2$$')
+
+grains_mono_d = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','kuwahara','filter_value',1,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_e = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','kuwahara','filter_value',2,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_f = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','kuwahara','filter_value',3,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
+
 
 
 %odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
@@ -94,6 +97,7 @@ grain_details_b = grain_dimension_quant(grains_mono_b)
 grain_details_c = grain_dimension_quant(grains_mono_c)
 grain_details_d = grain_dimension_quant(grains_mono_d)
 grain_details_e = grain_dimension_quant(grains_mono_e)
+grain_details_f = grain_dimension_quant(grains_mono_f)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')

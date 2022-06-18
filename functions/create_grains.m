@@ -20,7 +20,8 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
 	addOptional(p,'fill_nonindexed','no')
-	addOptional(p,'assign_filter', 0)
+	addOptional(p,'filter_type', 'none')
+	addOptional(p,'filter_value', 0)
 	addOptional(p,'phase_name','indexed')
 
 	parse(p,data_in,varargin{:});
@@ -36,13 +37,15 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Grain_smooth_param = p.Results.smoothing;
 	assign_filter = p.Results.assign_filter;
 
-	if assign_filter ~= 0
-		%F = medianFilter;
+	if strcmp(filter_type,'median') == 1
+		F = medianFilter;
+		F.numNeighbours = filter_value;
+		ebsd_full=smooth(ebsd_full,F)
+	elseif strcmp(filter_type,'kuwahara') == 1
         F = KuwaharaFilter;
-		F.numNeighbours = assign_filter;
+        F.numNeighbours = filter_value;
 		ebsd_full=smooth(ebsd_full,F)
 	end
-	
              
 	if strcmp(p.Results.fill_gaps,'no') == 1
 		[grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full('indexed'),'angle',Grain_mis_param,'unitCell','boundary','tight');
