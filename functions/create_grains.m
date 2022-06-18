@@ -35,7 +35,8 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Grain_mis_param = p.Results.misorientation * degree;
 	Small_grain_param = p.Results.smallest_grain;
 	Grain_smooth_param = p.Results.smoothing;
-	assign_filter = p.Results.assign_filter;
+	filter_type = p.Results.filter_type;
+	filter_value = p.Results.filter_value;
 
 	if strcmp(filter_type,'median') == 1
 		F = medianFilter;
