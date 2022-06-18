@@ -61,7 +61,7 @@ cs = ebsd_mono(phase_of_interest).CS
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
-%ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>0.01)
+ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
 %ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
 %ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
 %ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
