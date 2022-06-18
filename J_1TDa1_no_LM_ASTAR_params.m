@@ -61,19 +61,21 @@ cs = ebsd_mono(phase_of_interest).CS
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
-ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
-%ebsd_mono_02 = ebsd_mono(ebsd_mono.mad>0.02)
-%ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>0.05)
-%ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>0.1)
+%ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
+ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
+ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
+ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
+ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
 grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_fill = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_01 = create_grains(ebsd_mono_01,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-%grains_mono_02 = create_grains(ebsd_mono_02,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-%grains_mono_05 = create_grains(ebsd_mono_05,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-%grains_mono_10 = create_grains(ebsd_mono_10,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_03 = create_grains(ebsd_mono_03,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_05 = create_grains(ebsd_mono_05,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_07 = create_grains(ebsd_mono_07,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+grains_mono_10 = create_grains(ebsd_mono_10,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
 
@@ -87,7 +89,11 @@ grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'sm
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 %%
-grain_details = grain_dimension_quant(grains_mono)
+grain_details_0 = grain_dimension_quant(grains_mono)
+grain_details_03 = grain_dimension_quant(grains_mono_03)
+grain_details_05 = grain_dimension_quant(grains_mono_05)
+grain_details_07 = grain_dimension_quant(grains_mono_07)
+grain_details_10 = grain_dimension_quant(grains_mono_10)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
