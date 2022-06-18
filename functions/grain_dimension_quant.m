@@ -19,6 +19,7 @@ function gdq = grain_dimension_quant(data_in,varargin)
 	%}
 
 	global Sample_ID
+  global phase_of_interest
 
 	p = inputParser;
 	addRequired(p,'data_in');
