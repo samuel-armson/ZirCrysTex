@@ -41,7 +41,7 @@ function gdq = grain_dimension_quant(data_in,varargin)
       linear_scaling_factor = 1;
  	end
 
-  the_grains = data_in(phase_of_interest);
+  the_grains = data_in(phase_of_interest)
 
 	[omega,maj_ax,min_ax] = the_grains.fitEllipse;
   	maj_ax = maj_ax*2*linear_scaling_factor;
