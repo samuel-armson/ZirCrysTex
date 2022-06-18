@@ -36,7 +36,7 @@ reference_texture_component = [1,0,-3];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
+%CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
 CS = cs_loader({'Pt','mono','metal','tet','suboxide','SPP','hematite','hematite'})
   
 % plotting convention
@@ -68,8 +68,8 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
-grains_mono = create_grains(ebsd_mono,'misorientation',5,'smallest_grain',1,'smoothing',0,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_fill = create_grains(ebsd_mono,'misorientation',5,'smallest_grain',1,'smoothing',1,'fill_gaps','no','assign_filter',1,'phase_name','Monoclinic ZrO$$_2$$')
+grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','yes','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_fill = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_01 = create_grains(ebsd_mono_01,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_02 = create_grains(ebsd_mono_02,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_05 = create_grains(ebsd_mono_05,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
@@ -87,15 +87,15 @@ grains_mono_fill = create_grains(ebsd_mono,'misorientation',5,'smallest_grain',1
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 
-
+grain_details = grain_dimension_quant(grains_mono)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 %%
 %plot_map(grains_full,'phase')
-plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-plot_map(grains_mono_fill,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(grains_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%plot_map(grains_mono_fill,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %plot_map(grains_mono_01,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %plot_map(grains_mono_02,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %plot_map(grains_mono_05,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
