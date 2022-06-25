@@ -48,11 +48,11 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   mono_grain_quant=[];
   mono_grain_pixels=[];
-  mean_mono_grain_area=[];
-  median_mono_grain_area=[];
-  max_mono_grain_area=[];
-  min_mono_grain_area=[];
-  mode_mono_grain_area=[];
+  mean_grain_area=[];
+  median_grain_area=[];
+  max_grain_area=[];
+  min_grain_area=[];
+  mode_grain_area=[];
 
   maj_largest_grain = [];
   maj_smallest_grain = [];
@@ -82,13 +82,12 @@ function gpv = grain_parameter_variation(data_in,varargin)
     min_ax = min_ax*2*linear_scaling_factor;
 
     mono_grain_quant(end+1)=size(the_grains.id,1);
-    disp(class(mono_grain_quant))
     mono_grain_pixels(end+1)=sum(the_grains.grainSize);
-    mean_mono_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
-    median_mono_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
-    max_mono_grain_area(end+1)=max(the_grains.area*area_scaling_factor);
-    min_mono_grain_area(end+1)=min(the_grains.area*area_scaling_factor);
-    mode_mono_grain_area(end+1)=mode(the_grains.area*area_scaling_factor);
+    mean_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
+    median_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
+    max_grain_area(end+1)=max(the_grains.area*area_scaling_factor);
+    min_grain_area(end+1)=min(the_grains.area*area_scaling_factor);
+    mode_grain_area(end+1)=mode(the_grains.area*area_scaling_factor);
 
     maj_largest_grain(end+1) = max(maj_ax);
     maj_smallest_grain(end+1) = min(maj_ax);
@@ -106,6 +105,25 @@ function gpv = grain_parameter_variation(data_in,varargin)
   
   output_table = grain_params(1:3,:);
   output_table.mono_grain_quant = transpose(mono_grain_quant);
+  output_table.mono_grain_pixels = transpose(mono_grain_pixels);
+  output_table.mean_grain_area = transpose(mean_grain_area);
+  output_table.median_grain_area = transpose(median_grain_area);
+  output_table.max_grain_area = transpose(max_grain_area);
+  output_table.min_grain_area = transpose(min_grain_area);
+  output_table.mode_grain_area = transpose(mode_grain_area);
+
+  output_table.maj_largest_grain = transpose(maj_largest_grain);
+  output_table.maj_smallest_grain = transpose(maj_smallest_grain);
+  output_table.maj_mean_grain_size = transpose(maj_mean_grain_size);
+  output_table.maj_median_grain_size = transpose(maj_median_grain_size);
+  output_table.maj_mode_grain_size = transpose(maj_mode_grain_size);
+
+  output_table.min_largest_grain = transpose(min_largest_grain);
+  output_table.min_smallest_grain = transpose(min_smallest_grain);
+  output_table.min_mean_grain_size = transpose(min_mean_grain_size);
+  output_table.min_median_grain_size = transpose(min_median_grain_size);
+  output_table.min_mode_grain_size = transpose(min_mode_grain_size);
+
 
   disp(output_table)
   
