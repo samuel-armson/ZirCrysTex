@@ -46,6 +46,28 @@ function gpv = grain_parameter_variation(data_in,varargin)
   row_count = height(grain_params);
   row_count = 3
 
+  mono_grain_quant=[];
+  mono_grain_pixels=[];
+  mean_mono_grain_area=[];
+  median_mono_grain_area=[];
+  max_mono_grain_area=[];
+  min_mono_grain_area=[];
+  mode_mono_grain_area=[];
+
+  maj_largest_grain = [];
+  maj_smallest_grain = [];
+  maj_mean_grain_size = [];
+  maj_median_grain_size = [];
+  maj_mode_grain_size = [];
+
+  min_largest_grain = [];
+  min_smallest_grain = [];
+  min_mean_grain_size = [];
+  min_median_grain_size = [];
+  min_mode_grain_size = [];
+
+
+
   for row = 1 : row_count
 
     disp(strcat('Processing parameter set ',num2str(row),' of ',num2str(row_count)))
@@ -59,56 +81,29 @@ function gpv = grain_parameter_variation(data_in,varargin)
     maj_ax = maj_ax*2*linear_scaling_factor;
     min_ax = min_ax*2*linear_scaling_factor;
 
+    mono_grain_quant(end+1)=size(the_grains.id,1);
+    mono_grain_pixels(end+1)=sum(the_grains.grainSize);
+    mean_mono_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
+    median_mono_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
+    max_mono_grain_area(end+1)=max(the_grains.area*area_scaling_factor);
+    min_mono_grain_area(end+1)=min(the_grains.area*area_scaling_factor);
+    mode_mono_grain_area(end+1)=mode(the_grains.area*area_scaling_factor);
 
-    mono_grain_quant=size(the_grains.id,1);
-    mono_grain_pixels=sum(the_grains.grainSize);
-    mean_mono_grain_area=mean(the_grains.area*area_scaling_factor);
-    median_mono_grain_area=median(the_grains.area*area_scaling_factor);
-    max_mono_grain_area=max(the_grains.area*area_scaling_factor);
-    min_mono_grain_area=min(the_grains.area*area_scaling_factor);
-    mode_mono_grain_area=mode(the_grains.area*area_scaling_factor);
+    maj_largest_grain(end+1) = max(maj_ax);
+    maj_smallest_grain(end+1) = min(maj_ax);
+    maj_mean_grain_size(end+1) = mean(maj_ax);
+    maj_median_grain_size(end+1) = median(maj_ax)
+    maj_mode_grain_size(end+1) = mode(maj_ax);
 
-    maj_largest_grain = max(maj_ax);
-    maj_smallest_grain = min(maj_ax);
-    maj_mean_grain_size = mean(maj_ax);
-    maj_median_grain_size = median(maj_ax)
-    maj_mode_grain_size = mode(maj_ax);
-
-    min_largest_grain = max(min_ax);
-    min_smallest_grain = min(min_ax);
-    min_mean_grain_size = mean(min_ax);
-    min_median_grain_size = median(min_ax);
-    min_mode_grain_size = mode(min_ax);
-
-    gpv = {'mono_grain_quant' mono_grain_quant; 
-            'mono_grain_pixels' mono_grain_pixels;
-            'mean_mono_grain_area' mean_mono_grain_area;
-            'median_mono_grain_area' median_mono_grain_area;
-            'max_mono_grain_area' max_mono_grain_area;
-            'min_mono_grain_area' min_mono_grain_area;
-            'mode_mono_grain_area' mode_mono_grain_area;
-            'maj_largest_grain' maj_largest_grain;
-            'maj_smallest_grain' maj_smallest_grain;
-            'maj_mean_grain_size' maj_mean_grain_size;
-            'maj_median_grain_size' maj_median_grain_size;
-            'maj_mode_grain_size' maj_mode_grain_size;
-            'min_largest_grain' min_largest_grain;
-            'min_smallest_grain' min_smallest_grain;
-            'min_mean_grain_size' min_mean_grain_size;
-            'min_median_grain_size' min_median_grain_size;
-            'min_mode_grain_size' min_mode_grain_size;
-            }
-
-
-
-
-
-
-
+    min_largest_grain(end+1) = max(min_ax);
+    min_smallest_grain(end+1) = min(min_ax);
+    min_mean_grain_size(end+1) = mean(min_ax);
+    min_median_grain_size(end+1) = median(min_ax);
+    min_mode_grain_size(end+1) = mode(min_ax);
 
   end
   
-
+  disp(mono_grain_quant)
 
   
 
