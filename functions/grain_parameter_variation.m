@@ -47,12 +47,12 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   for row = 1 : row_count
 
-    disp(strcat('Processing parameter set',num2str(row),' of ',num2str(row_count)))
+    disp(strcat('Processing parameter set ',num2str(row),' of ',num2str(row_count)))
     ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
-    ebsd_a =data_in(ebsd_a.bc>=table2array(grain_params(row,3)));
+    ebsd_b =data_in(ebsd_a.bc>=table2array(grain_params(row,3)));
 
   end
-  %grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
+  %grains_a = create_grains(ebsd_b,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
 
 
   
