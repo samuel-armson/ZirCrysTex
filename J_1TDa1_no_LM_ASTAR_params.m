@@ -69,10 +69,10 @@ disp(grain_params)
 col_1 = grain_params(1,:)
 disp(col_1)
 
-ebsd_a =ebsd_mono(ebsd_mono.mad>=(grain_params(1,2)/100)
-ebsd_a =ebsd_a(ebsd_a.BC>=(grain_params(1,3)/100)
+ebsd_a =ebsd_mono(ebsd_mono.mad>=(table2array(grain_params(1,2))/100))
+ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(1,3)))
 
-grains_a = create_grains(create_grains(ebsd_a,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0))
+grains_a = create_grains(ebsd_a,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
 %%
 
 
