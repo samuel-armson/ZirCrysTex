@@ -50,59 +50,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
 
-  """
 
-  the_grains = data_in;
-
-	[omega,maj_ax,min_ax] = the_grains.fitEllipse;
-  	maj_ax = maj_ax*2*linear_scaling_factor;
-  	min_ax = min_ax*2*linear_scaling_factor;
-
-
-  mono_grain_quant=size(the_grains.id,1);
-  mono_grain_pixels=sum(the_grains.grainSize);
-  mean_mono_grain_area=mean(the_grains.area*area_scaling_factor);
-  median_mono_grain_area=median(the_grains.area*area_scaling_factor);
-  max_mono_grain_area=max(the_grains.area*area_scaling_factor);
-  min_mono_grain_area=min(the_grains.area*area_scaling_factor);
-  mode_mono_grain_area=mode(the_grains.area*area_scaling_factor);
-
-  maj_largest_grain = max(maj_ax);
-  maj_smallest_grain = min(maj_ax);
-  maj_mean_grain_size = mean(maj_ax);
-  maj_median_grain_size = median(maj_ax)
-  maj_mode_grain_size = mode(maj_ax);
-
-  min_largest_grain = max(min_ax);
-  min_smallest_grain = min(min_ax);
-  min_mean_grain_size = mean(min_ax);
-  min_median_grain_size = median(min_ax);
-  min_mode_grain_size = mode(min_ax);
-
-  gpv = {'mono_grain_quant' mono_grain_quant; 
-          'mono_grain_pixels' mono_grain_pixels;
-          'mean_mono_grain_area' mean_mono_grain_area;
-          'median_mono_grain_area' median_mono_grain_area;
-          'max_mono_grain_area' max_mono_grain_area;
-          'min_mono_grain_area' min_mono_grain_area;
-          'mode_mono_grain_area' mode_mono_grain_area;
-          'maj_largest_grain' maj_largest_grain;
-          'maj_smallest_grain' maj_smallest_grain;
-          'maj_mean_grain_size' maj_mean_grain_size;
-          'maj_median_grain_size' maj_median_grain_size;
-          'maj_mode_grain_size' maj_mode_grain_size;
-          'min_largest_grain' min_largest_grain;
-          'min_smallest_grain' min_smallest_grain;
-          'min_mean_grain_size' min_mean_grain_size;
-          'min_median_grain_size' min_median_grain_size;
-          'min_mode_grain_size' min_mode_grain_size;
-          };
-
-
-
-
-
-  """
   gpv = 1
 
 
