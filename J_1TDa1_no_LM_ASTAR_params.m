@@ -76,7 +76,11 @@ row = 1
 ebsd_a =ebsd_mono(ebsd_mono.mad>=(table2array(grain_params(row,2))/100))
 ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)))
 
-grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'fill_gaps','no','filter_type','none','filter_value',0)
+if strcmp(grain_params(row,1),'Orientation reliability') == 1
+	disp('it bloody worked')
+end
+
+%grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'fill_gaps','no','filter_type','none','filter_value',0)
 
 %% ===========================================================================================================================================================================
 
