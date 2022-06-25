@@ -15,14 +15,6 @@ addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
 startup_mtex
 
 
-%%
-grain_params = readtable('grain_calc_params.csv')
-disp(grain_params)
-col_1 = grain_params(1,:)
-disp(col_1)
-
-%%
-
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
 save_figures = 'no';
 
@@ -69,6 +61,21 @@ cs = ebsd_mono(phase_of_interest).CS
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
+
+
+%%
+grain_params = readtable('grain_calc_params.csv')
+disp(grain_params)
+col_1 = grain_params(1,:)
+disp(col_1)
+
+ebsd_a =ebsd_mono(ebsd_mono.mad>=(grain_params(1,2)/100)
+ebsd_a =ebsd_a(ebsd_a.BC>=(grain_params(1,3)/100)
+
+grains_a = create_grains(create_grains(ebsd_a,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0))
+%%
+
+
 
 ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
 %ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
