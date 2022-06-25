@@ -43,13 +43,17 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   grain_params = readtable('grain_calc_params.csv')
 
+  row_count = height(grain_params)
+
   row = 1
 
   ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100))
   ebsd_a =data_in(ebsd_a.bc>=table2array(grain_params(row,3)))
 
-  grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
+  %grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
 
+
+  %for b = 1 : numberOfBars
 
   gpv = 1
 
