@@ -14,6 +14,12 @@ global pname
 addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
 startup_mtex
 
+
+%%
+grain_params = readmatrix('grain_calc_params.csv')
+disp(grain_params)
+%%
+
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
 save_figures = 'no';
 

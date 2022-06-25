@@ -48,8 +48,6 @@ function gdq = grain_dimension_quant(data_in,varargin)
   	min_ax = min_ax*2*linear_scaling_factor;
 
 
-
-
   mono_grain_quant=size(the_grains.id,1);
   mono_grain_pixels=sum(the_grains.grainSize);
   mean_mono_grain_area=mean(the_grains.area*area_scaling_factor);
@@ -61,14 +59,12 @@ function gdq = grain_dimension_quant(data_in,varargin)
   maj_largest_grain = max(maj_ax);
   maj_smallest_grain = min(maj_ax);
   maj_mean_grain_size = mean(maj_ax);
-  maj_std_dev_grain_size = std(maj_ax);
   maj_median_grain_size = median(maj_ax)
   maj_mode_grain_size = mode(maj_ax);
 
   min_largest_grain = max(min_ax);
   min_smallest_grain = min(min_ax);
   min_mean_grain_size = mean(min_ax);
-  min_std_dev_grain_size = std(min_ax);
   min_median_grain_size = median(min_ax);
   min_mode_grain_size = mode(min_ax);
 
@@ -82,13 +78,11 @@ function gdq = grain_dimension_quant(data_in,varargin)
           'maj_largest_grain' maj_largest_grain;
           'maj_smallest_grain' maj_smallest_grain;
           'maj_mean_grain_size' maj_mean_grain_size;
-          'maj_std_dev_grain_size' maj_std_dev_grain_size;
           'maj_median_grain_size' maj_median_grain_size;
           'maj_mode_grain_size' maj_mode_grain_size;
           'min_largest_grain' min_largest_grain;
           'min_smallest_grain' min_smallest_grain;
           'min_mean_grain_size' min_mean_grain_size;
-          'min_std_dev_grain_size' min_std_dev_grain_size;
           'min_median_grain_size' min_median_grain_size;
           'min_mode_grain_size' min_mode_grain_size;
           };
