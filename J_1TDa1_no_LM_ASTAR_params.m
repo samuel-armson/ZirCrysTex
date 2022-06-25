@@ -63,17 +63,22 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
-%%
+
+%%===========================================================================================================================================================================
+
 grain_params = readtable('grain_calc_params.csv')
 disp(grain_params)
 col_1 = grain_params(1,:)
 disp(col_1)
 
-ebsd_a =ebsd_mono(ebsd_mono.mad>=(table2array(grain_params(1,2))/100))
-ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(1,3)))
+row = 1
 
-grains_a = create_grains(ebsd_a,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
-%%
+ebsd_a =ebsd_mono(ebsd_mono.mad>=(table2array(grain_params(row,2))/100))
+ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)))
+
+grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'fill_gaps','no','filter_type','none','filter_value',0)
+
+%%===========================================================================================================================================================================
 
 
 
