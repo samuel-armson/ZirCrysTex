@@ -20,6 +20,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
 	global Sample_ID
   global phase_of_interest
+  global pname
 
 	p = inputParser;
 	addRequired(p,'data_in');
@@ -125,10 +126,9 @@ function gpv = grain_parameter_variation(data_in,varargin)
   output_table.min_mode_grain_size = transpose(min_mode_grain_size);
 
 
-  disp(output_table)
-  
+  writetable(output_table,strcat(pname,Sample_ID,'grain_param_variation.csv'))
 
-  gpv = 1
+  gpv = 'Table exported'
 
 
 
