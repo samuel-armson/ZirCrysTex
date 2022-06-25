@@ -16,8 +16,11 @@ startup_mtex
 
 
 %%
-grain_params = readmatrix('grain_calc_params.csv')
+grain_params = readtable('grain_calc_params.csv')
 disp(grain_params)
+col_1 = grain_params(1,:)
+disp(col_1)
+
 %%
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
