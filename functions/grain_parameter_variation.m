@@ -92,7 +92,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
     maj_largest_grain(end+1) = max(maj_ax);
     maj_smallest_grain(end+1) = min(maj_ax);
     maj_mean_grain_size(end+1) = mean(maj_ax);
-    maj_median_grain_size(end+1) = median(maj_ax)
+    maj_median_grain_size(end+1) = median(maj_ax);
     maj_mode_grain_size(end+1) = mode(maj_ax);
 
     min_largest_grain(end+1) = max(min_ax);
@@ -103,8 +103,10 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   end
   
-  disp(mono_grain_quant)
+  output_table = grain_params(:3,:);
+  output_table.mono_grain_quant = mono_grain_quant;
 
+  disp(output_table)
   
 
   gpv = 1
