@@ -66,23 +66,7 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
 %% ===========================================================================================================================================================================
 
-grain_params = readtable('grain_calc_params.csv')
-disp(grain_params)
-col_1 = grain_params(1,:)
-disp(col_1)
-
-row = 1
-
-ebsd_a =ebsd_mono(ebsd_mono.mad>=(table2array(grain_params(row,2))/100))
-ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)))
-
-if strcmp(table2cell(grain_params(row,1)),'Orientation reliability') == 1
-	disp('it bloody worked')
-else
-    disp('no dice')
-end
-
-grains_a = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)))
+grain_parameter_variation(ebsd_mono)
 
 %% ===========================================================================================================================================================================
 
