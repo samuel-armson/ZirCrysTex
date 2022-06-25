@@ -82,6 +82,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
     min_ax = min_ax*2*linear_scaling_factor;
 
     mono_grain_quant(end+1)=size(the_grains.id,1);
+    disp(class(mono_grain_quant))
     mono_grain_pixels(end+1)=sum(the_grains.grainSize);
     mean_mono_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
     median_mono_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
@@ -103,8 +104,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   end
   
-  output_table = grain_params(:3,:);
-  output_table.mono_grain_quant = mono_grain_quant;
+  output_table = grain_params(1:3,:);
+  output_table.mono_grain_quant = transpose(mono_grain_quant);
 
   disp(output_table)
   
