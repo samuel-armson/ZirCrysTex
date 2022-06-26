@@ -45,6 +45,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
  	end
 
   grain_params = readtable('grain_calc_params.csv');
+  %grain_params = grain_params(41:42,:)
 
   row_count = height(grain_params);
 

@@ -41,11 +41,11 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	if strcmp(filter_type,'median') == 1
 		F = medianFilter;
 		F.numNeighbours = filter_value;
-		ebsd_full=smooth(ebsd_full,F)
+		ebsd_full=smooth(ebsd_full,F);
 	elseif strcmp(filter_type,'kuwahara') == 1
         F = KuwaharaFilter;
         F.numNeighbours = filter_value;
-		ebsd_full=smooth(ebsd_full,F)
+		ebsd_full=smooth(ebsd_full,F);
 	end
              
 	if strcmp(p.Results.fill_gaps,'no') == 1

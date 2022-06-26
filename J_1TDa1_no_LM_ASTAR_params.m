@@ -73,34 +73,34 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 
 
 
-ebsd_mono = ebsd_mono(ebsd_mono.mad>0.01)
-%ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
-%ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
-%ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
-%ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
+ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
+ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
+ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
+ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
+ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
-grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_fill = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','assign_filter',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_mono_01 = create_grains(ebsd_mono_01,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_b = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_c = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',2,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_b = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_c = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',2,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
 
-grains_mono_d = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_e = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',5,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
-grains_mono_f = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',10,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_d = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_e = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',5,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
+%grains_mono_f = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',10,'fill_gaps','no','filter_type','none','filter_value',0,'phase_name','Monoclinic ZrO$$_2$$')
 %grains_met = create_grains(ebsd_met,'misorientation',15,'smallest_grain',5,'smoothing',5,'fill_gaps','no','phase_name','HCP Zr')
 
 
 
-%odf = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
+odf_00 = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
 %odf_data= calcODF(ebsd_mono('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 %odf_metal= calcODF(ebsd_met('HCP Zr').orientations,'halfwidth', 3*degree)
-%desired_pole_figures = [[1,0,-3,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"]];
+desired_pole_figures = [[1,0,-3,"plane"];[0,0,1,"plane"];[1,1,1,"plane"]];
 %desired_pole_figures_met = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
-%plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
+plot_pf(odf_00,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 %%
