@@ -55,6 +55,6 @@ function mODF = make_ODF(data_in,varargin)
 	
 	elseif isa(data_in,'grain2D') == 1
 
-		mODF = calcODF(data_in(p.Results.phase_name).meanOrientation,'halfwidth',p.Results.half_width*degree)
+		mODF = calcODF(raw_data.meanOrientation,'halfwidth',p.Results.half_width*degree)
 
 	end

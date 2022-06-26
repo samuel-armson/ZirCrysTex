@@ -26,8 +26,11 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	addRequired(p,'data_in');
 
 	addOptional(p,'units','nm')
+  addOptional(p,'crys_sym', cs)
 
 	parse(p,data_in,varargin{:});	
+
+  cs = p.Results.(crys_sym)
 
 
 	disp('')
