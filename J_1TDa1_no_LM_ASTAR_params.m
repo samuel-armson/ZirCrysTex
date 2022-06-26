@@ -119,13 +119,7 @@ plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 %%
-phase_ids = ebsd_mono.phase;
-
-mono_px = sum(phase_ids == 2)
-tet_px = sum(phase_ids == 4)
-
-mono_frac = mono_px/(mono_px+tet_px)*100
-tet_frac = tet_px/(mono_px+tet_px)*100
+phase_fraction_calc(odf_00,'mono_id',2,'tet_id',4)
 %%
 grain_details_a = grain_dimension_quant(grains_mono_a)
 grain_details_b = grain_dimension_quant(grains_mono_b)
