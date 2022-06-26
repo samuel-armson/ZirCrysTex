@@ -33,8 +33,8 @@ function pfc = phase_fraction_calc(data_in,varargin)
 
   phase_ids = data_in.phase;
 
-  mono_px = sum(phase_ids == mono_id);
-  tet_px = sum(phase_ids == tet_id);
+  mono_px = sum(phase_ids == p.Results.mono_id);
+  tet_px = sum(phase_ids == p.Results.tet_id);
 
   mono_frac = mono_px/(mono_px+tet_px)*100
   tet_frac = tet_px/(mono_px+tet_px)*100
