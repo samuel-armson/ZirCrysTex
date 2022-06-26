@@ -68,6 +68,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
   min_mean_grain_size = [];
   min_median_grain_size = [];
   min_mode_grain_size = [];
+  mono_phase_frac = [];
+  tet_phase_frac = [];
 
 
 
@@ -104,6 +106,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
     min_median_grain_size(end+1) = median(min_ax);
     min_mode_grain_size(end+1) = mode(min_ax);
 
+    mono_phase_frac(end+1) = phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
+    tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
   end
   
   output_table = grain_params;
@@ -126,6 +130,11 @@ function gpv = grain_parameter_variation(data_in,varargin)
   output_table.min_mean_grain_size = transpose(min_mean_grain_size);
   output_table.min_median_grain_size = transpose(min_median_grain_size);
   output_table.min_mode_grain_size = transpose(min_mode_grain_size);
+
+  output_table.mono_phase_frac = transpose(mono_phase_frac);
+  output_table.tet_phase_frac = transpose(tet_phase_frac);
+
+  
 
   gpv = output_table
 

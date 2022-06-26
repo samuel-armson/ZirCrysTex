@@ -118,9 +118,9 @@ plot_pf(odf_10,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
-%%
-phase_fraction_calc(ebsd_mono_03,'mono_id',2,'tet_id',4)
-%%
+%% ==================================================================================================================
+k = calcKearnsFactor(odf_00,'h',define_miller(reference_texture_component))
+%% ==================================================================================================================
 grain_details_a = grain_dimension_quant(grains_mono_a)
 grain_details_b = grain_dimension_quant(grains_mono_b)
 grain_details_c = grain_dimension_quant(grains_mono_c)
