@@ -19,8 +19,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	%}
 
 	global Sample_ID
-  global phase_of_interest
-  global pname
+    global phase_of_interest
+    global pname
 
 	p = inputParser;
 	addRequired(p,'data_in');
@@ -33,6 +33,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	disp('')
 	disp('Exploring effects of different parameters on grain calculations...')
 	disp('')
+    disp('pname:')
+    disp(pname)
 
   if strcmp(p.Results.units,'nm') == 1
   	area_scaling_factor = 1000000;
@@ -45,7 +47,6 @@ function gpv = grain_parameter_variation(data_in,varargin)
   grain_params = readtable('grain_calc_params.csv');
 
   row_count = height(grain_params);
-  row_count = 3
 
   mono_grain_quant=[];
   mono_grain_pixels=[];
@@ -104,7 +105,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   end
   
-  output_table = grain_params(1:3,:);
+  output_table = grain_params;
   output_table.mono_grain_quant = transpose(mono_grain_quant);
   output_table.mono_grain_pixels = transpose(mono_grain_pixels);
   output_table.mean_grain_area = transpose(mean_grain_area);
@@ -125,10 +126,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
   output_table.min_median_grain_size = transpose(min_median_grain_size);
   output_table.min_mode_grain_size = transpose(min_mode_grain_size);
 
-
-  writetable(output_table,strcat(pname,Sample_ID,'grain_param_variation.csv'))
-
-  gpv = 'Table exported'
+  gpv = output_table
 
 
 

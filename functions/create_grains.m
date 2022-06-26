@@ -56,7 +56,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	disp('Removing small grains...')
   	
   	%ebsd_clean = ebsd_full(grains_dirty(grains_dirty.grainSize > Small_grain_param))
-  	ebsd_clean = ebsd_full
+  	ebsd_clean = ebsd_full;
   	ebsd_clean(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	%grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param)
 
@@ -76,7 +76,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	grains_clean = smooth(grains_clean,Grain_smooth_param);
 
 
-  	gr = grains_clean
+  	gr = grains_clean;
   	disp('')
 	disp('Grains calculated.')
 	disp('')
