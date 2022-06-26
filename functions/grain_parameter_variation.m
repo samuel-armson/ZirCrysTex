@@ -86,7 +86,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
     the_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
 
-    the_odf = make_ODF(the_grains('Monoclinic ZrO$$_2$$'));
+    the_odf = make_ODF(the_grains, 'phase_name', 'Monoclinic ZrO$$_2$$');
 
     [omega,maj_ax,min_ax] = the_grains.fitEllipse;
     maj_ax = maj_ax*2*linear_scaling_factor;
