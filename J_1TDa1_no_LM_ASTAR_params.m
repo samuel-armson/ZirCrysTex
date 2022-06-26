@@ -119,7 +119,7 @@ plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
 %% ==================================================================================================================
-k = calcKearnsFactor(odf_00,'h',define_miller(reference_texture_component))
+k = calcKearnsFactor(odf_00,'h',define_miller(reference_texture_component,'crys_sym',cs))
 %% ==================================================================================================================
 grain_details_a = grain_dimension_quant(grains_mono_a)
 grain_details_b = grain_dimension_quant(grains_mono_b)
