@@ -121,7 +121,9 @@ plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 %% ==================================================================================================================
 k = calcKearnsFactor(odf_00,'h',define_miller(reference_texture_component,'crys_sym',cs))
 %% ==================================================================================================================
-mODF = calcODF(raw_data.meanOrientation,'halfwidth',p.Results.half_width*degree)
+grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
+%%
+mODF = calcODF(grains_mono_a(phase_of_interest).meanOrientation,'halfwidth',3*degree)
 %% ==================================================================================================================
 grain_details_a = grain_dimension_quant(grains_mono_a)
 grain_details_b = grain_dimension_quant(grains_mono_b)
