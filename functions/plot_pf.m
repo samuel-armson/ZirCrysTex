@@ -58,6 +58,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	addOptional(p,'marker_size',0.5);
 	addOptional(p,'grid_spacing',90);
 	addOptional(p,'colouring','fibre');
+    addOptional(p,'cbar_limit',0);
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
@@ -203,19 +204,24 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
         end
 
 	elseif isa(data_in,'ODF') == 1
+
 		for i=1:axes_quant
 			miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
 			plotPDF(data_in,miller_val,'grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'minmax');
 			axes_title = miller_latex(p.Results.desired_pfs(i,:));
 			title(axes_title,'FontSize',8);
 			if i<axes_quant; nextAxis; end
-		end
+        end
+        if p.Results.cbar_limit ~= 0
+            caxis([0 p.Results.cbar_limit])
+        end
 		CLim(gcm,'equal'); % set equal color range to all plots
-  		colormap(white_viridis('white_percentage',10))
+  		cmap = colormap(white_viridis('white_percentage',10))
   		cb = mtexColorbar('location','southoutside');
 		x_label = xlabel(cb, 'MRD Values','FontSize',8)
     	cb.Label.Interpreter = 'latex';
     	set(cb,'TickLabelInterpreter', 'latex','FontSize',8);
+
   		set(gcf,'units','centimeters')
     	figure_height = (n_rows*pf_height)+1.5
     	figure_width = (n_cols*pf_width)

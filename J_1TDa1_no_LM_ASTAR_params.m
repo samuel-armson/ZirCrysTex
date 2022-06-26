@@ -78,6 +78,7 @@ ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
 ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
 ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
 ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
+ebsd_mono_15 = ebsd_mono(ebsd_mono.mad>=0.15)
 
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
@@ -95,14 +96,36 @@ ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 
 
 odf_00 = make_ODF(ebsd_mono('Monoclinic ZrO$$_2$$'))
+odf_01 = make_ODF(ebsd_mono_01('Monoclinic ZrO$$_2$$'))
+odf_03 = make_ODF(ebsd_mono_03('Monoclinic ZrO$$_2$$'))
+odf_05 = make_ODF(ebsd_mono_05('Monoclinic ZrO$$_2$$'))
+odf_07 = make_ODF(ebsd_mono_07('Monoclinic ZrO$$_2$$'))
+odf_10 = make_ODF(ebsd_mono_10('Monoclinic ZrO$$_2$$'))
+odf_15 = make_ODF(ebsd_mono_15('Monoclinic ZrO$$_2$$'))
 %odf_data= calcODF(ebsd_mono('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
 %odf_metal= calcODF(ebsd_met('HCP Zr').orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[1,0,-3,"plane"];[0,0,1,"plane"];[1,1,1,"plane"]];
 %desired_pole_figures_met = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
-plot_pf(odf_00,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
+
+cb_lim = 68
+plot_pf(odf_00,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_01,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_03,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_05,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_07,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_10,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
+%%
+phase_ids = ebsd_mono.phase;
+
+mono_px = sum(phase_ids == 2)
+tet_px = sum(phase_ids == 4)
+
+mono_frac = mono_px/(mono_px+tet_px)*100
+tet_frac = tet_px/(mono_px+tet_px)*100
 %%
 grain_details_a = grain_dimension_quant(grains_mono_a)
 grain_details_b = grain_dimension_quant(grains_mono_b)
