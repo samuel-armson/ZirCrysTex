@@ -112,8 +112,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
     min_median_grain_size(end+1) = median(min_ax);
     min_mode_grain_size(end+1) = mode(min_ax);
 
-    mono_phase_frac(end+1) = phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
-    tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
+    mono_phase_frac(end+1) = phase_fraction_calc(the_grains)
+    tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains)
     kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs))
   end
   
