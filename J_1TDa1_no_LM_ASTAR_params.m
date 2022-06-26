@@ -66,7 +66,7 @@ ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
 %% ===========================================================================================================================================================================
 
-otpt_tbl= grain_parameter_variation(ebsd_mono)
+otpt_tbl= grain_parameter_variation(ebsd_mono,'crys_sym',cs)
 writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 
 %% ===========================================================================================================================================================================

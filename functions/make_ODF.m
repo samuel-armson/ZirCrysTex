@@ -53,8 +53,10 @@ function mODF = make_ODF(data_in,varargin)
 
 		mODF = calcODF(raw_data.orientations,'halfwidth',p.Results.half_width*degree)
 	
-	elseif isa(data_in,'grain2D') == 1
+	elseif isa(data_in,'grain2d') == 1
 
 		mODF = calcODF(raw_data.meanOrientation,'halfwidth',p.Results.half_width*degree)
+    else
+        disp('no dice')
 
 	end

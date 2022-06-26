@@ -26,11 +26,11 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	addRequired(p,'data_in');
 
 	addOptional(p,'units','nm')
-  addOptional(p,'crys_sym', cs)
+  addOptional(p,'crys_sym', 1)
 
 	parse(p,data_in,varargin{:});	
 
-  cs = p.Results.(crys_sym)
+  cs = p.Results.crys_sym
 
 
 	disp('')
@@ -114,7 +114,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
     mono_phase_frac(end+1) = phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
     tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
-    kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller(reference_texture_component,'crys_sym',cs))
+    kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs))
   end
   
   output_table = grain_params;
