@@ -70,6 +70,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
   min_mode_grain_size = [];
   mono_phase_frac = [];
   tet_phase_frac = [];
+  kearns_factor = [];
 
 
 
@@ -81,6 +82,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
 
     the_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
+
+    the_odf = make_ODF(the_grains('Monoclinic ZrO$$_2$$'));
 
     [omega,maj_ax,min_ax] = the_grains.fitEllipse;
     maj_ax = maj_ax*2*linear_scaling_factor;
@@ -108,6 +111,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
     mono_phase_frac(end+1) = phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
     tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains,'mono_id',2,'tet_id',4)
+    kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller(reference_texture_component,'crys_sym',cs))
   end
   
   output_table = grain_params;
@@ -133,8 +137,9 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
   output_table.mono_phase_frac = transpose(mono_phase_frac);
   output_table.tet_phase_frac = transpose(tet_phase_frac);
+  output_table.kearns_factor = transpose(kearns_factor);
 
-  
+
 
   gpv = output_table
 
