@@ -29,7 +29,7 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
 	addOptional(p,'view_unit_cell','no')
-	addOptional(p,'IPF_key', ipfHSVKey(cs.Laue));
+	%addOptional(p,'IPF_key', ipfHSVKey(cs.Laue));
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
 
 	parse(p,data_in,varargin{:});	
@@ -66,7 +66,9 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym);
 	
 	if isa(data_in, 'EBSD') == 1
+        disp('between')
 		fibre_mis_angles = angle(data_in(p.Results.phase_name).orientations,f)./degree;
+        disp('here')
 	elseif isa(data_in,'grain2d') == 1
 		fibre_mis_angles = angle(data_in(p.Results.phase_name).meanOrientation,f)./degree;
 	else

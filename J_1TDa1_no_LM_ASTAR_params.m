@@ -60,6 +60,8 @@ cs = ebsd_mono(phase_of_interest).CS
 % Perform cross-section correction
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+
+ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
@@ -118,19 +120,56 @@ plot_pf(odf_10,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
 
-%% ==================================================================================================================
-k = calcKearnsFactor(odf_00,'h',define_miller(reference_texture_component,'crys_sym',cs))
-%% ==================================================================================================================
-grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
 %%
-mODF = calcODF(grains_mono_a(phase_of_interest).meanOrientation,'halfwidth',3*degree)
+y_ax_max = 45
+orientation_deviation_histogram_osc(ebsd_mono,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_01,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_03,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_05,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_07,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_10,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+orientation_deviation_histogram_osc(ebsd_mono_15,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max)
+%%
+plot_map(ebsd_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_01,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_03,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_05,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_07,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_15,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+%%
+grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_01 =create_grains(ebsd_mono_01,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_01,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_03 = create_grains(ebsd_mono_03,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_03,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_05 = create_grains(ebsd_mono_05,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_05,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_07 = create_grains(ebsd_mono_07,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_07,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_10 = create_grains(ebsd_mono_10,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_10,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
+grains_15 = create_grains(ebsd_mono_15,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
+grain_dimension_hist_ellipse(grains_15,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
+
 %% ==================================================================================================================
-grain_details_a = grain_dimension_quant(grains_mono_a)
-grain_details_b = grain_dimension_quant(grains_mono_b)
-grain_details_c = grain_dimension_quant(grains_mono_c)
-grain_details_d = grain_dimension_quant(grains_mono_d)
-grain_details_e = grain_dimension_quant(grains_mono_e)
-grain_details_f = grain_dimension_quant(grains_mono_f)
+%grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
+%%
+%mODF = calcODF(grains_mono_a(phase_of_interest).meanOrientation,'halfwidth',3*degree)
+%% ==================================================================================================================
+%grain_details_a = grain_dimension_quant(grains_mono_a)
+%grain_details_b = grain_dimension_quant(grains_mono_b)
+%grain_details_c = grain_dimension_quant(grains_mono_c)
+%grain_details_d = grain_dimension_quant(grains_mono_d)
+%grain_details_e = grain_dimension_quant(grains_mono_e)
+%grain_details_f = grain_dimension_quant(grains_mono_f)
 
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
