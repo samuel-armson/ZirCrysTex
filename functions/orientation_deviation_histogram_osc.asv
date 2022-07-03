@@ -132,24 +132,17 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
 	end
 	titleString = strcat(titleString,"\right\}$$ plane-normal deviation from growth direction $$ \left(^{\circ}\right)$$");
 
-    set(gca, 'YTickMode', 'Auto');
-	set(gca, 'XTickMode', 'Auto');
-    y_lower_lim=0
-
-    if strcmp(p.Results.y_scale,'log') == 1
-        set(gca,'YScale','log');
-        y_lower_lim=0.003
-
 	title(p.Results.titles);
 	xlim([0 90]);
 	if isstring(p.Results.max_y) == 0
-		ylim([y_lower_lim p.Results.max_y]);
+		ylim([0 p.Results.max_y]);
 	end
 	xlabel(titleString,'Interpreter','latex','FontSize',8);
 	ylabel(['Normalised Frequency (\%)']);
-
-    
-    end
+	set(gca, 'YTickMode', 'Auto');
+	set(gca, 'XTickMode', 'Auto');
+    if strcmp(p.Results.y_scale,'')
+    set(gca,'YScale','log');
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(gcf, 'color','white');
