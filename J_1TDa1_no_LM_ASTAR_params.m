@@ -82,7 +82,7 @@ ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
 ebsd_mono_05 = ebsd_mono(ebsd_mono.mad>=0.05)
 ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
 ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
-ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.2)
+ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.12)
 ebsd_mono_15 = ebsd_mono(ebsd_mono.mad>=0.15)
 %%
 
