@@ -44,7 +44,8 @@ function pm = plot_map(data_in,map_type,varargin)
 	addOptional(p,'output_dir','none');
 	addOptional(p,'extension','none');
 	addOptional(p,'resolution','none');
-	addOptional(p,'view_unit_cell','no')
+	addOptional(p,'view_unit_cell','no');
+	addOptional(p,'view_dev_val','no');
 	addOptional(p,'IPF_key','none');
 	addOptional(p,'facealpha',1);
 	addOptional(p,'figure_width',16); %Width of figure in cm. A4 paper is 21cm wide, so 16cm is good for thesis.
@@ -275,6 +276,11 @@ function pm = plot_map(data_in,map_type,varargin)
 				fa = fa + 1;
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
+
+			if strcmp(p.Results.view_dev_val,'yes') == 1
+				text(data_in(p.Results.phase_name),fibre_angles)
+			end
+
 			if strcmp(p.Results.phase_name,'HCP Zr')
 				colormap(gca,plasma);
 				gB = data_in(p.Results.phase_name).boundary;
