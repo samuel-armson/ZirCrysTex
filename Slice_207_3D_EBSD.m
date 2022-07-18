@@ -59,7 +59,7 @@ grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing
 ebsd_mis=ebsd_1(phase_of_interest)
 [grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
 ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell');
+[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell','smoothing',3);
 
 % smooth grain boundaries
 grains_mis = smooth(grains_mis,3);
@@ -78,11 +78,12 @@ grains_mis = smooth(grains_mis,3);
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
-%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+%plot_pf(grains_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
 %plot_pf(ebsd_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS,'colouring','IPF')
-
+%%
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
@@ -117,9 +118,8 @@ mtexColorbar('title','misorientation angle')
 %plot_map(ebsd_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %%
 %plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','PV')
-plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-hold on
-text(grains_1,grains_1.id)
+plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_dev_val','yes')
+
 
 %plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
@@ -211,6 +211,17 @@ hold on
 plot(grains_1.boundary,'lineWidth',0.5)
 hold off
 %}
+%%
+figure()
+gam = ebsd_mis.grainMean(ebsd_mis.KAM);
+plot(grains_mis,gam./degree)
+mtexColorbar('title','GAM from KAM')
+hold on
+text(grains_mis,gam./degree)
+
+set(gca,'Color','black');
+mtexColorMap LaboTeX
+disp(gam)
 
 %% Sign off
 for n=1:1
