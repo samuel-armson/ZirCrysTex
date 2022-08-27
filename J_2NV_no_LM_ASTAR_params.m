@@ -21,13 +21,11 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "2NV_no_LM";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NV selective 2/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NV no LM attempt 2/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_full = [pname '1TD_no_LM_full.ctf'];
-data_mono = [pname '1TD_no_LM_re_export_mono.ctf'];
-data_met = [pname '1TD_no_LM_metal.ctf'];
-data_ori = [pname '1TD_no_LM_re_export.ctf'];
+data_mono = [pname '2NV_NO_LM_FINAL_full.ctf'];
+
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
 
@@ -38,7 +36,7 @@ reference_texture_component = [1,0,-3];
 % crystal symmetry
 
 %CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
-CS = cs_loader({'Pt','mono','metal','tet','suboxide','SPP','hematite','hematite'})
+CS = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
