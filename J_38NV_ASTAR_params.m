@@ -73,8 +73,8 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 %% ===========================================================================================================================================================================
 %data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
-ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
+%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 
 ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
 ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
