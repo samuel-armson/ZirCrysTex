@@ -87,7 +87,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_shape = size(ebsd_a.id)
     ebsd_point_count = ebsd_shape(1)
 
-    if ebsd_point_count > 0
+    if ebsd_point_count > 1
 
       the_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
 
