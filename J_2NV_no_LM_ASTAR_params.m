@@ -24,6 +24,7 @@ Sample_ID = "2NV_no_LM";
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NV no LM attempt 2/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
+
 data_mono = [pname '2NV_NO_LM_FINAL_full.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
@@ -70,7 +71,7 @@ otpt_tbl= grain_parameter_variation(ebsd_mono,'crys_sym',cs)
 writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 
 %% ===========================================================================================================================================================================
-data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
+%data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
@@ -120,10 +121,10 @@ plot_pf(odf_07,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$')
 plot_pf(odf_10,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 plot_pf(odf_15,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 %plot_pf(odf_metal,desired_pole_figures_met,'crys_sym',ebsd_met('HCP Zr').CS)
-%%
+
 odf_12 = make_ODF(ebsd_mono_12('Monoclinic ZrO$$_2$$'))
 plot_pf(odf_12,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
-%%
+
 y_ax_max = 55
 orientation_deviation_histogram_osc(ebsd_mono,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
 orientation_deviation_histogram_osc(ebsd_mono_01,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
@@ -133,7 +134,7 @@ orientation_deviation_histogram_osc(ebsd_mono_07,'phase_name',phase_of_interest,
 orientation_deviation_histogram_osc(ebsd_mono_10,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
 orientation_deviation_histogram_osc(ebsd_mono_12,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
 orientation_deviation_histogram_osc(ebsd_mono_15,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
-%%
+
 plot_map(ebsd_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_01,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_03,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
@@ -142,7 +143,7 @@ plot_map(ebsd_mono_07,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_
 plot_map(ebsd_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_12,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_15,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-%%
+
 plot_map(ebsd_mono,'phase')
 plot_map(ebsd_mono_01,'phase')
 plot_map(ebsd_mono_03,'phase')
@@ -151,7 +152,7 @@ plot_map(ebsd_mono_07,'phase')
 plot_map(ebsd_mono_10,'phase')
 plot_map(ebsd_mono_12,'phase')
 plot_map(ebsd_mono_15,'phase')
-%%
+
 grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
 grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
 
@@ -173,11 +174,11 @@ grain_dimension_hist_ellipse(grains_10,'bin_size',5,'max_size',500,'units','nm',
 grains_15 = create_grains(ebsd_mono_15,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
 grain_dimension_hist_ellipse(grains_15,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
 
-%%
+
 ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.12)
 grains_12 = create_grains(ebsd_mono_12,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
 grain_dimension_hist_ellipse(grains_12,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
-%%
+
 plot_map(ebsd_mono_12,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 %% ==================================================================================================================
 %grains_mono_a = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',0,'fill_gaps','no','filter_type','none','filter_value',0)
