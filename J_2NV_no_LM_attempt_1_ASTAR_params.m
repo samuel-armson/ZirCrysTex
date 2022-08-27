@@ -37,7 +37,7 @@ reference_texture_component = [1,0,-3];
 % crystal symmetry
 
 %CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
-CS = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
+CS = cs_loader({'mono','metal','suboxide','tet','SPP','hematite'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
