@@ -84,37 +84,70 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
     ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
 
-    the_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
+    ebsd_shape = size(ebsd_a.id)
+    ebsd_point_count = ebsd_shape(1)
 
-    the_odf = make_ODF(the_grains, 'phase_name', 'Monoclinic ZrO$$_2$$');
+    if ebsd_point_count > 0
 
-    [omega,maj_ax,min_ax] = the_grains.fitEllipse;
-    maj_ax = maj_ax*2*linear_scaling_factor;
-    min_ax = min_ax*2*linear_scaling_factor;
+      the_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
 
-    mono_grain_quant(end+1)=size(the_grains.id,1);
-    mono_grain_pixels(end+1)=sum(the_grains.grainSize);
-    mean_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
-    median_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
-    max_grain_area(end+1)=max(the_grains.area*area_scaling_factor);
-    min_grain_area(end+1)=min(the_grains.area*area_scaling_factor);
-    mode_grain_area(end+1)=mode(the_grains.area*area_scaling_factor);
+      the_odf = make_ODF(the_grains, 'phase_name', 'Monoclinic ZrO$$_2$$');
 
-    maj_largest_grain(end+1) = max(maj_ax);
-    maj_smallest_grain(end+1) = min(maj_ax);
-    maj_mean_grain_size(end+1) = mean(maj_ax);
-    maj_median_grain_size(end+1) = median(maj_ax);
-    maj_mode_grain_size(end+1) = mode(maj_ax);
+      [omega,maj_ax,min_ax] = the_grains.fitEllipse;
+      maj_ax = maj_ax*2*linear_scaling_factor;
+      min_ax = min_ax*2*linear_scaling_factor;
 
-    min_largest_grain(end+1) = max(min_ax);
-    min_smallest_grain(end+1) = min(min_ax);
-    min_mean_grain_size(end+1) = mean(min_ax);
-    min_median_grain_size(end+1) = median(min_ax);
-    min_mode_grain_size(end+1) = mode(min_ax);
+      mono_grain_quant(end+1)=size(the_grains.id,1);
+      mono_grain_pixels(end+1)=sum(the_grains.grainSize);
+      mean_grain_area(end+1)=mean(the_grains.area*area_scaling_factor);
+      median_grain_area(end+1)=median(the_grains.area*area_scaling_factor);
+      max_grain_area(end+1)=max(the_grains.area*area_scaling_factor);
+      min_grain_area(end+1)=min(the_grains.area*area_scaling_factor);
+      mode_grain_area(end+1)=mode(the_grains.area*area_scaling_factor);
 
-    mono_phase_frac(end+1) = phase_fraction_calc(the_grains)
-    tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains)
-    kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs))
+      maj_largest_grain(end+1) = max(maj_ax);
+      maj_smallest_grain(end+1) = min(maj_ax);
+      maj_mean_grain_size(end+1) = mean(maj_ax);
+      maj_median_grain_size(end+1) = median(maj_ax);
+      maj_mode_grain_size(end+1) = mode(maj_ax);
+
+      min_largest_grain(end+1) = max(min_ax);
+      min_smallest_grain(end+1) = min(min_ax);
+      min_mean_grain_size(end+1) = mean(min_ax);
+      min_median_grain_size(end+1) = median(min_ax);
+      min_mode_grain_size(end+1) = mode(min_ax);
+
+      mono_phase_frac(end+1) = phase_fraction_calc(the_grains)
+      tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains)
+      kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs))
+
+    else
+    
+      mono_grain_quant(end+1)=0;
+      mono_grain_pixels(end+1)=0;
+      mean_grain_area(end+1)=0;
+      median_grain_area(end+1)=0;
+      max_grain_area(end+1)=0;
+      min_grain_area(end+1)=0;
+      mode_grain_area(end+1)=0;
+
+      maj_largest_grain(end+1) = 0;
+      maj_smallest_grain(end+1) = 0;
+      maj_mean_grain_size(end+1) = 0;
+      maj_median_grain_size(end+1) = 0;
+      maj_mode_grain_size(end+1) = 0;
+
+      min_largest_grain(end+1) = 0;
+      min_smallest_grain(end+1) = 0;
+      min_mean_grain_size(end+1) = 0;
+      min_median_grain_size(end+1) = 0;
+      min_mode_grain_size(end+1) = 0;
+
+      mono_phase_frac(end+1) = 0;
+      tet_phase_frac(end+1) = 0;
+      kearns_factor(end+1) = 0;
+
+    end
   end
   
   output_table = grain_params;
