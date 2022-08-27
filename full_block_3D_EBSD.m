@@ -75,12 +75,12 @@ ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
-odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
+odf_single= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
 desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(grains_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
-plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
-plot_pf(ebsd_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS,'colouring','IPF')
+plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %%
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')

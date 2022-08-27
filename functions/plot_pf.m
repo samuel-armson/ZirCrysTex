@@ -157,7 +157,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym)
 
- 					ipfKey = ipfHSVKey(cs.Laue)
+ 					ipfKey = ipfHSVKey(p.Results.crys_sym.Laue)
 					mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).orientations);
 
 					plotPDF(data_in(p.Results.phase_name).orientations,mapcolor,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
