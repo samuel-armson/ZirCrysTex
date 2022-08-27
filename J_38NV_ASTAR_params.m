@@ -19,13 +19,13 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "2NV_no_LM";
+Sample_ID = "38_NV";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2NV no LM attempt 2/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/38NV_2022/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 
-data_mono = [pname '2NV_NO_LM_FINAL_full.ctf'];
+data_mono = [pname '38NV_mono.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
@@ -37,7 +37,7 @@ reference_texture_component = [1,0,-3];
 % crystal symmetry
 
 %CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
-CS = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
+CS = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
@@ -58,7 +58,7 @@ cs = ebsd_mono(phase_of_interest).CS
 
 % Perform cross-section correction
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
 
 %ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
