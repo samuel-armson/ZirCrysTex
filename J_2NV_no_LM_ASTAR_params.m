@@ -74,7 +74,7 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 %data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
-ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 
 ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
 ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
@@ -112,8 +112,10 @@ desired_pole_figures = [[1,0,-3,"plane"];[0,0,1,"plane"];[1,1,1,"plane"]];
 %desired_pole_figures_met = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
-cb_lim = 68
+cb_lim = 28
+
 plot_pf(odf_00,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
+
 plot_pf(odf_01,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 plot_pf(odf_03,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 plot_pf(odf_05,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
