@@ -19,7 +19,7 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "2NV_no_LM";
+Sample_ID = "MIBL_LOW_DR_LARGE";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/';
 
@@ -60,7 +60,7 @@ cs = ebsd_mono(phase_of_interest).CS
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
-%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+ebsd_mono = dataset_rotation(ebsd_mono,[0,20,0],'axis')
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
@@ -74,7 +74,7 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 %data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
-%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+ebsd_mono = dataset_rotation(ebsd_mono,[0,20,0],'axis')
 
 ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
 ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
