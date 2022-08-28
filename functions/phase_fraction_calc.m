@@ -19,8 +19,8 @@ function pfc = phase_fraction_calc(data_in,varargin)
 	%}
 
 	global Sample_ID
-    global phase_of_interest
-    global pname
+  global phase_of_interest
+  global pname
 
 	p = inputParser;
 	addRequired(p,'data_in');
@@ -29,11 +29,18 @@ function pfc = phase_fraction_calc(data_in,varargin)
 
 	parse(p,data_in,varargin{:});	
 
-  mono_px = sum(data_in('Monoclinic ZrO$$_2$$').grainSize);
-  tet_px = sum(data_in('Tetragonal ZrO$$_2$$').grainSize);
+  data_in_shp = size(data_in.id)
+  grain_count = data_in_shp(1)
 
-  mono_frac = mono_px/(mono_px+tet_px)*100;
-  tet_frac = tet_px/(mono_px+tet_px)*100;
+  if grain_count > 1
+    mono_px = sum(data_in('Monoclinic ZrO$$_2$$').grainSize);
+    tet_px = sum(data_in('Tetragonal ZrO$$_2$$').grainSize);
+    mono_frac = mono_px/(mono_px+tet_px)*100;
+    tet_frac = tet_px/(mono_px+tet_px)*100;
+  else
+    mono_frac = 0
+    tet_frac = 0
+  end
 
   pfc = mono_frac;
 
