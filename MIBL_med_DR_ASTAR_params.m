@@ -60,7 +60,7 @@ cs = ebsd_mono(phase_of_interest).CS
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 
-%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+ebsd_mono = dataset_rotation(ebsd_mono,[0,25,0],'axis')
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
 
 
@@ -74,7 +74,7 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 %data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
-%ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
+ebsd_mono = dataset_rotation(ebsd_mono,[0,25,0],'axis')
 
 ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
 ebsd_mono_03 = ebsd_mono(ebsd_mono.mad>=0.03)
@@ -83,6 +83,7 @@ ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
 ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.12)
 ebsd_mono_15 = ebsd_mono(ebsd_mono.mad>=0.15)
+
 %%
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
