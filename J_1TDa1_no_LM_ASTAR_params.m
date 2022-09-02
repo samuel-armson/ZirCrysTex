@@ -72,7 +72,7 @@ otpt_tbl= grain_parameter_variation(ebsd_mono,'crys_sym',cs)
 writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 
 %% ===========================================================================================================================================================================
-data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
+data_mono = [pname '1TD_no_LM_re_export_mono.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
 ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
@@ -84,6 +84,7 @@ ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
 ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.12)
 ebsd_mono_15 = ebsd_mono(ebsd_mono.mad>=0.15)
+ebsd_mono_25 = ebsd_mono(ebsd_mono.mad>=0.25)
 %%
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
@@ -144,6 +145,8 @@ plot_map(ebsd_mono_07,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_
 plot_map(ebsd_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_12,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_15,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+plot_map(ebsd_mono_25,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+
 %%
 plot_map(ebsd_mono,'phase')
 plot_map(ebsd_mono_01,'phase')

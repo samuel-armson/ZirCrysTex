@@ -19,15 +19,13 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "MIB_Ex_high";
+Sample_ID = "38_NV_amb_res";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/MIBL Ex High DR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/38NV_2022/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 
-%data_mono = [pname 'MIBL_EX_HIGH_DR_2_22_mono_cracks_rem.ctf'];
-data_mono = [pname 'MIBL_EX_HIGH_DR_2_22_mono_no_crack_region.ctf'];
-
+data_mono = [pname '38NV_raw_export_amb_res_mono.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
@@ -38,8 +36,8 @@ reference_texture_component = [1,0,-3];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'Pt','metal','mono','tet','suboxide'})
-%CS = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
+%CS = cs_loader({'Pt','mono','metal','tet','suboxide'})
+CS = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
@@ -60,7 +58,7 @@ cs = ebsd_mono(phase_of_interest).CS
 
 % Perform cross-section correction
 %ebsd_full = x_section_correction(ebsd_full,'SPED','scan_rotation',90)
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
 
 %ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 %ebsd_met = x_section_correction(ebsd_met,'SPED','scan_rotation',90)
@@ -75,7 +73,7 @@ writetable(otpt_tbl,strcat(pname,Sample_ID,'_grain_param_variation.csv'))
 %% ===========================================================================================================================================================================
 %data_mono = [pname '1TD_no_LM_re_export_full.ctf'];
 ebsd_mono = EBSD.load(data_mono,CS,'interface','ctf','convertSpatial2EulerReferenceFrame');
-ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',90)
+ebsd_mono = x_section_correction(ebsd_mono,'SPED','scan_rotation',270)
 %ebsd_mono = dataset_rotation(ebsd_mono,[-5,5,0],'axis')
 
 ebsd_mono_01 = ebsd_mono(ebsd_mono.mad>=0.01)
@@ -85,7 +83,6 @@ ebsd_mono_07 = ebsd_mono(ebsd_mono.mad>=0.07)
 ebsd_mono_10 = ebsd_mono(ebsd_mono.mad>=0.1)
 ebsd_mono_12 = ebsd_mono(ebsd_mono.mad>=0.12)
 ebsd_mono_15 = ebsd_mono(ebsd_mono.mad>=0.15)
-ebsd_mono_25 = ebsd_mono(ebsd_mono.mad>=0.25)
 %%
 
 %grains_full = create_grains(ebsd_full,'misorientation',15,'smallest_grain',1,'smoothing',1,'fill_gaps','no')
@@ -115,10 +112,8 @@ desired_pole_figures = [[1,0,-3,"plane"];[0,0,1,"plane"];[1,1,1,"plane"]];
 %desired_pole_figures_met = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_mono,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS)
 
-cb_lim = 28
-
+cb_lim = 68
 plot_pf(odf_00,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
-
 plot_pf(odf_01,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 plot_pf(odf_03,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
 plot_pf(odf_05,desired_pole_figures,'crys_sym',ebsd_mono('Monoclinic ZrO$$_2$$').CS,'cbar_limit',cb_lim)
@@ -139,7 +134,7 @@ orientation_deviation_histogram_osc(ebsd_mono_07,'phase_name',phase_of_interest,
 orientation_deviation_histogram_osc(ebsd_mono_10,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
 orientation_deviation_histogram_osc(ebsd_mono_12,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
 orientation_deviation_histogram_osc(ebsd_mono_15,'phase_name',phase_of_interest,'bin_size',1,'crys_sym',cs,'ref_text_comp',[1,0,-3],'max_y',y_ax_max,'y_scale','log')
-%%
+
 plot_map(ebsd_mono,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_01,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_03,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
@@ -148,8 +143,7 @@ plot_map(ebsd_mono_07,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_
 plot_map(ebsd_mono_10,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_12,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
 plot_map(ebsd_mono_15,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-plot_map(ebsd_mono_25,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
-%%
+
 plot_map(ebsd_mono,'phase')
 plot_map(ebsd_mono_01,'phase')
 plot_map(ebsd_mono_03,'phase')
@@ -158,7 +152,6 @@ plot_map(ebsd_mono_07,'phase')
 plot_map(ebsd_mono_10,'phase')
 plot_map(ebsd_mono_12,'phase')
 plot_map(ebsd_mono_15,'phase')
-plot_map(ebsd_mono_25,'phase')
 
 grains_mono = create_grains(ebsd_mono,'misorientation',15,'smallest_grain',1,'smoothing',1,'filter_type','none','filter_value',0,'fill_gaps','no')
 grain_dimension_hist_ellipse(grains_mono,'bin_size',5,'max_size',500,'units','nm','max_percentage',10)
@@ -220,9 +213,8 @@ plot_map(ebsd_mono_12,'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_
 %orientation_deviation_histogram_osc(ebsd_mono,'bin_size',1,'max_y',15)
 %orientation_deviation_histogram(ebsd_mono,'phase_name','Monoclinic ZrO$$_2$$')
 
-%%
-plot_map(grains_mono('Monoclinic ZrO$$_2$$'),'ellipse_only')
-plot_map(ebsd_mono,'BC')
+
+
 %% Sign off
 for n=1:1
     load gong

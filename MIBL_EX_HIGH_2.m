@@ -17,12 +17,12 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "2NVa3";
+Sample_ID = "MIBL_EX_HIGH_DR";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/MIBL Ex High DR/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_full = [pname 'MIBL_EX_HIGH_DR_2_Fuzz_full.ctf'];
+data_full = [pname 'MIBL_EX_HIGH_DR_2_22_mono.ctf'];
 %data_mono = [pname 'MIBL_EX_HIGH_DR_2_Fuzz_mono.ctf'];
 %data_met = [pname 'MIBL_EX_HIGH_DR_2_Fuzz_metal.ctf'];
 
@@ -35,7 +35,7 @@ reference_texture_component = [1,0,-3];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'pt','metal','mono','tet','suboxide'})
+CS = cs_loader({'Pt','metal','mono','tet','suboxide'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
