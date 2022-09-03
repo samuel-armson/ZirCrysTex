@@ -19,13 +19,13 @@ startup_mtex
 save_figures = 'no';
 
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
-Sample_ID = "38_NV_stitched";
+Sample_ID = "38_NV_full_stitched";
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/38NV_2022/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
 
-data_mono = [pname '38NV_mono_stitched.ctf'];
+data_mono = [pname '38NV_full_stitched.ctf'];
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
 phase_of_interest = 'Monoclinic ZrO$$_2$$';
