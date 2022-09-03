@@ -27,6 +27,8 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
 	addOptional(p,'units','nm')
   addOptional(p,'crys_sym', 1)
+  addOptional(p,'small_removal_method', 'same_count')
+
 
 	parse(p,data_in,varargin{:});	
 
@@ -47,7 +49,13 @@ function gpv = grain_parameter_variation(data_in,varargin)
     linear_scaling_factor = 1;
  	end
 
-  grain_params = readtable('grain_calc_params.csv');
+  if strcmp(p.Reults.small_removal_method,'same_count') == 1
+    grain_params = readtable('grain_calc_params.csv');
+  else if strcmp(p.Reults.small_removal_method,'corr_2_by_2') == 1
+    grain_params = readtable('grain_calc_params_2_by_2_corr.csv');
+  else if strcmp(p.Reults.small_removal_method,'corr_3_by_3') == 1
+    grain_params = readtable('grain_calc_params_3_by_3_corr.csv');
+  end
   %grain_params = grain_params(41:42,:)
 
   row_count = height(grain_params);

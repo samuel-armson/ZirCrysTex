@@ -1,0 +1,58 @@
+﻿Investigating,Orientation reliability,Correlation index,Misorientation,Smallest grain,Smoothing param,Filter type,Filter value,Fill gaps (bool)
+Orientation reliability,0,0,15,4,0,none,0,no
+Orientation reliability,1,0,15,4,0,none,0,no
+Orientation reliability,3,0,15,4,0,none,0,no
+Orientation reliability,5,0,15,4,0,none,0,no
+Orientation reliability,7,0,15,4,0,none,0,no
+Orientation reliability,10,0,15,4,0,none,0,no
+Orientation reliability,12,0,15,4,0,none,0,no
+Orientation reliability,15,0,15,4,0,none,0,no
+Orientation reliability,20,0,15,4,0,none,0,no
+Orientation reliability,25,0,15,4,0,none,0,no
+Correlation index,1,0,15,4,0,none,0,no
+Correlation index,1,10,15,4,0,none,0,no
+Correlation index,1,20,15,4,0,none,0,no
+Correlation index,1,30,15,4,0,none,0,no
+Correlation index,1,40,15,4,0,none,0,no
+Correlation index,1,50,15,4,0,none,0,no
+Correlation index,1,75,15,4,0,none,0,no
+Correlation index,1,90,15,4,0,none,0,no
+Correlation index,1,100,15,4,0,none,0,no
+Misorientation,1,0,1,4,0,none,0,no
+Misorientation,1,0,3,4,0,none,0,no
+Misorientation,1,0,5,4,0,none,0,no
+Misorientation,1,0,7,4,0,none,0,no
+Misorientation,1,0,10,4,0,none,0,no
+Misorientation,1,0,12,4,0,none,0,no
+Misorientation,1,0,15,4,0,none,0,no
+Misorientation,1,0,20,4,0,none,0,no
+Misorientation,1,0,25,4,0,none,0,no
+Misorientation,1,0,30,4,0,none,0,no
+Misorientation,1,0,35,4,0,none,0,no
+Misorientation,1,0,40,4,0,none,0,no
+Misorientation,1,0,45,4,0,none,0,no
+Smallest grain,1,0,15,0,0,none,0,no
+Smallest grain,1,0,15,4,0,none,0,no
+Smallest grain,1,0,15,8,0,none,0,no
+Smallest grain,1,0,15,12,0,none,0,no
+Smallest grain,1,0,15,20,0,none,0,no
+Smallest grain,1,0,15,40,0,none,0,no
+Smallest grain,1,0,15,60,0,none,0,no
+Smallest grain,1,0,15,80,0,none,0,no
+Smoothing param,1,0,15,4,0,none,0,no
+Smoothing param,1,0,15,4,1,none,0,no
+Smoothing param,1,0,15,4,2,none,0,no
+Smoothing param,1,0,15,4,3,none,0,no
+Smoothing param,1,0,15,4,4,none,0,no
+Smoothing param,1,0,15,4,5,none,0,no
+Smoothing param,1,0,15,4,10,none,0,no
+Filter,1,0,15,4,0,none,0,no
+Filter,1,0,15,4,0,median,1,no
+Filter,1,0,15,4,0,median,2,no
+Filter,1,0,15,4,0,median,3,no
+Filter,1,0,15,4,0,none,0,no
+Filter,1,0,15,4,0,kuwahara,1,no
+Filter,1,0,15,4,0,kuwahara,2,no
+Filter,1,0,15,4,0,kuwahara,3,no
+Gap fill,1,0,15,4,0,none,0,no
+Gap fill,1,0,15,4,0,none,0,yes
