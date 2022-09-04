@@ -30,6 +30,15 @@ phase_of_interest = 'Monoclinic ZrO$$_2$$';
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
 reference_texture_component = [1,0,-3];
 
+%==========================================================GRAIN CALC PARAMS============================================================
+%=======================================================================================================================================
+rel_filter = 0
+icc = 0
+misorientation = 15
+small_grain = 1
+
+%=======================================================================================================================================
+%=======================================================================================================================================
 
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2022_ctf_comp/';
@@ -121,6 +130,24 @@ name_list = {'AC 350','AC 400','AC 450','MIBL Low DR','MIBL Med DR','MIBL High D
 mono_ebsd_list = {ebsd_mono_38NVa1,ebsd_mono_1TDa1,ebsd_mono_2NVa3,ebsd_mono_LOWDR,ebsd_mono_MEDDR,ebsd_mono_HIGH,ebsd_mono_EXHI2}
 met_ebsd_list = {ebsd_met_38NVa1,ebsd_met_1TDa1,ebsd_met_2NVa3,ebsd_met_LOWDR,ebsd_met_MEDDR,ebsd_met_HIGH,ebsd_met_EXHI2}
 
+grainsets_mono = {}
+grainsets_met = {}
+for sgi = 1:length(mono_ebsd_list)
+  % Reliability filter
+  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  % Index correlation Coefficient filter
+  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter/100)
+  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter/100)
+
+  grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+  grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
+  grainsets_mono{end+1} = grains_mono
+  grainsets_met{end+1} = grains_met
+end
+
+%_______________________________________________________________________________________________________________________________________
+
 cmap = [[78,21,96],
       [52,96,139],
       [36,167,127],
@@ -150,6 +177,8 @@ for sgi = 1:length(mono_ebsd_list)
   plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
+  plot_map(grainsets_met{1,sgi},'phase')
+  plot_map(met_ebsd_list{1,sgi},'phase')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
   %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})
   orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})
