@@ -111,9 +111,9 @@ for sgi = 1:length(mono_ebsd_list)
   elseif strcmp(name_list{1,sgi},'MIBL Ex High DR') == 1
     otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   else
-    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_2_by_2')
+    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_3_by_3')
   end
-  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'_2_by_2_corr_grain_param_variation.csv'))
+  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'_3_by_3_corr_grain_param_variation.csv'))
 end
 
 
