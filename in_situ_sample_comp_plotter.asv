@@ -92,16 +92,6 @@ ebsd_met_MEDDR = loadEBSD(data_met_MEDDR,CS_MEDDR,'interface','ctf','convertSpat
 ebsd_met_HIGH = loadEBSD(data_met_HIGH,CS_HIGH,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_met_EXHI2 = loadEBSD(data_met_EXHI2,CS_EXHI2,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
-ebsd_mono_38NVa1 = ebsd_mono_38NVa1.gridify
-ebsd_met_38NVa1 = ebsd_met_38NVa1.gridify
-
-ebsd_mono_2NVa3 = ebsd_mono_2NVa3.gridify
-ebsd_met_2NVa3 = ebsd_met_2NVa3.gridify
-
-ebsd_mono_LOWDR = ebsd_mono_LOWDR.gridify
-ebsd_met_LOWDR = ebsd_met_LOWDR.gridify
-
-
 
 % Perform cross-section correction
 %_______________________________________________________________________________________________________________________________________
@@ -115,8 +105,8 @@ ebsd_mono_HIGH = x_section_correction(ebsd_mono_HIGH,'SPED','scan_rotation',90);
 ebsd_mono_EXHI2 = x_section_correction(ebsd_mono_EXHI2,'SPED','scan_rotation',90);
 % Mono orienation adjustments
 %ebsd_mono_2NVa3 = dataset_rotation(ebsd_mono_2NVa3,[0,0,-5],'axis','keep','keepXY');
-ebsd_mono_LOWDR = dataset_rotation(ebsd_mono_LOWDR,[0,20,0],'axis','keep','keepXY');
-ebsd_mono_MEDDR = dataset_rotation(ebsd_mono_MEDDR,[0,25,0],'axis','keep','keepXY');
+ebsd_mono_LOWDR = dataset_rotation(ebsd_mono_LOWDR,[0,20,0],'axis');
+ebsd_mono_MEDDR = dataset_rotation(ebsd_mono_MEDDR,[0,25,0],'axis');
 
 % Metal scan rotations
 ebsd_met_38NVa1 = x_section_correction(ebsd_met_38NVa1,'SPED','scan_rotation',270);
@@ -128,9 +118,9 @@ ebsd_met_HIGH = x_section_correction(ebsd_met_HIGH,'SPED','scan_rotation',90);
 ebsd_met_EXHI2 = x_section_correction(ebsd_met_EXHI2,'SPED','scan_rotation',90);
 % Metal orienation adjustments
 %ebsd_met_2NVa3 = dataset_rotation(ebsd_met_2NVa3,[0,0,-5],'axis','keep','keepXY');
-ebsd_met_LOWDR = dataset_rotation(ebsd_met_LOWDR,[0,20,0],'axis','keep','keepXY');
-ebsd_met_MEDDR = dataset_rotation(ebsd_met_MEDDR,[0,25,0],'axis','keep','keepXY');
-ebsd_met_MEDDR = dataset_rotation(ebsd_met_MEDDR,[0,0,30],'axis','keep','keepXY');
+ebsd_met_LOWDR = dataset_rotation(ebsd_met_LOWDR,[0,20,0],'axis');
+ebsd_met_MEDDR = dataset_rotation(ebsd_met_MEDDR,[0,25,0],'axis');
+ebsd_met_MEDDR = dataset_rotation(ebsd_met_MEDDR,[0,0,30],'axis');
 
 %_______________________________________________________________________________________________________________________________________
 
@@ -153,7 +143,7 @@ for sgi = 1:length(mono_ebsd_list)
 
   grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
   grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
-  grainsets_mono{end+1} = grains_mono.gridify
+  grainsets_mono{end+1} = grains_mono
   grainsets_met{end+1} = grains_met
 end
 
@@ -189,7 +179,7 @@ for sgi = 1:length(mono_ebsd_list)
   %plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
   plot_map(grainsets_met{1,sgi},'phase')
-  %plot_map(met_ebsd_list{1,sgi},'phase')
+  plot_map(met_ebsd_list{1,sgi},'phase')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
   %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})
   %orientation_deviation_histogram_osc(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})

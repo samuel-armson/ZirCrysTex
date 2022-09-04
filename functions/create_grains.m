@@ -37,6 +37,7 @@ function gr = create_grains(data_in,desired_pfs,varargin)
 	Grain_smooth_param = p.Results.smoothing;
 	filter_type = p.Results.filter_type;
 	filter_value = p.Results.filter_value;
+    
 
 	if strcmp(filter_type,'median') == 1
 		F = medianFilter;
