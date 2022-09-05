@@ -48,7 +48,9 @@ function gr = create_grains(data_in,varargin)
         F.numNeighbours = filter_value;
 		ebsd_full=smooth(ebsd_full,F);
 	end
-             
+    
+    ebsd_full('notIndexed') = []
+
 	if strcmp(p.Results.fill_gaps,'no') == 1
         [grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight');
 	else
