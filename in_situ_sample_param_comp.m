@@ -31,7 +31,6 @@ phase_of_interest = 'Monoclinic ZrO$$_2$$';
 reference_texture_component = [1,0,-3];
 
 
-
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2022_ctf_comp/';
 
@@ -111,9 +110,10 @@ for sgi = 1:length(mono_ebsd_list)
   elseif strcmp(name_list{1,sgi},'MIBL Ex High DR') == 1
     otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   else
-    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_3_by_3')
+    %otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_3_by_3')
+    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   end
-  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'_3_by_3_corr_grain_param_variation.csv'))
+  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'no_px_corr_grain_param_variation.csv'))
 end
 
 
