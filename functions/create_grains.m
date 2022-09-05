@@ -1,4 +1,4 @@
-function gr = create_grains(data_in,desired_pfs,varargin)
+function gr = create_grains(data_in,varargin)
 	%{
 	Creates grains in one line instead of several.
 
