@@ -32,7 +32,7 @@ reference_texture_component = [1,0,-3];
 
 %==========================================================GRAIN CALC PARAMS============================================================
 %=======================================================================================================================================
-rel_filter = 0
+rel_filter = 5
 icc = 0
 misorientation = 15
 small_grain = 1
@@ -87,16 +87,18 @@ for sgi = 1:length(mono_ebsd_list)
   % Reliability filter
   mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
   met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  %met_ebsd_list{1,sgi}.unitCell = met_ebsd_list{1,sgi}.unitCell * 1.00001
+  %met_ebsd_list{1,sgi}.unitCell = met_ebsd_list{1,sgi}.unitCell * 1
   % Index correlation Coefficient filter
   mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter/100)
   met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter/100)
 
-  grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-  grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
-  %grains_met = calcGrains(met_ebsd_list{1,sgi}('indexed'),'angle',misorientation,'boundary','tight','unitCell')
+  %grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','yes','phase_name','Monoclinic ZrO$$_2$$')
+  %grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','yes','phase_name','HCP Zr')
+  %grains_met = calcGrains(met_ebsd_list{1,sgi},'angle',misorientation,'boundary','tight','unitCell')
   %grains_met = calcGrains(met_ebsd_list{1,sgi}('indexed'),'angle',misorientation,'boundary','tight')
+  %grains_mono = calcGrains(mono_ebsd_list{1,sgi},'angle',misorientation,'boundary','tight')
   grainsets_met{end+1} = grains_met
+  grainsets_mono{end+1} = grains_mono
 end
 
 %_______________________________________________________________________________________________________________________________________
@@ -122,7 +124,7 @@ for sgi = 1:length(mono_ebsd_list)
   %desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
   %plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
 
-  %plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
+  plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
   plot_map(grainsets_met{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
   %grain_dimension_hist_ellipse(grainsets_mono{1,sgi},'bin_size',5,'max_size',1000,'units','nm','max_percentage',10)
   %plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'ellipse_overlay','on','phase_name','Monoclinic ZrO$$_2$$')
