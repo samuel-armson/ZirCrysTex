@@ -153,7 +153,6 @@ for sgi = 1:length(mono_ebsd_list)
 
   grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
   grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
-  grainsets_mono{end+1} = grains_mono.gridify
   grainsets_met{end+1} = grains_met
 end
 
