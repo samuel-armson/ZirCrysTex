@@ -39,7 +39,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	disp('Exploring effects of different parameters on grain calculations...')
 	disp('')
     disp('pname:')
-    disp(pname)
+    disp(getVarName(p.Results.data_in))
 
   if strcmp(p.Results.units,'nm') == 1
   	area_scaling_factor = 1000000;
@@ -92,16 +92,16 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
     ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
 
-    ebsd_shape = size(ebsd_a('Monoclinic ZrO$$_2$$').id)
-    ebsd_point_count = ebsd_shape(1)
+    ebsd_shape = size(ebsd_a('Monoclinic ZrO$$_2$$').id);
+    ebsd_point_count = ebsd_shape(1);
 
     if ebsd_point_count > 1
 
       all_grains = create_grains(ebsd_a,'misorientation',table2array(grain_params(row,4)),'smallest_grain',table2array(grain_params(row,5)),'smoothing',table2array(grain_params(row,6)),'filter_type',table2cell(grain_params(row,7)),'filter_value',table2array(grain_params(row,8)),'fill_gaps',table2cell(grain_params(row,9)));
-      the_grains = all_grains('Monoclinic ZrO$$_2$$')
+      the_grains = all_grains('Monoclinic ZrO$$_2$$');
       
-      grains_shape = size(the_grains.id)
-      grains_count = grains_shape(1)
+      grains_shape = size(the_grains.id);
+      grains_count = grains_shape(1);
 
       if grains_count > 1
 
@@ -131,9 +131,9 @@ function gpv = grain_parameter_variation(data_in,varargin)
           min_median_grain_size(end+1) = median(min_ax);
           min_mode_grain_size(end+1) = mode(min_ax);
     
-          mono_phase_frac(end+1) = phase_fraction_calc(the_grains)
-          tet_phase_frac(end+1) = 100 - phase_fraction_calc(the_grains)
-          kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs))
+          mono_phase_frac(end+1) = phase_fraction_calc(all_grains);
+          tet_phase_frac(end+1) = 100 - phase_fraction_calc(all_grains);
+          kearns_factor(end+1) = calcKearnsFactor(the_odf,'h',define_miller([1,0,-3],'crys_sym',cs));
 
       else
           mono_grain_quant(end+1)=0;
@@ -216,7 +216,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 
 
 
-  gpv = output_table
+  gpv = output_table;
 
 
 
