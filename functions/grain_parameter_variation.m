@@ -88,9 +88,11 @@ function gpv = grain_parameter_variation(data_in,varargin)
   for row = 1 : row_count
 
     disp(strcat('Processing parameter set ',num2str(row),' of ',num2str(row_count)))
-
-    ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
-    ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
+    ebsd_a = data_in
+    %ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
+    %ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
+    ebsd_a(ebsd_a.mad<=(table2array(grain_params(row,2))/100)).phaseId = 0
+    ebsd_a(ebsd_a.bc<=table2array(grain_params(row,3))).phaseId = 0
 
     ebsd_shape = size(ebsd_a('Monoclinic ZrO$$_2$$').id);
     ebsd_point_count = ebsd_shape(1)
