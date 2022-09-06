@@ -67,8 +67,8 @@ function gr = create_grains(data_in,varargin)
 	disp('Removing small grains...')
   	
   	%ebsd_clean = ebsd_full(grains_dirty(grains_dirty.grainSize > Small_grain_param))
-  	%ebsd_clean = ebsd_full;
-  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
+  	ebsd_clean = ebsd_full;
+  	ebsd_clean(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
   	%grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param)
   	%ebsd_full('notIndexed') = []
 
@@ -78,9 +78,9 @@ function gr = create_grains(data_in,varargin)
     
   	disp('Cleaning grains...')
     if strcmp(p.Results.fill_gaps,'no') == 1
-        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight','unitCell');
+        [grains_clean,ebsd_clean.grainId] = calcGrains(ebsd_clean,'angle',Grain_mis_param,'boundary','tight','unitCell');
     else
-        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight');
+        [grains_clean,ebsd_clean.grainId] = calcGrains(ebsd_clean,'angle',Grain_mis_param,'boundary','tight');
     end
     
    
