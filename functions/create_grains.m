@@ -38,6 +38,7 @@ function gr = create_grains(data_in,varargin)
 	filter_type = p.Results.filter_type;
 	filter_value = p.Results.filter_value;
     
+    %{
     x2 = max((diff(unique(ebsd_full.x))))/2;
     y2 = max((diff(unique(ebsd_full.y))))/2;
 
@@ -46,7 +47,8 @@ function gr = create_grains(data_in,varargin)
     -x2 -y2; ...
     x2 -y2];
     ebsd_full.unitCell = uc;
-
+	%}
+	
 	if strcmp(filter_type,'median') == 1
 		F = medianFilter;
 		F.numNeighbours = filter_value;
