@@ -39,7 +39,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
 	disp('Exploring effects of different parameters on grain calculations...')
 	disp('')
     disp('pname:')
-    disp(getVarName(p.Results.data_in))
+    disp(get_var_name(p.Results.data_in))
 
   if strcmp(p.Results.units,'nm') == 1
   	area_scaling_factor = 1000000;
