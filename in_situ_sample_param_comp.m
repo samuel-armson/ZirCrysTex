@@ -104,7 +104,10 @@ mono_ebsd_list = {ebsd_mono_38NVa1,ebsd_mono_1TDa1,ebsd_mono_2NVa3,ebsd_mono_LOW
 
 
 for sgi = 1:length(mono_ebsd_list)
+  disp('Sample ID:')
   disp(name_list{1,sgi})
+  disp(sgi)
+
   if strcmp(name_list{1,sgi},'AC 350') == 1
     otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   elseif strcmp(name_list{1,sgi},'MIBL Ex High DR') == 1
