@@ -204,11 +204,12 @@ function pm = plot_map(data_in,map_type,varargin)
 		elseif strcmp(map_type,'phase')
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-			plot(data_in('indexed'))
+			%plot(data_in('indexed'))
+            plot(data_in)
 			aspect_ratio_correction = 1.2
 			%hold on
     		%plot(data_in('notIndexed'),'FaceColor','black')
-    		%hold off
+    	    %hold off
 
     	elseif strcmp(map_type,'ellipse_only')
 			map_figure = figure('Name','Map loading...');

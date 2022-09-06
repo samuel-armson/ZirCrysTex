@@ -38,7 +38,7 @@ function gr = create_grains(data_in,varargin)
 	filter_type = p.Results.filter_type;
 	filter_value = p.Results.filter_value;
     
-    %{
+
     x2 = max((diff(unique(ebsd_full.x))))/2;
     y2 = max((diff(unique(ebsd_full.y))))/2;
 
@@ -47,7 +47,7 @@ function gr = create_grains(data_in,varargin)
     -x2 -y2; ...
     x2 -y2];
     ebsd_full.unitCell = uc;
-    %}
+  
 	
 
 	if strcmp(filter_type,'median') == 1
@@ -60,18 +60,18 @@ function gr = create_grains(data_in,varargin)
 		ebsd_full=smooth(ebsd_full,F);
 	end
     
-    ebsd_full('notIndexed') = []
+    %ebsd_full('notIndexed') = []
 
 	if strcmp(p.Results.fill_gaps,'no') == 1
-        [grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight','unitCell');
+        [grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full('indexed'),'angle',Grain_mis_param,'boundary','tight','unitCell');
 	else
-		[grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight');
+		[grains_dirty,ebsd_full.grainId] = calcGrains(ebsd_full('indexed'),'angle',Grain_mis_param,'boundary','tight');
 	end
 	disp('Removing small grains...')
   	
   	%ebsd_clean = ebsd_full(grains_dirty(grains_dirty.grainSize > Small_grain_param))
   	%ebsd_clean = ebsd_full;
-  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)) = [];
+  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)).phaseId = 0;
   	%grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param)
   	%ebsd_full('notIndexed') = []
 
@@ -81,9 +81,9 @@ function gr = create_grains(data_in,varargin)
     
   	disp('Cleaning grains...')
     if strcmp(p.Results.fill_gaps,'no') == 1
-        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight','unitCell');
+        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full('indexed'),'angle',Grain_mis_param,'boundary','tight','unitCell');
     else
-        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full,'angle',Grain_mis_param,'boundary','tight');
+        [grains_clean,ebsd_full.grainId] = calcGrains(ebsd_full('indexed'),'angle',Grain_mis_param,'boundary','tight');
     end
     
    
