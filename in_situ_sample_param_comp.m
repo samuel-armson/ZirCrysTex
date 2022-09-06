@@ -34,14 +34,14 @@ reference_texture_component = [1,0,-3];
 % Path to files. eg: 'J:/Nature Paper Figures/'
 pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/Experimental/SPED/2022_ctf_comp/';
 
-data_mono_38NVa1= [pname '38NV_full_stitched.ctf'];
-data_mono_1TDa1 = [pname '1TD_no_LM_re_export_mono.ctf'];
+data_mono_38NVa1= [pname '38NV_full_stitched_fixed.ctf'];
+data_mono_1TDa1 = [pname '1TD_no_LM_re_export_mono_fixed.ctf'];
 data_mono_2NVa3 = [pname '2NV_NO_LM_FINAL_full.ctf'];
-data_mono_LOWDR = [pname 'LOW DR LARGE_22_mono.ctf'];
-data_mono_MEDDR = [pname 'MIBL MED DR_22_mono.ctf'];
-data_mono_HIGH = [pname 'MIBL HIGH DR FUZZ_22_mono.ctf']
+data_mono_LOWDR = [pname 'LOW DR LARGE_22_mono_fixed.ctf'];
+data_mono_MEDDR = [pname 'MIBL MED DR_22_mono_fixed.ctf'];
+data_mono_HIGH = [pname 'MIBL HIGH DR FUZZ_22_mono_fixed.ctf']
 %data_mono_EXHI3 = [pname 'MIBL EX HIGH DR 3/MIBL EX HIGH DR 3 R_1.6_EE_0.4_more_phases_index400_or_1_mono.ctf'];
-data_mono_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_mono.ctf'];
+data_mono_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_mono_fixed.ctf'];
 
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
