@@ -93,7 +93,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
 
     ebsd_shape = size(ebsd_a('Monoclinic ZrO$$_2$$').id);
-    ebsd_point_count = ebsd_shape(1);
+    ebsd_point_count = ebsd_shape(1)
 
     if ebsd_point_count > 1
 
@@ -102,7 +102,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
       the_grains = all_grains('Monoclinic ZrO$$_2$$');
       
       grains_shape = size(the_grains.id);
-      grains_count = grains_shape(1);
+      grains_count = grains_shape(1)
 
       if grains_count > 1
 
