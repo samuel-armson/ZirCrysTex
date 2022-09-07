@@ -33,7 +33,7 @@ reference_texture_component = [1,0,-3];
 %==========================================================GRAIN CALC PARAMS============================================================
 %=======================================================================================================================================
 rel_filter = 1
-icc = 75
+icc = 1
 misorientation = 15
 small_grain = 1
 
@@ -46,14 +46,14 @@ pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/
 % Define data
 %_______________________________________________________________________________________________________________________________________
 % Mono
-data_mono_38NVa1= [pname '38NV_mono_stitched_fixed.ctf'];
+data_mono_38NVa1= [pname 'LOW DR LARGE_22_mono_fixed.ctf'];
 
 % Metal
-data_met_38NVa1= [pname '38NV_full_stitched_fixed.ctf'];
+data_met_38NVa1= [pname 'LOW DR LARGE_22_full.ctf'];
 
 % crystal symmetry
 %_______________________________________________________________________________________________________________________________________
-CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
+CS_38NVa1 = cs_loader({'mono','metal','Pt','tet'})
 
   
 % load EBSD data

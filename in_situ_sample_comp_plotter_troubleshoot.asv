@@ -33,7 +33,7 @@ reference_texture_component = [1,0,-3];
 %==========================================================GRAIN CALC PARAMS============================================================
 %=======================================================================================================================================
 rel_filter = 1
-icc = 0
+icc = 75
 misorientation = 15
 small_grain = 1
 
@@ -46,14 +46,14 @@ pname = 'D:/Sam/Dropbox (The University of Manchester)/Sam Armson shared folder/
 % Define data
 %_______________________________________________________________________________________________________________________________________
 % Mono
-data_mono_38NVa1= [pname '2NV_ASTAR_RECALC.ctf'];
+data_mono_38NVa1= [pname 'LOW DR LARGE_22_mono_fixed.ctf'];
 
 % Metal
-data_met_38NVa1= [pname '2NV_ASTAR_RECALC.ctf'];
+data_met_38NVa1= [pname 'LOW DR LARGE_22_mono_full.ctf'];
 
 % crystal symmetry
 %_______________________________________________________________________________________________________________________________________
-CS_38NVa1 = cs_loader({'mono','tet','metal','suboxide','SPP'})
+CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
 
   
 % load EBSD data
@@ -68,10 +68,10 @@ ebsd_met_38NVa1 = EBSD.load(data_met_38NVa1,CS_38NVa1,'interface','ctf','convert
 % Perform cross-section correction
 %_______________________________________________________________________________________________________________________________________
 % Mono scan rotations
-ebsd_mono_38NVa1 = x_section_correction(ebsd_mono_38NVa1,'SPED','scan_rotation',90);
+ebsd_mono_38NVa1 = x_section_correction(ebsd_mono_38NVa1,'SPED','scan_rotation',270);
 
 % Metal scan rotations
-ebsd_met_38NVa1 = x_section_correction(ebsd_met_38NVa1,'SPED','scan_rotation',90);
+ebsd_met_38NVa1 = x_section_correction(ebsd_met_38NVa1,'SPED','scan_rotation',270);
 %_______________________________________________________________________________________________________________________________________
 
 cs = ebsd_mono_38NVa1(phase_of_interest).CS
@@ -85,15 +85,19 @@ grainsets_mono = {}
 grainsets_met = {}
 for sgi = 1:length(mono_ebsd_list)
   % Reliability filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  %mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+  %met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
   %met_ebsd_list{1,sgi}.unitCell = met_ebsd_list{1,sgi}.unitCell * 1
   % Index correlation Coefficient filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter/100)
+  %mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter)
+  %met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
 
-  grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
-  grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','HCP Zr')
+  grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
+  grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',0,'fill_gaps','no','phase_name','HCP Zr')
 
   %grains_met = calcGrains(met_ebsd_list{1,sgi},'angle',misorientation,'boundary','tight','unitCell')
   %grains_met = calcGrains(met_ebsd_list{1,sgi}('indexed'),'angle',misorientation,'boundary','tight')

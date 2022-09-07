@@ -98,9 +98,11 @@ ebsd_mono_EXHI2 = dataset_rotation(ebsd_mono_EXHI2,[0,0,5],'axis','keep','keepXY
 cs = ebsd_mono_1TDa1(phase_of_interest).CS
 %%
 %Calculate grains
-name_list = {'AC 350','AC 400','AC 450','MIBL Low DR','MIBL Med DR','MIBL High DR','MIBL Ex High DR'}
-mono_ebsd_list = {ebsd_mono_38NVa1,ebsd_mono_1TDa1,ebsd_mono_2NVa3,ebsd_mono_LOWDR,ebsd_mono_MEDDR,ebsd_mono_HIGH,ebsd_mono_EXHI2}
+%name_list = {'AC 350','AC 400','AC 450','MIBL Low DR','MIBL Med DR','MIBL High DR','MIBL Ex High DR'}
+%mono_ebsd_list = {ebsd_mono_38NVa1,ebsd_mono_1TDa1,ebsd_mono_2NVa3,ebsd_mono_LOWDR,ebsd_mono_MEDDR,ebsd_mono_HIGH,ebsd_mono_EXHI2}
 
+name_list = {'MIBL Low DR','MIBL Med DR','MIBL High DR','MIBL Ex High DR'}
+mono_ebsd_list = {ebsd_mono_LOWDR,ebsd_mono_MEDDR,ebsd_mono_HIGH,ebsd_mono_EXHI2}
 
 
 for sgi = 1:length(mono_ebsd_list)
@@ -113,10 +115,10 @@ for sgi = 1:length(mono_ebsd_list)
   elseif strcmp(name_list{1,sgi},'MIBL Ex High DR') == 1
     otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   else
-    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_2_by_2')
-    %otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
+    %otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_3_by_3')
+    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   end
-  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'corr_2_by_2_grain_param_variation.csv'))
+  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'no_px_corr_grain_param_variation.csv'))
 end
 
 

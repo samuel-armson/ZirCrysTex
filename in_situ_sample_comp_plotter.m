@@ -65,12 +65,12 @@ data_met_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_full.ctf'];
 % crystal symmetry
 %_______________________________________________________________________________________________________________________________________
 CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
-CS_1TDa1 = cs_loader({'Pt','mono','metal','tet','suboxide','SPP','Pt','Hematite'})
-%CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
-CS_2NVa3 = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
+CS_1TDa1 = cs_loader({'metal','mono','SPP','tet','suboxide'})
+CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
 CS_LOWDR = cs_loader({'mono','metal','Pt','tet'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
 CS_HIGH = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
+%CS_EXHI3 = cs_loader({'mono','suboxide','tet','metal','hydride','hematite','pt'})
 CS_EXHI2 = cs_loader({'pt','metal','mono','tet','suboxide'})
   
 % load EBSD data
