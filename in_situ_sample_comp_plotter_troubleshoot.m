@@ -119,7 +119,7 @@ cmap = [[78,21,96],
 cmap = cmap./252
 %%
 for sgi = 1:length(mono_ebsd_list)
-  odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
+  odf = make_ODF(mono_ebsd_list{1,sgi},'phase_name','Monoclinic ZrO$$_2$$'))
   %odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
   %desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
   %plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
