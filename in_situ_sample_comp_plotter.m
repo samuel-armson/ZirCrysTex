@@ -145,11 +145,12 @@ grainsets_mono = {}
 grainsets_met = {}
 for sgi = 1:length(mono_ebsd_list)
   % Reliability filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+    
   % Index correlation Coefficient filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter/100)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
 
   grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
   grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
