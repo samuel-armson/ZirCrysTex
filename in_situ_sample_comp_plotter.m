@@ -92,6 +92,7 @@ ebsd_met_MEDDR = loadEBSD(data_met_MEDDR,CS_MEDDR,'interface','ctf','convertSpat
 ebsd_met_HIGH = loadEBSD(data_met_HIGH,CS_HIGH,'interface','ctf','convertSpatial2EulerReferenceFrame');
 ebsd_met_EXHI2 = loadEBSD(data_met_EXHI2,CS_EXHI2,'interface','ctf','convertSpatial2EulerReferenceFrame');
 
+%{
 ebsd_mono_38NVa1 = ebsd_mono_38NVa1.gridify
 ebsd_met_38NVa1 = ebsd_met_38NVa1.gridify
 
@@ -100,8 +101,11 @@ ebsd_met_2NVa3 = ebsd_met_2NVa3.gridify
 
 ebsd_mono_LOWDR = ebsd_mono_LOWDR.gridify
 ebsd_met_LOWDR = ebsd_met_LOWDR.gridify
-
-
+%}
+%%
+cs_mono = ebsd_mono_1TDa1('Monoclinic ZrO$$_2$$').CS
+cs_met = ebsd_mono_1TDa1('HCP Zr').CS
+%%
 
 % Perform cross-section correction
 %_______________________________________________________________________________________________________________________________________
@@ -179,15 +183,15 @@ for sgi = 1:length(mono_ebsd_list)
   %(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id);
   %(met_ebsd_list{1,sgi}.phaseId==met_phase_id);
 
-  odf = make_ODF(mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id))
+  %odf = make_ODF(mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id))
   odf_data= calcODF(mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id).orientations,'halfwidth', 3*degree)
   desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id).CS,'titles',name_list{1,sgi})
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',cs_mono,'phase_name','Monoclinic ZrO$$_2$$','titles',name_list{1,sgi})
 
-  odf = make_ODF(met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id))
+  %odf = make_ODF(met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id))
   odf_data= calcODF(met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id).orientations,'halfwidth', 3*degree)
   desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id).CS,'titles',name_list{1,sgi})
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',cs_met,'titles',name_list{1,sgi})
 
   %plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
   %plot_map(grainsets_met{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')

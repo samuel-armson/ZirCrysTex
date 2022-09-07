@@ -38,6 +38,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	global phase_of_interest
 	global Sample_ID
 
+    
+
 	if isempty(reference_texture_component) == 1
 		reference_texture_component = [0,0,1];
 	end
