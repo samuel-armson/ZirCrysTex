@@ -64,11 +64,11 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	parse(p,data_in,desired_pfs,varargin{:});
 
-	phase_loc = cellfun(@(x)isequal(x,p.Results.phase_name),data_in.mineralList)
-  	phase_id = find(phase_loc)-1
+	%phase_loc = cellfun(@(x)isequal(x,p.Results.phase_name),data_in.mineralList)
+  	%phase_id = find(phase_loc)-1
 
-  	%(data_in.phaseId==phase_id);
-
+  %(data_in.phaseId==phase_id);
+  %(met_ebsd_list{1,sgi}.phaseId==met_phase_id);
 
 	setMTEXpref('pfAnnotations',@(varargin) 1);
 
@@ -121,14 +121,14 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
 					f = define_fibre(p.Results.ref_text_comp,'crys_sym',p.Results.crys_sym);
-					fibre_angles = angle(data_in(data_in.phaseId==phase_id).orientations,f,'antipodal')./degree;
+					fibre_angles = angle(data_in(p.Results.phase_name).orientations,f,'antipodal')./degree;
 					for fa = 1 : length(fibre_angles)
 						if fibre_angles(fa) > 90
 							fibre_angles(fa) = 180 - fibre_angles(fa);
 						end
 						fa = fa + 1; 
 					end
-					plotPDF(data_in(data_in.phaseId==phase_id).orientations,fibre_angles,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					plotPDF(data_in(p.Results.phase_name).orientations,fibre_angles,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
@@ -166,9 +166,9 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym)
 
  					ipfKey = ipfHSVKey(p.Results.crys_sym.Laue)
-					mapcolor = ipfKey.orientation2color(data_in((data_in.phaseId==phase_id)).orientations);
+					mapcolor = ipfKey.orientation2color(data_in(p.Results.phase_name).orientations);
 
-					plotPDF(data_in(data_in.phaseId==phase_id).orientations,mapcolor,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
+					plotPDF(data_in(p.Results.phase_name).orientations,mapcolor,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj);
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
@@ -196,7 +196,7 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 				%COLOUR EACH POINT BLACK
 				for i=1:axes_quant
 					miller_val = multi_miller(p.Results.desired_pfs(i,:),'crys_sym',p.Results.crys_sym);
-					plotPDF(data_in(data_in.phaseId==phase_id).orientations,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
+					plotPDF(data_in(p.Results.phase_name).orientations,miller_val,'antipodal','MarkerSize',p.Results.marker_size,'all','grid','grid_res',p.Results.grid_spacing*degree,'projection',p.Results.proj,'MarkerFaceColor','none','MarkerEdgeColor','black');
 					axes_title = miller_latex(p.Results.desired_pfs(i,:));
 					title(axes_title,'FontSize',8);
 					if i<axes_quant; nextAxis; end
