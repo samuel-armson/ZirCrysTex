@@ -91,10 +91,10 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a = data_in
     %ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
     %ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
-    ebsd_a(ebsd_a.mad<=(table2array(grain_params(row,2))/100)).phaseId = 0
-    ebsd_a(ebsd_a.bc<=table2array(grain_params(row,3))).phaseId = 0
+    ebsd_a(ebsd_a.mad<=(table2array(grain_params(row,2))/100)).phaseId = 'notIndexed'
+    ebsd_a(ebsd_a.bc<=table2array(grain_params(row,3))).phaseId = 'notIndexed'
 
-    ebsd_shape = size(ebsd_a(ebsd_a.phaseId==1).id);
+    ebsd_shape = size(ebsd_a(ebsd_a.phaseId=='Monoclinic ZrO$$_2$$').id);
     ebsd_point_count = ebsd_shape(1)
 
     if ebsd_point_count > 1
