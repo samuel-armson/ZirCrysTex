@@ -170,15 +170,24 @@ cmap = [[78,21,96],
 cmap = cmap./252
 %%
 for sgi = 1:length(mono_ebsd_list)
-  odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
-  odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-  desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
 
-  odf = make_ODF(met_ebsd_list{1,sgi}('HCP Zr'))
-  odf_data= calcODF(met_ebsd_list{1,sgi}('HCP Zr').orientations,'halfwidth', 3*degree)
+  mono_phase_loc = cellfun(@(x)isequal(x,'Monoclinic ZrO$$_2$$'),mono_ebsd_list{1,sgi}.mineralList)
+  mono_phase_id = find(mono_phase_loc)-1
+  met_phase_loc = cellfun(@(x)isequal(x,'Monoclinic ZrO$$_2$$'),met_ebsd_list{1,sgi}.mineralList)
+  met_phase_id = find(met_phase_loc)-1
+
+  %(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id);
+  %(met_ebsd_list{1,sgi}.phaseId==met_phase_id);
+
+  odf = make_ODF(mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id))
+  odf_data= calcODF(mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id).orientations,'halfwidth', 3*degree)
+  desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.phaseId==mono_phase_id).CS,'titles',name_list{1,sgi})
+
+  odf = make_ODF(met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id))
+  odf_data= calcODF(met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id).orientations,'halfwidth', 3*degree)
   desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-  plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.phaseId==met_phase_id).CS,'titles',name_list{1,sgi})
 
   %plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
   %plot_map(grainsets_met{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
