@@ -65,8 +65,8 @@ data_met_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_full.ctf'];
 % crystal symmetry
 %_______________________________________________________________________________________________________________________________________
 CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
-CS_1TDa1 = cs_loader({'metal','mono','SPP','tet','suboxide'})
-CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
+CS_1TDa1 = cs_loader({'Pt','mono','metal','tet','suboxide','hematite','hematite'})
+CS_2NVa3 = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
 CS_LOWDR = cs_loader({'mono','metal','Pt','tet'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
 CS_HIGH = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
@@ -170,15 +170,15 @@ cmap = [[78,21,96],
 cmap = cmap./252
 %%
 for sgi = 1:length(mono_ebsd_list)
-  %odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
-  %odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
-  %desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
-  %plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
+  odf = make_ODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$'))
+  odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
+  desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
 
-  %odf = make_ODF(met_ebsd_list{1,sgi}('HCP Zr'))
-  %odf_data= calcODF(met_ebsd_list{1,sgi}('HCP Zr').orientations,'halfwidth', 3*degree)
-  %desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-  %plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
+  odf = make_ODF(met_ebsd_list{1,sgi}('HCP Zr'))
+  odf_data= calcODF(met_ebsd_list{1,sgi}('HCP Zr').orientations,'halfwidth', 3*degree)
+  desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+  plot_pf(odf_data,desired_pole_figures,'crys_sym',met_ebsd_list{1,sgi}('HCP Zr').CS,'titles',name_list{1,sgi})
 
   %plot_map(grainsets_mono{1,sgi},'Deviation','phase_name','Monoclinic ZrO$$_2$$','ref_text_comp',[1,0,-3])
   %plot_map(grainsets_met{1,sgi},'Deviation','phase_name','HCP Zr','ref_text_comp',[0,0,0,1],'view_unit_cell','CS')
@@ -188,7 +188,7 @@ for sgi = 1:length(mono_ebsd_list)
   %plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
-  plot_map(grainsets_met{1,sgi},'phase')
+  %plot_map(grainsets_met{1,sgi},'phase')
   %plot_map(met_ebsd_list{1,sgi},'phase')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
   %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})

@@ -65,12 +65,12 @@ data_met_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_full.ctf'];
 % crystal symmetry
 %_______________________________________________________________________________________________________________________________________
 CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
-CS_1TDa1 = cs_loader({'Pt','mono','metal','tet','suboxide','SPP','Pt','Hematite'})
-%CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
-CS_2NVa3 = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
+CS_1TDa1 = cs_loader({'Pt','mono','met','tet','suboxide','hematite','hematite'})
+CS_2NVa3 = cs_loader({'Pt','mono','Pt','suboxide','tet','metal','SPP','hydride'})
 CS_LOWDR = cs_loader({'mono','metal','Pt','tet'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
 CS_HIGH = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
+%CS_EXHI3 = cs_loader({'mono','suboxide','tet','metal','hydride','hematite','pt'})
 CS_EXHI2 = cs_loader({'pt','metal','mono','tet','suboxide'})
   
 % load EBSD data
@@ -145,11 +145,12 @@ grainsets_mono = {}
 grainsets_met = {}
 for sgi = 1:length(mono_ebsd_list)
   % Reliability filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+    
   % Index correlation Coefficient filter
-  mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter/100)
-  met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter/100)
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
 
   grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',1,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
   grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',3,'fill_gaps','no','phase_name','HCP Zr')
