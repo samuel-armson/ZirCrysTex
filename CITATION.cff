@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Armson"
+  given-names: "Samuel"
+  orcid: "https://orcid.org/0000-0002-4494-7330"
+title: "ZirCrysTex"
+version: 0.0.9
+date-released: 2022-09-29
+url: "https://github.com/samuel-armson/ZirCrysTex"
