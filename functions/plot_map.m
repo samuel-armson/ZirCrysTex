@@ -96,6 +96,9 @@ function pm = plot_map(data_in,map_type,varargin)
     	map_figure = figure('Name','Map loading...');
 		newMtexFigure(map_figure)
     	plot(data_in(p.Results.phase_name),mapcolor,'add2all','facealpha',p.Results.facealpha);
+    	set(gca,'Color','black');
+  		set(gcf, 'InvertHardcopy', 'off');
+  		set(gca,'linewidth',1);
 
 		if strcmp(map_type,'Deviation') == 1
 			cs = data_in(p.Results.phase_name).CS
