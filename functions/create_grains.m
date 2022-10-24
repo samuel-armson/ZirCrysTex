@@ -71,7 +71,7 @@ function gr = create_grains(data_in,varargin)
   	
   	%ebsd_clean = ebsd_full(grains_dirty(grains_dirty.grainSize > Small_grain_param))
   	%ebsd_clean = ebsd_full;
-  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)).phaseId = 0;
+  	ebsd_full(grains_dirty(grains_dirty.grainSize <= Small_grain_param)).phase = 0;
   	%grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param)
   	%ebsd_full('notIndexed') = []
 

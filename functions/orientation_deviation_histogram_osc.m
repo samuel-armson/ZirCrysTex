@@ -139,6 +139,8 @@ function dev_hist = orientation_deviation_histogram(data_in,varargin)
     if strcmp(p.Results.y_scale,'log') == 1
         set(gca,'YScale','log');
         y_lower_lim=0.003
+    else
+        y_lower_lim=0
 
 	title(p.Results.titles);
 	xlim([0 90]);

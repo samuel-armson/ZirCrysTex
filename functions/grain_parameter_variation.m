@@ -91,13 +91,10 @@ function gpv = grain_parameter_variation(data_in,varargin)
     ebsd_a = data_in
     %ebsd_a =data_in(data_in.mad>=(table2array(grain_params(row,2))/100));
     %ebsd_a =ebsd_a(ebsd_a.bc>=table2array(grain_params(row,3)));
-    ebsd_a(ebsd_a.mad<=(table2array(grain_params(row,2))/100)).phaseId = 0
-    ebsd_a(ebsd_a.bc<=table2array(grain_params(row,3))).phaseId = 0
+    ebsd_a(ebsd_a.mad<=(table2array(grain_params(row,2))/100)).phase = 0
+    ebsd_a(ebsd_a.bc<=table2array(grain_params(row,3))).phase = 0
 
-    mono_phase_loc = cellfun(@(x)isequal(x,'Monoclinic ZrO$$_2$$'),ebsd_a.mineralList)
-    mono_phase_id = find(mono_phase_loc)-1
-
-    ebsd_shape = size(ebsd_a(ebsd_a.phaseId==mono_phase_id).id);
+    ebsd_shape = size(ebsd_a('Monoclinic ZrO$$_2$$').id);
     ebsd_point_count = ebsd_shape(1)
 
     if ebsd_point_count > 1
@@ -112,10 +109,15 @@ function gpv = grain_parameter_variation(data_in,varargin)
       if grains_count > 1
 
           the_odf = make_ODF(the_grains, 'phase_name', 'Monoclinic ZrO$$_2$$');
-    
+          %{
           [omega,maj_ax,min_ax] = the_grains.fitEllipse;
           maj_ax = maj_ax*2*linear_scaling_factor;
           min_ax = min_ax*2*linear_scaling_factor;
+          %}
+          maj_ax = norm(caliper(the_grains,'longest'));
+          min_ax = norm(caliper(the_grains,'shortest'));
+          maj_ax = maj_ax*linear_scaling_factor;
+          min_ax = min_ax*linear_scaling_factor;
     
           mono_grain_quant(end+1)=size(the_grains.id,1);
           mono_grain_pixels(end+1)=sum(the_grains.grainSize);
@@ -196,7 +198,7 @@ function gpv = grain_parameter_variation(data_in,varargin)
   end
   
   output_table = grain_params;
-  output_table.mono_grain_quant = transpose(mono_grain_quant);
+  output_table.mono_grain_quant = transpose(mono_grain_quant)
   output_table.mono_grain_pixels = transpose(mono_grain_pixels);
   output_table.mean_grain_area = transpose(mean_grain_area);
   output_table.median_grain_area = transpose(median_grain_area);
