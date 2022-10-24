@@ -228,7 +228,7 @@ function pm = plot_map(data_in,map_type,varargin)
     	else
     		map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
-    		plot(data_in(p.Results.phase_name),mapcolor,'add2all','facealpha',p.Results.facealpha);
+    		plot(data_in(p.Results.phase_name),mapcolor,'add2all');
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
