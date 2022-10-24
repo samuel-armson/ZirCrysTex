@@ -51,6 +51,9 @@ function cs_out = cs_loader(data_in,varargin)
 		elseif ismember(data_in(phase),{'SPP','Fe Cr SPP','Zr Fe Cr SPP','ZrFeCr SPP','Fe Cr SPP'}) == 1 
 			cs_out{end+1} = crystalSymmetry('6/mmm', [5.028 5.028 8.248], 'X||a*', 'Y||b', 'Z||c*', 'mineral', 'Zr Fe Cr SPP', 'color', SPP_c);
 
+        elseif ismember(data_in(phase),{'beta zirc','beta','beta Zr', 'beta zr'}) == 1 
+			cs_out{end+1} = crystalSymmetry('6/mmm', [5.028 5.028 8.248], 'X||a*', 'Y||b', 'Z||c*', 'mineral', 'Zr Fe Cr SPP', 'color', SPP_c);
+
 		else
 			error("cs_loader: Phase ID not recognised!")
 		end

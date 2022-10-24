@@ -47,8 +47,8 @@ data_mono_EXHI2= [pname 'MIBL_EX_HIGH_DR_2_22_mono_fixed.ctf'];
 % crystal symmetry
 
 CS_38NVa1 = cs_loader({'metal','Pt','Pt','mono','suboxide','tet'})
-CS_1TDa1 = cs_loader({'metal','mono','SPP','tet','suboxide'})
-CS_2NVa3 = cs_loader({'mono','suboxide','tet','metal','SPP','hydride'})
+CS_1TDa1 = cs_loader({'Pt','mono','metal','tet','suboxide','hematite','hematite'})
+CS_2NVa3 = cs_loader({'Pt','mono','Pt','metal','tet','suboxide','SPP'})
 CS_LOWDR = cs_loader({'mono','metal','Pt','tet'})
 CS_MEDDR = cs_loader({'metal','pt','mono','suboxide','tet'})
 CS_HIGH = cs_loader({'mono','Pt','metal','tet','suboxide','hematite'})
@@ -113,10 +113,10 @@ for sgi = 1:length(mono_ebsd_list)
   elseif strcmp(name_list{1,sgi},'MIBL Ex High DR') == 1
     otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   else
-    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_2_by_2')
-    %otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
+    %otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs,'small_removal_method','corr_3_by_3')
+    otpt_tbl= grain_parameter_variation(mono_ebsd_list{1,sgi},'crys_sym',cs)
   end
-  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'corr_2_by_2_grain_param_variation.csv'))
+  writetable(otpt_tbl,strcat(pname,name_list{1,sgi},'_caliper_no_px_corr_grain_param_variation.csv'))
 end
 
 

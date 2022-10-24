@@ -33,7 +33,7 @@ reference_texture_component = [1,0,-3];
 %==========================================================GRAIN CALC PARAMS============================================================
 %=======================================================================================================================================
 rel_filter = 1
-icc = 1
+icc = 75
 misorientation = 15
 small_grain = 1
 
@@ -86,15 +86,15 @@ grainsets_met = {}
 for sgi = 1:length(mono_ebsd_list)
   % Reliability filter
   %mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.mad<=rel_filter/100).phase = 0
   %met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad>=rel_filter/100)
-  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad<=rel_filter/100).phaseId = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.mad<=rel_filter/100).phase = 0
   %met_ebsd_list{1,sgi}.unitCell = met_ebsd_list{1,sgi}.unitCell * 1
   % Index correlation Coefficient filter
   %mono_ebsd_list{1,sgi} = mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc>=rel_filter)
   %met_ebsd_list{1,sgi} = met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc>=rel_filter)
-  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
-  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc<=icc).phaseId = 0
+  mono_ebsd_list{1,sgi}(mono_ebsd_list{1,sgi}.bc<=icc).phase = 0
+  met_ebsd_list{1,sgi}(met_ebsd_list{1,sgi}.bc<=icc).phase = 0
 
   grains_mono = create_grains(mono_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',0,'fill_gaps','no','phase_name','Monoclinic ZrO$$_2$$')
   grains_met = create_grains(met_ebsd_list{1,sgi},'misorientation',misorientation,'smallest_grain',small_grain,'smoothing',0,'fill_gaps','no','phase_name','HCP Zr')
@@ -118,8 +118,11 @@ cmap = [[78,21,96],
 
 cmap = cmap./252
 %%
+new_ebsd = mono_ebsd_list{1,1}
+odf = make_ODF(new_ebsd,'phase_name','Monoclinic ZrO$$_2$$')
+%%
 for sgi = 1:length(mono_ebsd_list)
-  odf = make_ODF(mono_ebsd_list{1,sgi},'phase_name','Monoclinic ZrO$$_2$$'))
+  %odf = make_ODF(mono_ebsd_list{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   %odf_data= calcODF(mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').orientations,'halfwidth', 3*degree)
   %desired_pole_figures = [[1,0,-3,"plane"];[1,0,-4,"plane"];[1,0,-5,"plane"];[1,0,-6,"plane"];[1,1,-2,"plane"];[0,0,1,"plane"]];
   %plot_pf(odf_data,desired_pole_figures,'crys_sym',mono_ebsd_list{1,sgi}('Monoclinic ZrO$$_2$$').CS,'titles',name_list{1,sgi})
@@ -137,7 +140,7 @@ for sgi = 1:length(mono_ebsd_list)
   %plot_map(mono_ebsd_list{1,sgi},'BC','gb_overlay',grainsets_mono{1,sgi},'phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(mono_ebsd_list{1,sgi},'BC','phase_name','Monoclinic ZrO$$_2$$')
   %plot_map(grainsets_mono{1,sgi},'gb_only','phase_name','Monoclinic ZrO$$_2$$')
-  %plot_map(grainsets_met{1,sgi},'phase')
+  plot_map(grainsets_met{1,sgi},'phase')
   %plot_map(met_ebsd_list{1,sgi},'phase')
   %shape_prefered_orientation(grainsets_mono{1,sgi},'titles',name_list{1,sgi},'colouring','aspect_ratio','ar_compensation','on')
   %orientation_deviation_histogram(mono_ebsd_list{1,sgi},'bin_size',3,'max_y',32,'titles',name_list{1,sgi})

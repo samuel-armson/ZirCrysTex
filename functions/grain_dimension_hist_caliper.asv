@@ -1,4 +1,4 @@
-function gdh = grain_dimension_hist_ellipse(data_in,varargin)
+function gdh = grain_dimension_hist_caliper(data_in,varargin)
 	%{
 	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
 
@@ -46,11 +46,13 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
   		scaling_factor = 1;
  	end
 
-	[omega,maj_ax,min_ax] = data_in.fitEllipse;
+	%[omega,maj_ax,min_ax] = data_in.fitEllipse;
+    maj_ax = norm(caliper(data_in,'longest'))
+    min_ax = norm(caliper(data_in,'shortest'))
   	ax_bin_size = p.Results.bin_size;
   	max_axis_val = p.Results.max_size;
-  	maj_ax = maj_ax*2*scaling_factor;
-  	min_ax = min_ax*2*scaling_factor;
+  	maj_ax = maj_ax*scaling_factor;
+  	min_ax = min_ax*scaling_factor;
 
   
   	for ax_val = 1 : length(maj_ax)
@@ -64,7 +66,7 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
     maj_axis_bins = (0:ax_bin_size:(max_axis_val));
     min_axis_bins = maj_axis_bins;
   	%min_axis_bins = ((ax_bin_size):ax_bin_size:(max_axis_val-ax_bin_size));
-  	relative_area = ((maj_axis_bins).*(min_axis_bins)*pi)/sum(ellipse_areas);
+  	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/sum(ellipse_areas);
   	axis_bins = {maj_axis_bins min_axis_bins};
  
   	hist_2d = hist3([maj_ax, min_ax],'Edges',axis_bins);
@@ -77,6 +79,7 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
     %axis([0 max_axis_val 0 max_axis_val])
  
   	hist_2d_normalised = (hist_2d.*relative_area)*100;
+    %hist_2d_normalised = hist_2d
     
     hist_size = size(hist_2d_normalised,1)
     zero_mat = zeros(max_axis_val/ax_bin_size);
@@ -106,12 +109,13 @@ function gdh = grain_dimension_hist_ellipse(data_in,varargin)
     end
     original_x_labels = linspace(original_spacing,max_axis_val,max_axis_val/original_spacing);
     newxlabels = scaling.*original_x_labels;
-    newxlabels = {100,200,300,400,500,600,700,800,900,1000};
+    %newxlabels = {100,200,300,400,500,600,700,800,900,1000};
+    newxlabels = {200,400,600,800,1000,1200};
     newylabels = newxlabels;
     
   	
-    %set(gca,'xticklabel',newxlabels);
-  	%set(gca,'yticklabel',newylabels);
+    set(gca,'xticklabel',newxlabels);
+  	set(gca,'yticklabel',newylabels);
   	set(gca,'XMinorTick','on','YMinorTick','on');
   	set(gca,'TickDir','out');
   	xlabel('Minor axis length (nm)');

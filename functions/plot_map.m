@@ -148,7 +148,8 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
-				colormap(gca,plasma);
+				%colormap(gca,algae);
+                colormap(gca,plasma);
 				if isa(data_in,'grain2d') == 1
 					gB = data_in(p.Results.phase_name).boundary;
 					hold on
@@ -215,7 +216,7 @@ function pm = plot_map(data_in,map_type,varargin)
 			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
 			grain_data = p.Results.gb_overlay(p.Results.phase_name)
-  			[omega,a,b] = grain_data.fitEllipse;
+  			[omega,a,b] = principalComponents(grain_data,'area');
   			plotEllipse(grain_data.centroid,a,b,omega,'lineColor',ellipse_colour,'alpha',0.5)
     	else
     		map_figure = figure('Name','Map loading...');
@@ -283,7 +284,8 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 
 			if strcmp(p.Results.phase_name,'HCP Zr')
-				colormap(gca,plasma);
+				%colormap(gca,algae);
+                colormap(gca,plasma);
 				gB = data_in(p.Results.phase_name).boundary;
 				hold on
 				plot(gB,'LineColor','white')
@@ -353,7 +355,8 @@ function pm = plot_map(data_in,map_type,varargin)
 			end
 			plot(data_in(p.Results.phase_name),fibre_angles)
 			if strcmp(p.Results.phase_name,'HCP Zr')
-				colormap(gca,algae);
+				%colormap(gca,algae);
+                colormap(gca,plasma);
 				gB = data_in(p.Results.phase_name).boundary;
 				hold on
 				plot(gB,'LineColor','white')
