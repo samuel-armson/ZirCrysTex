@@ -92,7 +92,10 @@ function pm = plot_map(data_in,map_type,varargin)
 			oM = BungeColorKey(cs);
 			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).orientations);
 		end
-
+    	
+    	map_figure = figure('Name','Map loading...');
+		newMtexFigure(map_figure)
+    	plot(data_in(p.Results.phase_name),mapcolor,'add2all','facealpha',p.Results.facealpha);
 
 		if strcmp(map_type,'Deviation') == 1
 			cs = data_in(p.Results.phase_name).CS
@@ -178,6 +181,7 @@ function pm = plot_map(data_in,map_type,varargin)
   			axesHandles = findall(map_figure,'type','axes');
   			axes_props = get(axesHandles,'position')
   			aspect_ratio = axes_props(3)/axes_props(4)
+
   		elseif strcmp(map_type,'BC') == 1
   			map_figure = figure('Name','Map loading...');
 			newMtexFigure(map_figure)
