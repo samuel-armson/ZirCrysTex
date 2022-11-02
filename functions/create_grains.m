@@ -79,7 +79,7 @@ function gr = create_grains(data_in,varargin)
   	%ebsd_full('notIndexed') = []
 
   	if strcmp(p.Results.fill_gaps_force,'yes') == 1
-  		ebsd_full= fill(ebsd_clean,grains_dirty);
+  		ebsd_full= fill(ebsd_full,grains_dirty);
   	end
 
     
