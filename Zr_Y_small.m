@@ -53,8 +53,9 @@ cs = ebsd_1(phase_of_interest).CS
 % Perform cross-section correction
 %ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
 %ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
-grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',1,'smoothing',5,'fill_gaps','no')
-
+%%
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',5,'fill_gaps','yes')
+disp('done')
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
 %ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];

@@ -23,7 +23,7 @@ Sample_ID = "Slice 207";
 pname = 'D:/Sam/Dropbox (The University of Manchester)/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'Zr_Y_small_area.ctf'];
+data_1 = [pname 'Zr-Y NNL Zr Y montage.ctf'];
 
 
 
@@ -36,7 +36,7 @@ reference_texture_component = [0,0,0,2];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'Pt','metal','Pt','Pt','beta Zr'})
+CS = cs_loader({'metal','beta Zr'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
@@ -54,7 +54,7 @@ cs = ebsd_1(phase_of_interest).CS
 %ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
 %ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 %%
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',5,'fill_gaps','yes')
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',5,'fill_gaps','no')
 disp('done')
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
@@ -75,7 +75,8 @@ desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"];[1,0,-1,0,"plane"];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','IPF')
-
+%%
+calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
@@ -93,7 +94,7 @@ plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
 plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
-plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
 disp('wait...')
 %figure()
 %plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
