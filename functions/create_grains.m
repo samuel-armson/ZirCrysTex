@@ -19,10 +19,13 @@ function gr = create_grains(data_in,varargin)
 	addOptional(p,'smallest_grain', 3)
 	addOptional(p,'smoothing', 3)
 	addOptional(p,'fill_gaps','no')
+	addOptional(p,'fill_gaps_force','no')
 	addOptional(p,'fill_nonindexed','no')
 	addOptional(p,'filter_type', 'none')
 	addOptional(p,'filter_value', 0)
 	addOptional(p,'phase_name','indexed')
+
+	
 
 	parse(p,data_in,varargin{:});
 
@@ -75,8 +78,9 @@ function gr = create_grains(data_in,varargin)
   	%grains_clean = grains_dirty(grains_dirty.grainSize > Small_grain_param)
   	%ebsd_full('notIndexed') = []
 
-
-  	%ebsd_clean= fill(ebsd_clean,grains_dirty);
+  	if strcmp(p.Results.fill_gaps_force,'yes') == 1
+  		ebsd_full= fill(ebsd_clean,grains_dirty);
+  	end
 
     
   	disp('Cleaning grains...')
