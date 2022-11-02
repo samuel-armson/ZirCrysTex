@@ -95,7 +95,11 @@ function gr = create_grains(data_in,varargin)
   	%grains_clean=grains_dirty
 
   	disp('Smooting grains...')
-	grains_clean = smooth(grains_clean,Grain_smooth_param);
+  	if strcmp(p.Results.fill_gaps_force,'yes') == 1
+		grains_clean = smooth(grains_clean,Grain_smooth_param,'fill',grains_clean);
+	else
+		grains_clean = smooth(grains_clean,Grain_smooth_param);
+	end
 
 
     gr = grains_clean;
