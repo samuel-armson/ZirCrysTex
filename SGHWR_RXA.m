@@ -23,7 +23,7 @@ Sample_ID = "Slice 207";
 pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'BQ_offcut.ctf'];
+data_1 = [pname 'RXA_cross_section.ctf'];
 
 
 
