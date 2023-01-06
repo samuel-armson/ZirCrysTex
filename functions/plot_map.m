@@ -88,7 +88,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		end
 
 		if strcmp(map_type,'Euler') == 1
-			cs = data_in(p.Results.phase_name).CS
+			cs = data_in('HCP Zr').CS
 			oM = BungeColorKey(cs);
 			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).orientations);
 		end
@@ -263,7 +263,7 @@ function pm = plot_map(data_in,map_type,varargin)
 		end
 
 		if strcmp(map_type,'Euler') == 1
-			cs = data_in(p.Results.phase_name).CS
+			cs = data_in('HCP Zr').CS
 			oM = BungeColorKey(cs);
 			mapcolor = oM.orientation2color(data_in(p.Results.phase_name).meanOrientation);
 		end

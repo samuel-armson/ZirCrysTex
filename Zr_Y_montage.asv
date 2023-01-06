@@ -54,8 +54,18 @@ cs = ebsd_1(phase_of_interest).CS
 %ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
 %ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 %%
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',5,'fill_gaps','no','fill_gaps_force','yes')
+%grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',5,'fill_gaps','no','fill_gaps_force','yes')
+[grains_1,ebsd_1.grainId] = calcGrains(ebsd_1,'angle',5*degree,'unitCell');
+grains_1 = smooth(grains_1,5)
+ebsd_filled = ebsd_1(ebsd_1,grains_1)
+plot(ebsd_filled('indexed'),ebsd_filled('indexed').orientations);
+
+hold on
+plot(grains_1.boundary,'linewidth',0.1)
+hold off
+
 disp('done')
+%%
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
 %ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];

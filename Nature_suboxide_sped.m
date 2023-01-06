@@ -20,15 +20,17 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "Slice 207";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/Dream 3D files/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Externally shared/Nature Paper MTEX figs/DATA AND SCRIPTS/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/Externally shared/Channel 5 data/Flic orientation paper new/Manchester maps/Reindex/';
+
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'Slice_207.ctf'];
+data_1 = [pname 'Stress driven_suboxide_rel10_phi2.ctf'];
 
 
 
 % Phase of interest for orientation analysis - select here for global phase of interest.
-phase_of_interest = 'HCP Zr';
+phase_of_interest = 'indexed';
 
 % Reference texture component. Used for plotting angular deviation of points from. Used for colouring and histogram (if desired).
 reference_texture_component = [0,0,0,2];
@@ -36,7 +38,7 @@ reference_texture_component = [0,0,0,2];
 % UPDATE THIS ACCORDING TO YOUR CTF FILE.
 % crystal symmetry
 
-CS = cs_loader({'metal'})
+CS = cs_loader({'mono','tet','metal','suboxide'})
   
 % plotting convention
 setMTEXpref('xAxisDirection','east');
@@ -48,62 +50,80 @@ ebsd_1 = ebsd_1.gridify;
 
 
 % globally define crystal symmetry of phase of interest
-cs = ebsd_1(phase_of_interest).CS
+cs = ebsd_1('HCP Zr').CS
 
 % Perform cross-section correction
-%ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
-ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
+ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',90)
+%ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
+%%
+%grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',5,'fill_gaps','no')
 
 
-ebsd_mis=ebsd_1(phase_of_interest)
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
-ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
-[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell','smoothing',3);
+%hold on
+%plot(grains_1.boundary,'linewidth',0.1)
+%hold off
+
+%disp('done')
+%%
+%ebsd_mis=ebsd_1(phase_of_interest)
+%[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
+%ebsd_mis(grains_mis(grains_mis.grainSize <= 1)) = [];
+%[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'angle',5*degree,'unitCell','smoothing',3);
 
 % smooth grain boundaries
-grains_mis = smooth(grains_mis,3);
+%grains_mis = smooth(grains_mis,3);
 
 
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 
 
 
-%odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 3*degree)
-%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+
+%odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 5*degree)
+
+%desired_pole_figures = [[0,0,0,2,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','IPF')
 
-%%
+%calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
+
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(grains_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
 %plot_pf(ebsd_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS,'colouring','IPF')
-%%
+
 %plot_map(ebsd_mono,'BC','gb_overlay',grains_mono,'phase_name','Monoclinic ZrO$$_2$$')
-%plot_map(ebsd_mono,'BC','phase_name','Monoclinic ZrO$$_2$$')
+%plot_map(ebsd_1,'BC','phase_name','Monoclinic ZrO$$_2$$')
 %plot_map(grains_mono,'gb_only','phase_name','Monoclinic ZrO$$_2$$')
 
-bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
-plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue),'facealpha',0.5)
-figure()
-plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
-mtexColorMap LaboTeX
-mtexColorbar('title','misorientation angle')
+%bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
-figure()
-plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
-mtexColorMap parula
-mtexColorbar('title','misorientation angle')
+%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
+plot_map(ebsd_1,'Euler','phase_name',phase_of_interest)
+
+%plot_map(ebsd_1,'IPF','phase_name',phase_of_interest,'crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfTSLKey(cs.Laue),'plot_key','on')
+
+%plot_map(ebsd_1,'IPF','phase_name',phase_of_interest,'crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHKLKey(cs.Laue),'plot_key','on')
+
+disp('wait...')
+%figure()
+%plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
+%mtexColorMap LaboTeX
+%mtexColorbar('title','misorientation angle')
+
+%figure()
+%plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
+%mtexColorMap parula
+%mtexColorbar('title','misorientation angle')
 
 
-plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
+%plot_map(ebsd_2,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
 %plot_map(ebsd_1,'Euler','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 
@@ -116,9 +136,9 @@ plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_
 
 %plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
 %plot_map(ebsd_2,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
-%%
+
 %plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','PV')
-plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_dev_val','yes')
+%plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_dev_val','no')
 
 
 %plot_map(ebsd_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2])
@@ -126,7 +146,7 @@ plot_map(grains_1,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').
 %plot_map(grains_1_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 
-%% Hmm
+
 
 output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
 
@@ -211,7 +231,8 @@ hold on
 plot(grains_1.boundary,'lineWidth',0.5)
 hold off
 %}
-%%
+
+%{
 figure()
 gam = ebsd_mis.grainMean(ebsd_mis.KAM);
 plot(grains_mis,gam./degree)
@@ -222,8 +243,8 @@ text(grains_mis,gam./degree)
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 disp(gam)
+%}
 
-%% Sign off
 for n=1:1
     load gong
     sound(y,Fs)

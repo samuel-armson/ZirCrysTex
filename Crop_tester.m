@@ -52,7 +52,7 @@ cs = ebsd_1(phase_of_interest).CS
 
 % Perform cross-section correction
 %ebsd_1 = x_section_correction(ebsd_1,'EBSD','scan_rotation',180)
-ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
+%ebsd_1 = dataset_rotation(ebsd_1,[0,0,180],'axis')
 grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',1,'smoothing',3,'fill_gaps','no')
 
 
@@ -78,8 +78,8 @@ grains_mis = smooth(grains_mis,3);
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(grains_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
 %plot_pf(ebsd_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS,'colouring','IPF')
@@ -222,6 +222,26 @@ text(grains_mis,gam./degree)
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 disp(gam)
+
+%%
+
+x_min_orig = 0
+y_min_orig = 0
+x_max_orig = ebsd_1.xmax
+y_max_orig = ebsd_1.ymin
+
+full_coords = [x_min_orig, y_min_orig, abs(x_max_orig-x_min_orig), abs(y_max_orig-y_min_orig)]
+
+r_1 = full_coords/2
+
+r_1 = [x_min_orig-x_max_orig, y_min_orig-y_max_orig,abs(x_max_orig-x_min_orig)/2, abs(y_max_orig-y_min_orig)/2]
+r_1 = [0,0,10,10]
+
+plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2]);
+hold on 
+rectangle('position',r_1,'edgecolor','r','linewidth',2)
+hold off
+
 
 %% Sign off
 for n=1:1

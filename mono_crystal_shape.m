@@ -6,7 +6,7 @@ smallest_grain = 3 (pixels)
 smoothing = 3 (unknown)
 %}
 % Select mTeX installation to use and start mTeX
-addpath 'C:/Users/Sam/Documents/GitHub/Zirconia_mTeX'
+addpath(genpath('C:/Users/Sam A/Documents/GitHub/Zirconia_mTeX'));
 addpath 'functions';
 addpath 'third_party_packages';
 % Define global variables
@@ -15,7 +15,7 @@ global cs
 global reference_texture_component
 global Sample_ID
 global pname
-%addpath 'C:/Users/Sam/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
 startup_mtex
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
 save_figures = 'no';
@@ -60,7 +60,7 @@ hold off
 legend
 
 param_list = {ebsd_1TDa1}
-orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap,'legend_labels',name_list)
+%orientation_deviation_histogram_multi(param_list,'phase_name','Monoclinic ZrO$$_2$$','plot_type','hist_line','alt_cmap',cmap,'legend_labels',name_list)
 
 %% Sign off
 for n=1:1

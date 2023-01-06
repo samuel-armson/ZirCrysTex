@@ -78,8 +78,8 @@ grains_mis = smooth(grains_mis,3);
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
-desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
-plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
+%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"]];
+%plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(grains_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS,'colouring','IPF')
 %plot_pf(odf_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS)
 %plot_pf(ebsd_single,desired_pole_figures,'crys_sym',ebsd_single(phase_of_interest).CS,'colouring','IPF')
@@ -222,6 +222,17 @@ text(grains_mis,gam./degree)
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 disp(gam)
+
+%%
+
+x_min_orig = 0
+y_min_orig = 0
+x_max_orig = ebsd_1.xmax
+y_max_orig = ebsd_1.ymax
+
+full_coords = [x_min_orig, y_min_orig, x_max_orig-x_min_orig, y_max_orig-y_min_orig]
+
+r_1 = full_coords/2
 
 %% Sign off
 for n=1:1
