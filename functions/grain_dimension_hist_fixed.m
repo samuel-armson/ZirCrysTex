@@ -93,11 +93,11 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 
 
 	scaling  = ax_bin_size;
-	newxlabels = linspace(0,max(max_axis_val),length(min_axis_bins));
+	newxlabels = linspace(0,max(max_axis_val),length(min_axis_bins))
 	yticks = get(gca,'ytick');
 	newylabels = linspace(0,max(max_axis_val),length(min_axis_bins));
-	xticks(newxlabels)
-	yticks(newylabels)
+	xticks([newxlabels])
+	yticks([newylabels])
 	%set(gca,'xticklabel',newxlabels);
 	%set(gca,'yticklabel',newylabels);
 	set(gca,'TickDir','out');
