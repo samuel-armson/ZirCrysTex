@@ -21,10 +21,10 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "Slice 207";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/Python_edited/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'RXA_cross_section_0.ctf'];
+data_1 = [pname 'RXA_cross_section.ctf'];
 
 
 
@@ -60,7 +60,7 @@ disp('wait...')
 
 
 %%
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','yes')
+grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','no')
 disp('done')
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
