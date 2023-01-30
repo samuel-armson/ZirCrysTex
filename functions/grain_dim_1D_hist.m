@@ -127,8 +127,8 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
 	end
 
-	newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
-	set(gca,'xticklabel',newlabels);
+	%newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
+	%set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
