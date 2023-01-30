@@ -146,9 +146,10 @@ text(0.3,0.4,'fin.', 'FontSize',100);
 %plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %%
 
-grain_dimension_hist_caliper(grains_1('HCP Zr'),'bin_size',5,'max_size',100,'units','um','max_percentage',6)
+grain_dimension_hist_fixed(grains_1('HCP Zr'),'bin_size',5,'max_size',85,'units','um','max_percentage',7)
 
-grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','maj_ax','bin_size',10,'max_size',200,'units','um','max_percentage',50)
+grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','maj_ax','bin_size',5,'max_size',85,'units','um','max_percentage',25)
+grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','min_ax','bin_size',5,'max_size',85,'units','um','max_percentage',25)
 	%{
 	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
 
