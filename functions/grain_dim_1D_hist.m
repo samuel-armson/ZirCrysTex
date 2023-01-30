@@ -82,9 +82,9 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     disp(b)
 
     counts(b)=0;
-    upper_bound(b) = b*largest_grain/bin_quant;
-    lower_bound(b) = upper_bound(b) - largest_grain/bin_quant;
-    mid_point(b) = upper_bound(b) - (largest_grain/bin_quant)/2;
+    upper_bound(b) = b*max_size/bin_quant;
+    lower_bound(b) = upper_bound(b) - max_size/bin_quant;
+    mid_point(b) = upper_bound(b) - (max_size/bin_quant)/2;
     for grain_id = 1 : length(grain_size)
       if grain_size(grain_id)>lower_bound(b) & grain_size(grain_id)<upper_bound(b)
         counts(b) = counts(b) + grain_size(grain_id);
@@ -92,7 +92,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     end
     %counts(b) = sum(grain_size>lower_bound(b) & grain_size<upper_bound(b),'double')/total_area;
     if strcmp(p.Results.plot_type, 'bar') == 1
-      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', largest_grain/bin_quant);
+      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', max_size/bin_quant);
     else
       x_vals(end+1) = mid_point(b)
       y_vals(end+1) = (counts(b)/total_area)*100
