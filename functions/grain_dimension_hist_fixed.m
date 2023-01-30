@@ -61,19 +61,18 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/total_area;
 	axis_bins = {maj_axis_bins min_axis_bins};
 
-	values = [maj_ax, min_ax].*relative_area*100
+	%values = [maj_ax, min_ax].*relative_area*100
 
-	hist_2d = hist3(values,'Edges',axis_bins);
-	%hist_2d = hist3([maj_ax, min_ax],'Edges',axis_bins);
+	%hist_2d = hist3(values,'Edges',axis_bins);
+	hist_2d = hist3([maj_ax, min_ax],'Edges',axis_bins);
 	%hist_2d = histogram2(maj_ax,min_ax,maj_axis_bins,min_axis_bins,'DisplayStyle','tile')
 
 	Fig_2d_hist_as_res= figure('Name','Loading...');
 	figure(Fig_2d_hist_as_res);
 
-	%xlim([0 max_axis_val/scaling_factor])
-	%ylim([0 max_axis_val/scaling_factor])
+	
 
-	%hist_2d_normalised = (hist_2d.*relative_area)*100;
+	hist_2d_normalised = (hist_2d.*relative_area)*100;
 
 	pcolor(hist_2d_normalised);
 	cb_new = mtexColorbar('TickLength',0);
@@ -109,7 +108,8 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 
-
+	xlim([0 max_axis_val/scaling_factor])
+	ylim([0 max_axis_val/scaling_factor])
 
 
 
