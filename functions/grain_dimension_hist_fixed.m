@@ -108,8 +108,8 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 
-	xlim([0 max_axis_val/scaling_factor])
-	ylim([0 max_axis_val/scaling_factor])
+	%xlim([0 max_axis_val/scaling_factor])
+	%ylim([0 max_axis_val/scaling_factor])
 
 
 
