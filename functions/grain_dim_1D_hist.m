@@ -27,6 +27,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	addOptional(p,'max_size',500);
 	addOptional(p,'max_percentage',50);
 	addOptional(p,'units','nm')
+	addOptional(p,'normalise_by','length')
   addOptional(p,'plot_type','bar')
 	addOptional(p,'save_fig','none');
 	addOptional(p,'sample_ID','none');
@@ -60,7 +61,13 @@ function gah = grain_dim_1D_hist(data_in,varargin)
   std_dev_grain_size = std(grain_size);
   median_grain_size = median(grain_size);
   mode_grain_size = mode(grain_size);
-  total_area = sum(grain_size,'double');
+  
+  if strcmp(p.Results.normalise_by,'length') == 1
+  	total_area = sum(grain_size,'double');
+  else
+  	total_area = sum(data_in.area);
+  end
+  
   bin_size = p.Results.bin_size;
   max_size = p.Results.max_size;
   max_percentage = p.Results.max_percentage;
