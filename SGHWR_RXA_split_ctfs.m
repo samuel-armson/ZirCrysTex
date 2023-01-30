@@ -148,7 +148,7 @@ text(0.3,0.4,'fin.', 'FontSize',100);
 
 grain_dimension_hist_caliper(grains_1('HCP Zr'),'bin_size',5,'max_size',100,'units','um','max_percentage',6)
 
-grain_dim_1D_hist(grains_1,'axis','maj_ax','bin_size',10,'max_size',200,'units','um','max_percentage',50)
+grain_dim_1D_hist(grains_1('HCP Zr'),'axis','maj_ax','bin_size',10,'max_size',200,'units','um','max_percentage',50)
 	%{
 	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
 
