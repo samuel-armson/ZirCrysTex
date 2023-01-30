@@ -11,7 +11,8 @@ global cs
 global reference_texture_component
 global Sample_ID
 global pname
-addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+%addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.8.0/mtex-5.8.0';
 startup_mtex
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
@@ -20,10 +21,10 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "Slice 207";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/Python_edited/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'CWSR_cross_section.ctf'];
+data_1 = [pname 'RXA_cross_section_0.ctf'];
 
 
 
@@ -51,8 +52,18 @@ ebsd_1 = ebsd_1.gridify;
 cs = ebsd_1(phase_of_interest).CS
 
 % Perform cross-section correction
-%ebsd_1 = x_section_correction(ebsd_1,'EBSD')
-%ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
+ebsd_1 = x_section_correction(ebsd_1,'EBSD')
+ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
+
+x_dimension = 300
+y_dimension = 200
+
+region_1 = [0-x_dimension 0-y_dimension x_dimension y_dimension]
+
+plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+disp('wait...')
+
+
 %%
 grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','yes')
 disp('done')
@@ -64,7 +75,7 @@ disp('done')
 % smooth grain boundaries
 %grains_mis = smooth(grains_mis,3);
 
-%%
+
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
 
@@ -84,7 +95,7 @@ desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"];[1,0,-1,0,"plane"];
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','IPF')
 %%
-calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
+
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)
@@ -103,8 +114,6 @@ calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_
 
 %plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
 plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
-hold on
-plot(grains_1.boundary)
 disp('wait...')
 %figure()
 %plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)

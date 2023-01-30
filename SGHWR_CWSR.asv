@@ -51,10 +51,10 @@ ebsd_1 = ebsd_1.gridify;
 cs = ebsd_1(phase_of_interest).CS
 
 % Perform cross-section correction
-%ebsd_1 = x_section_correction(ebsd_1,'EBSD')
+ebsd_1 = x_section_correction(ebsd_1,'EBSD')
 %ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
 %%
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','yes')
+grains_1 = create_grains(ebsd_1,'misorientation',15,'smallest_grain',5,'smoothing',10,'fill_gaps','yes')
 disp('done')
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
@@ -64,7 +64,7 @@ disp('done')
 % smooth grain boundaries
 %grains_mis = smooth(grains_mis,3);
 
-%%
+
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
 
@@ -84,7 +84,7 @@ desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"];[1,0,-1,0,"plane"];
 plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','IPF')
 %%
-calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
+
 %%
 %ebsd_single = ebsd_mis(grains_mis(171))
 %odf_single= calcODF(ebsd_single(phase_of_interest).orientations,'halfwidth', 3*degree)

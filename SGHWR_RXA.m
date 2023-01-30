@@ -11,7 +11,8 @@ global cs
 global reference_texture_component
 global Sample_ID
 global pname
-addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+%addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.6.1/mtex-5.6.1';
+addpath 'C:/Users/Sam A/My Documents/MATLAB/mtex-5.8.0/mtex-5.8.0';
 startup_mtex
 
 % Saving figures takes time. Best to only use on final run: 'on' or 'no'. Apply to all functions here.
@@ -53,6 +54,18 @@ cs = ebsd_1(phase_of_interest).CS
 % Perform cross-section correction
 ebsd_1 = x_section_correction(ebsd_1,'EBSD')
 ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
+
+x_dimension = 300
+y_dimension = 200
+
+region_1 = [0-x_dimension 0-y_dimension x_dimension y_dimension]
+
+plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+disp('wait...')
+hold on
+rectangle('position',region_1,'edgecolor','r','linewidth',2)
+
+
 %%
 grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','yes')
 disp('done')
