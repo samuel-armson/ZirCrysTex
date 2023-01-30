@@ -22,7 +22,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	
 	p = inputParser;
 	addRequired(p,'data_in');
-	addOptional(p,'axis','maj_ax')
+	addOptional(p,'axis_min_maj','maj_ax')
 	addOptional(p,'bin_size',1);
 	addOptional(p,'max_size',500);
 	addOptional(p,'max_percentage',50);
@@ -48,7 +48,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
-  if strcmp(p.Results.axis,'maj_ax') == 1
+  if strcmp(p.Results.axis_min_maj,'maj_ax') == 1
   	grain_size = norm(data_in.caliper('longest'))*scaling_factor;
   else
 	grain_size = norm(data_in.caliper('shortest'))*scaling_factor;
@@ -108,7 +108,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 
 	hold off;
 	set(grain_size_hist,'Name','1D Grain Area Histogram');
-  	if strcmp(p.Results.axis,'maj_ax') == 1
+  	if strcmp(p.Results.axis_min_maj,'maj_ax') == 1
 		xlabel(['Major axis length $[\mu m]$ '],'Interpreter','latex');
 	else
 		xlabel(['Minor axis length $[\mu m]$ '],'Interpreter','latex');
