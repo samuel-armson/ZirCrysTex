@@ -1,4 +1,4 @@
-function gah = grain_dim_1D_hist(data_in,axis,varargin)
+function gah = grain_dim_1D_hist(data_in,varargin)
 	%{
 	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
 
