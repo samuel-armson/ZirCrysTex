@@ -55,11 +55,6 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = x_section_correction(ebsd_1,'EBSD')
 ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
 
-x_dimension = 300
-y_dimension = 200
-
-region_1 = [0-x_dimension 0-y_dimension x_dimension y_dimension]
-
 plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
 disp('wait...')
 
@@ -77,7 +72,7 @@ disp('done')
 
 
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
-plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
+%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
 
 load gong
 sound(y,Fs)
@@ -88,11 +83,11 @@ set(gca,'visible','off')
 text(0.3,0.4,'fin.', 'FontSize',100);
 
 %%
-odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 10*degree)
+%odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 10*degree)
 
-desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"];[1,0,-1,0,"plane"];[1,1,-2,1,"plane"]];
+%desired_pole_figures = [[0,0,0,2,"plane"];[1,1,-2,0,"plane"];[1,0,-1,0,"plane"];[1,1,-2,1,"plane"]];
 %plot_pf(ebsd_1,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
-plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
+%plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %plot_pf(ebsd_mis,desired_pole_figures,'crys_sym',ebsd_mis(phase_of_interest).CS,'colouring','IPF')
 %%
 
@@ -113,8 +108,8 @@ plot_pf(odf_data,desired_pole_figures,'crys_sym',ebsd_1(phase_of_interest).CS)
 %bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
 %plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
-plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
-disp('wait...')
+%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+%disp('wait...')
 %figure()
 %plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
 %mtexColorMap LaboTeX
@@ -153,9 +148,29 @@ disp('wait...')
 
 grain_dimension_hist_caliper(grains_1('HCP Zr'),'bin_size',5,'max_size',100,'units','um','max_percentage',6)
 
+grain_dim_1D_hist(grains_1,'axis','maj_ax','bin_size',10,'max_size',200,'units','um','max_percentage',50)
+	%{
+	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
+
+	REQUIRED ARGUMENTS
+	data_in = GRAINS data type provided by mTeX.
+
+	OPTIONAL ARGUMENTS
+	ref_texture_comp = Eg. [0,0,0,2] or [0,0,1]. 
+	view_unit_cell = 'CS' for cross-section corrected data, 'PV' or 'yes' for plan-view data. Default is 'no'.
+	save_fig = 'yes' or 'no'. Default value is no. This is useful for saving time and storage space when testing scripts before
+				commiting to saving them.
+	sample_ID = 'Example sample ID', for example. Required when you want to save the figure. It is useful to set a global sample
+				name using the figure_name function directly before starting to plot figures. The char string produced by this
+				function can then be used as the sample_ID argument.
+	extension = 'tif','png','jpg','pdf' etc. Default is pdf.
+	resolution = integer value. Default is 1000. (dpi)
+
+	%}
+
 %% Hmm
 
-output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
+%output_1 = 'D:/Sam/Dropbox (The University of Manchester)/NanoSIMS data for collab/EBSD/104JX/2020_10_14/crystal_shapes/'
 
 
 %plot_map(grains_mis,'numbered_orientations','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','no','output_dir',output_1)
@@ -251,7 +266,7 @@ set(gca,'Color','black');
 mtexColorMap LaboTeX
 disp(gam)
 %}
-calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
+%calcKearnsFactor(odf_data,'N',vector3d(0,0,1),'h',define_miller([0,0,0,2],'crys_sym',cs))
 %% Sign off
 for n=1:1
     load gong
