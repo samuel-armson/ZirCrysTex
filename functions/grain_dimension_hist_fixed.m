@@ -93,13 +93,13 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 
 
 	scaling  = ax_bin_size;
-	%newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
+	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
 	
-	%yticks = get(gca,'ytick');
-	%newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
-	%set(gca,'xticklabel',newxlabels);
-	%set(gca,'yticklabel',newylabels);
-	%set(gca,'XMinorTick','on','YMinorTick','on');
+	yticks = get(gca,'ytick');
+	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
+	set(gca,'xticklabel',newxlabels);
+	set(gca,'yticklabel',newylabels);
+	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	xlabel('Minor axis length (nm)');
 	ylabel('Major axis length (nm)');
