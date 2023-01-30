@@ -116,17 +116,9 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	ylabel(['$\%$ Total area of phase'],'Interpreter','latex');
 	set(gca, 'YTickMode', 'Auto');
 	set(gca, 'XTickMode', 'Auto');
-	xlim([0 max_size]);
-	ylim([0 max_percentage]);
 	set(gcf, 'color','white');
 	set(gcf, 'InvertHardcopy', 'off');
-	xticks = get(gca,'xtick');
-	if strcmp(p.Results.units,'nm') == 1 
-		xlabel(['Grain area (nm$^2$)'],'Interpreter','latex');
-	elseif strcmp(p.Results.units,'um') == 1
-		xlabel(['Grain area (um$^2$)'],'Interpreter','latex');
-	end
-
+	%xticks = get(gca,'xtick');
 	%newlabels = arrayfun(@(x) sprintf('%.0f', x), xticks, 'un', 0);
 	%set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
@@ -135,6 +127,8 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	set(groot,'defaultAxesTickLabelInterpreter','latex');
 	set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
+	xlim([0 max_size]);
+	ylim([0 max_percentage]);
 
   disp('')
 	disp('1D grain dimension histogram plotted.')
