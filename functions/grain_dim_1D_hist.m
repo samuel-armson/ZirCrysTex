@@ -81,6 +81,12 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     % Plot one single bar as a separate bar series.
     disp(b)
 
+    if rem(b, 2) == 0
+    	bar_col = "#EDB120"
+    else
+    	bar_col = "#7E2F8E"
+    end
+
     counts(b)=0;
     upper_bound(b) = b*max_size/bin_quant;
     lower_bound(b) = upper_bound(b) - max_size/bin_quant;
@@ -92,7 +98,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     end
     %counts(b) = sum(grain_size>lower_bound(b) & grain_size<upper_bound(b),'double')/total_area;
     if strcmp(p.Results.plot_type, 'bar') == 1
-      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', max_size/bin_quant);
+      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', max_size/bin_quant,'color',bar_col);
     else
       x_vals(end+1) = mid_point(b)
       y_vals(end+1) = (counts(b)/total_area)*100
