@@ -51,8 +51,10 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 
   if strcmp(p.Results.axis_min_maj,'maj_ax') == 1
   	grain_size = norm(data_in.caliper('longest'))*scaling_factor;
+  	other_axis = norm(data_in.caliper('shortest'))*scaling_factor;
   else
 	grain_size = norm(data_in.caliper('shortest'))*scaling_factor;
+	other_axis = norm(data_in.caliper('longest'))*scaling_factor;
   end
 
   aspect_ratios = data_in.aspectRatio;
@@ -67,7 +69,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
   else
   	total_area = sum(data_in.area);
   end
-  
+
   bin_size = p.Results.bin_size;
   max_size = p.Results.max_size;
   max_percentage = p.Results.max_percentage;
@@ -100,7 +102,11 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     mid_point(b) = upper_bound(b) - (max_size/bin_quant)/2;
     for grain_id = 1 : length(grain_size)
       if grain_size(grain_id)>lower_bound(b) & grain_size(grain_id)<upper_bound(b)
-        counts(b) = counts(b) + grain_size(grain_id);
+      	if strcmp(p.Results.normalise_by,'length') == 1
+        	counts(b) = counts(b) + grain_size(grain_id);
+        else
+        	counts(b) = counts(b) + (grain_size(grain_id)*other_axis(grain_id));
+        end
       end
     end
     %counts(b) = sum(grain_size>lower_bound(b) & grain_size<upper_bound(b),'double')/total_area;
