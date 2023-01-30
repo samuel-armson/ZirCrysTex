@@ -93,16 +93,15 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 
 
 	scaling  = ax_bin_size;
-	newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-	
+	newxlabels = linspace(0,max(max_axis_val),length(min_axis_bins));
 	yticks = get(gca,'ytick');
-	newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
+	newylabels = linspace(0,max(max_axis_val),length(min_axis_bins));
 	set(gca,'xticklabel',newxlabels);
 	set(gca,'yticklabel',newylabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
-	xlabel('Minor axis length (nm)');
-	ylabel('Major axis length (nm)');
+	xlabel('Minor axis length (um)');
+	ylabel('Major axis length (um)');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8);
 	set(groot,'defaultAxesTickLabelInterpreter','latex');
 	set(groot,'defaulttextinterpreter','latex');
