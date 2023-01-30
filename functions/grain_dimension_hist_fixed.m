@@ -85,17 +85,18 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	colormap(white_viridis('white_percentage',2));
 	cbarlimits = [0 p.Results.max_percentage]
 	caxis(cbarlimits);
-	xticks = get(gca,'xtick');
+	%xticks = get(gca,'xtick');
 
 
 
 	scaling  = ax_bin_size;
 	%newxlabels = arrayfun(@(x) sprintf('%.0f', scaling * x), xticks, 'un', 0);
-	yticks = get(gca,'ytick');
+	
+	%yticks = get(gca,'ytick');
 	%newylabels = arrayfun(@(y) sprintf('%.0f', scaling * y), yticks, 'un', 0);
 	%set(gca,'xticklabel',newxlabels);
 	%set(gca,'yticklabel',newylabels);
-	set(gca,'XMinorTick','on','YMinorTick','on');
+	%set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
 	xlabel('Minor axis length (nm)');
 	ylabel('Major axis length (nm)');
