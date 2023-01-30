@@ -98,7 +98,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     end
     %counts(b) = sum(grain_size>lower_bound(b) & grain_size<upper_bound(b),'double')/total_area;
     if strcmp(p.Results.plot_type, 'bar') == 1
-      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', max_size/bin_quant,'FaceColor',bar_col);
+      handleToThisBarSeries(b) = bar(mid_point(b), (counts(b)/total_area)*100, 'BarWidth', max_size/bin_quant,'FaceAlpha',0.5);
     else
       x_vals(end+1) = mid_point(b)
       y_vals(end+1) = (counts(b)/total_area)*100
