@@ -61,7 +61,7 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	relative_area = ((maj_axis_bins/2).*(min_axis_bins/2)*pi)/total_area;
 	axis_bins = {maj_axis_bins min_axis_bins};
 
-	hist_2d = hist3([maj_ax, min_ax],'Ctrs',axis_bins);
+	hist_2d = hist3([maj_ax, min_ax],'Edges',axis_bins);
 
 	Fig_2d_hist_as_res= figure('Name','Loading...');
 	figure(Fig_2d_hist_as_res);
