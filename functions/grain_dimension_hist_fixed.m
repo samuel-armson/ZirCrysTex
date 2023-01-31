@@ -118,7 +118,7 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	desired_height = 12
+	desired_height = 10
     set(gcf,'position',[5 5 desired_width desired_height])
     set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
