@@ -482,11 +482,12 @@ function pm = plot_map(data_in,map_type,varargin)
 	set(groot,'defaultLegendInterpreter','latex');
 	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
+	pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/'
 	s_1 = 'MAP_'
 	s_2 = sample_name
 	s_3 = '.png'
 
-	export_file_name = strcat(s_1,s_2,s_3)
+	export_file_name = strcat(pname,s_1,s_2,s_3)
 
 	exportgraphics(gcf,export_file_name,'Resolution',600)
 
