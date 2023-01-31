@@ -493,6 +493,8 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	exportgraphics(gcf,export_file_name,'Resolution',600)
 
+	close all
+
 end
 
 

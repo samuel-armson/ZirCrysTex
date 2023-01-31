@@ -276,6 +276,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
+
+	close all
 end
 
 

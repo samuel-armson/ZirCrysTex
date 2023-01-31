@@ -133,6 +133,8 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 
 	exportgraphics(gcf,export_file_name,'Resolution',600)
 
+	close all
+
 
 
 

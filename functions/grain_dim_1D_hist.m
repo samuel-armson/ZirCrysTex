@@ -179,6 +179,8 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	disp('1D grain dimension histogram plotted.')
 	disp('')
 
+	close all
+
   disp('Mean:')
   disp(mean_grain_size)
   disp('STD:')
