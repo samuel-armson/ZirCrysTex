@@ -46,6 +46,7 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
   	scaling_factor = 1;
  	end
 
+ 	sample_name = p.Results.sample_ID
 	ax_bin_size = p.Results.bin_size;
 	max_axis_val = p.Results.max_size;
 	maj_ax = norm(data_in.caliper('longest'))*scaling_factor;

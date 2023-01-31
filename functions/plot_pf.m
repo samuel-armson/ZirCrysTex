@@ -72,6 +72,8 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 
 	setMTEXpref('pfAnnotations',@(varargin) 1);
 
+	sample_name = p.Results.sample_ID
+
 	disp('')
 	disp('Plotting pole figures...')
 	disp('')
