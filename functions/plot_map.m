@@ -482,7 +482,7 @@ function pm = plot_map(data_in,map_type,varargin)
 	set(groot,'defaultLegendInterpreter','latex');
 	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
-	exportgraphics(gcf,'MAP_'+sample_name+'.png','Resolution',600)
+	exportgraphics(gcf,{'MAP_'+sample_name+'.png'},'Resolution',600)
 
 end
 
