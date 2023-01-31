@@ -469,6 +469,8 @@ function pm = plot_map(data_in,map_type,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'GRAINS' ")
 	end
 
+	set(gca,'linewidth',0.1);
+	set(findall(gcf,'-property','linewidth'),'linewidth',0.1)
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
  	set(gcf,'units','centimeters')
     desired_width = 12
