@@ -104,16 +104,33 @@ function gdh = grain_dimension_hist_fixed(data_in,varargin)
 	xlabel('Minor axis length (um)');
 	ylabel('Major axis length (um)');
 	set(findall(gcf,'-property','FontSize'),'FontSize',8);
-	set(groot,'defaultAxesTickLabelInterpreter','latex');
-	set(groot,'defaulttextinterpreter','latex');
-	set(groot,'defaultLegendInterpreter','latex');
-
 	%xlim([0 max_axis_val/scaling_factor])
 	%ylim([0 max_axis_val/scaling_factor])
 
 
 
+	set(gca,'linewidth',0.1);
+	set(findall(gcf,'-property','linewidth'),'linewidth',0.1)
+	set(findall(gcf,'-property','FontSize'),'FontSize',5)
+ 	set(gcf,'units','centimeters')
+    desired_width = 12
+    pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
+	current_width = pos(3)
+	current_height = pos(4)
+	desired_height = 12
+    set(gcf,'position',[5 5 desired_width desired_height])
+    set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
+	pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/'
+	s_1 = '2D_HIST_'
+	s_2 = sample_name
+	s_3 = '.png'
+
+	export_file_name = strcat(pname,s_1,s_2,s_3)
+
+	exportgraphics(gcf,export_file_name,'Resolution',600)
 
 
 

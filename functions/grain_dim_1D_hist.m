@@ -158,7 +158,6 @@ function gah = grain_dim_1D_hist(data_in,varargin)
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
-	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
 	desired_height = 7.5
     set(gcf,'position',[5 5 desired_width desired_height])
     set(groot,'defaulttextinterpreter','latex');
