@@ -62,6 +62,7 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	figure_width = p.Results.figure_width;
 	map_type = p.Results.map_type;
+	sample_name = p.Results.sample_ID
 	
 	if isa(data_in,'EBSD') == 1
 
@@ -445,10 +446,10 @@ function pm = plot_map(data_in,map_type,varargin)
   		end
   		set(gca,'Color','black');
   		set(gcf, 'InvertHardcopy', 'off');
-  		set(gca,'linewidth',1);
+  		set(gca,'linewidth',0.1);
   		%Uncomment lines below to remove scale bar 
-  		%hgt = findall(gca,'type','hgtransform')
-  		%set(hgt,'visible','off')
+  		hgt = findall(gca,'type','hgtransform')
+  		set(hgt,'visible','off')
 
   		if strcmp(p.Results.view_unit_cell, 'no') == 0
   			hold on
@@ -470,16 +471,18 @@ function pm = plot_map(data_in,map_type,varargin)
 
 	set(findall(gcf,'-property','FontSize'),'FontSize',8)
  	set(gcf,'units','centimeters')
-    desired_width = 15.5
+    desired_width = 12
     pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
 	current_width = pos(3)
 	current_height = pos(4)
 	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
+	desired_height = 15
     set(gcf,'position',[5 5 desired_width desired_height])
     set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
 	set(groot,'defaultAxesTickLabelInterpreter','latex');  
 
+	exportgraphics(gcf,'MAP_'+sample_name+'.png','Resolution',600)
 
 end
 
