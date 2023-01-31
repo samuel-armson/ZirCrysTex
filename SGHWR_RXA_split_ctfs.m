@@ -21,10 +21,10 @@ save_figures = 'no';
 % Sample ID: name given to saved output figures. Choose to ensure that other files aren't overwritten    
 Sample_ID = "Slice 207";
 % Path to files. eg: 'J:/Nature Paper Figures/'
-pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/';
+pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/Python_edited/';
 
 % File name with pname prefix, eg: [pname 'SPED_Substrate_MARIA.ctf']
-data_1 = [pname 'RXA_cross_section.ctf'];
+data_1 = [pname 'BQ_offcut_7.ctf'];
 
 
 
@@ -55,12 +55,12 @@ cs = ebsd_1(phase_of_interest).CS
 ebsd_1 = x_section_correction(ebsd_1,'EBSD')
 ebsd_1 = dataset_rotation(ebsd_1,[0,10,0],'axis')
 
-plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
-disp('wait...')
+%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+%disp('wait...')
 
 
 %%
-grains_1 = create_grains(ebsd_1,'misorientation',5,'smallest_grain',5,'smoothing',10,'fill_gaps','no')
+grains_1 = create_grains(ebsd_1,'misorientation',10,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 disp('done')
 %ebsd_mis=ebsd_1(phase_of_interest)
 %[grains_mis,ebsd_mis.grainId] = calcGrains(ebsd_mis(phase_of_interest),'unitCell')
@@ -74,13 +74,10 @@ disp('done')
 %grains_1_fill = create_grains(ebsd_1,'misorientation',15,'smallest_grain',1,'smoothing',3,'fill_gaps','yes')
 %plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
 
-load gong
-sound(y,Fs)
-disp('FIN')
+%load gong
+%sound(y,Fs)
+%disp('FIN')
 
-figure;
-set(gca,'visible','off')
-text(0.3,0.4,'fin.', 'FontSize',100);
 
 %%
 %odf_data= calcODF(ebsd_1(phase_of_interest).orientations,'halfwidth', 10*degree)
@@ -107,8 +104,8 @@ text(0.3,0.4,'fin.', 'FontSize',100);
 
 %bounds_1 = grains_1.boundary(phase_of_interest,phase_of_interest)
 
-%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','on','ipf_key',ipfHSVKey(cs.Laue))
-%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue))
+%plot_map(grains_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'plot_key','off','ipf_key',ipfHSVKey(cs.Laue))
+%plot_map(ebsd_1,'IPF','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ipf_key',ipfHSVKey(cs.Laue),'sample_ID','heybois')
 %disp('wait...')
 %figure()
 %plot(bounds_1,bounds_1.misorientation.angle./degree,'linewidth',2)
@@ -146,10 +143,11 @@ text(0.3,0.4,'fin.', 'FontSize',100);
 %plot_map(grains_2_fill,'Deviation','phase_name','HCP Zr','crys_sym',ebsd_1('HCP Zr').CS,'ref_text_comp',[0,0,0,2],'view_unit_cell','CS')
 %%
 
-grain_dimension_hist_fixed(grains_1('HCP Zr'),'bin_size',5,'max_size',85,'units','um','max_percentage',7)
-
-grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','maj_ax','bin_size',5,'max_size',85,'units','um','max_percentage',25)
-grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','min_ax','bin_size',5,'max_size',85,'units','um','max_percentage',25)
+grain_dimension_hist_fixed(grains_1('HCP Zr'),'bin_size',10,'max_size',430,'units','um','max_percentage',2)
+%grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','maj_ax','bin_size',5,'max_size',100,'units','um','max_percentage',25,'normalise_by','area')
+%grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','min_ax','bin_size',5,'max_size',100,'units','um','max_percentage',25,'normalise_by','area')
+grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','maj_ax','bin_size',5,'max_size',430,'units','um','max_percentage',65,'normalise_by','area')
+grain_dim_1D_hist(grains_1('HCP Zr'),'axis_min_maj','min_ax','bin_size',5,'max_size',430,'units','um','max_percentage',65,'normalise_by','area')
 	%{
 	Plots 1D histogram of grain areas. Calculated by counting number of pixels per grain. Does not use ellipse fitting.
 
@@ -262,7 +260,7 @@ plot(grains_mis,gam./degree)
 mtexColorbar('title','GAM from KAM')
 hold on
 text(grains_mis,gam./degree)
-
+close all
 set(gca,'Color','black');
 mtexColorMap LaboTeX
 disp(gam)
