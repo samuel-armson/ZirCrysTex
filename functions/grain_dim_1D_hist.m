@@ -166,8 +166,8 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 
 	pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/'
 	s_1 = '1D_HIST_'
-	s_1_a = p.Results.axis_min_maj
-	s_1_b = '_'
+	s_1a = p.Results.axis_min_maj
+	s_1b = '_'
 	s_2 = sample_name
 	s_3 = '.png'
 
