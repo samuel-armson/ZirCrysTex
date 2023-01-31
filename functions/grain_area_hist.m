@@ -48,6 +48,8 @@ function gah = grain_area_hist(data_in,varargin)
     scaling_factor = 1;
   end
 
+  sample_name=p.Results.sample_ID
+
   grain_areas = data_in.area*scaling_factor;
   aspect_ratios = data_in.aspectRatio;
   largest_grain = max(grain_areas);
@@ -123,10 +125,31 @@ function gah = grain_area_hist(data_in,varargin)
 	set(gca,'xticklabel',newlabels);
 	set(gca,'XMinorTick','on','YMinorTick','on');
 	set(gca,'TickDir','out');
-	set(findall(gcf,'-property','FontSize'),'FontSize',8)
-	set(groot,'defaultAxesTickLabelInterpreter','latex');
-	set(groot,'defaulttextinterpreter','latex');
+
+	set(gca,'linewidth',0.1);
+	set(findall(gcf,'-property','linewidth'),'linewidth',0.1)
+	set(findall(gcf,'-property','FontSize'),'FontSize',5)
+ 	set(gcf,'units','centimeters')
+    desired_width = 12
+    pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
+	current_width = pos(3)
+	current_height = pos(4)
+	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
+	desired_height = 12
+    set(gcf,'position',[5 5 desired_width desired_height])
+    set(groot,'defaulttextinterpreter','latex');
 	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
+	pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/'
+	s_1 = '2D_HIST_'
+	s_2 = sample_name
+	s_3 = '.png'
+
+	export_file_name = strcat(pname,s_1,s_2,s_3)
+
+	exportgraphics(gcf,export_file_name,'Resolution',600)
+
 
   disp('')
 	disp('1D grain area histogram plotted.')

@@ -248,6 +248,30 @@ function pf = plot_pf(data_in,desired_pfs,varargin)
 		disp("'data_in' must be of type 'EBSD' or 'ODF' ")
 	end
 
+	set(gca,'linewidth',0.1);
+	set(findall(gcf,'-property','linewidth'),'linewidth',0.1)
+	set(findall(gcf,'-property','FontSize'),'FontSize',8)
+ 	set(gcf,'units','centimeters')
+    desired_width = 20
+    pos = get(gca, 'Position'); %// gives x left, y bottom, width, height
+	current_width = pos(3)
+	current_height = pos(4)
+	desired_height = desired_width * (current_height./current_width) * aspect_ratio_correction
+	desired_height = 7
+    set(gcf,'position',[5 5 desired_width desired_height])
+    set(groot,'defaulttextinterpreter','latex');
+	set(groot,'defaultLegendInterpreter','latex');
+	set(groot,'defaultAxesTickLabelInterpreter','latex');  
+
+	pname = 'D:/Sam/Dropbox (The University of Manchester)/SGHWR/'
+	s_1 = 'PF_'
+	s_2 = sample_name
+	s_3 = '.png'
+
+	export_file_name = strcat(pname,s_1,s_2,s_3)
+
+	exportgraphics(gcf,export_file_name,'Resolution',600)
+
 	disp('')
 	disp('Pole figures plotted')
 	disp('')
