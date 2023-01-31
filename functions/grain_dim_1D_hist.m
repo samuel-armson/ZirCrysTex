@@ -56,6 +56,8 @@ function gah = grain_dim_1D_hist(data_in,varargin)
 	grain_size = norm(data_in.caliper('shortest'))*scaling_factor;
 	other_axis = norm(data_in.caliper('longest'))*scaling_factor;
   end
+
+  grain_area = data_in.area
   %aspect_ratios = data_in.aspectRatio;
   largest_grain = max(grain_size);
   mean_grain_size = mean(grain_size);
@@ -105,7 +107,7 @@ function gah = grain_dim_1D_hist(data_in,varargin)
         	counts(b) = counts(b) + grain_size(grain_id);
         else
         	%counts(b) = counts(b) + (grain_size(grain_id)*other_axis(grain_id));
-        	counts(b) = counts(b) + data_in.area(grain_id);
+        	counts(b) = counts(b) + grain_area(grain_id);
         end
       end
     end
